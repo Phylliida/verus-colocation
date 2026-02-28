@@ -57,7 +57,9 @@ impl SpacyTagger {
     pub fn new(model_name: &str) -> PyResult<Self> {
         Python::with_gil(|py| {
             let spacy = py.import("spacy")?;
-            let nlp = spacy.call_method1("load", (model_name,))?;
+            let kwargs = pyo3::types::PyDict::new(py);
+            kwargs.set_item("disable", vec!["parser", "ner", "lemmatizer", "attribute_ruler"])?;
+            let nlp = spacy.call_method("load", (model_name,), Some(&kwargs))?;
             Ok(SpacyTagger {
                 nlp: nlp.unbind(),
             })
@@ -87,5 +89,33 @@ impl SpacyTagger {
     /// collocation extractor.
     pub fn tag_pos_only(&self, text: &str) -> PyResult<Vec<POS>> {
         Ok(self.tag(text)?.into_iter().map(|t| t.pos).collect())
+    }
+
+    /// Batch POS-tag multiple texts via `nlp.pipe()`.
+    /// Returns one `Vec<TaggedToken>` per input text, in the same order.
+    pub fn tag_batch(&self, texts: &[&str], batch_size: usize) -> PyResult<Vec<Vec<TaggedToken>>> {
+        Python::with_gil(|py| {
+            let nlp = self.nlp.bind(py);
+            let pipe_kwargs = pyo3::types::PyDict::new(py);
+            pipe_kwargs.set_item("batch_size", batch_size)?;
+            let docs = nlp.call_method("pipe", (texts.to_vec(),), Some(&pipe_kwargs))?;
+            let mut results = Vec::with_capacity(texts.len());
+            for doc in docs.try_iter()? {
+                py.check_signals()?; // allow Ctrl+C between docs
+                let doc = doc?;
+                let mut tokens = Vec::new();
+                for token in doc.try_iter()? {
+                    let token = token?;
+                    let word: String = token.getattr("text")?.extract()?;
+                    let pos_str: String = token.getattr("pos_")?.extract()?;
+                    tokens.push(TaggedToken {
+                        word,
+                        pos: map_pos(&pos_str),
+                    });
+                }
+                results.push(tokens);
+            }
+            Ok(results)
+        })
     }
 }

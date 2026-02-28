@@ -6,3 +6,6 @@ pub mod frequency;
 
 #[cfg(feature = "tagger")]
 pub mod tagger;
+
+#[cfg(feature = "tagger")]
+pub mod pipeline;

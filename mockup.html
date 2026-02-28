@@ -78,11 +78,32 @@
     padding: 0 1rem;
   }
 
+  .result-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
   .headword {
     font-size: 2.2rem;
     font-weight: bold;
     color: #1a3a2a;
-    margin-bottom: 0.5rem;
+  }
+
+  .pronunciation {
+    font-size: 1rem;
+    color: #777;
+    font-style: italic;
+  }
+
+  .definition {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    border-left: 3px solid #d4c9b0;
+    padding-left: 0.8rem;
   }
 
   .section {
@@ -98,6 +119,15 @@
     padding-bottom: 0.3rem;
     margin-bottom: 0.5rem;
     font-weight: bold;
+  }
+
+  .group-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+    margin-bottom: 0.2rem;
+    margin-top: 0.8rem;
   }
 
   .collocations {
@@ -155,28 +185,23 @@
 </footer>
 
 <script>
-const DATA_DIR = 'mockup-data';
-const PATTERN_LABELS = {
-  a: 'Adjective + _',
-  v: 'Verb + _',
-  V: '_ + verb',
-  n: '___ + _',
-  N: '_ + ___',
-};
+const DATA_DIR = 'output-data';
 
 let wordList = null;
 let shardCache = {};
 
-// base36 decode
-function b36(s) {
-  return parseInt(s, 36);
+function b36(s) { return parseInt(s, 36); }
+
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
 }
 
 async function loadWords() {
   if (wordList) return wordList;
   const res = await fetch(`${DATA_DIR}/words.txt`);
-  const text = await res.text();
-  wordList = text.trim().split('\n');
+  wordList = (await res.text()).trim().split('\n');
   return wordList;
 }
 
@@ -189,16 +214,20 @@ async function loadShard(prefix) {
     const entries = {};
     for (const line of text.trim().split('\n')) {
       const parts = line.split('\t');
-      const wordId = b36(parts[0]);
+      // header: wordId|ipa|definition
+      const [widStr, ipa, definition] = parts[0].split('|');
+      const wordId = b36(widStr);
       const patterns = {};
       for (let i = 1; i < parts.length; i++) {
-        const [type, rest] = parts[i].split(':');
+        const colon = parts[i].indexOf(':');
+        const type = parts[i].slice(0, colon);
+        const rest = parts[i].slice(colon + 1);
         patterns[type] = rest.split(';').map(entry => {
           const [wid, score] = entry.split(',');
           return { wordId: b36(wid), score: parseInt(score) };
         });
       }
-      entries[wordId] = patterns;
+      entries[wordId] = { ipa, definition, patterns };
     }
     shardCache[prefix] = entries;
     return entries;
@@ -211,42 +240,74 @@ function resolve(id) {
   return wordList[id] || `[${id}]`;
 }
 
-function renderResults(word, patterns) {
-  const el = document.getElementById('results');
-
-  let html = `<div class="headword">${esc(word)}</div>`;
-
-  for (const [type, label] of Object.entries(PATTERN_LABELS)) {
-    const entries = patterns[type];
-    if (!entries || entries.length === 0) continue;
-
-    const title = label.replace('_', esc(word));
-    html += `<div class="section">`;
-    html += `<div class="section-title">${title}</div>`;
-    html += `<div class="collocations">`;
-
-    for (const { wordId, score } of entries) {
-      const other = resolve(wordId);
-      const scoreFmt = (score / 10).toFixed(1);
-
-      if (type === 'V' || type === 'N') {
-        html += `<span class="collocation"><span class="highlight">${esc(word)}</span> ${esc(other)}</span>`;
-      } else {
-        html += `<span class="collocation">${esc(other)} <span class="highlight">${esc(word)}</span></span>`;
-      }
-      html += `<span class="score">${scoreFmt}</span>`;
+function renderGrid(entries, word, before) {
+  let html = '<div class="collocations">';
+  for (const { wordId, score } of entries) {
+    const other = resolve(wordId);
+    const scoreFmt = (score / 10).toFixed(1);
+    if (before) {
+      html += `<span class="collocation">${esc(other)} <span class="highlight">${esc(word)}</span></span>`;
+    } else {
+      html += `<span class="collocation"><span class="highlight">${esc(word)}</span> ${esc(other)}</span>`;
     }
+    html += `<span class="score">${scoreFmt}</span>`;
+  }
+  html += '</div>';
+  return html;
+}
 
-    html += `</div></div>`;
+function renderResults(word, data) {
+  const { ipa, definition, patterns } = data;
+  const el = document.getElementById('results');
+  const w = esc(word);
+
+  let html = '';
+  html += `<div class="result-header">`;
+  html += `<span class="headword">${w}</span>`;
+  html += `<span class="pronunciation">${esc(ipa)}</span>`;
+  html += `</div>`;
+  html += `<div class="definition">${esc(definition)}</div>`;
+
+  // Adjective + word
+  if (patterns.a) {
+    html += `<div class="section">`;
+    html += `<div class="section-title">Adjective + ${w}</div>`;
+    html += renderGrid(patterns.a, word, true);
+    html += `</div>`;
+  }
+
+  // Verb + word
+  if (patterns.v) {
+    html += `<div class="section">`;
+    html += `<div class="section-title">Verb + ${w}</div>`;
+    html += renderGrid(patterns.v, word, true);
+    html += `</div>`;
+  }
+
+  // Word + verb
+  if (patterns.V) {
+    html += `<div class="section">`;
+    html += `<div class="section-title">${w} + verb</div>`;
+    html += renderGrid(patterns.V, word, false);
+    html += `</div>`;
+  }
+
+  // Noun phrases (two sub-groups)
+  if (patterns.n || patterns.N) {
+    html += `<div class="section">`;
+    html += `<div class="section-title">Noun phrases</div>`;
+    if (patterns.n) {
+      html += `<div class="group-label">___ + ${w}</div>`;
+      html += renderGrid(patterns.n, word, true);
+    }
+    if (patterns.N) {
+      html += `<div class="group-label">${w} + ___</div>`;
+      html += renderGrid(patterns.N, word, false);
+    }
+    html += `</div>`;
   }
 
   el.innerHTML = html;
-}
-
-function esc(s) {
-  const d = document.createElement('div');
-  d.textContent = s;
-  return d.innerHTML;
 }
 
 async function search() {
@@ -254,10 +315,7 @@ async function search() {
   const word = input.value.trim().toLowerCase();
   const el = document.getElementById('results');
 
-  if (!word) {
-    el.innerHTML = '';
-    return;
-  }
+  if (!word) { el.innerHTML = ''; return; }
 
   el.innerHTML = '<div class="status">Loading...</div>';
 
@@ -280,7 +338,6 @@ async function search() {
   renderResults(word, shard[wordId]);
 }
 
-// search on enter
 document.getElementById('search').addEventListener('keydown', e => {
   if (e.key === 'Enter') search();
 });

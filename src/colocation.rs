@@ -20,6 +20,8 @@ pub enum Pattern {
     AdjNoun,
     VerbNoun,
     NounVerb,
+    PrepNoun,
+    NounNoun,
 }
 
 /// A collocation found at a specific position in the stream.
@@ -54,9 +56,24 @@ pub open spec fn is_noun_verb_at(tags: Seq<POS>, i: int) -> bool {
     && tags[i + 1] == POS::Verb
 }
 
+/// True when the bigram at position `i` matches `PrepNoun` (ADP + NOUN).
+pub open spec fn is_prep_noun_at(tags: Seq<POS>, i: int) -> bool {
+    0 <= i && i + 1 < tags.len()
+    && tags[i] == POS::Prep
+    && tags[i + 1] == POS::Noun
+}
+
+/// True when the bigram at position `i` matches `NounNoun` (NOUN + NOUN).
+pub open spec fn is_noun_noun_at(tags: Seq<POS>, i: int) -> bool {
+    0 <= i && i + 1 < tags.len()
+    && tags[i] == POS::Noun
+    && tags[i + 1] == POS::Noun
+}
+
 /// True when the bigram at position `i` matches any supported pattern.
 pub open spec fn is_collocation_at(tags: Seq<POS>, i: int) -> bool {
     is_adj_noun_at(tags, i) || is_verb_noun_at(tags, i) || is_noun_verb_at(tags, i)
+    || is_prep_noun_at(tags, i) || is_noun_noun_at(tags, i)
 }
 
 /// Determine the pattern of the bigram at position `i`.
@@ -68,8 +85,12 @@ pub open spec fn pattern_at(tags: Seq<POS>, i: int) -> Pattern
         Pattern::AdjNoun
     } else if is_verb_noun_at(tags, i) {
         Pattern::VerbNoun
-    } else {
+    } else if is_noun_noun_at(tags, i) {
+        Pattern::NounNoun
+    } else if is_noun_verb_at(tags, i) {
         Pattern::NounVerb
+    } else {
+        Pattern::PrepNoun
     }
 }
 
@@ -160,14 +181,20 @@ pub fn extract_all(tags: &Vec<POS>) -> (result: Vec<Collocation>)
         if (t0 == POS::Adj  && t1 == POS::Noun)
             || (t0 == POS::Verb && t1 == POS::Noun)
             || (t0 == POS::Noun && t1 == POS::Verb)
+            || (t0 == POS::Prep && t1 == POS::Noun)
+            || (t0 == POS::Noun && t1 == POS::Noun)
         {
             let pat: Pattern =
                 if t0 == POS::Adj {
                     Pattern::AdjNoun
                 } else if t0 == POS::Verb {
                     Pattern::VerbNoun
-                } else {
+                } else if t0 == POS::Noun && t1 == POS::Noun {
+                    Pattern::NounNoun
+                } else if t0 == POS::Noun {
                     Pattern::NounVerb
+                } else {
+                    Pattern::PrepNoun
                 };
             let c = Collocation { pattern: pat, pos: i };
             proof {
