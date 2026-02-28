@@ -1,0 +1,53 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+    steps:
+      - name: Checkout verus-colocation
+        uses: actions/checkout@v4.2.2
+        with:
+          path: verus-colocation
+          persist-credentials: false
+
+      - name: Checkout Verus
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: verus-lang/verus
+          path: verus
+          persist-credentials: false
+
+      - name: Install required Rust toolchain
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.93.0-x86_64-unknown-linux-gnu --profile minimal \
+            --component rustfmt \
+            --component rustc-dev \
+            --component llvm-tools
+          rustup default 1.93.0-x86_64-unknown-linux-gnu
+
+      - name: Build Verus tools
+        working-directory: verus/source
+        run: |
+          set -euo pipefail
+          ./tools/get-z3.sh
+          source ../tools/activate
+          vargo build --release
+
+      - name: Run strict checks
+        working-directory: verus-colocation
+        env:
+          VERUS_ROOT: ${{ github.workspace }}/verus
+        run: |
+          set -euo pipefail
+          ./scripts/check.sh --require-verus --forbid-trusted-escapes --min-verified 12

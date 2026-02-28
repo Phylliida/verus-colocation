@@ -1,0 +1,18 @@
+[package]
+name = "verus-colocation"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = []
+tagger = ["pyo3"]
+
+[dependencies]
+vstd = { path = "../verus/source/vstd" }
+pyo3 = { version = "0.23", features = ["auto-initialize"], optional = true }
+
+[package.metadata.verus]
+verify = true
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(verus_keep_ghost)'] }

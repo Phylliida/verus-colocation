@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colocation Dictionary</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #f5f0e8;
+    color: #2c2c2c;
+    min-height: 100vh;
+  }
+
+  header {
+    background: #1a3a2a;
+    color: #f5f0e8;
+    padding: 2rem 1rem 1.5rem;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+
+  header p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  .search-container {
+    max-width: 600px;
+    margin: -1.2rem auto 0;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .search-box {
+    display: flex;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    overflow: hidden;
+  }
+
+  .search-box input {
+    flex: 1;
+    border: none;
+    padding: 1rem 1.2rem;
+    font-size: 1.1rem;
+    font-family: inherit;
+    outline: none;
+    background: transparent;
+  }
+
+  .search-box button {
+    background: #1a3a2a;
+    color: #f5f0e8;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+  }
+
+  .search-box button:hover { background: #254d38; }
+
+  .results {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .headword {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #1a3a2a;
+    margin-bottom: 0.5rem;
+  }
+
+  .section {
+    margin-bottom: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #1a3a2a;
+    border-bottom: 2px solid #1a3a2a;
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .collocations {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.1rem 2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    justify-content: start;
+  }
+
+  .collocation .highlight {
+    font-weight: bold;
+  }
+
+  .score {
+    font-size: 0.8rem;
+    color: #999;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .status {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #999;
+    font-style: italic;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Colocation Dictionary</h1>
+  <p>find the words that live together</p>
+</header>
+
+<div class="search-container">
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Look up a word..." autofocus>
+    <button onclick="search()">Search</button>
+  </div>
+</div>
+
+<div class="results" id="results"></div>
+
+<footer>
+  Colocation Dictionary &middot; Mockup
+</footer>
+
+<script>
+const DATA_DIR = 'mockup-data';
+const PATTERN_LABELS = {
+  a: 'Adjective + _',
+  v: 'Verb + _',
+  V: '_ + verb',
+  n: '___ + _',
+  N: '_ + ___',
+};
+
+let wordList = null;
+let shardCache = {};
+
+// base36 decode
+function b36(s) {
+  return parseInt(s, 36);
+}
+
+async function loadWords() {
+  if (wordList) return wordList;
+  const res = await fetch(`${DATA_DIR}/words.txt`);
+  const text = await res.text();
+  wordList = text.trim().split('\n');
+  return wordList;
+}
+
+async function loadShard(prefix) {
+  if (shardCache[prefix]) return shardCache[prefix];
+  try {
+    const res = await fetch(`${DATA_DIR}/${prefix}.dat`);
+    if (!res.ok) return null;
+    const text = await res.text();
+    const entries = {};
+    for (const line of text.trim().split('\n')) {
+      const parts = line.split('\t');
+      const wordId = b36(parts[0]);
+      const patterns = {};
+      for (let i = 1; i < parts.length; i++) {
+        const [type, rest] = parts[i].split(':');
+        patterns[type] = rest.split(';').map(entry => {
+          const [wid, score] = entry.split(',');
+          return { wordId: b36(wid), score: parseInt(score) };
+        });
+      }
+      entries[wordId] = patterns;
+    }
+    shardCache[prefix] = entries;
+    return entries;
+  } catch {
+    return null;
+  }
+}
+
+function resolve(id) {
+  return wordList[id] || `[${id}]`;
+}
+
+function renderResults(word, patterns) {
+  const el = document.getElementById('results');
+
+  let html = `<div class="headword">${esc(word)}</div>`;
+
+  for (const [type, label] of Object.entries(PATTERN_LABELS)) {
+    const entries = patterns[type];
+    if (!entries || entries.length === 0) continue;
+
+    const title = label.replace('_', esc(word));
+    html += `<div class="section">`;
+    html += `<div class="section-title">${title}</div>`;
+    html += `<div class="collocations">`;
+
+    for (const { wordId, score } of entries) {
+      const other = resolve(wordId);
+      const scoreFmt = (score / 10).toFixed(1);
+
+      if (type === 'V' || type === 'N') {
+        html += `<span class="collocation"><span class="highlight">${esc(word)}</span> ${esc(other)}</span>`;
+      } else {
+        html += `<span class="collocation">${esc(other)} <span class="highlight">${esc(word)}</span></span>`;
+      }
+      html += `<span class="score">${scoreFmt}</span>`;
+    }
+
+    html += `</div></div>`;
+  }
+
+  el.innerHTML = html;
+}
+
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+async function search() {
+  const input = document.getElementById('search');
+  const word = input.value.trim().toLowerCase();
+  const el = document.getElementById('results');
+
+  if (!word) {
+    el.innerHTML = '';
+    return;
+  }
+
+  el.innerHTML = '<div class="status">Loading...</div>';
+
+  const words = await loadWords();
+  const wordId = words.indexOf(word);
+
+  if (wordId === -1) {
+    el.innerHTML = `<div class="status">No entry for "${esc(word)}"</div>`;
+    return;
+  }
+
+  const prefix = word.slice(0, 2);
+  const shard = await loadShard(prefix);
+
+  if (!shard || !shard[wordId]) {
+    el.innerHTML = `<div class="status">No collocations found for "${esc(word)}"</div>`;
+    return;
+  }
+
+  renderResults(word, shard[wordId]);
+}
+
+// search on enter
+document.getElementById('search').addEventListener('keydown', e => {
+  if (e.key === 'Enter') search();
+});
+</script>
+
+</body>
+</html>
