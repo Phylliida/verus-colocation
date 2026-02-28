@@ -12,6 +12,9 @@ use std::collections::{HashMap, HashSet};
 use std::fs::{self, File};
 use std::io::{BufRead, BufReader, BufWriter, Write};
 use std::path::Path;
+use std::sync::atomic::{AtomicUsize, Ordering};
+
+use rayon::prelude::*;
 
 use crate::tagger::{SpacyTagger, POS};
 
@@ -87,16 +90,26 @@ pub enum DictPOS {
     Prep,
 }
 
-/// Map a dictionary wordtype string (e.g. "n.", "v. t.", "a.") to a DictPOS.
-fn map_wordtype(wt: &str) -> Option<DictPOS> {
+/// Map a dictionary wordtype string (e.g. "n.", "v. t.", "a.") to a set of DictPOS.
+/// Returns multiple for compound types like "a. & n." or "imp. & p. p." (verb form).
+fn map_wordtype(wt: &str) -> Vec<DictPOS> {
     let wt = wt.trim().trim_end_matches('.');
     match wt {
-        "n" | "n. pl" | "pl" => Some(DictPOS::Noun),
-        "a" | "superl" => Some(DictPOS::Adj),
-        "v" | "v. t" | "v. i" => Some(DictPOS::Verb),
-        "adv" => Some(DictPOS::Adv),
-        "prep" | "conj" => Some(DictPOS::Prep),
-        _ => None, // "p. pr. & vb. n.", "imp. & p. p.", "suffix.", etc.
+        "n" | "n. pl" | "pl" => vec![DictPOS::Noun],
+        "a" | "superl" => vec![DictPOS::Adj],
+        "v" | "v. t" | "v. i" => vec![DictPOS::Verb],
+        "adv" => vec![DictPOS::Adv],
+        "prep" | "conj" => vec![DictPOS::Prep],
+        // Compound types
+        "v. t. & i" => vec![DictPOS::Verb],
+        "a. & n" => vec![DictPOS::Adj, DictPOS::Noun],
+        "n. & v" => vec![DictPOS::Noun, DictPOS::Verb],
+        "a. & adv" => vec![DictPOS::Adj, DictPOS::Adv],
+        // Participle / past participle forms — these function as verbs and adjectives
+        "imp. & p. p" | "p. p" | "imp" => vec![DictPOS::Verb, DictPOS::Adj],
+        "p. pr. & vb. n" => vec![DictPOS::Verb, DictPOS::Noun],
+        "p. p. & a" => vec![DictPOS::Adj, DictPOS::Verb],
+        _ => vec![],
     }
 }
 
@@ -137,8 +150,12 @@ pub fn parse_dictionary(path: &Path) -> Dictionary {
         let wordtype = record.get(1).unwrap_or("").trim();
 
         definitions.entry(word.clone()).or_insert(definition);
-        if let Some(pos) = map_wordtype(wordtype) {
-            pos_sets.entry(word).or_default().insert(pos);
+        let pos_list = map_wordtype(wordtype);
+        if !pos_list.is_empty() {
+            let set = pos_sets.entry(word).or_default();
+            for pos in pos_list {
+                set.insert(pos);
+            }
         }
     }
 
@@ -262,7 +279,7 @@ struct GutenbergMeta {
 }
 
 // ---------------------------------------------------------------------------
-// Pass 1: Raw bigram counting
+// Pass 1: Raw bigram counting (parallel, interned)
 // ---------------------------------------------------------------------------
 
 /// Result of Pass 1: bigram counts, unigram counts, and example contexts.
@@ -290,8 +307,93 @@ pub fn load_stopwords(path: &Path) -> HashSet<String> {
     }
 }
 
-/// Pass 1: stream the corpus, cheap-tokenize, count adjacent word pairs
-/// where both words are in the dictionary. Also store example sentences.
+/// Word interner: maps words → u32 IDs for compact HashMap keys.
+struct WordInterner {
+    /// word string → ID
+    word_to_id: HashMap<String, u32>,
+    /// ID → word string
+    id_to_word: Vec<String>,
+}
+
+impl WordInterner {
+    /// Build interner from the dictionary word set (only these words matter).
+    fn from_dict(dict_words: &HashMap<String, usize>, stopwords: &HashSet<String>) -> Self {
+        let mut word_to_id = HashMap::new();
+        let mut id_to_word = Vec::new();
+        for word in dict_words.keys() {
+            if !stopwords.contains(word.as_str()) {
+                let id = id_to_word.len() as u32;
+                word_to_id.insert(word.clone(), id);
+                id_to_word.push(word.clone());
+            }
+        }
+        WordInterner { word_to_id, id_to_word }
+    }
+
+    fn get(&self, word: &str) -> Option<u32> {
+        self.word_to_id.get(word).copied()
+    }
+
+    fn word(&self, id: u32) -> &str {
+        &self.id_to_word[id as usize]
+    }
+}
+
+/// Per-book accumulator using interned (u32, u32) keys.
+struct BookResult {
+    bigram_counts: HashMap<(u32, u32), u64>,
+    unigram_counts: HashMap<u32, u64>,
+    total_bigrams: u64,
+    /// (u32, u32) → Vec<example context string>
+    examples: HashMap<(u32, u32), Vec<String>>,
+}
+
+/// Process a single book's text, returning interned bigram counts.
+fn process_book(
+    text: &str,
+    interner: &WordInterner,
+    max_examples: usize,
+) -> BookResult {
+    let mut bigram_counts: HashMap<(u32, u32), u64> = HashMap::new();
+    let mut unigram_counts: HashMap<u32, u64> = HashMap::new();
+    let mut total_bigrams: u64 = 0;
+    let mut examples: HashMap<(u32, u32), Vec<String>> = HashMap::new();
+
+    for sentence in text.split(|c: char| c == '.' || c == '!' || c == '?') {
+        let raw_words: Vec<&str> = sentence.split_whitespace().collect();
+
+        // Intern tokens: normalize and look up in interner
+        let token_ids: Vec<Option<u32>> = raw_words
+            .iter()
+            .map(|w| normalize_token(w).and_then(|n| interner.get(&n)))
+            .collect();
+
+        for i in 0..token_ids.len().saturating_sub(1) {
+            if let (Some(id0), Some(id1)) = (token_ids[i], token_ids[i + 1]) {
+                let key = (id0, id1);
+                *bigram_counts.entry(key).or_insert(0) += 1;
+                *unigram_counts.entry(id0).or_insert(0) += 1;
+                *unigram_counts.entry(id1).or_insert(0) += 1;
+                total_bigrams += 1;
+
+                let exs = examples.entry(key).or_default();
+                if exs.len() < max_examples {
+                    let start = i.saturating_sub(3);
+                    let end = (i + 5).min(raw_words.len());
+                    exs.push(raw_words[start..end].join(" "));
+                }
+            }
+        }
+    }
+
+    BookResult { bigram_counts, unigram_counts, total_bigrams, examples }
+}
+
+/// Pass 1: parallel corpus processing with interned word IDs.
+///
+/// 1. Read all JSON lines from gzip (sequential I/O)
+/// 2. Process books in parallel with rayon (tokenize + count)
+/// 3. Merge per-book results and convert back to string keys
 pub fn pass1_count_bigrams(
     corpus_path: &Path,
     dict_words: &HashMap<String, usize>,
@@ -299,16 +401,16 @@ pub fn pass1_count_bigrams(
     max_books: Option<usize>,
     max_examples: usize,
 ) -> Pass1Result {
+    // Build interner from dictionary
+    let interner = WordInterner::from_dict(dict_words, stopwords);
+    eprintln!("Interner: {} words indexed", interner.id_to_word.len());
+
+    // Read all book records (I/O is sequential due to gzip)
     let file = File::open(corpus_path).expect("failed to open corpus file");
     let decoder = flate2::read::GzDecoder::new(file);
     let reader = BufReader::new(decoder);
 
-    let mut bigram_counts: HashMap<(String, String), u64> = HashMap::new();
-    let mut unigram_counts: HashMap<String, u64> = HashMap::new();
-    let mut total_bigrams: u64 = 0;
-    let mut examples: HashMap<(String, String), Vec<String>> = HashMap::new();
-    let mut book_count: usize = 0;
-
+    let mut records: Vec<GutenbergRecord> = Vec::new();
     for line in reader.lines() {
         let line = match line {
             Ok(l) => l,
@@ -317,77 +419,89 @@ pub fn pass1_count_bigrams(
                 continue;
             }
         };
-
         if line.trim().is_empty() {
             continue;
         }
-
-        let record: GutenbergRecord = match serde_json::from_str(&line) {
-            Ok(r) => r,
-            Err(e) => {
-                eprintln!("warning: skipping malformed JSON: {}", e);
-                continue;
-            }
-        };
-
-        book_count += 1;
-        let title = record.metadata.title.as_deref().unwrap_or("(untitled)");
-        eprintln!("[{:>4}] {}", book_count, title);
-
-        // Process each sentence (split on sentence-ending punctuation).
-        for sentence in record.text.split(|c: char| c == '.' || c == '!' || c == '?') {
-            let raw_words: Vec<&str> = sentence.split_whitespace().collect();
-            let tokens: Vec<Option<String>> =
-                raw_words.iter().map(|w| normalize_token(w)).collect();
-
-            for i in 0..tokens.len().saturating_sub(1) {
-                if let (Some(ref w0), Some(ref w1)) = (&tokens[i], &tokens[i + 1]) {
-                    if dict_words.contains_key(w0.as_str())
-                        && dict_words.contains_key(w1.as_str())
-                        && !stopwords.contains(w0.as_str())
-                        && !stopwords.contains(w1.as_str())
-                    {
-                        let key = (w0.clone(), w1.clone());
-                        *bigram_counts.entry(key.clone()).or_insert(0) += 1;
-                        *unigram_counts.entry(w0.clone()).or_insert(0) += 1;
-                        *unigram_counts.entry(w1.clone()).or_insert(0) += 1;
-                        total_bigrams += 1;
-
-                        // Store example sentence (limited)
-                        let exs = examples.entry(key).or_default();
-                        if exs.len() < max_examples {
-                            // Build context: take a few words around the bigram
-                            let start = i.saturating_sub(3);
-                            let end = (i + 5).min(raw_words.len());
-                            let ctx: String =
-                                raw_words[start..end].join(" ");
-                            exs.push(ctx);
-                        }
-                    }
-                }
-            }
+        match serde_json::from_str(&line) {
+            Ok(r) => records.push(r),
+            Err(e) => eprintln!("warning: skipping malformed JSON: {}", e),
         }
-
         if let Some(max) = max_books {
-            if book_count >= max {
+            if records.len() >= max {
                 eprintln!("Reached --max-books limit ({})", max);
                 break;
             }
         }
     }
+    eprintln!("Read {} books, processing in parallel...", records.len());
+
+    // Process books in parallel
+    let progress = AtomicUsize::new(0);
+    let total_books = records.len();
+
+    let book_results: Vec<BookResult> = records
+        .par_iter()
+        .map(|record| {
+            let n = progress.fetch_add(1, Ordering::Relaxed) + 1;
+            let title = record.metadata.title.as_deref().unwrap_or("(untitled)");
+            if n % 50 == 0 || n == total_books {
+                eprintln!("[{:>4}/{}] {}", n, total_books, title);
+            }
+            process_book(&record.text, &interner, max_examples)
+        })
+        .collect();
+
+    // Merge results
+    eprintln!("Merging results from {} books...", book_results.len());
+    let mut bigram_counts: HashMap<(u32, u32), u64> = HashMap::new();
+    let mut unigram_counts: HashMap<u32, u64> = HashMap::new();
+    let mut total_bigrams: u64 = 0;
+    let mut examples: HashMap<(u32, u32), Vec<String>> = HashMap::new();
+
+    for br in book_results {
+        total_bigrams += br.total_bigrams;
+        for (key, count) in br.bigram_counts {
+            *bigram_counts.entry(key).or_insert(0) += count;
+        }
+        for (id, count) in br.unigram_counts {
+            *unigram_counts.entry(id).or_insert(0) += count;
+        }
+        for (key, mut exs) in br.examples {
+            let dest = examples.entry(key).or_default();
+            if dest.len() < max_examples {
+                let take = max_examples - dest.len();
+                exs.truncate(take);
+                dest.extend(exs);
+            }
+        }
+    }
+
+    // Convert interned IDs back to strings
+    let str_bigram_counts: HashMap<(String, String), u64> = bigram_counts
+        .into_iter()
+        .map(|((a, b), c)| ((interner.word(a).to_string(), interner.word(b).to_string()), c))
+        .collect();
+    let str_unigram_counts: HashMap<String, u64> = unigram_counts
+        .into_iter()
+        .map(|(id, c)| (interner.word(id).to_string(), c))
+        .collect();
+    let str_examples: HashMap<(String, String), Vec<String>> = examples
+        .into_iter()
+        .map(|((a, b), v)| ((interner.word(a).to_string(), interner.word(b).to_string()), v))
+        .collect();
 
     eprintln!(
         "Pass 1: {} books, {} unique bigrams, {} total bigrams, {} unique words",
-        book_count,
-        bigram_counts.len(),
+        total_books,
+        str_bigram_counts.len(),
         total_bigrams,
-        unigram_counts.len(),
+        str_unigram_counts.len(),
     );
     Pass1Result {
-        bigram_counts,
-        unigram_counts,
+        bigram_counts: str_bigram_counts,
+        unigram_counts: str_unigram_counts,
         total_bigrams,
-        examples,
+        examples: str_examples,
     }
 }
 
@@ -563,7 +677,7 @@ pub fn pass2_classify(
     );
 
     // Tag all unique sentences in batches via nlp.pipe()
-    let spacy_batch_size = 256;
+    let spacy_batch_size = 100_000;
     let mut pair_votes: HashMap<(String, String), HashMap<PatternCode, u32>> = HashMap::new();
     let mut sentences_tagged = 0usize;
 
