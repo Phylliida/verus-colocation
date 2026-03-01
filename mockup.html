@@ -130,6 +130,11 @@
     margin-top: 0.8rem;
   }
 
+  .collocations-wrap {
+    display: flex;
+    gap: 2rem;
+  }
+
   .collocations {
     display: grid;
     grid-template-columns: auto auto;
@@ -137,6 +142,8 @@
     font-size: 0.95rem;
     line-height: 1.6;
     justify-content: start;
+    flex: 1;
+    min-width: 0;
   }
 
   .collocation .highlight {
@@ -205,17 +212,20 @@ async function loadWords() {
   return wordList;
 }
 
+const POS_LABELS = { n: 'noun', v: 'verb', a: 'adj.' };
+
 async function loadShard(prefix) {
   if (shardCache[prefix]) return shardCache[prefix];
   try {
     const res = await fetch(`${DATA_DIR}/${prefix}.dat`);
     if (!res.ok) return null;
     const text = await res.text();
+    // entries keyed by wordId → array of { pos, definition, patterns }
     const entries = {};
     for (const line of text.trim().split('\n')) {
       const parts = line.split('\t');
-      // header: wordId|ipa|definition
-      const [widStr, ipa, definition] = parts[0].split('|');
+      // header: wordId|pos|definition
+      const [widStr, pos, definition] = parts[0].split('|');
       const wordId = b36(widStr);
       const patterns = {};
       for (let i = 1; i < parts.length; i++) {
@@ -227,7 +237,8 @@ async function loadShard(prefix) {
           return { wordId: b36(wid), score: parseInt(score) };
         });
       }
-      entries[wordId] = { ipa, definition, patterns };
+      if (!entries[wordId]) entries[wordId] = [];
+      entries[wordId].push({ pos, definition, patterns });
     }
     shardCache[prefix] = entries;
     return entries;
@@ -240,7 +251,7 @@ function resolve(id) {
   return wordList[id] || `[${id}]`;
 }
 
-function renderGrid(entries, word, before) {
+function renderColumn(entries, word, before) {
   let html = '<div class="collocations">';
   for (const { wordId, score } of entries) {
     const other = resolve(wordId);
@@ -256,57 +267,113 @@ function renderGrid(entries, word, before) {
   return html;
 }
 
-function renderResults(word, data) {
-  const { ipa, definition, patterns } = data;
-  const el = document.getElementById('results');
+function renderGrid(entries, word, before) {
+  const left = entries.filter((_, i) => i % 2 === 0);
+  const right = entries.filter((_, i) => i % 2 === 1);
+  let html = '<div class="collocations-wrap">';
+  html += renderColumn(left, word, before);
+  if (right.length) html += renderColumn(right, word, before);
+  html += '</div>';
+  return html;
+}
+
+function renderPosEntry(word, entry) {
+  const { pos, definition, patterns } = entry;
   const w = esc(word);
+  const posLabel = POS_LABELS[pos] || pos;
 
   let html = '';
   html += `<div class="result-header">`;
   html += `<span class="headword">${w}</span>`;
-  html += `<span class="pronunciation">${esc(ipa)}</span>`;
+  html += `<span class="pronunciation">${esc(posLabel)}</span>`;
   html += `</div>`;
   html += `<div class="definition">${esc(definition)}</div>`;
 
-  // Adjective + word
-  if (patterns.a) {
-    html += `<div class="section">`;
-    html += `<div class="section-title">Adjective + ${w}</div>`;
-    html += renderGrid(patterns.a, word, true);
-    html += `</div>`;
-  }
-
-  // Verb + word
-  if (patterns.v) {
-    html += `<div class="section">`;
-    html += `<div class="section-title">Verb + ${w}</div>`;
-    html += renderGrid(patterns.v, word, true);
-    html += `</div>`;
-  }
-
-  // Word + verb
-  if (patterns.V) {
-    html += `<div class="section">`;
-    html += `<div class="section-title">${w} + verb</div>`;
-    html += renderGrid(patterns.V, word, false);
-    html += `</div>`;
-  }
-
-  // Noun phrases (two sub-groups)
-  if (patterns.n || patterns.N) {
-    html += `<div class="section">`;
-    html += `<div class="section-title">Noun phrases</div>`;
-    if (patterns.n) {
-      html += `<div class="group-label">___ + ${w}</div>`;
-      html += renderGrid(patterns.n, word, true);
+  if (pos === 'n') {
+    // Noun headword: a, v, V, n, N
+    if (patterns.a) {
+      html += `<div class="section">`;
+      html += `<div class="section-title">Adjective + ${w}</div>`;
+      html += renderGrid(patterns.a, word, true);
+      html += `</div>`;
     }
-    if (patterns.N) {
-      html += `<div class="group-label">${w} + ___</div>`;
-      html += renderGrid(patterns.N, word, false);
+    if (patterns.v) {
+      html += `<div class="section">`;
+      html += `<div class="section-title">Verb + ${w}</div>`;
+      html += renderGrid(patterns.v, word, true);
+      html += `</div>`;
     }
-    html += `</div>`;
+    if (patterns.V) {
+      html += `<div class="section">`;
+      html += `<div class="section-title">${w} + verb</div>`;
+      html += renderGrid(patterns.V, word, false);
+      html += `</div>`;
+    }
+    if (patterns.n || patterns.N) {
+      html += `<div class="section">`;
+      html += `<div class="section-title">Noun phrases</div>`;
+      if (patterns.n) {
+        html += `<div class="group-label">___ + ${w}</div>`;
+        html += renderGrid(patterns.n, word, true);
+      }
+      if (patterns.N) {
+        html += `<div class="group-label">${w} + ___</div>`;
+        html += renderGrid(patterns.N, word, false);
+      }
+      html += `</div>`;
+    }
+  } else if (pos === 'v') {
+    // Verb headword: o, s, d, D
+    if (patterns.o) {
+      html += `<div class="section">`;
+      html += `<div class="section-title">${w} + object</div>`;
+      html += renderGrid(patterns.o, word, false);
+      html += `</div>`;
+    }
+    if (patterns.s) {
+      html += `<div class="section">`;
+      html += `<div class="section-title">Subject + ${w}</div>`;
+      html += renderGrid(patterns.s, word, true);
+      html += `</div>`;
+    }
+    if (patterns.d || patterns.D) {
+      html += `<div class="section">`;
+      html += `<div class="section-title">Adverbs</div>`;
+      if (patterns.d) {
+        html += `<div class="group-label">___ + ${w}</div>`;
+        html += renderGrid(patterns.d, word, true);
+      }
+      if (patterns.D) {
+        html += `<div class="group-label">${w} + ___</div>`;
+        html += renderGrid(patterns.D, word, false);
+      }
+      html += `</div>`;
+    }
+  } else if (pos === 'a') {
+    // Adjective headword: j, e
+    if (patterns.j) {
+      html += `<div class="section">`;
+      html += `<div class="section-title">${w} + noun</div>`;
+      html += renderGrid(patterns.j, word, false);
+      html += `</div>`;
+    }
+    if (patterns.e) {
+      html += `<div class="section">`;
+      html += `<div class="section-title">Adverb + ${w}</div>`;
+      html += renderGrid(patterns.e, word, true);
+      html += `</div>`;
+    }
   }
 
+  return html;
+}
+
+function renderResults(word, posEntries) {
+  const el = document.getElementById('results');
+  let html = '';
+  for (const entry of posEntries) {
+    html += renderPosEntry(word, entry);
+  }
   el.innerHTML = html;
 }
 

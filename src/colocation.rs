@@ -22,6 +22,9 @@ pub enum Pattern {
     NounVerb,
     PrepNoun,
     NounNoun,
+    AdvVerb,
+    VerbAdv,
+    AdvAdj,
 }
 
 /// A collocation found at a specific position in the stream.
@@ -70,10 +73,32 @@ pub open spec fn is_noun_noun_at(tags: Seq<POS>, i: int) -> bool {
     && tags[i + 1] == POS::Noun
 }
 
+/// True when the bigram at position `i` matches `AdvVerb` (ADV + VERB).
+pub open spec fn is_adv_verb_at(tags: Seq<POS>, i: int) -> bool {
+    0 <= i && i + 1 < tags.len()
+    && tags[i] == POS::Adv
+    && tags[i + 1] == POS::Verb
+}
+
+/// True when the bigram at position `i` matches `VerbAdv` (VERB + ADV).
+pub open spec fn is_verb_adv_at(tags: Seq<POS>, i: int) -> bool {
+    0 <= i && i + 1 < tags.len()
+    && tags[i] == POS::Verb
+    && tags[i + 1] == POS::Adv
+}
+
+/// True when the bigram at position `i` matches `AdvAdj` (ADV + ADJ).
+pub open spec fn is_adv_adj_at(tags: Seq<POS>, i: int) -> bool {
+    0 <= i && i + 1 < tags.len()
+    && tags[i] == POS::Adv
+    && tags[i + 1] == POS::Adj
+}
+
 /// True when the bigram at position `i` matches any supported pattern.
 pub open spec fn is_collocation_at(tags: Seq<POS>, i: int) -> bool {
     is_adj_noun_at(tags, i) || is_verb_noun_at(tags, i) || is_noun_verb_at(tags, i)
     || is_prep_noun_at(tags, i) || is_noun_noun_at(tags, i)
+    || is_adv_verb_at(tags, i) || is_verb_adv_at(tags, i) || is_adv_adj_at(tags, i)
 }
 
 /// Determine the pattern of the bigram at position `i`.
@@ -89,6 +114,12 @@ pub open spec fn pattern_at(tags: Seq<POS>, i: int) -> Pattern
         Pattern::NounNoun
     } else if is_noun_verb_at(tags, i) {
         Pattern::NounVerb
+    } else if is_adv_verb_at(tags, i) {
+        Pattern::AdvVerb
+    } else if is_verb_adv_at(tags, i) {
+        Pattern::VerbAdv
+    } else if is_adv_adj_at(tags, i) {
+        Pattern::AdvAdj
     } else {
         Pattern::PrepNoun
     }
@@ -183,16 +214,25 @@ pub fn extract_all(tags: &Vec<POS>) -> (result: Vec<Collocation>)
             || (t0 == POS::Noun && t1 == POS::Verb)
             || (t0 == POS::Prep && t1 == POS::Noun)
             || (t0 == POS::Noun && t1 == POS::Noun)
+            || (t0 == POS::Adv  && t1 == POS::Verb)
+            || (t0 == POS::Verb && t1 == POS::Adv)
+            || (t0 == POS::Adv  && t1 == POS::Adj)
         {
             let pat: Pattern =
-                if t0 == POS::Adj {
+                if t0 == POS::Adj && t1 == POS::Noun {
                     Pattern::AdjNoun
-                } else if t0 == POS::Verb {
+                } else if t0 == POS::Verb && t1 == POS::Noun {
                     Pattern::VerbNoun
                 } else if t0 == POS::Noun && t1 == POS::Noun {
                     Pattern::NounNoun
-                } else if t0 == POS::Noun {
+                } else if t0 == POS::Noun && t1 == POS::Verb {
                     Pattern::NounVerb
+                } else if t0 == POS::Adv && t1 == POS::Verb {
+                    Pattern::AdvVerb
+                } else if t0 == POS::Verb && t1 == POS::Adv {
+                    Pattern::VerbAdv
+                } else if t0 == POS::Adv && t1 == POS::Adj {
+                    Pattern::AdvAdj
                 } else {
                     Pattern::PrepNoun
                 };

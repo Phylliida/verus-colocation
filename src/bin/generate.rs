@@ -130,8 +130,8 @@ fn main() {
     eprintln!("Loading spaCy model...");
     let tagger =
         SpacyTagger::new("en_core_web_sm").expect("failed to load en_core_web_sm");
-    // top_per_word: classify top 100 bigrams per word (enough for 5 patterns × 10 entries)
-    let top_per_word = args.top_n * 10;
+    // top_per_word: classify top bigrams per word (enough for 11 patterns × top_n entries)
+    let top_per_word = args.top_n * 20;
     let counts = pipeline::pass2_classify(
         &pass1,
         &tagger,

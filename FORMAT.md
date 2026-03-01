@@ -87,38 +87,74 @@ Each shard is named by the first two letters of the words it contains (e.g. `be.
 ### Line format
 
 ```
-{id}|{ipa}|{definition}\t{pattern}:{entries}\t{pattern}:{entries}...
+{id}|{pos}|{definition}\t{pattern}:{entries}\t{pattern}:{entries}...
 ```
 
-- **Header** (pipe-delimited): word ID (base36), IPA pronunciation, short definition
+- **Header** (pipe-delimited): word ID (base36), POS tag (`n`/`v`/`a`), short definition
 - **Pattern groups** (tab-separated): each is a pattern type character followed by `:` and semicolon-separated entries
 - **Entry**: `{word_id},{score}` where word_id is base36 and score is an integer (actual score × 10)
 
-### Pattern types
+A word with multiple parts of speech gets **multiple lines** (one per POS), each with POS-appropriate patterns.
 
-| Code | Meaning | Display |
-|------|---------|---------|
-| `a` | adjective + word | `busy bee` |
-| `v` | verb + word | `keep bees` |
-| `V` | word + verb | `bees buzz` |
-| `n` | noun/prep + word | `swarm of bees` |
-| `N` | word + noun | `beekeeper` |
+### POS tags
+
+| Tag | Part of Speech |
+|-----|---------------|
+| `n` | Noun |
+| `v` | Verb |
+| `a` | Adjective |
+
+### Pattern types (11 total)
+
+#### Noun headword patterns
+
+| Code | Bigram | Headword | Collocate | Example |
+|------|--------|----------|-----------|---------|
+| `a` | ADJ NOUN | noun(w1) | adj(w0) | _cold_ **water** |
+| `v` | VERB NOUN | noun(w1) | verb(w0) | _drink_ **water** |
+| `V` | NOUN VERB | noun(w0) | verb(w1) | **water** _flows_ |
+| `n` | PREP NOUN | noun(w1) | prep(w0) | _in_ **water** |
+| `N` | NOUN NOUN | noun(w0) | noun(w1) | **water** _pipe_ |
+
+#### Verb headword patterns
+
+| Code | Bigram | Headword | Collocate | Example |
+|------|--------|----------|-----------|---------|
+| `o` | VERB NOUN | verb(w0) | noun(w1) | **drink** _water_ |
+| `s` | NOUN VERB | verb(w1) | noun(w0) | _dogs_ **run** |
+| `d` | ADV VERB | verb(w1) | adv(w0) | _quickly_ **run** |
+| `D` | VERB ADV | verb(w0) | adv(w1) | **run** _quickly_ |
+
+#### Adjective headword patterns
+
+| Code | Bigram | Headword | Collocate | Example |
+|------|--------|----------|-----------|---------|
+| `j` | ADJ NOUN | adj(w0) | noun(w1) | **cold** _water_ |
+| `e` | ADV ADJ | adj(w1) | adv(w0) | _very_ **cold** |
+
+### Symmetry
+
+One bigram type produces entries for multiple headwords:
+- ADJ+NOUN → noun gets `a`, adj gets `j`
+- VERB+NOUN → noun gets `v`, verb gets `o`
+- NOUN+VERB → noun gets `V`, verb gets `s`
+- ADV+VERB → verb gets `d`
+- VERB+ADV → verb gets `D`
+- ADV+ADJ → adj gets `e`
+- PREP+NOUN → noun gets `n` (no other side)
+- NOUN+NOUN → first noun gets `N`
 
 ### Example
 
-Raw line:
+Raw lines for "water" (noun and verb entries):
 ```
-6u2|/biː/|A flying insect known for pollination.\ta:9t6,142;yca,138\tv:1491,121\tV:9v9,135\tn:1zyr,127\tN:1xy4,104
+285t|n|The fluid which descends from the clouds in rain	a:...\tv:...\tV:...\tn:...\tN:...
+285t|v|To wet or supply with water; to moisten	o:...\ts:...
 ```
 
-Decoded:
+Raw line for "cold" (adjective entry):
 ```
-bee  /biː/  A flying insect known for pollination.
-  adj+:   busy 14.2, honey 13.8
-  verb+:  keep 12.1
-  +verb:  buzz 13.5
-  noun+:  swarm 12.7
-  +noun:  sting 10.4
+1a2|a|Deprived of heat; having a low temperature	j:...\te:...
 ```
 
 ## Sharding

@@ -25,11 +25,20 @@ use crate::tagger::{SpacyTagger, POS};
 /// Single-character pattern codes from FORMAT.md.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum PatternCode {
-    AdjNoun,  // 'a'
-    VerbNoun, // 'v'
-    NounVerb, // 'V'
-    PrepNoun, // 'n'
-    NounNoun, // 'N'
+    // Noun headword (existing)
+    AdjNoun,    // 'a' — ADJ NOUN, headword=noun(w1), collocate=adj(w0)
+    VerbNoun,   // 'v' — VERB NOUN, headword=noun(w1), collocate=verb(w0)
+    NounVerb,   // 'V' — NOUN VERB, headword=noun(w0), collocate=verb(w1)
+    PrepNoun,   // 'n' — PREP NOUN, headword=noun(w1), collocate=prep(w0)
+    NounNoun,   // 'N' — NOUN NOUN, headword=noun(w0), collocate=noun(w1)
+    // Verb headword (new)
+    VerbObject, // 'o' — VERB NOUN, headword=verb(w0), collocate=noun(w1)
+    SubjVerb,   // 's' — NOUN VERB, headword=verb(w1), collocate=noun(w0)
+    AdvVerb,    // 'd' — ADV VERB, headword=verb(w1), collocate=adv(w0)
+    VerbAdv,    // 'D' — VERB ADV, headword=verb(w0), collocate=adv(w1)
+    // Adjective headword (new)
+    AdjObject,  // 'j' — ADJ NOUN, headword=adj(w0), collocate=noun(w1)
+    AdvAdj,     // 'e' — ADV ADJ, headword=adj(w1), collocate=adv(w0)
 }
 
 impl PatternCode {
@@ -40,10 +49,16 @@ impl PatternCode {
             PatternCode::NounVerb => 'V',
             PatternCode::PrepNoun => 'n',
             PatternCode::NounNoun => 'N',
+            PatternCode::VerbObject => 'o',
+            PatternCode::SubjVerb => 's',
+            PatternCode::AdvVerb => 'd',
+            PatternCode::VerbAdv => 'D',
+            PatternCode::AdjObject => 'j',
+            PatternCode::AdvAdj => 'e',
         }
     }
 
-    /// Canonical ordering for output (a, v, V, n, N).
+    /// Canonical ordering for output (a, v, V, n, N, o, s, d, D, j, e).
     pub fn order(self) -> u8 {
         match self {
             PatternCode::AdjNoun => 0,
@@ -51,6 +66,29 @@ impl PatternCode {
             PatternCode::NounVerb => 2,
             PatternCode::PrepNoun => 3,
             PatternCode::NounNoun => 4,
+            PatternCode::VerbObject => 5,
+            PatternCode::SubjVerb => 6,
+            PatternCode::AdvVerb => 7,
+            PatternCode::VerbAdv => 8,
+            PatternCode::AdjObject => 9,
+            PatternCode::AdvAdj => 10,
+        }
+    }
+
+    /// The POS of the headword for this pattern.
+    pub fn headword_pos(self) -> DictPOS {
+        match self {
+            PatternCode::AdjNoun
+            | PatternCode::VerbNoun
+            | PatternCode::PrepNoun
+            | PatternCode::NounNoun
+            | PatternCode::NounVerb => DictPOS::Noun,
+            PatternCode::VerbObject
+            | PatternCode::SubjVerb
+            | PatternCode::AdvVerb
+            | PatternCode::VerbAdv => DictPOS::Verb,
+            PatternCode::AdjObject
+            | PatternCode::AdvAdj => DictPOS::Adj,
         }
     }
 }
@@ -117,8 +155,8 @@ fn map_wordtype(wt: &str) -> Vec<DictPOS> {
 pub struct Dictionary {
     /// Sorted word list (line number = word ID).
     pub words: Vec<String>,
-    /// word → first definition.
-    pub definitions: HashMap<String, String>,
+    /// word → POS → first definition for that POS.
+    pub definitions: HashMap<String, HashMap<DictPOS, String>>,
     /// word → set of possible POS categories from the dictionary.
     pub pos_sets: HashMap<String, HashSet<DictPOS>>,
 }
@@ -134,8 +172,10 @@ pub fn parse_dictionary(path: &Path) -> Dictionary {
         .from_path(path)
         .expect("failed to open dictionary.csv");
 
-    let mut definitions: HashMap<String, String> = HashMap::new();
+    let mut definitions: HashMap<String, HashMap<DictPOS, String>> = HashMap::new();
     let mut pos_sets: HashMap<String, HashSet<DictPOS>> = HashMap::new();
+    // Track which words exist (for word list generation).
+    let mut all_words: HashSet<String> = HashSet::new();
 
     for result in rdr.records() {
         let record = match result {
@@ -149,17 +189,29 @@ pub fn parse_dictionary(path: &Path) -> Dictionary {
         let definition = record.get(2).unwrap_or("").trim().to_string();
         let wordtype = record.get(1).unwrap_or("").trim();
 
-        definitions.entry(word.clone()).or_insert(definition);
+        all_words.insert(word.clone());
         let pos_list = map_wordtype(wordtype);
         if !pos_list.is_empty() {
-            let set = pos_sets.entry(word).or_default();
-            for pos in pos_list {
-                set.insert(pos);
+            let set = pos_sets.entry(word.clone()).or_default();
+            let defs = definitions.entry(word).or_default();
+            for pos in &pos_list {
+                set.insert(*pos);
+                // First definition per POS wins
+                if !definition.is_empty() {
+                    defs.entry(*pos).or_insert_with(|| definition.clone());
+                }
+            }
+        } else {
+            // No POS mapped — store definition under a fallback
+            // (will be used if we can't determine POS)
+            let defs = definitions.entry(word).or_default();
+            if !definition.is_empty() {
+                defs.entry(DictPOS::Noun).or_insert_with(|| definition.clone());
             }
         }
     }
 
-    let mut words: Vec<String> = definitions.keys().cloned().collect();
+    let mut words: Vec<String> = all_words.into_iter().collect();
     words.sort();
 
     let unambiguous = pos_sets.values().filter(|s| s.len() == 1).count();
@@ -179,6 +231,7 @@ pub fn parse_dictionary(path: &Path) -> Dictionary {
 
 /// Try to classify a bigram using dictionary POS alone (no spaCy needed).
 /// Returns None if either word is ambiguous or missing POS info.
+/// Returns Vec of PatternCodes — symmetric bigrams emit BOTH directions.
 fn classify_from_dict(
     w0: &str,
     w1: &str,
@@ -197,13 +250,33 @@ fn classify_from_dict(
 
     let mut patterns = Vec::new();
     match (p0, p1) {
-        (DictPOS::Adj, DictPOS::Noun) => patterns.push(PatternCode::AdjNoun),
-        (DictPOS::Verb, DictPOS::Noun) => patterns.push(PatternCode::VerbNoun),
-        (DictPOS::Noun, DictPOS::Verb) => patterns.push(PatternCode::NounVerb),
-        (DictPOS::Prep, DictPOS::Noun) => patterns.push(PatternCode::PrepNoun),
+        (DictPOS::Adj, DictPOS::Noun) => {
+            patterns.push(PatternCode::AdjNoun);   // noun gets 'a'
+            patterns.push(PatternCode::AdjObject);  // adj gets 'j'
+        }
+        (DictPOS::Verb, DictPOS::Noun) => {
+            patterns.push(PatternCode::VerbNoun);   // noun gets 'v'
+            patterns.push(PatternCode::VerbObject); // verb gets 'o'
+        }
+        (DictPOS::Noun, DictPOS::Verb) => {
+            patterns.push(PatternCode::NounVerb);   // noun gets 'V'
+            patterns.push(PatternCode::SubjVerb);   // verb gets 's'
+        }
+        (DictPOS::Prep, DictPOS::Noun) => {
+            patterns.push(PatternCode::PrepNoun);   // noun gets 'n' (no other side)
+        }
         (DictPOS::Noun, DictPOS::Noun) => {
             patterns.push(PatternCode::NounNoun);
             patterns.push(PatternCode::PrepNoun);
+        }
+        (DictPOS::Adv, DictPOS::Verb) => {
+            patterns.push(PatternCode::AdvVerb);    // verb gets 'd'
+        }
+        (DictPOS::Verb, DictPOS::Adv) => {
+            patterns.push(PatternCode::VerbAdv);    // verb gets 'D'
+        }
+        (DictPOS::Adv, DictPOS::Adj) => {
+            patterns.push(PatternCode::AdvAdj);     // adj gets 'e'
         }
         _ => return Some(vec![]), // Known POS but not a collocation pattern
     }
@@ -235,7 +308,10 @@ fn any_pattern_possible(
                 | (DictPOS::Verb, DictPOS::Noun)
                 | (DictPOS::Noun, DictPOS::Verb)
                 | (DictPOS::Prep, DictPOS::Noun)
-                | (DictPOS::Noun, DictPOS::Noun) => return true,
+                | (DictPOS::Noun, DictPOS::Noun)
+                | (DictPOS::Adv, DictPOS::Verb)
+                | (DictPOS::Verb, DictPOS::Adv)
+                | (DictPOS::Adv, DictPOS::Adj) => return true,
                 _ => {}
             }
         }
@@ -524,11 +600,20 @@ fn pmi(bigram_count: u64, unigram_w0: u64, unigram_w1: u64, total: u64) -> f64 {
 /// Given a pattern and the bigram (w0, w1), return (headword, collocate).
 fn headword_collocate<'a>(pat: &PatternCode, w0: &'a str, w1: &'a str) -> (&'a str, &'a str) {
     match pat {
-        PatternCode::AdjNoun => (w1, w0),
-        PatternCode::VerbNoun => (w1, w0),
-        PatternCode::NounVerb => (w0, w1),
-        PatternCode::PrepNoun => (w1, w0),
-        PatternCode::NounNoun => (w0, w1),
+        // Noun headword
+        PatternCode::AdjNoun => (w1, w0),   // ADJ NOUN → noun is headword
+        PatternCode::VerbNoun => (w1, w0),   // VERB NOUN → noun is headword
+        PatternCode::NounVerb => (w0, w1),   // NOUN VERB → noun is headword
+        PatternCode::PrepNoun => (w1, w0),   // PREP NOUN → noun is headword
+        PatternCode::NounNoun => (w0, w1),   // NOUN NOUN → first noun is headword
+        // Verb headword
+        PatternCode::VerbObject => (w0, w1), // VERB NOUN → verb is headword
+        PatternCode::SubjVerb => (w1, w0),   // NOUN VERB → verb is headword
+        PatternCode::AdvVerb => (w1, w0),    // ADV VERB → verb is headword
+        PatternCode::VerbAdv => (w0, w1),    // VERB ADV → verb is headword
+        // Adjective headword
+        PatternCode::AdjObject => (w0, w1),  // ADJ NOUN → adj is headword
+        PatternCode::AdvAdj => (w1, w0),     // ADV ADJ → adj is headword
     }
 }
 
@@ -728,13 +813,22 @@ pub fn pass2_classify(
                 debug_matches += 1;
                 *debug_pos_combos.entry((tokens[j].pos, tokens[j + 1].pos)).or_insert(0) += 1;
                 let patterns = match (tokens[j].pos, tokens[j + 1].pos) {
-                    (POS::Adj, POS::Noun) => vec![PatternCode::AdjNoun],
-                    (POS::Verb, POS::Noun) => vec![PatternCode::VerbNoun],
-                    (POS::Noun, POS::Verb) => vec![PatternCode::NounVerb],
+                    (POS::Adj, POS::Noun) => {
+                        vec![PatternCode::AdjNoun, PatternCode::AdjObject]
+                    }
+                    (POS::Verb, POS::Noun) => {
+                        vec![PatternCode::VerbNoun, PatternCode::VerbObject]
+                    }
+                    (POS::Noun, POS::Verb) => {
+                        vec![PatternCode::NounVerb, PatternCode::SubjVerb]
+                    }
                     (POS::Prep, POS::Noun) => vec![PatternCode::PrepNoun],
                     (POS::Noun, POS::Noun) => {
                         vec![PatternCode::NounNoun, PatternCode::PrepNoun]
                     }
+                    (POS::Adv, POS::Verb) => vec![PatternCode::AdvVerb],
+                    (POS::Verb, POS::Adv) => vec![PatternCode::VerbAdv],
+                    (POS::Adv, POS::Adj) => vec![PatternCode::AdvAdj],
                     _ => vec![],
                 };
                 let entry = pair_votes.entry(key).or_default();
@@ -795,12 +889,34 @@ pub fn pass2_classify(
 // Serialization: words.txt + .dat shards
 // ---------------------------------------------------------------------------
 
+/// Character code for a DictPOS used in the .dat POS field.
+fn pos_char(pos: DictPOS) -> char {
+    match pos {
+        DictPOS::Noun => 'n',
+        DictPOS::Verb => 'v',
+        DictPOS::Adj => 'a',
+        DictPOS::Adv => 'a', // adverbs shouldn't be headwords, fallback
+        DictPOS::Prep => 'n', // preps shouldn't be headwords, fallback
+    }
+}
+
+/// Ordering for POS (noun < verb < adj) for deterministic output.
+fn pos_order(pos: DictPOS) -> u8 {
+    match pos {
+        DictPOS::Noun => 0,
+        DictPOS::Verb => 1,
+        DictPOS::Adj => 2,
+        DictPOS::Adv => 3,
+        DictPOS::Prep => 4,
+    }
+}
+
 /// Write words.txt and sharded .dat files per FORMAT.md.
 pub fn serialize_shards(
     output_dir: &Path,
     word_list: &[String],
     counts: &CollocationCounts,
-    definitions: &HashMap<String, String>,
+    definitions: &HashMap<String, HashMap<DictPOS, String>>,
     top_n: usize,
 ) {
     fs::create_dir_all(output_dir).expect("failed to create output directory");
@@ -823,15 +939,17 @@ pub fn serialize_shards(
         eprintln!("Wrote {} words to {}", word_list.len(), words_path.display());
     }
 
-    // Group by headword: headword → pattern → Vec<(collocate, pmi_score)>
-    let mut by_headword: HashMap<&str, HashMap<PatternCode, Vec<(&str, f64)>>> = HashMap::new();
+    // Group by (headword, headword_pos): → pattern → Vec<(collocate, pmi_score)>
+    let mut by_headword_pos: HashMap<(&str, DictPOS), HashMap<PatternCode, Vec<(&str, f64)>>> =
+        HashMap::new();
 
     for ((headword, pattern, collocate), &score) in counts {
         if score <= 0.0 {
             continue;
         }
-        by_headword
-            .entry(headword.as_str())
+        let hw_pos = pattern.headword_pos();
+        by_headword_pos
+            .entry((headword.as_str(), hw_pos))
             .or_default()
             .entry(*pattern)
             .or_default()
@@ -839,46 +957,52 @@ pub fn serialize_shards(
     }
 
     // Sort collocates within each pattern by PMI descending, take top_n
-    for patterns in by_headword.values_mut() {
+    for patterns in by_headword_pos.values_mut() {
         for entries in patterns.values_mut() {
             entries.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
             entries.truncate(top_n);
         }
     }
 
-    // Group headwords by shard prefix (first 2 chars)
-    let mut shards: HashMap<String, Vec<&str>> = HashMap::new();
-    for &headword in by_headword.keys() {
+    // Group headword entries by shard prefix (first 2 chars)
+    let mut shards: HashMap<String, Vec<(&str, DictPOS)>> = HashMap::new();
+    for &(headword, pos) in by_headword_pos.keys() {
         if headword.len() >= 2 {
             let prefix: String = headword.chars().take(2).collect();
-            shards.entry(prefix).or_default().push(headword);
+            shards.entry(prefix).or_default().push((headword, pos));
         }
     }
 
     // Write .dat files
     let mut shard_count = 0;
-    for (prefix, mut headwords) in shards {
-        headwords.sort();
+    let mut total_lines = 0;
+    for (prefix, mut entries) in shards {
+        // Sort by (word, pos_order) for deterministic output
+        entries.sort_by(|a, b| a.0.cmp(b.0).then_with(|| pos_order(a.1).cmp(&pos_order(b.1))));
         let dat_path = output_dir.join(format!("{}.dat", prefix));
         let file = File::create(&dat_path).expect("failed to create .dat file");
         let mut writer = BufWriter::new(file);
 
-        for &headword in &headwords {
+        for &(headword, hw_pos) in &entries {
             let word_id = match word_to_id.get(headword) {
                 Some(&id) => id,
                 None => continue,
             };
             let def = definitions
                 .get(headword)
+                .and_then(|pos_defs| pos_defs.get(&hw_pos))
+                .or_else(|| {
+                    // Fallback: try any definition for this word
+                    definitions.get(headword).and_then(|pos_defs| pos_defs.values().next())
+                })
                 .map(|d| truncate_definition(d, 80))
                 .unwrap_or_default();
 
-            // Header: id|ipa|definition
-            // IPA is left empty (we don't have pronunciation data)
-            write!(writer, "{}||{}", base36(word_id), def).unwrap();
+            // Header: id|pos|definition
+            write!(writer, "{}|{}|{}", base36(word_id), pos_char(hw_pos), def).unwrap();
 
             // Pattern groups (sorted by canonical order)
-            let patterns = match by_headword.get(headword) {
+            let patterns = match by_headword_pos.get(&(headword, hw_pos)) {
                 Some(p) => p,
                 None => {
                     writeln!(writer).unwrap();
@@ -907,12 +1031,16 @@ pub fn serialize_shards(
             }
 
             writeln!(writer).unwrap();
+            total_lines += 1;
         }
 
         shard_count += 1;
     }
 
-    eprintln!("Wrote {} shard files to {}", shard_count, output_dir.display());
+    eprintln!(
+        "Wrote {} shard files ({} lines) to {}",
+        shard_count, total_lines, output_dir.display()
+    );
 }
 
 /// Truncate a definition to at most `max_len` characters, breaking at word boundary.
