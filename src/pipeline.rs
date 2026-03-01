@@ -659,17 +659,30 @@ pub fn pass2_classify(
     // Collect all unique example sentences across all spaCy-needed pairs
     let mut unique_sentences: Vec<String> = Vec::new();
     let mut seen_sentences: HashSet<String> = HashSet::new();
+    let mut pairs_with_examples = 0usize;
+    let mut pairs_without_examples = 0usize;
 
     for (pair, _) in &spacy_needed {
         if let Some(examples) = pass1.examples.get(*pair) {
+            if !examples.is_empty() {
+                pairs_with_examples += 1;
+            } else {
+                pairs_without_examples += 1;
+            }
             for ex in examples {
                 if seen_sentences.insert(ex.clone()) {
                     unique_sentences.push(ex.clone());
                 }
             }
+        } else {
+            pairs_without_examples += 1;
         }
     }
     drop(seen_sentences);
+    eprintln!(
+        "  spaCy pairs: {} have examples, {} have NO examples",
+        pairs_with_examples, pairs_without_examples
+    );
 
     eprintln!(
         "  {} unique sentences (deduplicated) for {} pairs through spaCy...",
@@ -702,6 +715,8 @@ pub fn pass2_classify(
         sentences_tagged += tagged_batch.len();
 
         // Scan each tagged sentence for ALL spaCy-needed bigrams it contains
+        let mut debug_pos_combos: HashMap<(POS, POS), u32> = HashMap::new();
+        let mut debug_matches = 0u32;
         for tokens in &tagged_batch {
             for j in 0..tokens.len().saturating_sub(1) {
                 let tw0 = tokens[j].word.to_lowercase();
@@ -710,6 +725,8 @@ pub fn pass2_classify(
                 if !spacy_pair_set.contains(&key) {
                     continue;
                 }
+                debug_matches += 1;
+                *debug_pos_combos.entry((tokens[j].pos, tokens[j + 1].pos)).or_insert(0) += 1;
                 let patterns = match (tokens[j].pos, tokens[j + 1].pos) {
                     (POS::Adj, POS::Noun) => vec![PatternCode::AdjNoun],
                     (POS::Verb, POS::Noun) => vec![PatternCode::VerbNoun],
@@ -726,11 +743,21 @@ pub fn pass2_classify(
                 }
             }
         }
+        if debug_matches > 0 || sentences_tagged < spacy_batch_size {
+            let mut combos: Vec<_> = debug_pos_combos.into_iter().collect();
+            combos.sort_by(|a, b| b.1.cmp(&a.1));
+            eprintln!("  DEBUG batch: {} pair matches, POS combos: {:?}", debug_matches, &combos[..combos.len().min(10)]);
+        }
 
         if sentences_tagged % 2000 < spacy_batch_size || chunk_end == unique_sentences.len() {
             eprintln!("  [{}/{}] sentences tagged...", sentences_tagged, unique_sentences.len());
         }
     }
+
+    eprintln!(
+        "  spaCy voting: {} pairs got votes out of {} in spacy_pair_set",
+        pair_votes.len(), spacy_pair_set.len()
+    );
 
     // Convert votes to PMI-scored counts
     for (pair, votes) in &pair_votes {

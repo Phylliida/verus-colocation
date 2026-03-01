@@ -11,7 +11,7 @@ use pyo3::prelude::*;
 ///
 /// This is the exec-side mirror.  The mapping to the verified enum happens
 /// at the boundary when feeding tags into `extract_all`.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum POS {
     Adj,
     Noun,
@@ -58,7 +58,7 @@ impl SpacyTagger {
         Python::with_gil(|py| {
             let spacy = py.import("spacy")?;
             let kwargs = pyo3::types::PyDict::new(py);
-            kwargs.set_item("disable", vec!["parser", "ner", "lemmatizer", "attribute_ruler"])?;
+            kwargs.set_item("disable", vec!["parser", "ner", "lemmatizer"])?;
             let nlp = spacy.call_method("load", (model_name,), Some(&kwargs))?;
             Ok(SpacyTagger {
                 nlp: nlp.unbind(),
