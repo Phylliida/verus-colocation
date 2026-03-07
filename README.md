@@ -1,9 +1,25 @@
 # verus-colocation
 Formally verified collocation dictionary builder in Rust + Verus.
 
-POS-tags a raw corpus via spaCy (through Rust-Python bindings), extracts collocations grouped by syntactic pattern, ranks by frequency, and outputs structured dictionary entries.
+POS-tags a raw corpus, extracts collocations grouped by syntactic pattern, ranks by frequency, and outputs structured dictionary entries. Two tagger backends are available: spaCy (Python, via pyo3 bindings) and a pure-Rust averaged perceptron tagger (~8x faster, no Python dependency).
 
 ## Running
+
+### Option A: Pure-Rust backend (recommended)
+
+No Python needed. Uses the `postagger` crate (NLTK-style averaged perceptron). About 8x faster than spaCy (~8,000 sentences/s vs ~1,000 sentences/s).
+
+```bash
+cargo run --features postagger-backend --release --bin generate -- \
+    --dictionary dictionary.csv \
+    --corpus data/ \
+    --output output-data/ \
+    --max-books 100 \
+    --top-n 10 \
+    --min-count 3
+```
+
+### Option B: spaCy backend
 
 Requires a Python venv with spaCy and `en_core_web_sm` installed:
 
@@ -21,7 +37,7 @@ PYO3_PYTHON=/Users/yams/.venv/bin/python3 \
 PYTHONPATH=/Users/yams/.venv/lib/python3.10/site-packages \
 cargo run --features tagger --release --bin generate -- \
     --dictionary dictionary.csv \
-    --corpus data/project_gutenberg-dolma-0000.json.gz \
+    --corpus data/ \
     --output output-data/ \
     --max-books 100 \
     --top-n 10 \
@@ -35,8 +51,9 @@ Note: `PYO3_PYTHON` tells PyO3 which Python to link against at compile time. `PY
 | Flag | Default | Description |
 |------|---------|-------------|
 | `--dictionary` | *(required)* | Path to `dictionary.csv` |
-| `--corpus` | *(required)* | Path to corpus `.json.gz` file |
+| `--corpus` | *(required)* | Path to a `.json.gz` file or directory of `.json.gz` files |
 | `--output` | *(required)* | Output directory for `words.txt` + `.dat` shards |
+| `--backend` | auto | POS tagger backend: `spacy` or `rust` (auto-detected from features) |
 | `--max-books N` | all | Process at most N books |
 | `--top-n N` | 10 | Keep top N collocates per pattern |
 | `--min-count N` | 3 | Minimum bigram count threshold |

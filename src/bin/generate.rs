@@ -225,7 +225,6 @@ fn main() {
         &dict_words,
         &stopwords,
         args.max_books,
-        args.max_examples,
     );
 
     // 3. Pass 2: classify patterns (dict POS fast path + tagger fallback)
@@ -235,10 +234,15 @@ fn main() {
     let top_per_word = args.top_n * 20;
     let counts = pipeline::pass2_classify(
         &pass1,
+        &args.corpus_files,
+        &dict_words,
+        &stopwords,
         tagger.as_ref(),
         &dict.pos_sets,
         args.min_count,
         top_per_word,
+        args.max_books,
+        args.max_examples,
     );
 
     // 4. Serialize output

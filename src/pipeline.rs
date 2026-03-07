@@ -12,8 +12,6 @@ use std::collections::{HashMap, HashSet};
 use std::fs::{self, File};
 use std::io::{BufRead, BufReader, BufWriter, Write};
 use std::path::{Path, PathBuf};
-use std::sync::atomic::{AtomicUsize, Ordering};
-
 use rayon::prelude::*;
 
 use crate::pos::{Tagger, POS};
@@ -379,7 +377,7 @@ struct GutenbergMeta {
 // Pass 1: Raw bigram counting (parallel, interned)
 // ---------------------------------------------------------------------------
 
-/// Result of Pass 1: bigram counts, unigram counts, and example contexts.
+/// Result of Pass 1: bigram counts and unigram counts (no examples).
 pub struct Pass1Result {
     /// (word_a, word_b) → raw count (word_a appears before word_b).
     pub bigram_counts: HashMap<(String, String), u64>,
@@ -387,9 +385,8 @@ pub struct Pass1Result {
     pub unigram_counts: HashMap<String, u64>,
     /// Total number of bigrams counted (for PMI normalization).
     pub total_bigrams: u64,
-    /// (word_a, word_b) → example sentence containing the pair (for POS tagging).
-    /// We store up to `max_examples` sentences per pair.
-    pub examples: HashMap<(String, String), Vec<String>>,
+    /// Total number of books processed.
+    pub total_books: usize,
 }
 
 /// Load stopwords from a file (one word per line). Returns empty set if file missing.
@@ -436,32 +433,25 @@ impl WordInterner {
     }
 }
 
-/// Per-book accumulator using interned (u32, u32) keys.
-struct BookResult {
+/// Per-book accumulator using interned (u32, u32) keys — counts only, no examples.
+struct BookCounts {
     bigram_counts: HashMap<(u32, u32), u64>,
     unigram_counts: HashMap<u32, u64>,
     total_bigrams: u64,
-    /// (u32, u32) → Vec<example context string>
-    examples: HashMap<(u32, u32), Vec<String>>,
 }
 
-/// Process a single book's text, returning interned bigram counts.
-fn process_book(
+/// Process a single book's text for pass 1: count bigrams only (no examples).
+fn process_book_counts(
     text: &str,
     interner: &WordInterner,
-    max_examples: usize,
-) -> BookResult {
+) -> BookCounts {
     let mut bigram_counts: HashMap<(u32, u32), u64> = HashMap::new();
     let mut unigram_counts: HashMap<u32, u64> = HashMap::new();
     let mut total_bigrams: u64 = 0;
-    let mut examples: HashMap<(u32, u32), Vec<String>> = HashMap::new();
 
     for sentence in text.split(|c: char| c == '.' || c == '!' || c == '?') {
-        let raw_words: Vec<&str> = sentence.split_whitespace().collect();
-
-        // Intern tokens: normalize and look up in interner
-        let token_ids: Vec<Option<u32>> = raw_words
-            .iter()
+        let token_ids: Vec<Option<u32>> = sentence
+            .split_whitespace()
             .map(|w| normalize_token(w).and_then(|n| interner.get(&n)))
             .collect();
 
@@ -472,116 +462,146 @@ fn process_book(
                 *unigram_counts.entry(id0).or_insert(0) += 1;
                 *unigram_counts.entry(id1).or_insert(0) += 1;
                 total_bigrams += 1;
-
-                let exs = examples.entry(key).or_default();
-                if exs.len() < max_examples {
-                    let start = i.saturating_sub(3);
-                    let end = (i + 5).min(raw_words.len());
-                    exs.push(raw_words[start..end].join(" "));
-                }
             }
         }
     }
 
-    BookResult { bigram_counts, unigram_counts, total_bigrams, examples }
+    BookCounts { bigram_counts, unigram_counts, total_bigrams }
 }
 
-/// Pass 1: parallel corpus processing with interned word IDs.
+/// Extract context-window sentences from a book for target bigram pairs (pass 2).
+fn extract_sentences(
+    text: &str,
+    interner: &WordInterner,
+    target_pairs: &HashSet<(u32, u32)>,
+) -> Vec<String> {
+    let mut sentences = Vec::new();
+    for sentence in text.split(|c: char| c == '.' || c == '!' || c == '?') {
+        let raw_words: Vec<&str> = sentence.split_whitespace().collect();
+        let token_ids: Vec<Option<u32>> = raw_words
+            .iter()
+            .map(|w| normalize_token(w).and_then(|n| interner.get(&n)))
+            .collect();
+
+        for i in 0..token_ids.len().saturating_sub(1) {
+            if let (Some(id0), Some(id1)) = (token_ids[i], token_ids[i + 1]) {
+                if target_pairs.contains(&(id0, id1)) {
+                    let start = i.saturating_sub(3);
+                    let end = (i + 5).min(raw_words.len());
+                    sentences.push(raw_words[start..end].join(" "));
+                }
+            }
+        }
+    }
+    sentences
+}
+
+/// Read up to `batch_size` JSON records from a buffered reader.
+/// Returns an empty Vec at EOF.
+fn read_batch(reader: &mut impl BufRead, batch_size: usize) -> Vec<GutenbergRecord> {
+    let mut batch = Vec::with_capacity(batch_size);
+    let mut line_buf = String::new();
+    while batch.len() < batch_size {
+        line_buf.clear();
+        match reader.read_line(&mut line_buf) {
+            Ok(0) => break, // EOF
+            Ok(_) => {}
+            Err(e) => {
+                eprintln!("warning: skipping line due to read error: {}", e);
+                continue;
+            }
+        }
+        let trimmed = line_buf.trim();
+        if trimmed.is_empty() {
+            continue;
+        }
+        match serde_json::from_str(trimmed) {
+            Ok(r) => batch.push(r),
+            Err(e) => eprintln!("warning: skipping malformed JSON: {}", e),
+        }
+    }
+    batch
+}
+
+const BATCH_SIZE: usize = 1000;
+
+/// Pass 1: streaming parallel corpus processing with interned word IDs.
 ///
-/// 1. Read all JSON lines from gzip files (sequential I/O per file)
-/// 2. Process books in parallel with rayon (tokenize + count)
-/// 3. Merge per-book results and convert back to string keys
+/// Reads corpus in batches of 1000 books, processes each batch in parallel,
+/// merges into running totals, then drops the batch to free memory.
 pub fn pass1_count_bigrams(
     corpus_paths: &[PathBuf],
     dict_words: &HashMap<String, usize>,
     stopwords: &HashSet<String>,
     max_books: Option<usize>,
-    max_examples: usize,
 ) -> Pass1Result {
-    // Build interner from dictionary
     let interner = WordInterner::from_dict(dict_words, stopwords);
     eprintln!("Interner: {} words indexed", interner.id_to_word.len());
 
-    // Read all book records from all corpus files
-    let mut records: Vec<GutenbergRecord> = Vec::new();
-    let mut hit_limit = false;
+    let mut bigram_counts: HashMap<(u32, u32), u64> = HashMap::new();
+    let mut unigram_counts: HashMap<u32, u64> = HashMap::new();
+    let mut total_bigrams: u64 = 0;
+    let mut total_books: usize = 0;
+    let start = std::time::Instant::now();
+
     for corpus_path in corpus_paths {
-        if hit_limit {
-            break;
-        }
         eprintln!("Reading {}...", corpus_path.display());
         let file = File::open(corpus_path)
             .unwrap_or_else(|e| panic!("failed to open {}: {}", corpus_path.display(), e));
         let decoder = flate2::read::GzDecoder::new(file);
-        let reader = BufReader::new(decoder);
+        let mut reader = BufReader::new(decoder);
 
-        for line in reader.lines() {
-            let line = match line {
-                Ok(l) => l,
-                Err(e) => {
-                    eprintln!("warning: skipping line due to read error: {}", e);
-                    continue;
+        loop {
+            // Respect max_books across all files
+            let remaining = max_books.map(|m| m.saturating_sub(total_books));
+            if remaining == Some(0) {
+                eprintln!("Reached --max-books limit ({})", max_books.unwrap());
+                break;
+            }
+            let this_batch_size = remaining.map(|r| r.min(BATCH_SIZE)).unwrap_or(BATCH_SIZE);
+
+            let batch = read_batch(&mut reader, this_batch_size);
+            if batch.is_empty() {
+                break;
+            }
+            let batch_len = batch.len();
+
+            // Process batch in parallel
+            let book_counts: Vec<BookCounts> = batch
+                .par_iter()
+                .map(|record| process_book_counts(&record.text, &interner))
+                .collect();
+
+            // Merge into running totals
+            for bc in book_counts {
+                total_bigrams += bc.total_bigrams;
+                for (key, count) in bc.bigram_counts {
+                    *bigram_counts.entry(key).or_insert(0) += count;
                 }
-            };
-            if line.trim().is_empty() {
-                continue;
-            }
-            match serde_json::from_str(&line) {
-                Ok(r) => records.push(r),
-                Err(e) => eprintln!("warning: skipping malformed JSON: {}", e),
-            }
-            if let Some(max) = max_books {
-                if records.len() >= max {
-                    eprintln!("Reached --max-books limit ({})", max);
-                    hit_limit = true;
-                    break;
+                for (id, count) in bc.unigram_counts {
+                    *unigram_counts.entry(id).or_insert(0) += count;
                 }
             }
+
+            total_books += batch_len;
+            let elapsed = start.elapsed().as_secs_f64();
+            let rate = total_books as f64 / elapsed;
+            eprint!(
+                "\r  Pass 1: {} books | {:.0} books/s | {}\x1b[K",
+                total_books, rate, fmt_duration(elapsed),
+            );
+
+            if remaining == Some(batch_len) {
+                eprintln!("\nReached --max-books limit ({})", max_books.unwrap());
+                break;
+            }
+        }
+
+        if max_books.map(|m| total_books >= m).unwrap_or(false) {
+            break;
         }
     }
-    eprintln!("Read {} books from {} file(s), processing in parallel...",
-        records.len(), corpus_paths.len());
-
-    // Process books in parallel
-    let progress = AtomicUsize::new(0);
-    let total_books = records.len();
-
-    let book_results: Vec<BookResult> = records
-        .par_iter()
-        .map(|record| {
-            let n = progress.fetch_add(1, Ordering::Relaxed) + 1;
-            let title = record.metadata.title.as_deref().unwrap_or("(untitled)");
-            if n % 50 == 0 || n == total_books {
-                eprintln!("[{:>4}/{}] {}", n, total_books, title);
-            }
-            process_book(&record.text, &interner, max_examples)
-        })
-        .collect();
-
-    // Merge results
-    eprintln!("Merging results from {} books...", book_results.len());
-    let mut bigram_counts: HashMap<(u32, u32), u64> = HashMap::new();
-    let mut unigram_counts: HashMap<u32, u64> = HashMap::new();
-    let mut total_bigrams: u64 = 0;
-    let mut examples: HashMap<(u32, u32), Vec<String>> = HashMap::new();
-
-    for br in book_results {
-        total_bigrams += br.total_bigrams;
-        for (key, count) in br.bigram_counts {
-            *bigram_counts.entry(key).or_insert(0) += count;
-        }
-        for (id, count) in br.unigram_counts {
-            *unigram_counts.entry(id).or_insert(0) += count;
-        }
-        for (key, mut exs) in br.examples {
-            let dest = examples.entry(key).or_default();
-            if dest.len() < max_examples {
-                let take = max_examples - dest.len();
-                exs.truncate(take);
-                dest.extend(exs);
-            }
-        }
-    }
+    eprintln!(); // newline after progress
 
     // Convert interned IDs back to strings
     let str_bigram_counts: HashMap<(String, String), u64> = bigram_counts
@@ -591,10 +611,6 @@ pub fn pass1_count_bigrams(
     let str_unigram_counts: HashMap<String, u64> = unigram_counts
         .into_iter()
         .map(|(id, c)| (interner.word(id).to_string(), c))
-        .collect();
-    let str_examples: HashMap<(String, String), Vec<String>> = examples
-        .into_iter()
-        .map(|((a, b), v)| ((interner.word(a).to_string(), interner.word(b).to_string()), v))
         .collect();
 
     eprintln!(
@@ -608,7 +624,6 @@ pub fn pass1_count_bigrams(
         bigram_counts: str_bigram_counts,
         unigram_counts: str_unigram_counts,
         total_bigrams,
-        examples: str_examples,
     }
 }
 
@@ -658,15 +673,21 @@ fn headword_collocate<'a>(pat: &PatternCode, w0: &'a str, w1: &'a str) -> (&'a s
 /// Pass 2: for each top-frequency bigram, classify its pattern.
 ///
 /// Fast path: if both words have unambiguous dictionary POS, classify directly.
-/// Slow path: POS-tag example sentences via spaCy for ambiguous pairs.
+/// Slow path: re-read corpus in batches, extract sentences for ambiguous pairs,
+///            POS-tag them, and vote on pattern classification.
 ///
 /// `top_per_word`: only classify the top N bigrams per word (by count).
 pub fn pass2_classify(
     pass1: &Pass1Result,
+    corpus_paths: &[PathBuf],
+    dict_words: &HashMap<String, usize>,
+    stopwords: &HashSet<String>,
     tagger: &dyn Tagger,
     pos_sets: &HashMap<String, HashSet<DictPOS>>,
     min_count: u64,
     top_per_word: usize,
+    max_books: Option<usize>,
+    _max_examples: usize,
 ) -> CollocationCounts {
     // Group bigrams by each participating word, keep top N per word.
     let mut per_word: HashMap<&str, Vec<(&(String, String), u64)>> = HashMap::new();
@@ -769,127 +790,154 @@ pub fn pass2_classify(
         eprintln!("Wrote {} to {}", spacy_needed.len(), dump_path);
     }
 
-    // Now run spaCy only on the ambiguous pairs — deduplicated + batched
-    let mut spacy_classified = 0usize;
-    let mut spacy_skipped = 0usize;
-    let total = spacy_needed.len();
-
-    // Build lookup: which pairs are we looking for? (owned keys for easy lookup)
+    // Build interned target_pairs set for fast lookup during sentence extraction
+    let interner = WordInterner::from_dict(dict_words, stopwords);
     let spacy_pair_set: HashSet<(String, String)> =
         spacy_needed.iter().map(|(pair, _)| (pair.0.clone(), pair.1.clone())).collect();
-    // Collect all unique example sentences across all spaCy-needed pairs
-    let mut unique_sentences: Vec<String> = Vec::new();
-    let mut seen_sentences: HashSet<String> = HashSet::new();
-    let mut pairs_with_examples = 0usize;
-    let mut pairs_without_examples = 0usize;
-
-    for (pair, _) in &spacy_needed {
-        if let Some(examples) = pass1.examples.get(*pair) {
-            if !examples.is_empty() {
-                pairs_with_examples += 1;
-            } else {
-                pairs_without_examples += 1;
-            }
-            for ex in examples {
-                if seen_sentences.insert(ex.clone()) {
-                    unique_sentences.push(ex.clone());
-                }
-            }
-        } else {
-            pairs_without_examples += 1;
-        }
-    }
-    drop(seen_sentences);
-    eprintln!(
-        "  spaCy pairs: {} have examples, {} have NO examples",
-        pairs_with_examples, pairs_without_examples
-    );
+    let target_pairs: HashSet<(u32, u32)> = spacy_pair_set
+        .iter()
+        .filter_map(|(w0, w1)| {
+            let id0 = interner.get(w0)?;
+            let id1 = interner.get(w1)?;
+            Some((id0, id1))
+        })
+        .collect();
 
     eprintln!(
-        "  {} unique sentences (deduplicated) for {} pairs through spaCy...",
-        unique_sentences.len(), total
+        "  {} target pairs for streaming sentence extraction",
+        target_pairs.len()
     );
 
-    // Tag all unique sentences in batches
-    let spacy_batch_size = 100_000;
+    // Stream corpus again in batches, extract sentences, tag, vote
     let mut pair_votes: HashMap<(String, String), HashMap<PatternCode, u32>> = HashMap::new();
-    let mut sentences_tagged = 0usize;
-    let total_sentences = unique_sentences.len();
+    let mut total_books: usize = 0;
+    let mut total_sentences_tagged: usize = 0;
+    let mut total_sentences_extracted: usize = 0;
     let tag_start = std::time::Instant::now();
+    let spacy_batch_size = 100_000;
 
-    for chunk_start in (0..total_sentences).step_by(spacy_batch_size) {
-        let chunk_end = (chunk_start + spacy_batch_size).min(total_sentences);
-        let text_refs: Vec<&str> = unique_sentences[chunk_start..chunk_end]
-            .iter()
-            .map(|s| s.as_str())
-            .collect();
-        let tagged_batch = match tagger.tag_batch(&text_refs, spacy_batch_size) {
-            Ok(results) => results,
-            Err(e) => {
-                let msg = e.to_string();
-                if msg.contains("KeyboardInterrupt") {
-                    eprintln!("\n  Interrupted! Using results collected so far.");
-                    break;
-                }
-                eprintln!("  warning: tagger batch error: {}", e);
-                continue;
+    let total = spacy_needed.len();
+
+    for corpus_path in corpus_paths {
+        let file = File::open(corpus_path)
+            .unwrap_or_else(|e| panic!("failed to open {}: {}", corpus_path.display(), e));
+        let decoder = flate2::read::GzDecoder::new(file);
+        let mut reader = BufReader::new(decoder);
+
+        loop {
+            let remaining = max_books.map(|m| m.saturating_sub(total_books));
+            if remaining == Some(0) {
+                break;
             }
-        };
-        sentences_tagged += tagged_batch.len();
+            let this_batch_size = remaining.map(|r| r.min(BATCH_SIZE)).unwrap_or(BATCH_SIZE);
 
-        // Scan each tagged sentence for bigrams we need to classify
-        for tokens in &tagged_batch {
-            for j in 0..tokens.len().saturating_sub(1) {
-                let tw0 = tokens[j].word.to_lowercase();
-                let tw1 = tokens[j + 1].word.to_lowercase();
-                let key = (tw0, tw1);
-                if !spacy_pair_set.contains(&key) {
-                    continue;
+            let batch = read_batch(&mut reader, this_batch_size);
+            if batch.is_empty() {
+                break;
+            }
+            let batch_len = batch.len();
+
+            // Extract sentences in parallel for target pairs only
+            let batch_sentences: Vec<Vec<String>> = batch
+                .par_iter()
+                .map(|record| extract_sentences(&record.text, &interner, &target_pairs))
+                .collect();
+            drop(batch); // free book texts
+
+            // Flatten sentences from all books in this batch
+            let all_sentences: Vec<String> = batch_sentences.into_iter().flatten().collect();
+            total_sentences_extracted += all_sentences.len();
+
+            // Tag the batch immediately
+            if !all_sentences.is_empty() {
+                for chunk_start in (0..all_sentences.len()).step_by(spacy_batch_size) {
+                    let chunk_end = (chunk_start + spacy_batch_size).min(all_sentences.len());
+                    let text_refs: Vec<&str> = all_sentences[chunk_start..chunk_end]
+                        .iter()
+                        .map(|s| s.as_str())
+                        .collect();
+                    let tagged_batch = match tagger.tag_batch(&text_refs, spacy_batch_size) {
+                        Ok(results) => results,
+                        Err(e) => {
+                            let msg = e.to_string();
+                            if msg.contains("KeyboardInterrupt") {
+                                eprintln!("\n  Interrupted! Using results collected so far.");
+                                break;
+                            }
+                            eprintln!("  warning: tagger batch error: {}", e);
+                            continue;
+                        }
+                    };
+                    total_sentences_tagged += tagged_batch.len();
+
+                    // Scan tagged output for target bigrams → accumulate votes
+                    for tokens in &tagged_batch {
+                        for j in 0..tokens.len().saturating_sub(1) {
+                            let tw0 = tokens[j].word.to_lowercase();
+                            let tw1 = tokens[j + 1].word.to_lowercase();
+                            let key = (tw0, tw1);
+                            if !spacy_pair_set.contains(&key) {
+                                continue;
+                            }
+                            let patterns = match (tokens[j].pos, tokens[j + 1].pos) {
+                                (POS::Adj, POS::Noun) => {
+                                    vec![PatternCode::AdjNoun, PatternCode::AdjObject]
+                                }
+                                (POS::Verb, POS::Noun) => {
+                                    vec![PatternCode::VerbNoun, PatternCode::VerbObject]
+                                }
+                                (POS::Noun, POS::Verb) => {
+                                    vec![PatternCode::NounVerb, PatternCode::SubjVerb]
+                                }
+                                (POS::Prep, POS::Noun) => vec![PatternCode::PrepNoun],
+                                (POS::Noun, POS::Noun) => {
+                                    vec![PatternCode::NounNoun, PatternCode::PrepNoun]
+                                }
+                                (POS::Adv, POS::Verb) => vec![PatternCode::AdvVerb],
+                                (POS::Verb, POS::Adv) => vec![PatternCode::VerbAdv],
+                                (POS::Adv, POS::Adj) => vec![PatternCode::AdvAdj],
+                                _ => vec![],
+                            };
+                            let entry = pair_votes.entry(key).or_default();
+                            for pat in patterns {
+                                *entry.entry(pat).or_insert(0) += 1;
+                            }
+                        }
+                    }
                 }
-                let patterns = match (tokens[j].pos, tokens[j + 1].pos) {
-                    (POS::Adj, POS::Noun) => {
-                        vec![PatternCode::AdjNoun, PatternCode::AdjObject]
-                    }
-                    (POS::Verb, POS::Noun) => {
-                        vec![PatternCode::VerbNoun, PatternCode::VerbObject]
-                    }
-                    (POS::Noun, POS::Verb) => {
-                        vec![PatternCode::NounVerb, PatternCode::SubjVerb]
-                    }
-                    (POS::Prep, POS::Noun) => vec![PatternCode::PrepNoun],
-                    (POS::Noun, POS::Noun) => {
-                        vec![PatternCode::NounNoun, PatternCode::PrepNoun]
-                    }
-                    (POS::Adv, POS::Verb) => vec![PatternCode::AdvVerb],
-                    (POS::Verb, POS::Adv) => vec![PatternCode::VerbAdv],
-                    (POS::Adv, POS::Adj) => vec![PatternCode::AdvAdj],
-                    _ => vec![],
-                };
-                let entry = pair_votes.entry(key).or_default();
-                for pat in patterns {
-                    *entry.entry(pat).or_insert(0) += 1;
-                }
+            }
+            // Drop batch sentences + tagged output (already dropped by scope)
+
+            total_books += batch_len;
+
+            // Progress with ETA
+            let elapsed = tag_start.elapsed().as_secs_f64();
+            let rate = total_books as f64 / elapsed;
+            eprint!(
+                "\r  Pass 2 streaming: {} books | {} sentences tagged | {:.0} books/s | {}\x1b[K",
+                total_books, total_sentences_tagged, rate, fmt_duration(elapsed),
+            );
+
+            if remaining == Some(batch_len) {
+                break;
             }
         }
 
-        // Progress with ETA
-        let elapsed = tag_start.elapsed().as_secs_f64();
-        let rate = sentences_tagged as f64 / elapsed;
-        let remaining = (total_sentences - sentences_tagged) as f64 / rate;
-        let pct = 100.0 * sentences_tagged as f64 / total_sentences as f64;
-        eprint!(
-            "\r  Tagging: {}/{} ({:.0}%) | {:.0} sent/s | ETA {}\x1b[K",
-            sentences_tagged, total_sentences, pct, rate, fmt_duration(remaining),
-        );
+        if max_books.map(|m| total_books >= m).unwrap_or(false) {
+            break;
+        }
     }
     eprintln!(); // newline after progress
 
     eprintln!(
-        "  spaCy voting: {} pairs got votes out of {} in spacy_pair_set",
+        "  Extracted {} sentences, tagged {} | {} pairs got votes out of {}",
+        total_sentences_extracted, total_sentences_tagged,
         pair_votes.len(), spacy_pair_set.len()
     );
 
     // Convert votes to PMI-scored counts
+    let mut spacy_classified = 0usize;
+    let mut spacy_skipped = 0usize;
     for (pair, votes) in &pair_votes {
         if votes.is_empty() {
             spacy_skipped += 1;
