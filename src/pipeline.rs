@@ -11,7 +11,7 @@
 use std::collections::{HashMap, HashSet};
 use std::fs::{self, File};
 use std::io::{BufRead, BufReader, BufWriter, Write};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicUsize, Ordering};
 
 use rayon::prelude::*;
@@ -90,6 +90,22 @@ impl PatternCode {
             PatternCode::AdjObject
             | PatternCode::AdvAdj => DictPOS::Adj,
         }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Formatting helpers
+// ---------------------------------------------------------------------------
+
+/// Format seconds as human-readable duration (e.g. "2m 30s", "1h 05m").
+fn fmt_duration(secs: f64) -> String {
+    let s = secs as u64;
+    if s < 60 {
+        format!("{}s", s)
+    } else if s < 3600 {
+        format!("{}m {:02}s", s / 60, s % 60)
+    } else {
+        format!("{}h {:02}m", s / 3600, (s % 3600) / 60)
     }
 }
 
@@ -472,11 +488,11 @@ fn process_book(
 
 /// Pass 1: parallel corpus processing with interned word IDs.
 ///
-/// 1. Read all JSON lines from gzip (sequential I/O)
+/// 1. Read all JSON lines from gzip files (sequential I/O per file)
 /// 2. Process books in parallel with rayon (tokenize + count)
 /// 3. Merge per-book results and convert back to string keys
 pub fn pass1_count_bigrams(
-    corpus_path: &Path,
+    corpus_paths: &[PathBuf],
     dict_words: &HashMap<String, usize>,
     stopwords: &HashSet<String>,
     max_books: Option<usize>,
@@ -486,35 +502,45 @@ pub fn pass1_count_bigrams(
     let interner = WordInterner::from_dict(dict_words, stopwords);
     eprintln!("Interner: {} words indexed", interner.id_to_word.len());
 
-    // Read all book records (I/O is sequential due to gzip)
-    let file = File::open(corpus_path).expect("failed to open corpus file");
-    let decoder = flate2::read::GzDecoder::new(file);
-    let reader = BufReader::new(decoder);
-
+    // Read all book records from all corpus files
     let mut records: Vec<GutenbergRecord> = Vec::new();
-    for line in reader.lines() {
-        let line = match line {
-            Ok(l) => l,
-            Err(e) => {
-                eprintln!("warning: skipping line due to read error: {}", e);
+    let mut hit_limit = false;
+    for corpus_path in corpus_paths {
+        if hit_limit {
+            break;
+        }
+        eprintln!("Reading {}...", corpus_path.display());
+        let file = File::open(corpus_path)
+            .unwrap_or_else(|e| panic!("failed to open {}: {}", corpus_path.display(), e));
+        let decoder = flate2::read::GzDecoder::new(file);
+        let reader = BufReader::new(decoder);
+
+        for line in reader.lines() {
+            let line = match line {
+                Ok(l) => l,
+                Err(e) => {
+                    eprintln!("warning: skipping line due to read error: {}", e);
+                    continue;
+                }
+            };
+            if line.trim().is_empty() {
                 continue;
             }
-        };
-        if line.trim().is_empty() {
-            continue;
-        }
-        match serde_json::from_str(&line) {
-            Ok(r) => records.push(r),
-            Err(e) => eprintln!("warning: skipping malformed JSON: {}", e),
-        }
-        if let Some(max) = max_books {
-            if records.len() >= max {
-                eprintln!("Reached --max-books limit ({})", max);
-                break;
+            match serde_json::from_str(&line) {
+                Ok(r) => records.push(r),
+                Err(e) => eprintln!("warning: skipping malformed JSON: {}", e),
+            }
+            if let Some(max) = max_books {
+                if records.len() >= max {
+                    eprintln!("Reached --max-books limit ({})", max);
+                    hit_limit = true;
+                    break;
+                }
             }
         }
     }
-    eprintln!("Read {} books, processing in parallel...", records.len());
+    eprintln!("Read {} books from {} file(s), processing in parallel...",
+        records.len(), corpus_paths.len());
 
     // Process books in parallel
     let progress = AtomicUsize::new(0);
@@ -784,13 +810,15 @@ pub fn pass2_classify(
         unique_sentences.len(), total
     );
 
-    // Tag all unique sentences in batches via nlp.pipe()
+    // Tag all unique sentences in batches
     let spacy_batch_size = 100_000;
     let mut pair_votes: HashMap<(String, String), HashMap<PatternCode, u32>> = HashMap::new();
     let mut sentences_tagged = 0usize;
+    let total_sentences = unique_sentences.len();
+    let tag_start = std::time::Instant::now();
 
-    for chunk_start in (0..unique_sentences.len()).step_by(spacy_batch_size) {
-        let chunk_end = (chunk_start + spacy_batch_size).min(unique_sentences.len());
+    for chunk_start in (0..total_sentences).step_by(spacy_batch_size) {
+        let chunk_end = (chunk_start + spacy_batch_size).min(total_sentences);
         let text_refs: Vec<&str> = unique_sentences[chunk_start..chunk_end]
             .iter()
             .map(|s| s.as_str())
@@ -803,15 +831,13 @@ pub fn pass2_classify(
                     eprintln!("\n  Interrupted! Using results collected so far.");
                     break;
                 }
-                eprintln!("  warning: spaCy batch error: {}", e);
+                eprintln!("  warning: tagger batch error: {}", e);
                 continue;
             }
         };
         sentences_tagged += tagged_batch.len();
 
-        // Scan each tagged sentence for ALL spaCy-needed bigrams it contains
-        let mut debug_pos_combos: HashMap<(POS, POS), u32> = HashMap::new();
-        let mut debug_matches = 0u32;
+        // Scan each tagged sentence for bigrams we need to classify
         for tokens in &tagged_batch {
             for j in 0..tokens.len().saturating_sub(1) {
                 let tw0 = tokens[j].word.to_lowercase();
@@ -820,8 +846,6 @@ pub fn pass2_classify(
                 if !spacy_pair_set.contains(&key) {
                     continue;
                 }
-                debug_matches += 1;
-                *debug_pos_combos.entry((tokens[j].pos, tokens[j + 1].pos)).or_insert(0) += 1;
                 let patterns = match (tokens[j].pos, tokens[j + 1].pos) {
                     (POS::Adj, POS::Noun) => {
                         vec![PatternCode::AdjNoun, PatternCode::AdjObject]
@@ -847,16 +871,18 @@ pub fn pass2_classify(
                 }
             }
         }
-        if debug_matches > 0 || sentences_tagged < spacy_batch_size {
-            let mut combos: Vec<_> = debug_pos_combos.into_iter().collect();
-            combos.sort_by(|a, b| b.1.cmp(&a.1));
-            eprintln!("  DEBUG batch: {} pair matches, POS combos: {:?}", debug_matches, &combos[..combos.len().min(10)]);
-        }
 
-        if sentences_tagged % 2000 < spacy_batch_size || chunk_end == unique_sentences.len() {
-            eprintln!("  [{}/{}] sentences tagged...", sentences_tagged, unique_sentences.len());
-        }
+        // Progress with ETA
+        let elapsed = tag_start.elapsed().as_secs_f64();
+        let rate = sentences_tagged as f64 / elapsed;
+        let remaining = (total_sentences - sentences_tagged) as f64 / rate;
+        let pct = 100.0 * sentences_tagged as f64 / total_sentences as f64;
+        eprint!(
+            "\r  Tagging: {}/{} ({:.0}%) | {:.0} sent/s | ETA {}\x1b[K",
+            sentences_tagged, total_sentences, pct, rate, fmt_duration(remaining),
+        );
     }
+    eprintln!(); // newline after progress
 
     eprintln!(
         "  spaCy voting: {} pairs got votes out of {} in spacy_pair_set",

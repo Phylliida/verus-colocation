@@ -1,2 +1,7 @@
-mul|n|The European bunting. ; The reflux or flowing back of the tide; the return of the tidal wave toward the sea; -- opposed to flood; as, the boats will go out on the ebb. ; The state or time of passing away; a falling from a better to a worse state; low state or condition; decline; decay.	a:16xy,81,5~16xy,81,5
-muz|n|A hard, heavy, and durable wood, which admits of a fine polish or gloss. The usual color is black, but it also occurs red or green.	N:9xa,100,3~9xa,100,3
+mul|n|The European bunting. ; The reflux or flowing back of the tide; the return of the tidal wave toward the sea; -- opposed to flood; as, the boats will go out on the ebb. ; The state or time of passing away; a falling from a better to a worse state; low state or condition; decline; decay.	a:1yel,52,4;16xy,51,3~1yel,52,4;16xy,51,3	N:229r,87,5~229r,87,5
+mul|a|Receding; going out; falling; shallow; low.	j:229r,79,3~229r,79,3
+mum|v|of Ebb	s:229r,87,3;163a,49,5~163a,49,5;229r,87,3	D:5s7,43,5~5s7,43,5
+mun|n|of Ebb	V:2874,81,2~2874,81,2
+mun|v|of Ebb	o:229r,95,5~229r,95,5	D:r4f,74,4;5s7,36,3~r4f,74,4;5s7,36,3
+muz|n|A hard, heavy, and durable wood, which admits of a fine polish or gloss. The usual color is black, but it also occurs red or green.	n:165r,27,3~165r,27,3	N:7zm,90,1;d8r,84,2;7ti,83,6;9xa,74,1~7ti,83,6;d8r,84,2;7zm,90,1;9xa,74,1
+muz|a|Made of ebony, or resembling ebony; black; as, an ebony countenance.	j:qsy,39,2~qsy,39,2

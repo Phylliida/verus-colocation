@@ -5,6 +5,7 @@
 //!   Pass 2: POS-tag top candidates to classify patterns
 //!
 //! Usage:
+//!   # Single file:
 //!   cargo run --features tagger --bin generate -- \
 //!       --dictionary dictionary.csv \
 //!       --corpus data/project_gutenberg-dolma-0000.json.gz \
@@ -13,10 +14,11 @@
 //!       --top-n 10 \
 //!       --min-count 3
 //!
+//!   # Entire directory of .json.gz files:
 //!   cargo run --features postagger-backend --bin generate -- \
 //!       --backend rust \
 //!       --dictionary dictionary.csv \
-//!       --corpus data/project_gutenberg-dolma-0000.json.gz \
+//!       --corpus data/ \
 //!       --output output-data/
 
 use std::collections::HashMap;
@@ -42,13 +44,43 @@ fn default_backend() -> &'static str {
 
 struct Args {
     dictionary: PathBuf,
-    corpus: PathBuf,
+    corpus_files: Vec<PathBuf>,
     output: PathBuf,
     max_books: Option<usize>,
     top_n: usize,
     min_count: u64,
     max_examples: usize,
     backend: String,
+}
+
+/// Resolve `--corpus` path: if it's a directory, collect all `*.json.gz` files
+/// sorted by name; otherwise treat it as a single file.
+fn resolve_corpus(path: PathBuf) -> Vec<PathBuf> {
+    if path.is_dir() {
+        let mut files: Vec<PathBuf> = std::fs::read_dir(&path)
+            .unwrap_or_else(|e| panic!("failed to read directory {}: {}", path.display(), e))
+            .filter_map(|entry| {
+                let entry = entry.ok()?;
+                let p = entry.path();
+                if p.extension().and_then(|e| e.to_str()) == Some("gz")
+                    && p.to_str().map_or(false, |s| s.ends_with(".json.gz"))
+                {
+                    Some(p)
+                } else {
+                    None
+                }
+            })
+            .collect();
+        files.sort();
+        if files.is_empty() {
+            eprintln!("warning: no .json.gz files found in {}", path.display());
+        } else {
+            eprintln!("Found {} .json.gz files in {}", files.len(), path.display());
+        }
+        files
+    } else {
+        vec![path]
+    }
 }
 
 fn parse_args() -> Args {
@@ -95,9 +127,9 @@ fn parse_args() -> Args {
                 });
             }
             "--help" | "-h" => {
-                eprintln!("Usage: generate --dictionary <path> --corpus <path> --output <dir>");
+                eprintln!("Usage: generate --dictionary <path> --corpus <path|dir> --output <dir>");
                 eprintln!("  --dictionary    Path to dictionary.csv");
-                eprintln!("  --corpus        Path to corpus .json.gz file");
+                eprintln!("  --corpus        Path to a .json.gz file or directory of .json.gz files");
                 eprintln!("  --output        Output directory for words.txt + .dat shards");
                 eprintln!("  --max-books N   Process at most N books (default: all)");
                 eprintln!("  --top-n N       Keep top N collocates per pattern (default: 10)");
@@ -113,9 +145,10 @@ fn parse_args() -> Args {
         }
     }
 
+    let corpus_path = corpus.expect("--corpus is required");
     Args {
         dictionary: dictionary.expect("--dictionary is required"),
-        corpus: corpus.expect("--corpus is required"),
+        corpus_files: resolve_corpus(corpus_path),
         output: output.expect("--output is required"),
         max_books,
         top_n,
@@ -188,7 +221,7 @@ fn main() {
     // 2. Pass 1: count raw bigrams (fast, no tagger)
     eprintln!("\n=== Pass 1: counting bigrams ===");
     let pass1 = pipeline::pass1_count_bigrams(
-        &args.corpus,
+        &args.corpus_files,
         &dict_words,
         &stopwords,
         args.max_books,
