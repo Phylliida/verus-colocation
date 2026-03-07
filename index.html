@@ -156,6 +156,35 @@
     font-variant-numeric: tabular-nums;
   }
 
+  .toggle-bar {
+    max-width: 600px;
+    margin: 1.2rem auto 0;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .toggle-bar button {
+    font-family: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 1rem;
+    border: 1.5px solid #1a3a2a;
+    background: transparent;
+    color: #1a3a2a;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .toggle-bar button:first-child { border-radius: 5px 0 0 5px; }
+  .toggle-bar button:last-child { border-radius: 0 5px 5px 0; border-left: none; }
+
+  .toggle-bar button.active {
+    background: #1a3a2a;
+    color: #f5f0e8;
+  }
+
   .status {
     text-align: center;
     padding: 3rem 1rem;
@@ -169,11 +198,63 @@
     font-size: 0.8rem;
     color: #aaa;
   }
+
+  .theme-toggle {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    background: none;
+    border: 1.5px solid rgba(245,240,232,0.4);
+    color: #f5f0e8;
+    border-radius: 6px;
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: border-color 0.2s;
+  }
+
+  .theme-toggle:hover { border-color: rgba(245,240,232,0.8); }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) { background: #1a1a1a; color: #d4d4d4; }
+    body:not(.light) header { background: #151e28; }
+    body:not(.light) .search-box { background: #2a2a2a; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+    body:not(.light) .search-box input { color: #d4d4d4; }
+    body:not(.light) .search-box button { background: #151e28; }
+    body:not(.light) .search-box button:hover { background: #1a3a2a; }
+    body:not(.light) .headword { color: #7ea8c9; }
+    body:not(.light) .definition { color: #999; border-left-color: #444; }
+    body:not(.light) .section-title { color: #7ea8c9; border-bottom-color: #7ea8c9; }
+    body:not(.light) .group-label { color: #777; }
+    body:not(.light) .score { color: #777; }
+    body:not(.light) .toggle-bar button { border-color: #7ea8c9; color: #7ea8c9; }
+    body:not(.light) .toggle-bar button.active { background: #7ea8c9; color: #1a1a1a; }
+    body:not(.light) .status { color: #777; }
+    body:not(.light) footer { color: #555; }
+  }
+
+  body.dark { background: #1a1a1a; color: #d4d4d4; }
+  body.dark header { background: #151e28; }
+  body.dark .search-box { background: #2a2a2a; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  body.dark .search-box input { color: #d4d4d4; }
+  body.dark .search-box button { background: #151e28; }
+  body.dark .search-box button:hover { background: #1a3a2a; }
+  body.dark .headword { color: #7ea8c9; }
+  body.dark .definition { color: #999; border-left-color: #444; }
+  body.dark .section-title { color: #7ea8c9; border-bottom-color: #7ea8c9; }
+  body.dark .group-label { color: #777; }
+  body.dark .score { color: #777; }
+  body.dark .toggle-bar button { border-color: #7ea8c9; color: #7ea8c9; }
+  body.dark .toggle-bar button.active { background: #7ea8c9; color: #1a1a1a; }
+  body.dark .status { color: #777; }
+  body.dark footer { color: #555; }
 </style>
 </head>
 <body>
 
-<header>
+<header style="position: relative;">
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">&#9790;</button>
   <h1>Colocation Dictionary</h1>
   <p>find the words that live together</p>
 </header>
@@ -185,6 +266,11 @@
   </div>
 </div>
 
+<div class="toggle-bar">
+  <button class="active" onclick="setMetric('pmi')">Surprise</button>
+  <button onclick="setMetric('count')">Frequency</button>
+</div>
+
 <div class="results" id="results"></div>
 
 <footer>
@@ -192,10 +278,38 @@
 </footer>
 
 <script>
+// Theme: 'system' (default), 'dark', 'light'
+let theme = localStorage.getItem('theme') || 'system';
+applyTheme(theme);
+
+function applyTheme(t) {
+  document.body.classList.remove('dark', 'light');
+  if (t !== 'system') document.body.classList.add(t);
+  const btn = document.querySelector('.theme-toggle');
+  if (btn) btn.textContent = t === 'dark' || (t === 'system' && matchMedia('(prefers-color-scheme: dark)').matches) ? '\u2600' : '\u263E';
+}
+
+function toggleTheme() {
+  const isDark = theme === 'dark' || (theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+  theme = isDark ? 'light' : 'dark';
+  localStorage.setItem('theme', theme);
+  applyTheme(theme);
+}
+
 const DATA_DIR = 'output-data';
 
 let wordList = null;
 let shardCache = {};
+let currentMetric = 'pmi';  // 'pmi' or 'count'
+let lastWord = null;
+let lastEntries = null;
+
+function setMetric(m) {
+  currentMetric = m;
+  document.querySelectorAll('.toggle-bar button').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.toggle-bar button[onclick="setMetric('${m}')"]`).classList.add('active');
+  if (lastWord && lastEntries) renderResults(lastWord, lastEntries);
+}
 
 function b36(s) { return parseInt(s, 36); }
 
@@ -232,10 +346,15 @@ async function loadShard(prefix) {
         const colon = parts[i].indexOf(':');
         const type = parts[i].slice(0, colon);
         const rest = parts[i].slice(colon + 1);
-        patterns[type] = rest.split(';').map(entry => {
-          const [wid, score] = entry.split(',');
-          return { wordId: b36(wid), score: parseInt(score) };
+        const halves = rest.split('~');
+        const parseEntries = s => s.split(';').map(entry => {
+          const p = entry.split(',');
+          return { wordId: b36(p[0]), pmi: parseInt(p[1]), count: parseInt(p[2] || '0') };
         });
+        patterns[type] = {
+          byPmi: parseEntries(halves[0]),
+          byCount: halves[1] ? parseEntries(halves[1]) : parseEntries(halves[0]),
+        };
       }
       if (!entries[wordId]) entries[wordId] = [];
       entries[wordId].push({ pos, definition, patterns });
@@ -253,9 +372,9 @@ function resolve(id) {
 
 function renderColumn(entries, word, before) {
   let html = '<div class="collocations">';
-  for (const { wordId, score } of entries) {
+  for (const { wordId, pmi, count } of entries) {
     const other = resolve(wordId);
-    const scoreFmt = (score / 10).toFixed(1);
+    const scoreFmt = currentMetric === 'pmi' ? (pmi / 10).toFixed(1) : count.toLocaleString();
     if (before) {
       html += `<span class="collocation">${esc(other)} <span class="highlight">${esc(word)}</span></span>`;
     } else {
@@ -265,6 +384,10 @@ function renderColumn(entries, word, before) {
   }
   html += '</div>';
   return html;
+}
+
+function getEntries(patternData) {
+  return currentMetric === 'pmi' ? patternData.byPmi : patternData.byCount;
 }
 
 function renderGrid(entries, word, before) {
@@ -287,26 +410,35 @@ function renderPosEntry(word, entry) {
   html += `<span class="headword">${w}</span>`;
   html += `<span class="pronunciation">${esc(posLabel)}</span>`;
   html += `</div>`;
-  html += `<div class="definition">${esc(definition)}</div>`;
+  const defs = definition.split(' ; ').filter(d => d.length > 0);
+  html += `<div class="definition">`;
+  if (defs.length === 1) {
+    html += esc(defs[0]);
+  } else {
+    for (let i = 0; i < defs.length; i++) {
+      html += `<div>${i + 1}. ${esc(defs[i])}</div>`;
+    }
+  }
+  html += `</div>`;
 
   if (pos === 'n') {
     // Noun headword: a, v, V, n, N
     if (patterns.a) {
       html += `<div class="section">`;
       html += `<div class="section-title">Adjective + ${w}</div>`;
-      html += renderGrid(patterns.a, word, true);
+      html += renderGrid(getEntries(patterns.a), word, true);
       html += `</div>`;
     }
     if (patterns.v) {
       html += `<div class="section">`;
       html += `<div class="section-title">Verb + ${w}</div>`;
-      html += renderGrid(patterns.v, word, true);
+      html += renderGrid(getEntries(patterns.v), word, true);
       html += `</div>`;
     }
     if (patterns.V) {
       html += `<div class="section">`;
       html += `<div class="section-title">${w} + verb</div>`;
-      html += renderGrid(patterns.V, word, false);
+      html += renderGrid(getEntries(patterns.V), word, false);
       html += `</div>`;
     }
     if (patterns.n || patterns.N) {
@@ -314,11 +446,11 @@ function renderPosEntry(word, entry) {
       html += `<div class="section-title">Noun phrases</div>`;
       if (patterns.n) {
         html += `<div class="group-label">___ + ${w}</div>`;
-        html += renderGrid(patterns.n, word, true);
+        html += renderGrid(getEntries(patterns.n), word, true);
       }
       if (patterns.N) {
         html += `<div class="group-label">${w} + ___</div>`;
-        html += renderGrid(patterns.N, word, false);
+        html += renderGrid(getEntries(patterns.N), word, false);
       }
       html += `</div>`;
     }
@@ -327,13 +459,13 @@ function renderPosEntry(word, entry) {
     if (patterns.o) {
       html += `<div class="section">`;
       html += `<div class="section-title">${w} + object</div>`;
-      html += renderGrid(patterns.o, word, false);
+      html += renderGrid(getEntries(patterns.o), word, false);
       html += `</div>`;
     }
     if (patterns.s) {
       html += `<div class="section">`;
       html += `<div class="section-title">Subject + ${w}</div>`;
-      html += renderGrid(patterns.s, word, true);
+      html += renderGrid(getEntries(patterns.s), word, true);
       html += `</div>`;
     }
     if (patterns.d || patterns.D) {
@@ -341,11 +473,11 @@ function renderPosEntry(word, entry) {
       html += `<div class="section-title">Adverbs</div>`;
       if (patterns.d) {
         html += `<div class="group-label">___ + ${w}</div>`;
-        html += renderGrid(patterns.d, word, true);
+        html += renderGrid(getEntries(patterns.d), word, true);
       }
       if (patterns.D) {
         html += `<div class="group-label">${w} + ___</div>`;
-        html += renderGrid(patterns.D, word, false);
+        html += renderGrid(getEntries(patterns.D), word, false);
       }
       html += `</div>`;
     }
@@ -354,13 +486,13 @@ function renderPosEntry(word, entry) {
     if (patterns.j) {
       html += `<div class="section">`;
       html += `<div class="section-title">${w} + noun</div>`;
-      html += renderGrid(patterns.j, word, false);
+      html += renderGrid(getEntries(patterns.j), word, false);
       html += `</div>`;
     }
     if (patterns.e) {
       html += `<div class="section">`;
       html += `<div class="section-title">Adverb + ${w}</div>`;
-      html += renderGrid(patterns.e, word, true);
+      html += renderGrid(getEntries(patterns.e), word, true);
       html += `</div>`;
     }
   }
@@ -402,7 +534,9 @@ async function search() {
     return;
   }
 
-  renderResults(word, shard[wordId]);
+  lastWord = word;
+  lastEntries = shard[wordId];
+  renderResults(word, lastEntries);
 }
 
 document.getElementById('search').addEventListener('keydown', e => {

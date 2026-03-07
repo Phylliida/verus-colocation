@@ -92,7 +92,7 @@ Each shard is named by the first two letters of the words it contains (e.g. `be.
 
 - **Header** (pipe-delimited): word ID (base36), POS tag (`n`/`v`/`a`), short definition
 - **Pattern groups** (tab-separated): each is a pattern type character followed by `:` and semicolon-separated entries
-- **Entry**: `{word_id},{score}` where word_id is base36 and score is an integer (actual score × 10)
+- **Entry**: `{word_id},{pmi},{count}` where word_id is base36, pmi is an integer (actual PMI × 10), and count is the raw n-gram frequency
 
 A word with multiple parts of speech gets **multiple lines** (one per POS), each with POS-appropriate patterns.
 

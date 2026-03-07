@@ -155,8 +155,8 @@ fn map_wordtype(wt: &str) -> Vec<DictPOS> {
 pub struct Dictionary {
     /// Sorted word list (line number = word ID).
     pub words: Vec<String>,
-    /// word → POS → first definition for that POS.
-    pub definitions: HashMap<String, HashMap<DictPOS, String>>,
+    /// word → POS → all definitions for that POS.
+    pub definitions: HashMap<String, HashMap<DictPOS, Vec<String>>>,
     /// word → set of possible POS categories from the dictionary.
     pub pos_sets: HashMap<String, HashSet<DictPOS>>,
 }
@@ -172,7 +172,7 @@ pub fn parse_dictionary(path: &Path) -> Dictionary {
         .from_path(path)
         .expect("failed to open dictionary.csv");
 
-    let mut definitions: HashMap<String, HashMap<DictPOS, String>> = HashMap::new();
+    let mut definitions: HashMap<String, HashMap<DictPOS, Vec<String>>> = HashMap::new();
     let mut pos_sets: HashMap<String, HashSet<DictPOS>> = HashMap::new();
     // Track which words exist (for word list generation).
     let mut all_words: HashSet<String> = HashSet::new();
@@ -196,9 +196,11 @@ pub fn parse_dictionary(path: &Path) -> Dictionary {
             let defs = definitions.entry(word).or_default();
             for pos in &pos_list {
                 set.insert(*pos);
-                // First definition per POS wins
                 if !definition.is_empty() {
-                    defs.entry(*pos).or_insert_with(|| definition.clone());
+                    let pos_defs = defs.entry(*pos).or_default();
+                    if !pos_defs.contains(&definition) {
+                        pos_defs.push(definition.clone());
+                    }
                 }
             }
         } else {
@@ -206,7 +208,10 @@ pub fn parse_dictionary(path: &Path) -> Dictionary {
             // (will be used if we can't determine POS)
             let defs = definitions.entry(word).or_default();
             if !definition.is_empty() {
-                defs.entry(DictPOS::Noun).or_insert_with(|| definition.clone());
+                let pos_defs = defs.entry(DictPOS::Noun).or_default();
+                if !pos_defs.contains(&definition) {
+                    pos_defs.push(definition.clone());
+                }
             }
         }
     }
@@ -585,8 +590,15 @@ pub fn pass1_count_bigrams(
 // Pass 2: POS-tag candidates to classify patterns
 // ---------------------------------------------------------------------------
 
-/// Triple key: (headword, pattern, collocate) → PMI score.
-pub type CollocationCounts = HashMap<(String, PatternCode, String), f64>;
+/// Score entry: PMI score + raw frequency count.
+#[derive(Debug, Clone, Copy)]
+pub struct ScoreEntry {
+    pub pmi: f64,
+    pub count: u64,
+}
+
+/// Triple key: (headword, pattern, collocate) → scores.
+pub type CollocationCounts = HashMap<(String, PatternCode, String), ScoreEntry>;
 
 /// Compute PMI: log2(P(w0,w1) / (P(w0) * P(w1)))
 ///   = log2(bigram_count * total_bigrams / (unigram_w0 * unigram_w1))
@@ -680,9 +692,10 @@ pub fn pass2_classify(
                     let (headword, collocate) = headword_collocate(pat, w0, w1);
                     let entry = counts
                         .entry((headword.to_string(), *pat, collocate.to_string()))
-                        .or_insert(0.0);
-                    if score > *entry {
-                        *entry = score;
+                        .or_insert(ScoreEntry { pmi: 0.0, count: 0 });
+                    if score > entry.pmi {
+                        entry.pmi = score;
+                        entry.count = raw_count;
                     }
                 }
             }
@@ -738,9 +751,6 @@ pub fn pass2_classify(
     // Build lookup: which pairs are we looking for? (owned keys for easy lookup)
     let spacy_pair_set: HashSet<(String, String)> =
         spacy_needed.iter().map(|(pair, _)| (pair.0.clone(), pair.1.clone())).collect();
-    let spacy_pair_counts: HashMap<(String, String), u64> =
-        spacy_needed.iter().map(|(pair, count)| ((pair.0.clone(), pair.1.clone()), *count)).collect();
-
     // Collect all unique example sentences across all spaCy-needed pairs
     let mut unique_sentences: Vec<String> = Vec::new();
     let mut seen_sentences: HashSet<String> = HashSet::new();
@@ -861,17 +871,18 @@ pub fn pass2_classify(
         }
         spacy_classified += 1;
         let (w0, w1) = pair;
-        let raw_count = spacy_pair_counts.get(pair).copied().unwrap_or(0);
         let uw0 = pass1.unigram_counts.get(w0.as_str()).copied().unwrap_or(0);
         let uw1 = pass1.unigram_counts.get(w1.as_str()).copied().unwrap_or(0);
-        let score = pmi(raw_count, uw0, uw1, pass1.total_bigrams);
-        for (pat, _) in votes {
+        for (pat, &vote_count) in votes {
+            let freq = vote_count as u64;
+            let score = pmi(freq, uw0, uw1, pass1.total_bigrams);
             let (headword, collocate) = headword_collocate(pat, w0, w1);
             let entry = counts
                 .entry((headword.to_string(), *pat, collocate.to_string()))
-                .or_insert(0.0);
-            if score > *entry {
-                *entry = score;
+                .or_insert(ScoreEntry { pmi: 0.0, count: 0 });
+            if score > entry.pmi {
+                entry.pmi = score;
+                entry.count = freq;
             }
         }
     }
@@ -916,7 +927,7 @@ pub fn serialize_shards(
     output_dir: &Path,
     word_list: &[String],
     counts: &CollocationCounts,
-    definitions: &HashMap<String, HashMap<DictPOS, String>>,
+    definitions: &HashMap<String, HashMap<DictPOS, Vec<String>>>,
     top_n: usize,
 ) {
     fs::create_dir_all(output_dir).expect("failed to create output directory");
@@ -939,12 +950,12 @@ pub fn serialize_shards(
         eprintln!("Wrote {} words to {}", word_list.len(), words_path.display());
     }
 
-    // Group by (headword, headword_pos): → pattern → Vec<(collocate, pmi_score)>
-    let mut by_headword_pos: HashMap<(&str, DictPOS), HashMap<PatternCode, Vec<(&str, f64)>>> =
+    // Group by (headword, headword_pos): → pattern → Vec<(collocate, pmi_score, count)>
+    let mut by_headword_pos: HashMap<(&str, DictPOS), HashMap<PatternCode, Vec<(&str, f64, u64)>>> =
         HashMap::new();
 
-    for ((headword, pattern, collocate), &score) in counts {
-        if score <= 0.0 {
+    for ((headword, pattern, collocate), entry) in counts {
+        if entry.pmi <= 0.0 {
             continue;
         }
         let hw_pos = pattern.headword_pos();
@@ -953,15 +964,7 @@ pub fn serialize_shards(
             .or_default()
             .entry(*pattern)
             .or_default()
-            .push((collocate.as_str(), score));
-    }
-
-    // Sort collocates within each pattern by PMI descending, take top_n
-    for patterns in by_headword_pos.values_mut() {
-        for entries in patterns.values_mut() {
-            entries.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
-            entries.truncate(top_n);
-        }
+            .push((collocate.as_str(), entry.pmi, entry.count));
     }
 
     // Group headword entries by shard prefix (first 2 chars)
@@ -973,17 +976,29 @@ pub fn serialize_shards(
         }
     }
 
+    // Helper: serialize a list of entries
+    let write_entries = |writer: &mut BufWriter<File>, entries: &[(&str, f64, u64)], word_to_id: &HashMap<&str, usize>| {
+        for (j, (collocate, pmi_score, count)) in entries.iter().enumerate() {
+            if j > 0 {
+                write!(writer, ";").unwrap();
+            }
+            let col_id = word_to_id.get(collocate).copied().unwrap_or(0);
+            let pmi_int = (pmi_score * 10.0).round() as i64;
+            write!(writer, "{},{},{}", base36(col_id), pmi_int, count).unwrap();
+        }
+    };
+
     // Write .dat files
     let mut shard_count = 0;
     let mut total_lines = 0;
-    for (prefix, mut entries) in shards {
+    for (prefix, mut shard_entries) in shards {
         // Sort by (word, pos_order) for deterministic output
-        entries.sort_by(|a, b| a.0.cmp(b.0).then_with(|| pos_order(a.1).cmp(&pos_order(b.1))));
+        shard_entries.sort_by(|a, b| a.0.cmp(b.0).then_with(|| pos_order(a.1).cmp(&pos_order(b.1))));
         let dat_path = output_dir.join(format!("{}.dat", prefix));
         let file = File::create(&dat_path).expect("failed to create .dat file");
         let mut writer = BufWriter::new(file);
 
-        for &(headword, hw_pos) in &entries {
+        for &(headword, hw_pos) in &shard_entries {
             let word_id = match word_to_id.get(headword) {
                 Some(&id) => id,
                 None => continue,
@@ -995,7 +1010,7 @@ pub fn serialize_shards(
                     // Fallback: try any definition for this word
                     definitions.get(headword).and_then(|pos_defs| pos_defs.values().next())
                 })
-                .map(|d| truncate_definition(d, 80))
+                .map(|defs| clean_definitions(defs))
                 .unwrap_or_default();
 
             // Header: id|pos|definition
@@ -1014,20 +1029,25 @@ pub fn serialize_shards(
             pattern_codes.sort_by_key(|p| p.order());
 
             for pat in pattern_codes {
-                let entries = &patterns[&pat];
-                if entries.is_empty() {
+                let all = &patterns[&pat];
+                if all.is_empty() {
                     continue;
                 }
+
+                // Top N by PMI
+                let mut by_pmi = all.clone();
+                by_pmi.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
+                by_pmi.truncate(top_n);
+
+                // Top N by count
+                let mut by_count = all.clone();
+                by_count.sort_by(|a, b| b.2.cmp(&a.2));
+                by_count.truncate(top_n);
+
                 write!(writer, "\t{}:", pat.code_char()).unwrap();
-                for (j, (collocate, score)) in entries.iter().enumerate() {
-                    if j > 0 {
-                        write!(writer, ";").unwrap();
-                    }
-                    let col_id = word_to_id.get(collocate).copied().unwrap_or(0);
-                    // FORMAT.md: score × 10, stored as integer
-                    let score_int = (score * 10.0).round() as i64;
-                    write!(writer, "{},{}", base36(col_id), score_int).unwrap();
-                }
+                write_entries(&mut writer, &by_pmi, &word_to_id);
+                write!(writer, "~").unwrap();
+                write_entries(&mut writer, &by_count, &word_to_id);
             }
 
             writeln!(writer).unwrap();
@@ -1043,16 +1063,10 @@ pub fn serialize_shards(
     );
 }
 
-/// Truncate a definition to at most `max_len` characters, breaking at word boundary.
-fn truncate_definition(def: &str, max_len: usize) -> String {
-    // Collapse whitespace first
-    let clean: String = def.split_whitespace().collect::<Vec<_>>().join(" ");
-    if clean.len() <= max_len {
-        return clean;
-    }
-    let truncated = &clean[..max_len];
-    match truncated.rfind(' ') {
-        Some(pos) => format!("{}...", &truncated[..pos]),
-        None => format!("{}...", truncated),
-    }
+/// Join multiple definitions with " ; ", collapsing whitespace within each.
+fn clean_definitions(defs: &[String]) -> String {
+    defs.iter()
+        .map(|d| d.split_whitespace().collect::<Vec<_>>().join(" "))
+        .collect::<Vec<_>>()
+        .join(" ; ")
 }
