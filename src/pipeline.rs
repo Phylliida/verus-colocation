@@ -624,6 +624,7 @@ pub fn pass1_count_bigrams(
         bigram_counts: str_bigram_counts,
         unigram_counts: str_unigram_counts,
         total_bigrams,
+        total_books,
     }
 }
 
@@ -913,9 +914,13 @@ pub fn pass2_classify(
             // Progress with ETA
             let elapsed = tag_start.elapsed().as_secs_f64();
             let rate = total_books as f64 / elapsed;
+            let remaining_books = pass1.total_books.saturating_sub(total_books);
+            let eta = remaining_books as f64 / rate;
+            let pct = 100.0 * total_books as f64 / pass1.total_books as f64;
             eprint!(
-                "\r  Pass 2 streaming: {} books | {} sentences tagged | {:.0} books/s | {}\x1b[K",
-                total_books, total_sentences_tagged, rate, fmt_duration(elapsed),
+                "\r  Pass 2: {}/{} ({:.0}%) | {} sent tagged | {:.0} books/s | ETA {}\x1b[K",
+                total_books, pass1.total_books, pct,
+                total_sentences_tagged, rate, fmt_duration(eta),
             );
 
             if remaining == Some(batch_len) {
