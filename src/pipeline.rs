@@ -525,6 +525,88 @@ fn read_batch(reader: &mut impl BufRead, batch_size: usize) -> Vec<GutenbergReco
 
 const BATCH_SIZE: usize = 1000;
 
+/// Pre-scan corpus to count unigram word frequencies (for `--all-words`).
+///
+/// Streams corpus in batches, counts normalized words (excluding stopwords)
+/// using `par_iter`, merges into a running `HashMap<String, u64>`.
+pub fn prescan_word_frequencies(
+    corpus_paths: &[PathBuf],
+    stopwords: &HashSet<String>,
+    max_books: Option<usize>,
+) -> HashMap<String, u64> {
+    let mut freq: HashMap<String, u64> = HashMap::new();
+    let mut total_books: usize = 0;
+    let start = std::time::Instant::now();
+
+    for corpus_path in corpus_paths {
+        eprintln!("Pre-scan: reading {}...", corpus_path.display());
+        let file = File::open(corpus_path)
+            .unwrap_or_else(|e| panic!("failed to open {}: {}", corpus_path.display(), e));
+        let decoder = flate2::read::GzDecoder::new(file);
+        let mut reader = BufReader::new(decoder);
+
+        loop {
+            let remaining = max_books.map(|m| m.saturating_sub(total_books));
+            if remaining == Some(0) {
+                break;
+            }
+            let this_batch_size = remaining.map(|r| r.min(BATCH_SIZE)).unwrap_or(BATCH_SIZE);
+
+            let batch = read_batch(&mut reader, this_batch_size);
+            if batch.is_empty() {
+                break;
+            }
+            let batch_len = batch.len();
+
+            // Count words per book in parallel
+            let book_freqs: Vec<HashMap<String, u64>> = batch
+                .par_iter()
+                .map(|record| {
+                    let mut local: HashMap<String, u64> = HashMap::new();
+                    for word in record.text.split_whitespace() {
+                        if let Some(norm) = normalize_token(word) {
+                            if !stopwords.contains(&norm) {
+                                *local.entry(norm).or_insert(0) += 1;
+                            }
+                        }
+                    }
+                    local
+                })
+                .collect();
+
+            // Merge into running totals
+            for bf in book_freqs {
+                for (word, count) in bf {
+                    *freq.entry(word).or_insert(0) += count;
+                }
+            }
+
+            total_books += batch_len;
+            let elapsed = start.elapsed().as_secs_f64();
+            let rate = total_books as f64 / elapsed;
+            eprint!(
+                "\r  Pre-scan: {} books | {:.0} books/s | {}\x1b[K",
+                total_books, rate, fmt_duration(elapsed),
+            );
+
+            if remaining == Some(batch_len) {
+                break;
+            }
+        }
+
+        if max_books.map(|m| total_books >= m).unwrap_or(false) {
+            break;
+        }
+    }
+    eprintln!();
+    eprintln!(
+        "Pre-scan: {} unique words from {} books",
+        freq.len(),
+        total_books,
+    );
+    freq
+}
+
 /// Pass 1: streaming parallel corpus processing with interned word IDs.
 ///
 /// Reads corpus in batches of 1000 books, processes each batch in parallel,

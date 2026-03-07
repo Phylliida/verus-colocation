@@ -21,7 +21,7 @@
 //!       --corpus data/ \
 //!       --output output-data/
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 
 use verus_colocation::pipeline;
@@ -51,6 +51,8 @@ struct Args {
     min_count: u64,
     max_examples: usize,
     backend: String,
+    all_words: bool,
+    min_word_count: u64,
 }
 
 /// Resolve `--corpus` path: if it's a directory, collect all `*.json.gz` files
@@ -93,6 +95,8 @@ fn parse_args() -> Args {
     let mut min_count = 3u64;
     let mut max_examples = 5usize;
     let mut backend = default_backend().to_string();
+    let mut all_words = false;
+    let mut min_word_count = 20u64;
 
     while let Some(arg) = args.next() {
         match arg.as_str() {
@@ -126,6 +130,15 @@ fn parse_args() -> Args {
                     std::process::exit(1);
                 });
             }
+            "--all-words" => {
+                all_words = true;
+            }
+            "--min-word-count" => {
+                min_word_count = args
+                    .next()
+                    .and_then(|s| s.parse().ok())
+                    .unwrap_or(min_word_count);
+            }
             "--help" | "-h" => {
                 eprintln!("Usage: generate --dictionary <path> --corpus <path|dir> --output <dir>");
                 eprintln!("  --dictionary    Path to dictionary.csv");
@@ -136,6 +149,8 @@ fn parse_args() -> Args {
                 eprintln!("  --min-count N   Minimum bigram count threshold (default: 3)");
                 eprintln!("  --max-examples N  Example sentences to store per bigram (default: 5)");
                 eprintln!("  --backend       POS tagger backend: spacy (default) or rust");
+                eprintln!("  --all-words     Include frequent corpus words not in dictionary");
+                eprintln!("  --min-word-count N  Min unigram count for --all-words (default: 20)");
                 std::process::exit(0);
             }
             other => {
@@ -155,6 +170,8 @@ fn parse_args() -> Args {
         min_count,
         max_examples,
         backend,
+        all_words,
+        min_word_count,
     }
 }
 
@@ -202,11 +219,11 @@ fn main() {
 
     // 1. Parse dictionary
     eprintln!("Parsing dictionary: {}", args.dictionary.display());
-    let dict = pipeline::parse_dictionary(&args.dictionary);
+    let mut dict = pipeline::parse_dictionary(&args.dictionary);
     eprintln!("Dictionary: {} unique words", dict.words.len());
 
     // Build word → index mapping for pass 1
-    let dict_words: HashMap<String, usize> = dict
+    let mut dict_words: HashMap<String, usize> = dict
         .words
         .iter()
         .enumerate()
@@ -217,6 +234,44 @@ fn main() {
     let stopwords_path = args.dictionary.parent().unwrap_or(Path::new(".")).join("stopwords.txt");
     let stopwords = pipeline::load_stopwords(&stopwords_path);
     eprintln!("Stopwords: {} loaded from {}", stopwords.len(), stopwords_path.display());
+
+    // Expand word list with frequent corpus words if --all-words
+    if args.all_words {
+        eprintln!("\n=== Pre-scan: counting corpus word frequencies ===");
+        let corpus_freq = pipeline::prescan_word_frequencies(
+            &args.corpus_files,
+            &stopwords,
+            args.max_books,
+        );
+
+        let existing: HashSet<String> = dict.words.iter().cloned().collect();
+        let mut added = 0usize;
+        for (word, count) in &corpus_freq {
+            if *count >= args.min_word_count
+                && !existing.contains(word)
+                && word.chars().all(|c| c.is_ascii_alphabetic())
+            {
+                dict.words.push(word.clone());
+                added += 1;
+            }
+        }
+
+        dict.words.sort();
+        // Rebuild word → index mapping
+        dict_words = dict
+            .words
+            .iter()
+            .enumerate()
+            .map(|(i, w)| (w.clone(), i))
+            .collect();
+
+        eprintln!(
+            "Added {} corpus words (min count {}) → {} total words",
+            added,
+            args.min_word_count,
+            dict.words.len(),
+        );
+    }
 
     // 2. Pass 1: count raw bigrams (fast, no tagger)
     eprintln!("\n=== Pass 1: counting bigrams ===");
