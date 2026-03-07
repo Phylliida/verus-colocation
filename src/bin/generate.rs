@@ -235,18 +235,22 @@ fn main() {
     let stopwords = pipeline::load_stopwords(&stopwords_path);
     eprintln!("Stopwords: {} loaded from {}", stopwords.len(), stopwords_path.display());
 
-    // Expand word list with frequent corpus words if --all-words
+    // 2. Pass 1: count raw bigrams
+    let pass1;
     if args.all_words {
-        eprintln!("\n=== Pre-scan: counting corpus word frequencies ===");
-        let corpus_freq = pipeline::prescan_word_frequencies(
+        // All-words mode: count ALL bigrams + word frequencies in one pass.
+        // This replaces the separate prescan + dict-filtered pass1 (saves one corpus read).
+        eprintln!("\n=== Pass 1 (all-words): counting all bigrams + word frequencies ===");
+        let mut all_result = pipeline::pass1_count_all(
             &args.corpus_files,
             &stopwords,
             args.max_books,
         );
 
+        // Expand dict using word frequencies
         let existing: HashSet<String> = dict.words.iter().cloned().collect();
         let mut added = 0usize;
-        for (word, count) in &corpus_freq {
+        for (word, count) in &all_result.unigram_counts {
             if *count >= args.min_word_count
                 && !existing.contains(word)
                 && word.chars().all(|c| c.is_ascii_alphabetic())
@@ -257,7 +261,6 @@ fn main() {
         }
 
         dict.words.sort();
-        // Rebuild word → index mapping
         dict_words = dict
             .words
             .iter()
@@ -265,22 +268,29 @@ fn main() {
             .map(|(i, w)| (w.clone(), i))
             .collect();
 
+        // Filter bigrams/unigrams to keep only expanded-dict words
+        all_result.bigram_counts.retain(|(w0, w1), _| {
+            dict_words.contains_key(w0) && dict_words.contains_key(w1)
+        });
+        all_result.unigram_counts.retain(|w, _| dict_words.contains_key(w));
+
         eprintln!(
-            "Added {} corpus words (min count {}) → {} total words",
+            "Added {} corpus words (min count {}) → {} total words, {} bigrams retained",
             added,
             args.min_word_count,
             dict.words.len(),
+            all_result.bigram_counts.len(),
+        );
+        pass1 = all_result;
+    } else {
+        eprintln!("\n=== Pass 1: counting bigrams ===");
+        pass1 = pipeline::pass1_count_bigrams(
+            &args.corpus_files,
+            &dict_words,
+            &stopwords,
+            args.max_books,
         );
     }
-
-    // 2. Pass 1: count raw bigrams (fast, no tagger)
-    eprintln!("\n=== Pass 1: counting bigrams ===");
-    let pass1 = pipeline::pass1_count_bigrams(
-        &args.corpus_files,
-        &dict_words,
-        &stopwords,
-        args.max_books,
-    );
 
     // 3. Pass 2: classify patterns (dict POS fast path + tagger fallback)
     eprintln!("\n=== Pass 2: classifying patterns ===");

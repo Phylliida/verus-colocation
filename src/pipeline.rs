@@ -338,6 +338,22 @@ fn any_pattern_possible(
     false
 }
 
+/// Classify a bigram using tagger-resolved POS (from the tagger's known-word
+/// lookup table). Returns patterns if both POS values map to a valid combo.
+fn classify_from_tagger_pos(p0: POS, p1: POS) -> Vec<PatternCode> {
+    match (p0, p1) {
+        (POS::Adj, POS::Noun) => vec![PatternCode::AdjNoun, PatternCode::AdjObject],
+        (POS::Verb, POS::Noun) => vec![PatternCode::VerbNoun, PatternCode::VerbObject],
+        (POS::Noun, POS::Verb) => vec![PatternCode::NounVerb, PatternCode::SubjVerb],
+        (POS::Prep, POS::Noun) => vec![PatternCode::PrepNoun],
+        (POS::Noun, POS::Noun) => vec![PatternCode::NounNoun, PatternCode::PrepNoun],
+        (POS::Adv, POS::Verb) => vec![PatternCode::AdvVerb],
+        (POS::Verb, POS::Adv) => vec![PatternCode::VerbAdv],
+        (POS::Adv, POS::Adj) => vec![PatternCode::AdvAdj],
+        _ => vec![],
+    }
+}
+
 // ---------------------------------------------------------------------------
 // Cheap tokenizer for Pass 1
 // ---------------------------------------------------------------------------
@@ -486,8 +502,8 @@ fn extract_sentences(
         for i in 0..token_ids.len().saturating_sub(1) {
             if let (Some(id0), Some(id1)) = (token_ids[i], token_ids[i + 1]) {
                 if target_pairs.contains(&(id0, id1)) {
-                    let start = i.saturating_sub(3);
-                    let end = (i + 5).min(raw_words.len());
+                    let start = i.saturating_sub(2);
+                    let end = (i + 4).min(raw_words.len());
                     sentences.push(raw_words[start..end].join(" "));
                 }
             }
@@ -711,6 +727,136 @@ pub fn pass1_count_bigrams(
 }
 
 // ---------------------------------------------------------------------------
+// Pass 1 (all-words mode): count ALL bigrams without interner filtering.
+// Trades memory for one fewer corpus read when --all-words is used.
+// ---------------------------------------------------------------------------
+
+/// Per-book accumulator using String keys (no interner filtering).
+struct BookCountsAll {
+    bigrams: HashMap<(String, String), u64>,
+    unigrams: HashMap<String, u64>,
+    total_bigrams: u64,
+}
+
+/// Process a single book's text counting ALL non-stopword bigrams and unigrams.
+fn process_book_all(text: &str, stopwords: &HashSet<String>) -> BookCountsAll {
+    let mut bigrams: HashMap<(String, String), u64> = HashMap::new();
+    let mut unigrams: HashMap<String, u64> = HashMap::new();
+    let mut total_bigrams: u64 = 0;
+
+    for sentence in text.split(|c: char| c == '.' || c == '!' || c == '?') {
+        let tokens: Vec<Option<String>> = sentence
+            .split_whitespace()
+            .map(|w| normalize_token(w).filter(|n| !stopwords.contains(n)))
+            .collect();
+
+        // Count all unigrams
+        for tok in &tokens {
+            if let Some(ref w) = tok {
+                *unigrams.entry(w.clone()).or_insert(0) += 1;
+            }
+        }
+
+        // Count adjacent bigrams
+        for i in 0..tokens.len().saturating_sub(1) {
+            if let (Some(ref w0), Some(ref w1)) = (&tokens[i], &tokens[i + 1]) {
+                *bigrams.entry((w0.clone(), w1.clone())).or_insert(0) += 1;
+                total_bigrams += 1;
+            }
+        }
+    }
+
+    BookCountsAll { bigrams, unigrams, total_bigrams }
+}
+
+/// Pass 1 (all-words mode): count ALL non-stopword bigrams and unigrams.
+///
+/// Unlike `pass1_count_bigrams`, this does NOT filter by dictionary words.
+/// The caller should filter the results after expanding the dictionary.
+/// This avoids a separate prescan step, saving one full corpus read.
+pub fn pass1_count_all(
+    corpus_paths: &[PathBuf],
+    stopwords: &HashSet<String>,
+    max_books: Option<usize>,
+) -> Pass1Result {
+    let mut bigram_counts: HashMap<(String, String), u64> = HashMap::new();
+    let mut unigram_counts: HashMap<String, u64> = HashMap::new();
+    let mut total_bigrams: u64 = 0;
+    let mut total_books: usize = 0;
+    let start = std::time::Instant::now();
+
+    for corpus_path in corpus_paths {
+        eprintln!("Reading {}...", corpus_path.display());
+        let file = File::open(corpus_path)
+            .unwrap_or_else(|e| panic!("failed to open {}: {}", corpus_path.display(), e));
+        let decoder = flate2::read::GzDecoder::new(file);
+        let mut reader = BufReader::new(decoder);
+
+        loop {
+            let remaining = max_books.map(|m| m.saturating_sub(total_books));
+            if remaining == Some(0) {
+                eprintln!("Reached --max-books limit ({})", max_books.unwrap());
+                break;
+            }
+            let this_batch_size = remaining.map(|r| r.min(BATCH_SIZE)).unwrap_or(BATCH_SIZE);
+
+            let batch = read_batch(&mut reader, this_batch_size);
+            if batch.is_empty() {
+                break;
+            }
+            let batch_len = batch.len();
+
+            // Process batch in parallel
+            let book_results: Vec<BookCountsAll> = batch
+                .par_iter()
+                .map(|record| process_book_all(&record.text, stopwords))
+                .collect();
+
+            // Merge into running totals
+            for bc in book_results {
+                total_bigrams += bc.total_bigrams;
+                for (key, count) in bc.bigrams {
+                    *bigram_counts.entry(key).or_insert(0) += count;
+                }
+                for (word, count) in bc.unigrams {
+                    *unigram_counts.entry(word).or_insert(0) += count;
+                }
+            }
+
+            total_books += batch_len;
+            let elapsed = start.elapsed().as_secs_f64();
+            let rate = total_books as f64 / elapsed;
+            eprint!(
+                "\r  Pass 1 (all): {} books | {:.0} books/s | {} | {} bigrams, {} words\x1b[K",
+                total_books, rate, fmt_duration(elapsed),
+                bigram_counts.len(), unigram_counts.len(),
+            );
+
+            if remaining == Some(batch_len) {
+                eprintln!("\nReached --max-books limit ({})", max_books.unwrap());
+                break;
+            }
+        }
+
+        if max_books.map(|m| total_books >= m).unwrap_or(false) {
+            break;
+        }
+    }
+    eprintln!(); // newline after progress
+
+    eprintln!(
+        "Pass 1 (all): {} books, {} unique bigrams, {} total bigrams, {} unique words",
+        total_books, bigram_counts.len(), total_bigrams, unigram_counts.len(),
+    );
+    Pass1Result {
+        bigram_counts,
+        unigram_counts,
+        total_bigrams,
+        total_books,
+    }
+}
+
+// ---------------------------------------------------------------------------
 // Pass 2: POS-tag candidates to classify patterns
 // ---------------------------------------------------------------------------
 
@@ -799,10 +945,12 @@ pub fn pass2_classify(
         }
     }
 
-    // Pre-classify: resolve dict-only pairs upfront, collect spaCy-needed pairs
+    // Pre-classify: resolve dict-only pairs upfront, then try tagger lookup,
+    // and collect remaining pairs that need full tagging.
     let mut counts: CollocationCounts = HashMap::new();
     let mut spacy_needed: Vec<(&(String, String), u64)> = Vec::new();
     let mut dict_classified = 0usize;
+    let mut tagger_classified = 0usize;
     let mut dict_skipped = 0usize;
 
     for (&pair, &raw_count) in &selected {
@@ -813,7 +961,7 @@ pub fn pass2_classify(
                 dict_skipped += 1;
             }
             Some(pats) => {
-                // Both unambiguous, classified without spaCy
+                // Both unambiguous, classified without tagger
                 dict_classified += 1;
                 let uw0 = pass1.unigram_counts.get(w0).copied().unwrap_or(0);
                 let uw1 = pass1.unigram_counts.get(w1).copied().unwrap_or(0);
@@ -830,8 +978,28 @@ pub fn pass2_classify(
                 }
             }
             None => {
-                // Ambiguous or missing POS — check if any combo could work
-                if any_pattern_possible(w0, w1, pos_sets) {
+                // Try tagger's known-word lookup before falling through to full tagging
+                if let (Some(p0), Some(p1)) = (tagger.lookup_pos(w0), tagger.lookup_pos(w1)) {
+                    let pats = classify_from_tagger_pos(p0, p1);
+                    if pats.is_empty() {
+                        dict_skipped += 1;
+                    } else {
+                        tagger_classified += 1;
+                        let uw0 = pass1.unigram_counts.get(w0).copied().unwrap_or(0);
+                        let uw1 = pass1.unigram_counts.get(w1).copied().unwrap_or(0);
+                        let score = pmi(raw_count, uw0, uw1, pass1.total_bigrams);
+                        for pat in &pats {
+                            let (headword, collocate) = headword_collocate(pat, w0, w1);
+                            let entry = counts
+                                .entry((headword.to_string(), *pat, collocate.to_string()))
+                                .or_insert(ScoreEntry { pmi: 0.0, count: 0 });
+                            if score > entry.pmi {
+                                entry.pmi = score;
+                                entry.count = raw_count;
+                            }
+                        }
+                    }
+                } else if any_pattern_possible(w0, w1, pos_sets) {
                     spacy_needed.push((pair, raw_count));
                 } else {
                     dict_skipped += 1;
@@ -842,8 +1010,8 @@ pub fn pass2_classify(
     spacy_needed.sort_by(|a, b| b.1.cmp(&a.1));
 
     eprintln!(
-        "Pass 2: {} total candidates — {} dict-classified, {} dict-skipped, {} need spaCy",
-        selected.len(), dict_classified, dict_skipped, spacy_needed.len()
+        "Pass 2: {} total — {} dict, {} tagger-lookup, {} skipped, {} need tagging",
+        selected.len(), dict_classified, tagger_classified, dict_skipped, spacy_needed.len()
     );
 
     // Dump spaCy-needed pairs with reason for debugging
@@ -1051,8 +1219,9 @@ pub fn pass2_classify(
     spacy_skipped += total - pair_votes.len();
 
     eprintln!(
-        "Pass 2 done: {} dict + {} spaCy classified, {} skipped → {} triples",
-        dict_classified, spacy_classified, dict_skipped + spacy_skipped, counts.len()
+        "Pass 2 done: {} dict + {} tagger-lookup + {} tagged, {} skipped → {} triples",
+        dict_classified, tagger_classified, spacy_classified,
+        dict_skipped + spacy_skipped, counts.len()
     );
     counts
 }

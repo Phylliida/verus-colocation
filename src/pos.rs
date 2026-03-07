@@ -29,4 +29,10 @@ pub trait Tagger {
         texts: &[&str],
         batch_size: usize,
     ) -> Result<Vec<Vec<TaggedToken>>, Box<dyn std::error::Error>>;
+
+    /// Look up POS for a known word without running the full tagger.
+    /// Returns None if the word is unknown and requires model prediction.
+    fn lookup_pos(&self, _word: &str) -> Option<POS> {
+        None
+    }
 }

@@ -5,6 +5,7 @@
 //!
 //! Enable with `cargo build --features postagger-backend`.
 
+use rayon::prelude::*;
 use crate::pos::{Tagger, TaggedToken, POS};
 
 /// Map Penn Treebank tags (output by `postagger`) to our `POS` enum.
@@ -44,18 +45,23 @@ impl Tagger for RustTagger {
         texts: &[&str],
         _batch_size: usize,
     ) -> Result<Vec<Vec<TaggedToken>>, Box<dyn std::error::Error>> {
-        let mut results = Vec::with_capacity(texts.len());
-        for &text in texts {
-            let tags = self.inner.tag(text);
-            let tokens: Vec<TaggedToken> = tags
-                .into_iter()
-                .map(|t| TaggedToken {
-                    word: t.word.to_string(),
-                    pos: map_penn(&t.tag),
-                })
-                .collect();
-            results.push(tokens);
-        }
+        let results: Vec<Vec<TaggedToken>> = texts
+            .par_iter()
+            .map(|&text| {
+                self.inner
+                    .tag(text)
+                    .into_iter()
+                    .map(|t| TaggedToken {
+                        word: t.word.to_string(),
+                        pos: map_penn(&t.tag),
+                    })
+                    .collect()
+            })
+            .collect();
         Ok(results)
+    }
+
+    fn lookup_pos(&self, word: &str) -> Option<POS> {
+        self.inner.lookup_tag(word).map(map_penn)
     }
 }
