@@ -1,7 +1,7 @@
 //! CLI binary for generating collocation data files.
 //!
 //! Two-pass pipeline:
-//!   Pass 1: fast bigram counting (no spaCy)
+//!   Pass 1: fast bigram counting (no POS tagger)
 //!   Pass 2: POS-tag top candidates to classify patterns
 //!
 //! Usage:
@@ -12,12 +12,33 @@
 //!       --max-books 100 \
 //!       --top-n 10 \
 //!       --min-count 3
+//!
+//!   cargo run --features postagger-backend --bin generate -- \
+//!       --backend rust \
+//!       --dictionary dictionary.csv \
+//!       --corpus data/project_gutenberg-dolma-0000.json.gz \
+//!       --output output-data/
 
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
 use verus_colocation::pipeline;
-use verus_colocation::tagger::SpacyTagger;
+use verus_colocation::pos::Tagger;
+
+/// Pick the default backend based on which features are compiled in.
+fn default_backend() -> &'static str {
+    #[cfg(feature = "tagger")]
+    { return "spacy"; }
+
+    #[cfg(feature = "postagger-backend")]
+    { return "rust"; }
+
+    #[allow(unreachable_code)]
+    {
+        eprintln!("error: no tagger backend available; enable `tagger` or `postagger-backend`");
+        std::process::exit(1);
+    }
+}
 
 struct Args {
     dictionary: PathBuf,
@@ -27,6 +48,7 @@ struct Args {
     top_n: usize,
     min_count: u64,
     max_examples: usize,
+    backend: String,
 }
 
 fn parse_args() -> Args {
@@ -38,6 +60,7 @@ fn parse_args() -> Args {
     let mut top_n = 10usize;
     let mut min_count = 3u64;
     let mut max_examples = 5usize;
+    let mut backend = default_backend().to_string();
 
     while let Some(arg) = args.next() {
         match arg.as_str() {
@@ -65,6 +88,12 @@ fn parse_args() -> Args {
                     .and_then(|s| s.parse().ok())
                     .unwrap_or(max_examples);
             }
+            "--backend" => {
+                backend = args.next().unwrap_or_else(|| {
+                    eprintln!("--backend requires a value (spacy or rust)");
+                    std::process::exit(1);
+                });
+            }
             "--help" | "-h" => {
                 eprintln!("Usage: generate --dictionary <path> --corpus <path> --output <dir>");
                 eprintln!("  --dictionary    Path to dictionary.csv");
@@ -74,6 +103,7 @@ fn parse_args() -> Args {
                 eprintln!("  --top-n N       Keep top N collocates per pattern (default: 10)");
                 eprintln!("  --min-count N   Minimum bigram count threshold (default: 3)");
                 eprintln!("  --max-examples N  Example sentences to store per bigram (default: 5)");
+                eprintln!("  --backend       POS tagger backend: spacy (default) or rust");
                 std::process::exit(0);
             }
             other => {
@@ -91,6 +121,46 @@ fn parse_args() -> Args {
         top_n,
         min_count,
         max_examples,
+        backend,
+    }
+}
+
+/// Instantiate the requested tagger backend.
+fn make_tagger(backend: &str) -> Box<dyn Tagger> {
+    match backend {
+        #[cfg(feature = "tagger")]
+        "spacy" => {
+            eprintln!("Loading spaCy model...");
+            let t = verus_colocation::tagger::SpacyTagger::new("en_core_web_sm")
+                .expect("failed to load en_core_web_sm");
+            Box::new(t)
+        }
+        #[cfg(not(feature = "tagger"))]
+        "spacy" => {
+            eprintln!("error: spacy backend requires the `tagger` feature");
+            eprintln!("  cargo run --features tagger --bin generate -- ...");
+            std::process::exit(1);
+        }
+        #[cfg(feature = "postagger-backend")]
+        "rust" => {
+            eprintln!("Loading Rust postagger model...");
+            let t = verus_colocation::postagger_backend::RustTagger::new(
+                "tagger-data/weights.json",
+                "tagger-data/classes.txt",
+                "tagger-data/tags.json",
+            );
+            Box::new(t)
+        }
+        #[cfg(not(feature = "postagger-backend"))]
+        "rust" => {
+            eprintln!("error: rust backend requires the `postagger-backend` feature");
+            eprintln!("  cargo run --features postagger-backend --bin generate -- ...");
+            std::process::exit(1);
+        }
+        other => {
+            eprintln!("Unknown backend: {} (expected 'spacy' or 'rust')", other);
+            std::process::exit(1);
+        }
     }
 }
 
@@ -115,7 +185,7 @@ fn main() {
     let stopwords = pipeline::load_stopwords(&stopwords_path);
     eprintln!("Stopwords: {} loaded from {}", stopwords.len(), stopwords_path.display());
 
-    // 2. Pass 1: count raw bigrams (fast, no spaCy)
+    // 2. Pass 1: count raw bigrams (fast, no tagger)
     eprintln!("\n=== Pass 1: counting bigrams ===");
     let pass1 = pipeline::pass1_count_bigrams(
         &args.corpus,
@@ -125,16 +195,14 @@ fn main() {
         args.max_examples,
     );
 
-    // 3. Pass 2: classify patterns (dict POS fast path + spaCy fallback)
+    // 3. Pass 2: classify patterns (dict POS fast path + tagger fallback)
     eprintln!("\n=== Pass 2: classifying patterns ===");
-    eprintln!("Loading spaCy model...");
-    let tagger =
-        SpacyTagger::new("en_core_web_sm").expect("failed to load en_core_web_sm");
+    let tagger = make_tagger(&args.backend);
     // top_per_word: classify top bigrams per word (enough for 11 patterns × top_n entries)
     let top_per_word = args.top_n * 20;
     let counts = pipeline::pass2_classify(
         &pass1,
-        &tagger,
+        tagger.as_ref(),
         &dict.pos_sets,
         args.min_count,
         top_per_word,

@@ -1,3 +1,7 @@
-1e2x|n|Soft mud or slime; earth so wet as to flow gently, or easily yield to pressure. ; Soft flow; spring. ; The liquor of a tan vat. ; To flow gently; to percolate, as a liquid through the pores of a substance or through small openings. ; Fig.: To leak (out) or escape slowly; as, the secret oozed out; his courage oozed out.	N:1u88,100,10~1u88,100,10
-1e2z|n|of Ooze	v:1lhg,39,1~1lhg,39,1	n:18cp,8,1~18cp,8,1
-1e2z|v|of Ooze	s:18cp,24,3;rpw,23,6~rpw,23,6;18cp,24,3
+1e2x|n|Soft mud or slime; earth so wet as to flow gently, or easily yield to pressure. ; Soft flow; spring. ; The liquor of a tan vat. ; To flow gently; to percolate, as a liquid through the pores of a substance or through small openings. ; Fig.: To leak (out) or escape slowly; as, the secret oozed out; his courage oozed out.	a:18cp,39,4~18cp,39,4	n:1d2v,37,2;18cp,19,1~1d2v,37,2;18cp,19,1	N:1u88,91,2~1u88,91,2
+1e2x|v|To cause to ooze.	o:18cp,49,8;rpw,36,3~18cp,49,8;rpw,36,3	s:1d2v,27,1~1d2v,27,1	d:2cj,18,6~2cj,18,6
+1e2x|a|Soft mud or slime; earth so wet as to flow gently, or easily yield to pressure. ; Soft flow; spring. ; The liquor of a tan vat. ; To flow gently; to percolate, as a liquid through the pores of a substance or through small openings. ; Fig.: To leak (out) or escape slowly; as, the secret oozed out; his courage oozed out.	j:1u88,116,11;rpw,30,2;18cp,29,2~1u88,116,11;18cp,29,2;rpw,30,2
+1e2y|v|of Ooze	o:18cp,59,3~18cp,59,3
+1e2y|a|of Ooze	j:18cp,43,1~18cp,43,1
+1e2z|n|of Ooze	a:18cp,10,1~18cp,10,1	v:1y44,35,2~1y44,35,2	n:18cp,10,1~18cp,10,1
+1e2z|v|of Ooze	o:18cp,40,8;28lb,11,2~18cp,40,8;28lb,11,2	s:rpw,34,5;18cp,25,3~rpw,34,5;18cp,25,3

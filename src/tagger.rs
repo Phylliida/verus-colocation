@@ -7,20 +7,7 @@
 
 use pyo3::prelude::*;
 
-/// Simplified POS tag matching the verified `colocation::POS` enum.
-///
-/// This is the exec-side mirror.  The mapping to the verified enum happens
-/// at the boundary when feeding tags into `extract_all`.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum POS {
-    Adj,
-    Noun,
-    Verb,
-    Adv,
-    Prep,
-    Det,
-    Other,
-}
+pub use crate::pos::{POS, TaggedToken, Tagger};
 
 /// Map spaCy's Universal POS tag string to our enum.
 fn map_pos(tag: &str) -> POS {
@@ -33,13 +20,6 @@ fn map_pos(tag: &str) -> POS {
         "DET" => POS::Det,
         _ => POS::Other,
     }
-}
-
-/// A tagged token: surface form + POS tag.
-#[derive(Debug, Clone)]
-pub struct TaggedToken {
-    pub word: String,
-    pub pos: POS,
 }
 
 /// Holds a loaded spaCy model across calls.
@@ -90,10 +70,14 @@ impl SpacyTagger {
     pub fn tag_pos_only(&self, text: &str) -> PyResult<Vec<POS>> {
         Ok(self.tag(text)?.into_iter().map(|t| t.pos).collect())
     }
+}
 
-    /// Batch POS-tag multiple texts via `nlp.pipe()`.
-    /// Returns one `Vec<TaggedToken>` per input text, in the same order.
-    pub fn tag_batch(&self, texts: &[&str], batch_size: usize) -> PyResult<Vec<Vec<TaggedToken>>> {
+impl Tagger for SpacyTagger {
+    fn tag_batch(
+        &self,
+        texts: &[&str],
+        batch_size: usize,
+    ) -> Result<Vec<Vec<TaggedToken>>, Box<dyn std::error::Error>> {
         Python::with_gil(|py| {
             let nlp = self.nlp.bind(py);
             let pipe_kwargs = pyo3::types::PyDict::new(py);

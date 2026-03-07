@@ -16,7 +16,7 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 
 use rayon::prelude::*;
 
-use crate::tagger::{SpacyTagger, POS};
+use crate::pos::{Tagger, POS};
 
 // ---------------------------------------------------------------------------
 // Pattern code (FORMAT.md single-character codes)
@@ -637,7 +637,7 @@ fn headword_collocate<'a>(pat: &PatternCode, w0: &'a str, w1: &'a str) -> (&'a s
 /// `top_per_word`: only classify the top N bigrams per word (by count).
 pub fn pass2_classify(
     pass1: &Pass1Result,
-    tagger: &SpacyTagger,
+    tagger: &dyn Tagger,
     pos_sets: &HashMap<String, HashSet<DictPOS>>,
     min_count: u64,
     top_per_word: usize,

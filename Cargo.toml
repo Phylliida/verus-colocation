@@ -6,10 +6,12 @@ edition = "2021"
 [features]
 default = []
 tagger = ["pyo3", "csv", "serde", "serde_json", "flate2", "rayon"]
+postagger-backend = ["dep:postagger", "csv", "serde", "serde_json", "flate2", "rayon"]
 
 [dependencies]
 vstd = { path = "../verus/source/vstd" }
 pyo3 = { version = "0.23", features = ["auto-initialize"], optional = true }
+postagger = { path = "vendor/postagger", optional = true }
 csv = { version = "1", optional = true }
 serde = { version = "1", features = ["derive"], optional = true }
 serde_json = { version = "1", optional = true }

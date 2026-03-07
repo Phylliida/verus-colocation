@@ -1,10 +1,63 @@
-1f2r|n|A place arched over with brick or stonework, and used for baking, heating, or drying; hence, any structure, whether fixed or portable, which may be heated for baking, drying, etc.; esp., now, a chamber in a stove, used for baking or roasting.	n:22je,111,3;9qn,78,2~22je,111,3;9qn,78,2	N:2168,31,3~2168,31,3
-1f2r|v|A place arched over with brick or stonework, and used for baking, heating, or drying; hence, any structure, whether fixed or portable, which may be heated for baking, drying, etc.; esp., now, a chamber in a stove, used for baking or roasting.	s:14if,77,1~14if,77,1
-1f2z|a|Everywhere.	j:1pgf,50,1;1v0x,43,6;1u21,42,3;jba,32,3;1lmq,17,9~1lmq,17,9;1v0x,43,6;jba,32,3;1u21,42,3;1pgf,50,1
-1f63|n|A flowing over, as of water or other fluid; an inundation. ; That which flows over; a superfluous portion; a superabundance. ; An outlet for the escape of surplus liquid.	v:1xbl,38,1~1xbl,38,1	n:1xbl,72,11~1xbl,72,11	N:1njd,38,5~1njd,38,5
-1f7l|n|In a general sense, that which just out or projects; a projection; also, the measure of the projection; as, the overhang is five feet. ; Specifically: The projection of an upper part (as a roof, an upper story, or other part) of a building beyond the lower part; as, the overhang of a roof, of the eaves, etc. ; The portion of the bow or stem of a vessel that projects over the water beyond the water line. ; The projection of a part beyond another part that is directly below it, or beyond a part by which it is supported; as, the overhang of a shaft; i. e., its projection beyond its bearing.	V:28ua,13,4~28ua,13,4	n:ii9,71,5~ii9,71,5	N:1hlu,77,5;33s,75,8~33s,75,8;1hlu,77,5
-1f8u|n|The lapping of one thing over another; as, an overlap of six inches; an overlap of a slate on a roof. ; An extension of geological beds above and beyond others, as in a conformable series of beds, when the upper beds extend over a wider space than the lower, either in one or in all directions.	n:1exc,82,2;1v46,77,4~1v46,77,4;1exc,82,2
-1f8u|v|To lap over; to lap.	s:1exc,72,1;1v46,57,1~1exc,72,1;1v46,57,1
-1fe6|n|To surpass in size. ; To cover with viscid matter.	N:y5h,90,2~y5h,90,2
-1fe6|a|To surpass in size. ; To cover with viscid matter.	j:y5h,80,1~y5h,80,1
-1fh2|n|An inspection or overlooking.	a:vdr,53,4~vdr,53,4
+1f2e|a|Alt. of Ovarial	j:aei,133,4~aei,133,4
+1f2r|n|A place arched over with brick or stonework, and used for baking, heating, or drying; hence, any structure, whether fixed or portable, which may be heated for baking, drying, etc.; esp., now, a chamber in a stove, used for baking or roasting.	a:nd5,97,3;yjq,55,4~yjq,55,4;nd5,97,3	v:1oxb,142,6~1oxb,142,6	n:22je,141,9;14if,103,4;u7i,94,3;9qn,71,1~22je,141,9;14if,103,4;u7i,94,3;9qn,71,1	N:2168,48,4~2168,48,4
+1f2z|n|Everywhere.	n:n3i,15,3;ryc,3,2;h5a,1,1~n3i,15,3;ryc,3,2;h5a,1,1
+1f2z|a|Everywhere.	j:1bv4,46,3;22nv,42,5;1yak,40,6;1pgf,39,1;1isl,37,9;1pc5,37,3;1843,33,7;1u21,32,4;15qy,31,7;1o1k,31,4~1lmq,9,13;1isl,37,9;g8r,2,8;1sp4,27,7;1v0x,25,7;1843,33,7;15qy,31,7;1lx8,4,6;2oo,15,6;1q0a,13,6
+1f3h|n|Over the side of a ship; hence, from on board of a ship, into the water; as, to fall overboard.	a:7wi,39,2~7wi,39,2	v:vb8,42,2;v8y,30,2~v8y,30,2;vb8,42,2	n:7wi,29,1;2881,15,1~2881,15,1;7wi,29,1
+1f3h|a|Over the side of a ship; hence, from on board of a ship, into the water; as, to fall overboard.	e:7wi,29,1~7wi,29,1
+1f4f|n|of Overcome ; To get the better of; to surmount; to conquer; to subdue; as, to overcome enemies in battle. ; To overflow; to surcharge. ; To come or pass over; to spreads over. ; To gain the superiority; to be victorious.	N:28hy,24,1~28hy,24,1
+1f4f|v|of Overcome ; To get the better of; to surmount; to conquer; to subdue; as, to overcome enemies in battle. ; To overflow; to surcharge. ; To come or pass over; to spreads over. ; To gain the superiority; to be victorious.	o:1b3,113,3;r8l,71,3;k0l,71,4;28hy,34,2~k0l,71,4;1b3,113,3;r8l,71,3;28hy,34,2	s:agz,10,1~agz,10,1
+1f4f|a|of Overcome	j:1b3,107,2~1b3,107,2
+1f4h|a|Conquering; subduing.	j:j4v,91,3~j4v,91,3
+1f52|a|of Overdo	j:1xjl,78,1~1xjl,78,1
+1f5d|a|Due and more than due; delayed beyond the proper time of arrival or payment, etc.; as, an overdue vessel; an overdue note.	j:1qab,37,1~1qab,37,1	e:16r0,53,2~16r0,53,2
+1f5l|v|To estimate too highly; to overvalue.	s:1hgk,20,2~1hgk,20,2	d:26rk,102,4;vrj,84,4;1dsp,47,4~1dsp,47,4;vrj,84,4;26rk,102,4
+1f63|n|A flowing over, as of water or other fluid; an inundation. ; That which flows over; a superfluous portion; a superabundance. ; An outlet for the escape of surplus liquid.	v:1xbl,32,2;18db,13,2~18db,13,2;1xbl,32,2	n:1xbl,71,29;18db,19,3~1xbl,71,29;18db,19,3	N:10gv,92,2;1kig,33,4~1kig,33,4;10gv,92,2
+1f63|v|To flow over; to cover woth, or as with, water or other fluid; to spread over; to inundate; to overwhelm. ; To flow over the brim of; to fill more than full. ; To run over the bounds. ; To be superabundant; to abound.	s:1xbl,22,1~1xbl,22,1
+1f63|a|To flow over; to cover woth, or as with, water or other fluid; to spread over; to inundate; to overwhelm. ; To flow over the brim of; to fill more than full. ; To run over the bounds. ; To be superabundant; to abound.	j:10gv,82,1;1njd,12,6~1njd,12,6;10gv,82,1	e:1xbl,42,4;18db,3,1~1xbl,42,4;18db,3,1
+1f7l|n|In a general sense, that which just out or projects; a projection; also, the measure of the projection; as, the overhang is five feet. ; Specifically: The projection of an upper part (as a roof, an upper story, or other part) of a building beyond the lower part; as, the overhang of a roof, of the eaves, etc. ; The portion of the bow or stem of a vessel that projects over the water beyond the water line. ; The projection of a part beyond another part that is directly below it, or beyond a part by which it is supported; as, the overhang of a shaft; i. e., its projection beyond its bearing.	a:18h5,63,4;12l0,40,1;ii9,14,1~18h5,63,4;12l0,40,1;ii9,14,1	v:10au,66,8~10au,66,8	n:ii9,37,5~ii9,37,5	N:1gdd,86,6;33s,85,9;33w,79,2;1hlu,65,8;4ft,46,3;1ne2,45,6;1lpj,28,4~33s,85,9;1hlu,65,8;1ne2,45,6;1gdd,86,6;1lpj,28,4;4ft,46,3;33w,79,2
+1f7l|a|In a general sense, that which just out or projects; a projection; also, the measure of the projection; as, the overhang is five feet. ; Specifically: The projection of an upper part (as a roof, an upper story, or other part) of a building beyond the lower part; as, the overhang of a roof, of the eaves, etc. ; The portion of the bow or stem of a vessel that projects over the water beyond the water line. ; The projection of a part beyond another part that is directly below it, or beyond a part by which it is supported; as, the overhang of a shaft; i. e., its projection beyond its bearing.	j:qsy,49,2~qsy,49,2
+1f7m|n|of Overhang	n:1lmu,39,1~1lmu,39,1
+1f7m|v|of Overhang	o:4ft,80,5~4ft,80,5
+1f7s|n|Alt. of Overhauling	a:e98,89,6~e98,89,6
+1f7v|n|Aloft; above; in or attached to the ceiling or roof; in the story or upon the floor above; in the zenith.	N:1o59,51,5;1ak3,27,2~1o59,51,5;1ak3,27,2
+1f7v|a|Aloft; above; in or attached to the ceiling or roof; in the story or upon the floor above; in the zenith.	j:7q9,100,6;1o59,38,2;1ak3,32,3~7q9,100,6;1ak3,32,3;1o59,38,2
+1f8u|n|The lapping of one thing over another; as, an overlap of six inches; an overlap of a slate on a roof. ; An extension of geological beds above and beyond others, as in a conformable series of beds, when the upper beds extend over a wider space than the lower, either in one or in all directions.	a:12bq,60,2;q0o,59,4;1exc,57,3;1yy6,44,5;1gmu,39,2;1z5z,35,3;1unl,32,6;29t6,32,2;1kn5,29,5;1593,20,4~1b5y,7,9;ohj,12,6;16i4,20,6;1unl,32,6;1kn5,29,5;1yy6,44,5;7md,20,4;1vhw,16,4;1593,20,4;q0o,59,4	v:1v46,43,1~1v46,43,1	V:1tva,28,3~1tva,28,3	n:1v46,53,2;21my,24,4;29t6,22,1~21my,24,4;1v46,53,2;29t6,22,1	N:1hik,50,3~1hik,50,3
+1f8u|v|To lap over; to lap.	D:1unm,18,1;1np9,0,2~1np9,0,2;1unm,18,1
+1f9k|n|An excessive load; the excess beyond a proper load.	n:11j2,45,4~11j2,45,4
+1f9l|v|of Overload	d:22p7,33,2~22p7,33,2
+1f9l|a|of Overload	e:22p7,23,1~22p7,23,1
+1f9p|n|To look down upon from a place that is over or above; to look over or view from a higher position; to rise above, so as to command a view of; as, to overlook a valley from a hill. ; Hence: To supervise; to watch over; sometimes, to observe secretly; as, to overlook a gang of laborers; to overlook one who is writing a letter. ; To inspect; to examine; to look over carefully or repeatedly. ; To look upon with an evil eye; to bewitch by looking upon; to fascinate. ; To look over and beyond (anything) without seeing it; to miss or omit in looking; hence, to refrain from bestowing notice or attention upon; to neglect; to pass over without censure or punishment; to excuse.	N:1w21,6,1~1w21,6,1
+1f9p|v|To look down upon from a place that is over or above; to look over or view from a higher position; to rise above, so as to command a view of; as, to overlook a valley from a hill. ; Hence: To supervise; to watch over; sometimes, to observe secretly; as, to overlook a gang of laborers; to overlook one who is writing a letter. ; To inspect; to examine; to look over carefully or repeatedly. ; To look upon with an evil eye; to bewitch by looking upon; to fascinate. ; To look over and beyond (anything) without seeing it; to miss or omit in looking; hence, to refrain from bestowing notice or attention upon; to neglect; to pass over without censure or punishment; to excuse.	o:1w21,22,3~1w21,22,3
+1f9q|v|of Overlook	o:1w21,26,6~1w21,26,6	d:tb3,69,5;mtw,40,3;e9a,38,3;1dsp,32,4~tb3,69,5;1dsp,32,4;mtw,40,3;e9a,38,3
+1f9q|a|of Overlook	j:1w21,1,1~1w21,1,1	e:1dsp,32,4~1dsp,32,4
+1f9s|v|of Overlook	o:1w21,45,5~1w21,45,5
+1fa0|a|Careless; negligent; inattentive; superfical; not thorough. ; Excessive; too much.	j:1yc0,23,1~1yc0,23,1
+1fan|a|Too much.	e:298i,73,1~298i,73,1
+1fau|n|The fore part of the night last past; the previous evening.	v:1lmq,24,2~1lmq,24,2	n:1lmq,24,2;bu1,23,1~1lmq,24,2;bu1,23,1
+1fau|v|The fore part of the night last past; the previous evening.	s:1xlj,39,1;1lmq,14,1~1xlj,39,1;1lmq,14,1
+1fau|a|The fore part of the night last past; the previous evening.	j:1lmq,34,4;21y8,29,1~1lmq,34,4;21y8,29,1
+1fcs|n|To ride over or across; to ride upon; to trample down. ; To suppress; to destroy; to supersede; to annul; as, one low overrides another; to override a veto. ; To ride beyond; to pass; to outride. ; To ride too much; to ride, as a horse, beyond its strength.	v:1tva,50,2~1tva,50,2
+1fcs|v|To ride over or across; to ride upon; to trample down. ; To suppress; to destroy; to supersede; to annul; as, one low overrides another; to override a veto. ; To ride beyond; to pass; to outride. ; To ride too much; to ride, as a horse, beyond its strength.	D:psk,11,2~psk,11,2
+1fdi|n|Over the sea; abroad.	v:23e9,37,1~23e9,37,1
+1fdl|v|of Oversee	o:1psp,29,3~1psp,29,3	s:18ud,66,3~18ud,66,3
+1fe2|n|To shoot over or beyond. ; To pass swiftly over; to fly beyond. ; To exceed; as, to overshoot the truth. ; To fly beyond the mark.	a:1593,62,4~1593,62,4
+1fe5|n|Watchful care; superintendence; general supervision. ; An overlooking; an omission; an error. ; Escape from an overlooked peril.	a:qkc,69,3;pk3,66,9;10z9,55,5;16i4,38,5;1uso,28,1;1w1v,15,9~1w1v,15,9;pk3,66,9;16i4,38,5;10z9,55,5;qkc,69,3;1uso,28,1	n:n1x,60,4;290l,15,3~n1x,60,4;290l,15,3	N:8ea,70,7;e33,34,2~8ea,70,7;e33,34,2
+1fe5|a|Watchful care; superintendence; general supervision. ; An overlooking; an omission; an error. ; Escape from an overlooked peril.	j:e33,34,2~e33,34,2
+1fe6|n|To surpass in size. ; To cover with viscid matter.	N:y5h,102,1~y5h,102,1
+1fe6|a|To surpass in size. ; To cover with viscid matter.	j:y5h,112,2~y5h,112,2
+1few|n|To state in too strong terms; to exaggerate.	v:agz,62,1~agz,62,1
+1few|v|To state in too strong terms; to exaggerate.	d:agz,72,2~agz,72,2
+1ffr|a|Open to view; public; apparent; manifest. ; Not covert; open; public; manifest; as, an overt act of treason.	j:11s4,120,3;kp3,83,3~11s4,120,3;kp3,83,3
+1fg8|n|Time beyond, or in excess of, a limit; esp., extra working time.	v:1fs4,66,6;1rdb,49,1;vb8,48,4;297a,33,2~1fs4,66,6;vb8,48,4;297a,33,2;1rdb,49,1	N:1gz1,36,1~1gz1,36,1
+1fg8|a|Time beyond, or in excess of, a limit; esp., extra working time.	j:1gz1,59,5~1gz1,59,5
+1fgd|n|One of the harmonics faintly heard with and above a tone as it dies away, produced by some aliquot portion of the vibrating sting or column of air which yields the fundamental tone; one of the natural harmonic scale of tones, as the octave, twelfth, fifteenth, etc.; an aliquot or "partial" tone; a harmonic. See Harmonic, and Tone.	a:1jz0,112,3~1jz0,112,3
+1fgt|v|of Overturn	s:i56,74,3~i56,74,3
+1fh2|n|An inspection or overlooking.	a:y0m,68,6;ebz,62,5;12vt,58,3;1r3n,54,3;97b,53,4;1nk7,53,6;1cf9,51,12;ugg,45,22;99t,45,5;jgz,43,4~ugg,45,22;1cf9,51,12;y0m,68,6;1nk7,53,6;99t,45,5;ebz,62,5;1udo,31,5;7ey,11,4;97b,53,4;6gk,36,4	n:f8q,65,3;16f1,40,7;g8r,26,8;vrg,6,1~g8r,26,8;16f1,40,7;f8q,65,3;vrg,6,1	N:1vce,54,4;1gbn,43,5;1czb,35,6;1t43,34,4;4qw,33,6;1g7i,7,5~1czb,35,6;4qw,33,6;1g7i,7,5;1gbn,43,5;1t43,34,4;1vce,54,4
+1fhj|n|Weight over and above what is required by law or custom. ; Superabundance of weight; preponderance.	v:6qz,96,2~6qz,96,2
+1fho|n|of Overwhelm	v:rb3,43,1~rb3,43,1	n:rb3,53,2~rb3,53,2
+1fho|v|of Overwhelm	s:rd0,63,3;rb3,53,2;uov,8,2~rd0,63,3;uov,8,2;rb3,53,2	d:qod,41,2;1431,8,3;22p7,2,1~1431,8,3;qod,41,2;22p7,2,1
+1fho|a|of Overwhelm	e:qod,31,1;22p7,17,3~22p7,17,3;qod,31,1
+1fhp|v|of Overwhelm	o:17kv,44,1;pue,38,2;1zml,28,2;1d57,17,1~1zml,28,2;pue,38,2;17kv,44,1;1d57,17,1	s:7wi,22,2~7wi,22,2
+1fhp|a|Overpowering; irresistible.	j:17kv,70,6;1lox,68,3;pue,48,4;1py8,45,3;2oo,39,3;1d57,37,4;1zml,18,1~17kv,70,6;pue,48,4;1d57,37,4;1py8,45,3;1lox,68,3;2oo,39,3;1zml,18,1	e:1w23,40,5;15u7,19,3;1np9,7,1~1w23,40,5;15u7,19,3;1np9,7,1
+1fhw|v|of Overwork	o:1luo,39,3~1luo,39,3
+1fhw|a|of Overwork	j:1luo,24,1~1luo,24,1
