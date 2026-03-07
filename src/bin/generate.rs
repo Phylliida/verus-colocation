@@ -53,6 +53,7 @@ struct Args {
     backend: String,
     all_words: bool,
     min_word_count: u64,
+    threads: usize,
 }
 
 /// Resolve `--corpus` path: if it's a directory, collect all `*.json.gz` files
@@ -97,6 +98,7 @@ fn parse_args() -> Args {
     let mut backend = default_backend().to_string();
     let mut all_words = false;
     let mut min_word_count = 20u64;
+    let mut threads = 0usize; // 0 = rayon default (all cores)
 
     while let Some(arg) = args.next() {
         match arg.as_str() {
@@ -133,6 +135,12 @@ fn parse_args() -> Args {
             "--all-words" => {
                 all_words = true;
             }
+            "--threads" | "-j" => {
+                threads = args
+                    .next()
+                    .and_then(|s| s.parse().ok())
+                    .unwrap_or(0);
+            }
             "--min-word-count" => {
                 min_word_count = args
                     .next()
@@ -151,6 +159,7 @@ fn parse_args() -> Args {
                 eprintln!("  --backend       POS tagger backend: spacy (default) or rust");
                 eprintln!("  --all-words     Include frequent corpus words not in dictionary");
                 eprintln!("  --min-word-count N  Min unigram count for --all-words (default: 20)");
+                eprintln!("  --threads N | -j N  Number of threads (default: all cores, 1 = single-threaded)");
                 std::process::exit(0);
             }
             other => {
@@ -172,6 +181,7 @@ fn parse_args() -> Args {
         backend,
         all_words,
         min_word_count,
+        threads,
     }
 }
 
@@ -216,6 +226,15 @@ fn make_tagger(backend: &str) -> Box<dyn Tagger> {
 
 fn main() {
     let args = parse_args();
+
+    // Configure thread pool
+    if args.threads > 0 {
+        rayon::ThreadPoolBuilder::new()
+            .num_threads(args.threads)
+            .build_global()
+            .expect("failed to set rayon thread count");
+        eprintln!("Using {} thread(s)", args.threads);
+    }
 
     // 1. Parse dictionary
     eprintln!("Parsing dictionary: {}", args.dictionary.display());

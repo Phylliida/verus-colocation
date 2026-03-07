@@ -13,6 +13,7 @@ use std::fs::{self, File};
 use std::io::{BufRead, BufReader, BufWriter, Write};
 use std::path::{Path, PathBuf};
 use rayon::prelude::*;
+use rustc_hash::FxHashMap;
 
 use crate::pos::{Tagger, POS};
 
@@ -365,11 +366,66 @@ fn normalize_token(raw: &str) -> Option<String> {
     if trimmed.is_empty() {
         return None;
     }
-    let lower = trimmed.to_lowercase();
-    if lower.chars().all(|c| c.is_ascii_alphabetic()) {
-        Some(lower)
+    // Fast reject before allocating: all bytes must be ASCII alphabetic
+    if !trimmed.bytes().all(|b| b.is_ascii_alphabetic()) {
+        return None;
+    }
+    Some(trimmed.to_ascii_lowercase())
+}
+
+/// Normalize a token and look up its interned ID without heap allocation.
+/// Uses a stack buffer for lowercasing to avoid allocating a String
+/// for the vast majority of tokens that aren't in the dictionary.
+fn normalize_and_intern(raw: &str, interner: &WordInterner) -> Option<u32> {
+    let trimmed = raw.trim_matches(|c: char| !c.is_ascii_alphabetic());
+    if trimmed.is_empty() {
+        return None;
+    }
+    if !trimmed.bytes().all(|b| b.is_ascii_alphabetic()) {
+        return None;
+    }
+    if trimmed.len() <= 64 {
+        let mut buf = [0u8; 64];
+        for (i, b) in trimmed.bytes().enumerate() {
+            buf[i] = b.to_ascii_lowercase();
+        }
+        // SAFETY: input was all ASCII alphabetic, lowercase is still valid UTF-8
+        let lower = unsafe { std::str::from_utf8_unchecked(&buf[..trimmed.len()]) };
+        interner.get(lower)
     } else {
-        None
+        let lower = trimmed.to_ascii_lowercase();
+        interner.get(&lower)
+    }
+}
+
+/// Normalize a token and check stopword membership without heap allocation.
+/// Returns the lowercased String only if it passes the stopword filter.
+fn normalize_filtered(raw: &str, stopwords: &HashSet<String>) -> Option<String> {
+    let trimmed = raw.trim_matches(|c: char| !c.is_ascii_alphabetic());
+    if trimmed.is_empty() {
+        return None;
+    }
+    if !trimmed.bytes().all(|b| b.is_ascii_alphabetic()) {
+        return None;
+    }
+    // Check stopword on stack buffer before allocating
+    if trimmed.len() <= 64 {
+        let mut buf = [0u8; 64];
+        for (i, b) in trimmed.bytes().enumerate() {
+            buf[i] = b.to_ascii_lowercase();
+        }
+        let lower = unsafe { std::str::from_utf8_unchecked(&buf[..trimmed.len()]) };
+        if stopwords.contains(lower) {
+            return None;
+        }
+        Some(lower.to_owned())
+    } else {
+        let lower = trimmed.to_ascii_lowercase();
+        if stopwords.contains(&lower) {
+            None
+        } else {
+            Some(lower)
+        }
     }
 }
 
@@ -419,8 +475,8 @@ pub fn load_stopwords(path: &Path) -> HashSet<String> {
 
 /// Word interner: maps words → u32 IDs for compact HashMap keys.
 struct WordInterner {
-    /// word string → ID
-    word_to_id: HashMap<String, u32>,
+    /// word string → ID (FxHashMap for fast string lookups)
+    word_to_id: FxHashMap<String, u32>,
     /// ID → word string
     id_to_word: Vec<String>,
 }
@@ -428,7 +484,7 @@ struct WordInterner {
 impl WordInterner {
     /// Build interner from the dictionary word set (only these words matter).
     fn from_dict(dict_words: &HashMap<String, usize>, stopwords: &HashSet<String>) -> Self {
-        let mut word_to_id = HashMap::new();
+        let mut word_to_id = FxHashMap::default();
         let mut id_to_word = Vec::new();
         for word in dict_words.keys() {
             if !stopwords.contains(word.as_str()) {
@@ -451,35 +507,39 @@ impl WordInterner {
 
 /// Per-book accumulator using interned (u32, u32) keys — counts only, no examples.
 struct BookCounts {
-    bigram_counts: HashMap<(u32, u32), u64>,
-    unigram_counts: HashMap<u32, u64>,
+    bigram_counts: FxHashMap<(u32, u32), u64>,
+    /// Sparse unigram counts (good for small books with few unique words).
+    unigram_counts: FxHashMap<u32, u64>,
     total_bigrams: u64,
 }
 
 /// Process a single book's text for pass 1: count bigrams only (no examples).
+///
+/// Uses a sliding window (no per-sentence Vec allocation) and zero-alloc
+/// token normalization. Sentence boundaries (.!?) reset the window.
 fn process_book_counts(
     text: &str,
     interner: &WordInterner,
 ) -> BookCounts {
-    let mut bigram_counts: HashMap<(u32, u32), u64> = HashMap::new();
-    let mut unigram_counts: HashMap<u32, u64> = HashMap::new();
+    let mut bigram_counts: FxHashMap<(u32, u32), u64> = FxHashMap::default();
+    let mut unigram_counts: FxHashMap<u32, u64> = FxHashMap::default();
     let mut total_bigrams: u64 = 0;
 
-    for sentence in text.split(|c: char| c == '.' || c == '!' || c == '?') {
-        let token_ids: Vec<Option<u32>> = sentence
-            .split_whitespace()
-            .map(|w| normalize_token(w).and_then(|n| interner.get(&n)))
-            .collect();
-
-        for i in 0..token_ids.len().saturating_sub(1) {
-            if let (Some(id0), Some(id1)) = (token_ids[i], token_ids[i + 1]) {
-                let key = (id0, id1);
-                *bigram_counts.entry(key).or_insert(0) += 1;
-                *unigram_counts.entry(id0).or_insert(0) += 1;
-                *unigram_counts.entry(id1).or_insert(0) += 1;
-                total_bigrams += 1;
-            }
+    let mut prev: Option<u32> = None;
+    for raw in text.split_whitespace() {
+        // Reset on sentence boundary
+        if raw.bytes().any(|b| b == b'.' || b == b'!' || b == b'?') {
+            prev = None;
+            continue;
         }
+        let cur = normalize_and_intern(raw, interner);
+        if let (Some(id0), Some(id1)) = (prev, cur) {
+            *bigram_counts.entry((id0, id1)).or_insert(0) += 1;
+            *unigram_counts.entry(id0).or_insert(0) += 1;
+            *unigram_counts.entry(id1).or_insert(0) += 1;
+            total_bigrams += 1;
+        }
+        prev = cur;
     }
 
     BookCounts { bigram_counts, unigram_counts, total_bigrams }
@@ -496,7 +556,7 @@ fn extract_sentences(
         let raw_words: Vec<&str> = sentence.split_whitespace().collect();
         let token_ids: Vec<Option<u32>> = raw_words
             .iter()
-            .map(|w| normalize_token(w).and_then(|n| interner.get(&n)))
+            .map(|w| normalize_and_intern(w, interner))
             .collect();
 
         for i in 0..token_ids.len().saturating_sub(1) {
@@ -634,10 +694,11 @@ pub fn pass1_count_bigrams(
     max_books: Option<usize>,
 ) -> Pass1Result {
     let interner = WordInterner::from_dict(dict_words, stopwords);
-    eprintln!("Interner: {} words indexed", interner.id_to_word.len());
+    let num_words = interner.id_to_word.len();
+    eprintln!("Interner: {} words indexed", num_words);
 
-    let mut bigram_counts: HashMap<(u32, u32), u64> = HashMap::new();
-    let mut unigram_counts: HashMap<u32, u64> = HashMap::new();
+    let mut bigram_counts: FxHashMap<(u32, u32), u64> = FxHashMap::default();
+    let mut unigram_counts: Vec<u64> = vec![0u64; num_words];
     let mut total_bigrams: u64 = 0;
     let mut total_books: usize = 0;
     let start = std::time::Instant::now();
@@ -664,21 +725,44 @@ pub fn pass1_count_bigrams(
             }
             let batch_len = batch.len();
 
-            // Process batch in parallel
-            let book_counts: Vec<BookCounts> = batch
+            // Process batch in parallel with fold+reduce.
+            // Per-book counts are sparse (small books), thread accumulators are dense.
+            let (batch_bigrams, batch_unigrams, batch_total) = batch
                 .par_iter()
                 .map(|record| process_book_counts(&record.text, &interner))
-                .collect();
+                .fold(
+                    || (FxHashMap::<(u32, u32), u64>::default(), vec![0u64; num_words], 0u64),
+                    |(mut bg, mut ug, mut tot), bc| {
+                        tot += bc.total_bigrams;
+                        for (key, count) in bc.bigram_counts {
+                            *bg.entry(key).or_insert(0) += count;
+                        }
+                        for (id, count) in bc.unigram_counts {
+                            ug[id as usize] += count;
+                        }
+                        (bg, ug, tot)
+                    },
+                )
+                .reduce(
+                    || (FxHashMap::default(), vec![0u64; num_words], 0u64),
+                    |(mut bg_a, mut ug_a, tot_a), (bg_b, ug_b, tot_b)| {
+                        for (key, count) in bg_b {
+                            *bg_a.entry(key).or_insert(0) += count;
+                        }
+                        for (i, count) in ug_b.into_iter().enumerate() {
+                            ug_a[i] += count;
+                        }
+                        (bg_a, ug_a, tot_a + tot_b)
+                    },
+                );
 
-            // Merge into running totals
-            for bc in book_counts {
-                total_bigrams += bc.total_bigrams;
-                for (key, count) in bc.bigram_counts {
-                    *bigram_counts.entry(key).or_insert(0) += count;
-                }
-                for (id, count) in bc.unigram_counts {
-                    *unigram_counts.entry(id).or_insert(0) += count;
-                }
+            // Merge batch result into running totals
+            total_bigrams += batch_total;
+            for (key, count) in batch_bigrams {
+                *bigram_counts.entry(key).or_insert(0) += count;
+            }
+            for (i, count) in batch_unigrams.into_iter().enumerate() {
+                unigram_counts[i] += count;
             }
 
             total_books += batch_len;
@@ -708,7 +792,9 @@ pub fn pass1_count_bigrams(
         .collect();
     let str_unigram_counts: HashMap<String, u64> = unigram_counts
         .into_iter()
-        .map(|(id, c)| (interner.word(id).to_string(), c))
+        .enumerate()
+        .filter(|(_, c)| *c > 0)
+        .map(|(id, c)| (interner.word(id as u32).to_string(), c))
         .collect();
 
     eprintln!(
@@ -739,34 +825,59 @@ struct BookCountsAll {
 }
 
 /// Process a single book's text counting ALL non-stopword bigrams and unigrams.
+/// Uses a per-book interner to avoid String cloning during counting, and sliding
+/// window with sentence-boundary reset (no per-sentence Vec allocation).
 fn process_book_all(text: &str, stopwords: &HashSet<String>) -> BookCountsAll {
-    let mut bigrams: HashMap<(String, String), u64> = HashMap::new();
-    let mut unigrams: HashMap<String, u64> = HashMap::new();
+    // Per-book interner: assign u32 IDs to words within this book
+    let mut local_to_id: FxHashMap<String, u32> = FxHashMap::default();
+    let mut local_words: Vec<String> = Vec::new();
+    let mut bigrams: FxHashMap<(u32, u32), u64> = FxHashMap::default();
+    let mut unigrams: Vec<u64> = Vec::new();
     let mut total_bigrams: u64 = 0;
 
-    for sentence in text.split(|c: char| c == '.' || c == '!' || c == '?') {
-        let tokens: Vec<Option<String>> = sentence
-            .split_whitespace()
-            .map(|w| normalize_token(w).filter(|n| !stopwords.contains(n)))
-            .collect();
-
-        // Count all unigrams
-        for tok in &tokens {
-            if let Some(ref w) = tok {
-                *unigrams.entry(w.clone()).or_insert(0) += 1;
-            }
+    let mut prev: Option<u32> = None;
+    for raw in text.split_whitespace() {
+        if raw.bytes().any(|b| b == b'.' || b == b'!' || b == b'?') {
+            prev = None;
+            continue;
         }
-
-        // Count adjacent bigrams
-        for i in 0..tokens.len().saturating_sub(1) {
-            if let (Some(ref w0), Some(ref w1)) = (&tokens[i], &tokens[i + 1]) {
-                *bigrams.entry((w0.clone(), w1.clone())).or_insert(0) += 1;
+        if let Some(cur_word) = normalize_filtered(raw, stopwords) {
+            let cur_id = match local_to_id.get(&cur_word) {
+                Some(&id) => id,
+                None => {
+                    let id = local_words.len() as u32;
+                    local_to_id.insert(cur_word.clone(), id);
+                    local_words.push(cur_word);
+                    unigrams.push(0);
+                    id
+                }
+            };
+            unigrams[cur_id as usize] += 1;
+            if let Some(prev_id) = prev {
+                *bigrams.entry((prev_id, cur_id)).or_insert(0) += 1;
                 total_bigrams += 1;
             }
+            prev = Some(cur_id);
+        } else {
+            prev = None;
         }
     }
 
-    BookCountsAll { bigrams, unigrams, total_bigrams }
+    // Convert back to String keys
+    let str_bigrams: HashMap<(String, String), u64> = bigrams
+        .into_iter()
+        .map(|((a, b), c)| {
+            ((local_words[a as usize].clone(), local_words[b as usize].clone()), c)
+        })
+        .collect();
+    let str_unigrams: HashMap<String, u64> = unigrams
+        .into_iter()
+        .enumerate()
+        .filter(|(_, c)| *c > 0)
+        .map(|(i, c)| (local_words[i].clone(), c))
+        .collect();
+
+    BookCountsAll { bigrams: str_bigrams, unigrams: str_unigrams, total_bigrams }
 }
 
 /// Pass 1 (all-words mode): count ALL non-stopword bigrams and unigrams.
@@ -806,21 +917,52 @@ pub fn pass1_count_all(
             }
             let batch_len = batch.len();
 
-            // Process batch in parallel
-            let book_results: Vec<BookCountsAll> = batch
+            // Process batch in parallel with fold+reduce
+            let batch_merged = batch
                 .par_iter()
                 .map(|record| process_book_all(&record.text, stopwords))
-                .collect();
+                .fold(
+                    || BookCountsAll {
+                        bigrams: HashMap::new(),
+                        unigrams: HashMap::new(),
+                        total_bigrams: 0,
+                    },
+                    |mut acc, bc| {
+                        acc.total_bigrams += bc.total_bigrams;
+                        for (key, count) in bc.bigrams {
+                            *acc.bigrams.entry(key).or_insert(0) += count;
+                        }
+                        for (word, count) in bc.unigrams {
+                            *acc.unigrams.entry(word).or_insert(0) += count;
+                        }
+                        acc
+                    },
+                )
+                .reduce(
+                    || BookCountsAll {
+                        bigrams: HashMap::new(),
+                        unigrams: HashMap::new(),
+                        total_bigrams: 0,
+                    },
+                    |mut a, b| {
+                        a.total_bigrams += b.total_bigrams;
+                        for (key, count) in b.bigrams {
+                            *a.bigrams.entry(key).or_insert(0) += count;
+                        }
+                        for (word, count) in b.unigrams {
+                            *a.unigrams.entry(word).or_insert(0) += count;
+                        }
+                        a
+                    },
+                );
 
-            // Merge into running totals
-            for bc in book_results {
-                total_bigrams += bc.total_bigrams;
-                for (key, count) in bc.bigrams {
-                    *bigram_counts.entry(key).or_insert(0) += count;
-                }
-                for (word, count) in bc.unigrams {
-                    *unigram_counts.entry(word).or_insert(0) += count;
-                }
+            // Merge batch result into running totals
+            total_bigrams += batch_merged.total_bigrams;
+            for (key, count) in batch_merged.bigrams {
+                *bigram_counts.entry(key).or_insert(0) += count;
+            }
+            for (word, count) in batch_merged.unigrams {
+                *unigram_counts.entry(word).or_insert(0) += count;
             }
 
             total_books += batch_len;

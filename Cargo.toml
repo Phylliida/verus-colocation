@@ -5,8 +5,8 @@ edition = "2021"
 
 [features]
 default = []
-tagger = ["pyo3", "csv", "serde", "serde_json", "flate2", "rayon"]
-postagger-backend = ["dep:postagger", "csv", "serde", "serde_json", "flate2", "rayon"]
+tagger = ["pyo3", "csv", "serde", "serde_json", "flate2", "rayon", "rustc-hash"]
+postagger-backend = ["dep:postagger", "csv", "serde", "serde_json", "flate2", "rayon", "rustc-hash"]
 
 [dependencies]
 vstd = { path = "../verus/source/vstd" }
@@ -17,6 +17,7 @@ serde = { version = "1", features = ["derive"], optional = true }
 serde_json = { version = "1", optional = true }
 flate2 = { version = "1", optional = true }
 rayon = { version = "1", optional = true }
+rustc-hash = { version = "2", optional = true }
 
 [package.metadata.verus]
 verify = true
