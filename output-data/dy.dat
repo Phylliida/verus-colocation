@@ -1,4 +1,20 @@
-n7a|n|Color produced by dyeing. ; Material used for dyeing; a dyestuff. ; Same as Die, a lot.	N:20h3,138,1~20h3,138,1
-n7a|a|Color produced by dyeing. ; Material used for dyeing; a dyestuff. ; Same as Die, a lot.	j:20h3,148,2~20h3,148,2
-n7p|a|Alt. of Dynamical	j:pnt,95,4~pnt,95,4
-n7s|n|That branch of mechanics which treats of the motion of bodies (kinematics) and the action of forces in producing or changing their motion (kinetics). Dynamics is held by some recent writers to include statics and not kinematics. ; The moving moral, as well as physical, forces of any kind, or the laws which relate to them. ; That department of musical science which relates to, or treats of, the power of tones.	a:t21,80,1~t21,80,1	n:t21,118,14~t21,118,14
+opq|n|Color produced by dyeing. ; Material used for dyeing; a dyestuff. ; Same as Die, a lot.	N:25g6,157,1~25g6,157,1
+opq|a|Color produced by dyeing. ; Material used for dyeing; a dyestuff. ; Same as Die, a lot.	j:25g6,167,2~25g6,167,2
+opy|n|of Die ; The act of expiring; passage from life to death; loss of life.	n:765,33,2~765,33,2
+opy|v|of Die	o:1v0n,104,29~1v0n,104,29	s:765,39,3;1ngb,8,2~765,39,3;1ngb,8,2	d:1tu6,7,2~1tu6,7,2
+oq2|n|	a:944,94,2~944,94,2	n:944,100,3~944,100,3	N:1wg9,98,1~1wg9,98,1
+oq2|v|	o:1wg9,98,1~1wg9,98,1
+oq7|n|Alt. of Dynamical	V:uy1,72,3;1r8m,18,2~uy1,72,3;1r8m,18,2	n:e6p,42,3~e6p,42,3	N:1pkg,29,2;nk9,27,1;16jz,23,2;1r8m,8,1~1pkg,29,2;16jz,23,2;1r8m,8,1;nk9,27,1
+oq7|v|Alt. of Dynamical	o:1r8m,18,2;16jz,13,1~1r8m,18,2;16jz,13,1	s:2dwy,2,1~2dwy,2,1
+oq7|a|Alt. of Dynamical	j:1a3w,115,16;1r8m,81,161;nk9,73,24;1lkp,67,15;1x4s,65,3;1adz,64,8;1a3x,61,5;16jz,60,25;vx8,59,3;1j07,58,11;qzk,57,5;fnp,57,5;19t4,56,23;rcb,53,9;1tj8,50,16~1r8m,81,161;16jz,60,25;nk9,73,24;19t4,56,23;1tj8,50,16;1a3w,115,16;29c4,7,16;1lkp,67,15;278n,45,13;1j07,58,11;1cyl,38,10;qzi,39,10;1gd6,41,9;rcb,53,9;jdw,6,9	e:2epf,4,13~2epf,4,13
+oq8|a|Of or pertaining to dynamics; belonging to energy or power; characterized by energy or production of force. ; Relating to physical forces, effects, or laws; as, dynamical geology.	j:278n,102,87;2784,55,19~278n,102,87;2784,55,19
+oqa|n|That branch of mechanics which treats of the motion of bodies (kinematics) and the action of forces in producing or changing their motion (kinetics). Dynamics is held by some recent writers to include statics and not kinematics. ; The moving moral, as well as physical, forces of any kind, or the laws which relate to them. ; That department of musical science which relates to, or treats of, the power of tones.	a:wmt,119,4;1epo,98,31;160a,88,14;uyu,87,13;1hcp,78,5;2448,63,2;24m3,62,8;282j,57,2;227z,47,14;15yn,30,6;lsa,8,9;18fe,1,1~1epo,98,31;227z,47,14;160a,88,14;uyu,87,13;lsa,8,9;24m3,62,8;15yn,30,6;1hcp,78,5;wmt,119,4;2448,63,2;282j,57,2;18fe,1,1	v:eby,62,3;uyu,60,2;tea,39,5;19at,22,11;2a6g,7,2~19at,22,11;tea,39,5;eby,62,3;uyu,60,2;2a6g,7,2	V:16id,34,6;13w8,19,4;1el9,17,7;18fe,1,1~1el9,17,7;16id,34,6;13w8,19,4;18fe,1,1	n:uyu,122,146;2443,113,3;9hq,93,9;1vd5,91,7;2ac6,76,31;1ck2,75,13;1hcp,70,3;1sva,58,7;qzi,56,26;1pxa,55,50;1pia,55,5;27uk,46,9;yvy,46,32;vn5,43,7;x6r,43,3~uyu,122,146;1pxa,55,50;yvy,46,32;2ac6,76,31;qzi,56,26;1ck2,75,13;27uk,46,9;9hq,93,9;2a6g,25,7;vn5,43,7;1vd5,91,7;1sva,58,7;e5t,18,6;2784,10,5;1pia,55,5	N:214k,73,8;1sva,45,3;2ac6,42,3;wdc,26,7;1r0h,18,5;1el9,13,5;hoa,7,6~214k,73,8;wdc,26,7;hoa,7,6;1el9,13,5;1r0h,18,5;1sva,45,3;2ac6,42,3
+oqe|a|An explosive substance consisting of nitroglycerin absorbed by some inert, porous solid, as infusorial earth, sawdust, etc. It is safer than nitroglycerin, being less liable to explosion from moderate shocks, or from spontaneous decomposition.	j:1oqr,123,3~1oqr,123,3
+oqj|n|A dynamo-electric machine.	N:zuj,196,6~zuj,196,6
+or4|n|	a:sgx,114,2~sgx,114,2
+or5|a|	j:1mx4,117,8;111s,72,8;kpc,53,9;2784,40,5~kpc,53,9;111s,72,8;1mx4,117,8;2784,40,5	e:11l6,90,1;10xs,56,4;2epf,29,7~2epf,29,7;10xs,56,4;11l6,90,1
+or8|n|	n:19yi,20,6~19yi,20,6
+or9|n|	N:254c,33,3;254e,24,2;1mfp,14,1~254c,33,3;254e,24,2;1mfp,14,1
+or9|a|	j:254c,49,9;254e,47,10;1mww,40,2;1mfp,34,4~254e,47,10;254c,49,9;1mfp,34,4;1mww,40,2
+org|n|	a:vwu,156,5~vwu,156,5	n:vwu,176,20~vwu,176,20
+orq|n|Impatience under affliction; morbid restlessness; dissatisfaction; the fidgets.	n:x6r,113,2~x6r,113,2

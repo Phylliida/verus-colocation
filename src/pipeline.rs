@@ -74,6 +74,27 @@ impl PatternCode {
         }
     }
 
+    /// Total number of pattern codes (for fixed-size vote arrays).
+    pub const COUNT: usize = 11;
+
+    /// Reconstruct from order index.
+    pub fn from_order(idx: u8) -> Option<PatternCode> {
+        match idx {
+            0 => Some(PatternCode::AdjNoun),
+            1 => Some(PatternCode::VerbNoun),
+            2 => Some(PatternCode::NounVerb),
+            3 => Some(PatternCode::PrepNoun),
+            4 => Some(PatternCode::NounNoun),
+            5 => Some(PatternCode::VerbObject),
+            6 => Some(PatternCode::SubjVerb),
+            7 => Some(PatternCode::AdvVerb),
+            8 => Some(PatternCode::VerbAdv),
+            9 => Some(PatternCode::AdjObject),
+            10 => Some(PatternCode::AdvAdj),
+            _ => None,
+        }
+    }
+
     /// The POS of the headword for this pattern.
     pub fn headword_pos(self) -> DictPOS {
         match self {
@@ -434,15 +455,10 @@ fn normalize_filtered(raw: &str, stopwords: &HashSet<String>) -> Option<String> 
 // ---------------------------------------------------------------------------
 
 /// Metadata from a Gutenberg JSON line.
+/// Only deserializes the `text` field; other fields are skipped.
 #[derive(serde::Deserialize)]
 struct GutenbergRecord {
     text: String,
-    metadata: GutenbergMeta,
-}
-
-#[derive(serde::Deserialize)]
-struct GutenbergMeta {
-    title: Option<String>,
 }
 
 // ---------------------------------------------------------------------------
@@ -546,25 +562,35 @@ fn process_book_counts(
 }
 
 /// Extract context-window sentences from a book for target bigram pairs (pass 2).
+///
+/// Single-pass: keeps a small ring buffer of recent raw tokens and their IDs.
+/// Only builds the context string (via join) when a target pair is matched.
 fn extract_sentences(
     text: &str,
     interner: &WordInterner,
     target_pairs: &HashSet<(u32, u32)>,
 ) -> Vec<String> {
     let mut sentences = Vec::new();
-    for sentence in text.split(|c: char| c == '.' || c == '!' || c == '?') {
-        let raw_words: Vec<&str> = sentence.split_whitespace().collect();
-        let token_ids: Vec<Option<u32>> = raw_words
-            .iter()
-            .map(|w| normalize_and_intern(w, interner))
-            .collect();
+    // Ring buffer of recent raw tokens for context window (up to 6 tokens: i-2..i+4)
+    // We need to look back 3 tokens (current pair + 2 before) and forward 3 tokens.
+    // Process with a sliding window: buffer recent tokens, check when we have a pair.
+    const CONTEXT_BEFORE: usize = 2;
+    const CONTEXT_AFTER: usize = 2; // after the pair (2 tokens)
 
-        for i in 0..token_ids.len().saturating_sub(1) {
-            if let (Some(id0), Some(id1)) = (token_ids[i], token_ids[i + 1]) {
+    // Collect per-sentence to handle forward context correctly
+    for sentence in text.split(|c: char| c == '.' || c == '!' || c == '?') {
+        // Small inline buffer: (raw_token, interned_id)
+        let mut buf: Vec<(&str, Option<u32>)> = Vec::new();
+        for raw in sentence.split_whitespace() {
+            buf.push((raw, normalize_and_intern(raw, interner)));
+        }
+        for i in 0..buf.len().saturating_sub(1) {
+            if let (Some(id0), Some(id1)) = (buf[i].1, buf[i + 1].1) {
                 if target_pairs.contains(&(id0, id1)) {
-                    let start = i.saturating_sub(2);
-                    let end = (i + 4).min(raw_words.len());
-                    sentences.push(raw_words[start..end].join(" "));
+                    let start = i.saturating_sub(CONTEXT_BEFORE);
+                    let end = (i + 2 + CONTEXT_AFTER).min(buf.len());
+                    let ctx: Vec<&str> = buf[start..end].iter().map(|(w, _)| *w).collect();
+                    sentences.push(ctx.join(" "));
                 }
             }
         }
@@ -619,7 +645,7 @@ pub fn prescan_word_frequencies(
         let file = File::open(corpus_path)
             .unwrap_or_else(|e| panic!("failed to open {}: {}", corpus_path.display(), e));
         let decoder = flate2::read::GzDecoder::new(file);
-        let mut reader = BufReader::new(decoder);
+        let mut reader = BufReader::with_capacity(64 * 1024, decoder);
 
         loop {
             let remaining = max_books.map(|m| m.saturating_sub(total_books));
@@ -708,7 +734,7 @@ pub fn pass1_count_bigrams(
         let file = File::open(corpus_path)
             .unwrap_or_else(|e| panic!("failed to open {}: {}", corpus_path.display(), e));
         let decoder = flate2::read::GzDecoder::new(file);
-        let mut reader = BufReader::new(decoder);
+        let mut reader = BufReader::with_capacity(64 * 1024, decoder);
 
         loop {
             // Respect max_books across all files
@@ -901,7 +927,7 @@ pub fn pass1_count_all(
         let file = File::open(corpus_path)
             .unwrap_or_else(|e| panic!("failed to open {}: {}", corpus_path.display(), e));
         let decoder = flate2::read::GzDecoder::new(file);
-        let mut reader = BufReader::new(decoder);
+        let mut reader = BufReader::with_capacity(64 * 1024, decoder);
 
         loop {
             let remaining = max_books.map(|m| m.saturating_sub(total_books));
@@ -1202,7 +1228,8 @@ pub fn pass2_classify(
     );
 
     // Stream corpus again in batches, extract sentences, tag, vote
-    let mut pair_votes: HashMap<(String, String), HashMap<PatternCode, u32>> = HashMap::new();
+    // Fixed-size array indexed by PatternCode::order() instead of inner HashMap.
+    let mut pair_votes: HashMap<(String, String), [u32; PatternCode::COUNT]> = HashMap::new();
     let mut total_books: usize = 0;
     let mut total_sentences_tagged: usize = 0;
     let mut total_sentences_extracted: usize = 0;
@@ -1215,7 +1242,7 @@ pub fn pass2_classify(
         let file = File::open(corpus_path)
             .unwrap_or_else(|e| panic!("failed to open {}: {}", corpus_path.display(), e));
         let decoder = flate2::read::GzDecoder::new(file);
-        let mut reader = BufReader::new(decoder);
+        let mut reader = BufReader::with_capacity(64 * 1024, decoder);
 
         loop {
             let remaining = max_books.map(|m| m.saturating_sub(total_books));
@@ -1272,28 +1299,37 @@ pub fn pass2_classify(
                             if !spacy_pair_set.contains(&key) {
                                 continue;
                             }
-                            let patterns = match (tokens[j].pos, tokens[j + 1].pos) {
+                            let votes = pair_votes.entry(key).or_insert([0u32; PatternCode::COUNT]);
+                            match (tokens[j].pos, tokens[j + 1].pos) {
                                 (POS::Adj, POS::Noun) => {
-                                    vec![PatternCode::AdjNoun, PatternCode::AdjObject]
+                                    votes[PatternCode::AdjNoun.order() as usize] += 1;
+                                    votes[PatternCode::AdjObject.order() as usize] += 1;
                                 }
                                 (POS::Verb, POS::Noun) => {
-                                    vec![PatternCode::VerbNoun, PatternCode::VerbObject]
+                                    votes[PatternCode::VerbNoun.order() as usize] += 1;
+                                    votes[PatternCode::VerbObject.order() as usize] += 1;
                                 }
                                 (POS::Noun, POS::Verb) => {
-                                    vec![PatternCode::NounVerb, PatternCode::SubjVerb]
+                                    votes[PatternCode::NounVerb.order() as usize] += 1;
+                                    votes[PatternCode::SubjVerb.order() as usize] += 1;
                                 }
-                                (POS::Prep, POS::Noun) => vec![PatternCode::PrepNoun],
+                                (POS::Prep, POS::Noun) => {
+                                    votes[PatternCode::PrepNoun.order() as usize] += 1;
+                                }
                                 (POS::Noun, POS::Noun) => {
-                                    vec![PatternCode::NounNoun, PatternCode::PrepNoun]
+                                    votes[PatternCode::NounNoun.order() as usize] += 1;
+                                    votes[PatternCode::PrepNoun.order() as usize] += 1;
                                 }
-                                (POS::Adv, POS::Verb) => vec![PatternCode::AdvVerb],
-                                (POS::Verb, POS::Adv) => vec![PatternCode::VerbAdv],
-                                (POS::Adv, POS::Adj) => vec![PatternCode::AdvAdj],
-                                _ => vec![],
-                            };
-                            let entry = pair_votes.entry(key).or_default();
-                            for pat in patterns {
-                                *entry.entry(pat).or_insert(0) += 1;
+                                (POS::Adv, POS::Verb) => {
+                                    votes[PatternCode::AdvVerb.order() as usize] += 1;
+                                }
+                                (POS::Verb, POS::Adv) => {
+                                    votes[PatternCode::VerbAdv.order() as usize] += 1;
+                                }
+                                (POS::Adv, POS::Adj) => {
+                                    votes[PatternCode::AdvAdj.order() as usize] += 1;
+                                }
+                                _ => {}
                             }
                         }
                     }
@@ -1336,7 +1372,8 @@ pub fn pass2_classify(
     let mut spacy_classified = 0usize;
     let mut spacy_skipped = 0usize;
     for (pair, votes) in &pair_votes {
-        if votes.is_empty() {
+        let has_votes = votes.iter().any(|&v| v > 0);
+        if !has_votes {
             spacy_skipped += 1;
             continue;
         }
@@ -1344,12 +1381,16 @@ pub fn pass2_classify(
         let (w0, w1) = pair;
         let uw0 = pass1.unigram_counts.get(w0.as_str()).copied().unwrap_or(0);
         let uw1 = pass1.unigram_counts.get(w1.as_str()).copied().unwrap_or(0);
-        for (pat, &vote_count) in votes {
+        for (idx, &vote_count) in votes.iter().enumerate() {
+            if vote_count == 0 {
+                continue;
+            }
+            let pat = PatternCode::from_order(idx as u8).unwrap();
             let freq = vote_count as u64;
             let score = pmi(freq, uw0, uw1, pass1.total_bigrams);
-            let (headword, collocate) = headword_collocate(pat, w0, w1);
+            let (headword, collocate) = headword_collocate(&pat, w0, w1);
             let entry = counts
-                .entry((headword.to_string(), *pat, collocate.to_string()))
+                .entry((headword.to_string(), pat, collocate.to_string()))
                 .or_insert(ScoreEntry { pmi: 0.0, count: 0 });
             if score > entry.pmi {
                 entry.pmi = score;

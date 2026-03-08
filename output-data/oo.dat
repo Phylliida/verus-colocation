@@ -1,9 +1,17 @@
-1f7q|n|Soft mud or slime; earth so wet as to flow gently, or easily yield to pressure. ; Soft flow; spring. ; The liquor of a tan vat. ; To flow gently; to percolate, as a liquid through the pores of a substance or through small openings. ; Fig.: To leak (out) or escape slowly; as, the secret oozed out; his courage oozed out.	a:19bs,39,6;1e6p,6,1~19bs,39,6;1e6p,6,1	V:1vsh,62,1~1vsh,62,1	n:19bs,23,2;1e6p,16,2~19bs,23,2;1e6p,16,2	N:1vsh,88,6~1vsh,88,6
-1f7q|v|To cause to ooze.	o:19bs,45,9;scq,12,2~19bs,45,9;scq,12,2	d:2eq,17,5~2eq,17,5
-1f7q|a|Soft mud or slime; earth so wet as to flow gently, or easily yield to pressure. ; Soft flow; spring. ; The liquor of a tan vat. ; To flow gently; to percolate, as a liquid through the pores of a substance or through small openings. ; Fig.: To leak (out) or escape slowly; as, the secret oozed out; his courage oozed out.	j:1vsh,99,13;19bs,23,2;scq,2,1~1vsh,99,13;19bs,23,2;scq,2,1
-1f7r|v|of Ooze	o:19bs,55,3~19bs,55,3
-1f7r|a|of Ooze	j:19bs,39,1~19bs,39,1
-1f7s|n|	a:19bs,36,1~19bs,36,1
-1f7s|v|	s:19bs,64,7;scq,51,6~19bs,64,7;scq,51,6
-1f7t|n|of Ooze	a:19bs,4,1~19bs,4,1	v:1zs0,34,2~1zs0,34,2	n:19bs,4,1~19bs,4,1
-1f7t|v|of Ooze	o:19bs,34,8;2air,1,1~19bs,34,8;2air,1,1	s:1mrq,36,2;scq,28,11;19bs,20,3~scq,28,11;19bs,20,3;1mrq,36,2	D:1fz4,0,2~1fz4,0,2
+1iqu|n|A beautiful bird (Moho nobilis) of the Hawaiian Islands. It yields the brilliant yellow feathers formerly used in making the royal robes. Called also yellow-tufted honeysucker.	N:26d7,73,9~26d7,73,9
+1iqv|n|	N:x7k,108,3;jdw,60,11~jdw,60,11;x7k,108,3
+1irc|n|	N:1818,126,7;2e5c,51,2~1818,126,7;2e5c,51,2
+1irc|a|	j:2e5c,41,1~2e5c,41,1
+1iri|n|To bind with a thread or cord; to join; to unite.	N:e5t,59,7~e5t,59,7
+1iri|v|To bind with a thread or cord; to join; to unite.	o:e5w,58,3~e5w,58,3	D:2hip,42,3~2hip,42,3
+1iru|n|	a:17x5,35,1~17x5,35,1	v:1ybo,20,1~1ybo,20,1	V:vhw,48,1;22no,38,2~22no,38,2;vhw,48,1	n:17x5,35,1~17x5,35,1	N:28m0,12,1~28m0,12,1
+1iru|v|	s:17x5,45,2~17x5,45,2
+1is9|n|Soft mud or slime; earth so wet as to flow gently, or easily yield to pressure. ; Soft flow; spring. ; The liquor of a tan vat. ; To flow gently; to percolate, as a liquid through the pores of a substance or through small openings. ; Fig.: To leak (out) or escape slowly; as, the secret oozed out; his courage oozed out.	a:1ccj,52,6;1hnj,37,1~1ccj,52,6;1hnj,37,1	V:20h7,82,1~20h7,82,1	n:1hnj,47,2;1ccj,37,2~1ccj,37,2;1hnj,47,2	N:20h7,108,6~20h7,108,6
+1is9|v|To cause to ooze.	o:1ccj,58,9;u7p,43,2~1ccj,58,9;u7p,43,2	d:2l6,17,5~2l6,17,5
+1is9|a|To cause to ooze.	j:20h7,119,13;1ccj,37,2;u7p,33,1~20h7,119,13;1ccj,37,2;u7p,33,1
+1isa|v|of Ooze	o:1ccj,69,3~1ccj,69,3
+1isa|a|of Ooze	j:1ccj,53,1~1ccj,53,1
+1isb|n|	a:1ccj,49,1~1ccj,49,1
+1isb|v|	s:u7p,82,6;1ccj,77,7~1ccj,77,7;u7p,82,6
+1isc|n|of Ooze	a:u7p,24,1;1ccj,18,1~1ccj,18,1;u7p,24,1	v:24pk,36,2~24pk,36,2	n:1ccj,18,1~1ccj,18,1
+1isc|v|of Ooze	o:1ccj,50,9;2gbz,1,1~1ccj,50,9;2gbz,1,1	s:u7p,59,11;1qr1,41,2;1ccj,34,3~u7p,59,11;1ccj,34,3;1qr1,41,2	D:1jly,1,2~1jly,1,2
