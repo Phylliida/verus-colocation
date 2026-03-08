@@ -1,5 +1,166 @@
-2fgu|n|One of the common people; a vulgar person. ; The vernacular, or common language.	N:2gzx,56,2~2gzx,56,2
-2fgu|a|Of or pertaining to the mass, or multitude, of people; common; general; ordinary; public; hence, in general use; vernacular. ; Belonging or relating to the common people, as distinguished from the cultivated or educated; pertaining to common life; plebeian; not select or distinguished; hence, sometimes, of little or no value. ; Hence, lacking cultivation or refinement; rustic; boorish; also, offensive to good taste or refined feelings; low; coarse; mean; base; as, vulgar men, minds, language, or manners.	j:1nl0,89,4;18tz,64,4;2gzl,56,2;2gzx,56,2~18tz,64,4;1nl0,89,4;2gzl,56,2;2gzx,56,2
-2fh5|n|	a:18an,55,7;22zk,30,4~18an,55,7;22zk,30,4	v:18an,27,1~18an,27,1	V:18an,53,6;vp2,40,7~vp2,40,7;18an,53,6	n:1zax,88,36;97,14,7~1zax,88,36;97,14,7
-2fh6|n|The quality or state of being vulnerable; vulnerableness.	a:23vj,118,5;pzt,83,7;17yd,48,6;18an,41,4;8an,33,3~pzt,83,7;17yd,48,6;23vj,118,5;18an,41,4;8an,33,3	v:1xvf,8,3~1xvf,8,3	V:13dz,76,4;1yeg,69,4~13dz,76,4;1yeg,69,4	n:23vj,110,3;1qyr,84,4;1zax,74,20;zrb,47,3;22af,37,5~1zax,74,20;22af,37,5;1qyr,84,4;zrb,47,3;23vj,110,3
-2fh7|a|Capable of being wounded; susceptible of wounds or external injuries; as, a vulnerable body. ; Liable to injury; subject to be affected injuriously; assailable; as, a vulnerable reputation.	j:1itp,93,3;1pib,78,1;1pia,64,4;1pnh,46,19;yw3,43,3;yvy,25,3;1mfp,21,12;21bt,21,3;2eo3,19,3;254e,16,8~1pnh,46,19;1mfp,21,12;254e,16,8;1pia,64,4;1itp,93,3;2eo3,19,3;yvy,25,3;yw3,43,3;21bt,21,3;1pib,78,1	e:1rzj,97,4;pzw,74,2;1lkb,46,6;t25,41,4;19lo,31,8;1f74,31,46;2epf,23,16;24i6,21,8~1f74,31,46;2epf,23,16;24i6,21,8;19lo,31,8;1lkb,46,6;t25,41,4;1rzj,97,4;pzw,74,2
+af9g|n|	a:7nwq,128,2;7dhy,120,3;2a4i,107,13;4r8r,95,2;6bix,87,2;3xpl,84,5;a91g,65,13;mzm,59,6;6xh9,53,2;3q4w,53,2;2fw8,40,10;n1r,37,15;chy,32,1;8p3m,10,17;7rjb,4,8~8p3m,10,17;n1r,37,15;a91g,65,13;2a4i,107,13;2fw8,40,10;7rjb,4,8;mzm,59,6;3xpl,84,5;7dhy,120,3;4r8r,95,2;3q4w,53,2;6xh9,53,2;6bix,87,2;7nwq,128,2;chy,32,1	v:2a4i,90,4;3q4w,43,1;7rm,17,1~2a4i,90,4;7rm,17,1;3q4w,43,1	V:44d3,98,1;5rin,81,6;c9h,64,1;3lrh,40,3;7hxj,32,5;37j5,23,3;5rif,18,1;752l,10,2~5rin,81,6;7hxj,32,5;3lrh,40,3;37j5,23,3;752l,10,2;c9h,64,1;44d3,98,1;5rif,18,1	n:2a4i,162,571;7dhy,137,10;4r8r,137,37;p2z,135,17;ae5b,104,26;6p0q,101,22;6bix,100,5;a7z8,100,4;3xpl,94,10;wwm,89,6;4qsn,87,14;6xh9,84,17;p9p,84,2;3q4w,73,8;6nj3,69,1~2a4i,162,571;565s,53,39;4r8r,137,37;ae5b,104,26;6p0q,101,22;59y6,13,22;ch1,60,21;p2z,135,17;6xh9,84,17;5f4c,49,16;a91g,68,16;4qsn,87,14;1eul,38,12;3xpl,94,10;7dhy,137,10	N:44d3,121,5;c9h,117,39;5rif,106,426;71vg,102,5;aim9,94,23;abwh,93,6;5riy,79,54;89jq,66,8;aa5m,57,5;24i1,52,1;2cef,50,5;752l,48,27;3lrh,44,4;a2sy,44,12;5xv8,40,3~5rif,106,426;5riy,79,54;c9h,117,39;752l,48,27;9y7f,20,23;aim9,94,23;a2sy,44,12;37j5,39,9;89jq,66,8;4dov,1,8;abwh,93,6;aa5m,57,5;44d3,121,5;2cef,50,5;71vg,102,5
+af9g|v|	o:5riy,22,1~5riy,22,1	s:2a4i,70,1;2r9p,2,1~2a4i,70,1;2r9p,2,1
+af9g|a|	j:44d3,113,3;1grn,112,3;71vg,110,9;1oux,106,14;dl4,99,3;437o,99,11;89jq,97,65;1doc,94,5;6bix,93,3;24i1,89,13;a1lt,80,8;abwh,77,2;5rif,75,50;aim9,69,4;1cmb,67,21~89jq,97,65;5rif,75,50;55t4,45,39;52of,66,37;30cp,58,25;1cmb,67,21;5riy,62,17;2cef,66,15;33lz,26,14;1oux,106,14;a02j,64,14;24i1,89,13;5xi9,32,13;37j5,42,11;437o,99,11	e:2a4i,105,11;6nj3,69,1;ae5b,57,1~2a4i,105,11;ae5b,57,1;6nj3,69,1
+af9h|n|	V:wkn,152,1~wkn,152,1
+af9h|a|	j:wkn,162,2~wkn,162,2
+af9i|n|	V:5q2f,30,2;888b,12,1~5q2f,30,2;888b,12,1
+af9i|v|	s:9k66,18,4~9k66,18,4
+af9i|a|	j:770u,12,2~770u,12,2
+af9k|n|	v:9uhx,31,1~9uhx,31,1	n:acfp,88,1~acfp,88,1
+af9l|n|	n:598y,21,2~598y,21,2	N:ab93,35,1~ab93,35,1
+af9l|a|	j:ab93,51,3~ab93,51,3
+af9m|n|	a:af9n,100,1;af9m,98,5;9gpy,84,1;2v4y,59,12;5gh1,50,9;52of,38,3;djs,35,5~2v4y,59,12;5gh1,50,9;af9m,98,5;djs,35,5;52of,38,3;9gpy,84,1;af9n,100,1	v:8a6x,55,1;55zg,20,4;a7cv,0,3~55zg,20,4;a7cv,0,3;8a6x,55,1	V:44v6,6,2;8906,3,2~44v6,6,2;8906,3,2	n:2uxc,159,20;2a4i,104,6;4vop,99,7;6zmj,98,8;76ym,92,7;9gpy,84,1;6xh9,79,7;8a6x,71,3;2v4y,60,13;52of,56,11;7r1u,37,2;7ibv,33,5;27n9,32,5;4dov,26,26;55zg,16,3~598y,6,50;4dov,26,26;2uxc,159,20;2v4y,60,13;52of,56,11;6zmj,98,8;4vop,99,7;6xh9,79,7;76ym,92,7;2a4i,104,6;27n9,32,5;7ibv,33,5;55zg,16,3;8a6x,71,3;7r1u,37,2	N:2c2t,119,6;93w3,77,1;305t,53,3;27n9,41,9;4v9o,31,9;44v6,29,10;1kaw,28,1;2okt,27,1;9gf6,23,2;30dq,17,4;33wn,14,2;858y,12,1;2dnt,10,1;2wdl,9,3;7z4q,0,1~44v6,29,10;27n9,41,9;4v9o,31,9;2c2t,119,6;30dq,17,4;305t,53,3;2wdl,9,3;33wn,14,2;9gf6,23,2;858y,12,1;2dnt,10,1;7z4q,0,1;93w3,77,1;2okt,27,1;1kaw,28,1
+af9m|v|	s:2uxc,136,4~2uxc,136,4
+af9m|a|	j:93w3,140,79;2c2t,128,11;1doc,115,12;9aqv,111,1;af9m,98,5;6xmu,92,1;1oux,92,3;8w4m,90,10;305t,73,12;2cef,71,13;1kaw,67,15;55vw,65,3;3hmu,64,10;4v9o,63,83;7b5w,61,4~gaa,45,110;4v9o,63,83;93w3,140,79;1q39,58,69;1q58,54,38;4jb7,34,34;858y,56,21;gt8,19,20;30dq,38,17;7gis,19,15;1kaw,67,15;2cef,71,13;8906,30,13;305t,73,12;1doc,115,12	e:2v4y,56,10;52of,22,1~2v4y,56,10;52of,22,1
+af9n|n|	a:53xz,59,1~53xz,59,1	v:a7g2,6,8~a7g2,6,8	n:4vop,116,4;44j,0,2~4vop,116,4;44j,0,2	N:gaa,28,6;7gis,5,1~gaa,28,6;7gis,5,1
+af9n|a|	j:af9m,100,1;3hmu,79,5;gaa,53,35;3gd1,52,7;1q39,46,5;2kj2,44,6;5d7u,36,3;gt8,33,9;7gis,21,3;5rkf,13,4;1mcq,3,5~gaa,53,35;gt8,33,9;3gd1,52,7;2kj2,44,6;3hmu,79,5;1mcq,3,5;1q39,46,5;5rkf,13,4;7gis,21,3;5d7u,36,3;af9m,100,1
+af9o|n|	a:2srl,77,1~2srl,77,1	n:aril,113,3;8i4,95,3;2srl,77,1~8i4,95,3;aril,113,3;2srl,77,1
+af9o|a|	j:2zp2,114,12;88g2,113,6;8ds7,90,7~2zp2,114,12;8ds7,90,7;88g2,113,6
+af9p|n|	a:a02k,109,2~a02k,109,2	n:a02k,119,4;52of,99,14;27n9,48,1~52of,99,14;a02k,119,4;27n9,48,1	N:2v4y,62,1~2v4y,62,1
+af9p|a|	j:8i4,94,8;2v4y,82,4;6isy,56,5;27n9,48,1~8i4,94,8;6isy,56,5;2v4y,82,4;27n9,48,1	e:52of,77,3~52of,77,3
+af9q|n|	a:7mxe,131,9~7mxe,131,9	n:acb9,209,4~acb9,209,4	N:2v4y,85,1~2v4y,85,1
+af9q|a|	j:2v4y,95,2~2v4y,95,2
+af9r|n|	n:2cef,124,6~2cef,124,6
+af9s|a|	j:7sky,80,2;8trd,44,6;1993,29,6;amd6,29,8;99xz,12,1~amd6,29,8;8trd,44,6;1993,29,6;7sky,80,2;99xz,12,1
+af9t|n|	V:5qag,181,2~5qag,181,2
+af9v|n|	v:a7g2,8,2~a7g2,8,2	n:4dov,56,8~4dov,56,8	N:93u2,34,1~93u2,34,1
+af9v|a|	j:93u2,69,12;5x2f,56,4;91jr,39,2~93u2,69,12;5x2f,56,4;91jr,39,2
+af9w|n|	a:7mj5,127,28;4juh,43,3;54q5,15,1;d4e,1,1~7mj5,127,28;4juh,43,3;54q5,15,1;d4e,1,1	v:7mj4,155,4;4juh,47,4;93lv,31,6;a7g2,23,59~a7g2,23,59;93lv,31,6;4juh,47,4;7mj4,155,4	V:nar,75,3;9sep,48,3;99zd,35,3;2drp,34,2;77ii,25,3;8trd,24,4;8dp8,24,1;676v,14,1;50uw,13,1~8trd,24,4;77ii,25,3;9sep,48,3;99zd,35,3;nar,75,3;2drp,34,2;676v,14,1;8dp8,24,1;50uw,13,1	n:hqg,65,4;a2q2,48,4;66js,46,8~66js,46,8;a2q2,48,4;hqg,65,4	N:8dp8,64,17;hqg,55,2;3gd1,27,3;2drp,24,1;2whs,24,2;gwz,24,2;7gis,21,7;99zd,19,1;2drf,17,1;50uw,13,1;4mic,12,1;77ii,9,1~8dp8,64,17;7gis,21,7;3gd1,27,3;hqg,55,2;gwz,24,2;2whs,24,2;77ii,9,1;4mic,12,1;50uw,13,1;2drf,17,1;99zd,19,1;2drp,24,1
+af9w|v|	o:a2q2,38,2;9elm,5,1~a2q2,38,2;9elm,5,1
+af9w|a|	j:ac6g,171,9;8dp8,99,185;hqg,97,38;a2q2,74,25;3fkw,55,6;8906,54,29;893r,54,6;1l91,52,6;2drf,50,10;4mic,48,12;2drp,40,3;99zd,39,4;3gd1,37,6;77ii,35,6;9sep,32,1~8dp8,99,185;hqg,97,38;8906,54,29;a2q2,74,25;4mic,48,12;2drf,50,10;ac6g,171,9;ahbo,20,6;3gd1,37,6;1l91,52,6;3fkw,55,6;77ii,35,6;893r,54,6;58gd,24,5;8trd,24,4
+af9x|n|	v:a7g2,14,7~a7g2,14,7	V:7sv4,34,1~7sv4,34,1	n:5c3t,154,9;5f1u,101,4;46by,88,8;a106,16,1~5c3t,154,9;46by,88,8;5f1u,101,4;a106,16,1	N:8d56,66,5;8d0v,34,5;7sv4,34,1;ab93,19,2~8d56,66,5;8d0v,34,5;ab93,19,2;7sv4,34,1
+af9x|a|	j:aeii,57,4;8d0v,51,16;7sv4,44,2;8d56,43,1~8d0v,51,16;aeii,57,4;7sv4,44,2;8d56,43,1
+afa0|n|	a:79nf,208,3~79nf,208,3	n:79nf,228,12;79pb,190,1~79nf,228,12;79pb,190,1
+afa0|v|	s:79nf,193,1~79nf,193,1
+afa1|n|	n:4dov,37,2~4dov,37,2
+afa2|n|	a:218w,35,1~218w,35,1
+afa4|n|	a:5eju,156,28~5eju,156,28	v:5eju,128,4~5eju,128,4	n:5eju,147,15~5eju,147,15	N:3ybp,170,3;163n,134,9;qvf,127,8~163n,134,9;qvf,127,8;3ybp,170,3
+afa4|v|	o:3ybp,164,2~3ybp,164,2
+afa4|a|	j:3ybp,154,1;162c,89,2~162c,89,2;3ybp,154,1
+afa7|n|	V:9voq,8,2~9voq,8,2	n:38q5,101,3;8ipk,13,4~8ipk,13,4;38q5,101,3	N:30cp,63,2~30cp,63,2
+afa7|a|	j:a02,144,6;2rrc,143,8;437o,137,9;9x2,107,1;54o3,82,4;30cp,78,6~437o,137,9;2rrc,143,8;a02,144,6;30cp,78,6;54o3,82,4;9x2,107,1
+afa8|v|	o:2whs,69,2~2whs,69,2
+afa8|a|	j:2win,105,5;2whs,87,7~2whs,87,7;2win,105,5
+afa9|n|The god of fire, who presided over the working of metals; -- answering to the Greek Hephaestus.	a:38pl,61,4;48tg,48,5;9y0b,33,8;9sje,31,4;a2y6,26,3;94to,23,3;a9gu,5,3~9y0b,33,8;48tg,48,5;9sje,31,4;38pl,61,4;a9gu,5,3;94to,23,3;a2y6,26,3	v:2d6f,31,4;5ego,27,8~5ego,27,8;2d6f,31,4	V:88r4,117,26;27ud,26,4~88r4,117,26;27ud,26,4	n:afa9,83,5;76bh,78,75;1dab,36,4;aqwv,3,3~76bh,78,75;afa9,83,5;1dab,36,4;aqwv,3,3	N:1d37,113,16;6kyd,111,10;bgy,107,20;7e9a,106,4;65fc,96,4;5xln,93,5;7492,87,6;1nsk,86,12;3iwv,84,6;afa9,83,5;1nru,83,7;9gss,82,3;1ln,82,13;88qy,79,3;cox,78,4~5d5u,34,30;8tgd,70,28;bgy,107,20;8w4r,13,17;1d37,113,16;1gy2,36,14;1ln,82,13;1nsk,86,12;6kyd,111,10;739v,48,9;1nru,83,7;1j8w,72,6;aqwv,13,6;7492,87,6;58w3,18,6
+afa9|a|The god of fire, who presided over the working of metals; -- answering to the Greek Hephaestus.	j:4op4,133,2;4xlh,123,2;6912,118,124;4op3,115,3;6kye,110,3;10zc,107,16;1yss,91,7;5ipt,88,20;198n,87,17;8may,87,71;10zf,86,3;7hy1,86,9;5abc,84,10;689d,83,30;37qp,76,7~6912,118,124;8c5o,70,98;8may,87,71;8m7m,73,67;5trd,46,66;53p6,32,39;20sa,66,32;zre,64,30;689d,83,30;t3u,67,26;5ipt,88,20;43zl,39,19;66j5,27,19;198n,87,17;10zc,107,16
+afab|a|Of or pertaining to Vulcan; made by Vulcan; Vulcanian. ; Of or pertaining to volcanoes; specifically, relating to the geological theory of the Vulcanists, or Plutonists.	j:3kr,82,3~3kr,82,3
+afad|v|	o:3d4o,114,11;3rqz,100,2~3d4o,114,11;3rqz,100,2
+afad|a|	j:3d4o,124,22;3rqz,100,2;86b6,92,1;75y,92,4~3d4o,124,22;75y,92,4;3rqz,100,2;86b6,92,1
+afae|n|Volcanism.	a:34q3,103,7;3el,72,4~34q3,103,7;3el,72,4
+afah|n|The act or process of imparting to caoutchouc, gutta-percha, or the like, greater elasticity, durability, or hardness by heating with sulphur under pressure.	n:9h3t,81,7~9h3t,81,7	N:3d4o,88,3;7fcf,65,12~7fcf,65,12;3d4o,88,3
+afai|v|To change the properties of, as caoutchouc, or India rubber, by the process of vulcanization.	s:86b6,119,11~86b6,119,11
+afai|a|To change the properties of, as caoutchouc, or India rubber, by the process of vulcanization.	j:9qf8,79,13~9qf8,79,13
+afaj|a|of Vulcanize	j:86b6,138,41;6xyq,80,3~86b6,138,41;6xyq,80,3
+afal|n|of Vulcanize	a:9sje,68,2~9sje,68,2	N:6xz2,85,2;75y,56,1~6xz2,85,2;75y,56,1
+afal|v|of Vulcanize	o:8oq5,122,7;3d4o,96,10;3rqz,89,3;1q9g,65,1;8u78,33,5~3d4o,96,10;8oq5,122,7;8u78,33,5;3rqz,89,3;1q9g,65,1	s:9h3t,87,21;8g4y,47,2~9h3t,87,21;8g4y,47,2
+afal|a|of Vulcanize	j:1d0y,120,7;3d4o,107,21;3rqz,107,10;6xz2,105,8;75y,97,17;9egb,96,8;6xyq,90,11;1q9g,80,3;86b6,76,1;8u78,47,13~3d4o,107,21;75y,97,17;8u78,47,13;6xyq,90,11;3rqz,107,10;9egb,96,8;6xz2,105,8;1d0y,120,7;1q9g,80,3;86b6,76,1
+afao|n|	a:9agv,77,4;5ion,58,7;5i3h,57,2;47m5,55,6;7efg,47,5;ars5,46,4;csg,44,3;ys5,24,5;6r1c,13,36;5d5w,13,1;3ifa,13,5;5z2v,11,12;38a9,11,6;5js4,8,10~6r1c,13,36;5z2v,11,12;5js4,8,10;5ion,58,7;38a9,11,6;47m5,55,6;3ifa,13,5;7efg,47,5;ys5,24,5;9agv,77,4;ars5,46,4;csg,44,3;5i3h,57,2;5d5w,13,1	v:9agv,57,1;9u1t,56,2~9u1t,56,2;9agv,57,1	V:31t3,56,2;2dra,49,8;2del,49,5;2hhl,44,5;58tq,41,6;1hp8,41,4;5lso,40,1;2dr7,40,5;55z9,39,5;41ng,34,4;37iu,30,11;8wp0,29,2;9hku,28,3;8f7m,24,13;18lm,23,5~8f7m,24,13;37iu,30,11;5gzi,16,9;2dra,49,8;1ojz,17,7;58tq,41,6;uut,17,6;5e13,1,6;18lm,23,5;2hhl,44,5;2del,49,5;2dr7,40,5;55z9,39,5;1hp8,41,4;41ng,34,4	n:5i3h,57,2;5ion,50,4;ars5,49,5;by0,44,11;csg,28,1;w46,18,20;b35,13,4;11a,6,23;aj3h,6,9;598y,5,34;8pj0,5,11~598y,5,34;11a,6,23;w46,18,20;8pj0,5,11;by0,44,11;aj3h,6,9;ars5,49,5;b35,13,4;5ion,50,4;5i3h,57,2;csg,28,1	N:50g3,79,1;47h1,40,3~47h1,40,3;50g3,79,1
+afao|v|	D:7v3m,32,1~7v3m,32,1
+afao|a|	j:50g3,95,3~50g3,95,3
+afap|n|	n:598y,4,1~598y,4,1
+afaq|n|	n:8eyt,78,4~8eyt,78,4
+afas|n|	a:54sk,96,3~54sk,96,3	n:54sk,80,1~54sk,80,1
+afas|v|	s:5xar,179,6~5xar,179,6
+afas|a|	j:7mxe,98,1~7mxe,98,1
+afat|n|One of the common people; a vulgar person. ; The vernacular, or common language.	a:496d,106,6;11ok,63,5;7srf,58,2;6s5e,54,5;13vs,44,10;p99,41,86;bob,37,10;54or,29,9;csg,27,3;4gos,20,1;8y4i,18,1;1p4n,6,9;a27h,4,1;6dti,4,2;2wjn,1,4~p99,41,86;13vs,44,10;bob,37,10;1p4n,6,9;54or,29,9;496d,106,6;6s5e,54,5;11ok,63,5;2wjn,1,4;csg,27,3;6dti,4,2;7srf,58,2;8y4i,18,1;a27h,4,1;4gos,20,1	v:1sh4,26,19;1t6n,17,8;7aor,4,2~1sh4,26,19;1t6n,17,8;7aor,4,2	V:8r6i,57,6;8aqy,1,5~8r6i,57,6;8aqy,1,5	n:8mdo,45,1;11ok,40,1;8r6i,31,1;a27h,14,2;af1h,13,7;54sk,7,1;p99,7,8;alxf,5,10~alxf,5,10;p99,7,8;af1h,13,7;a27h,14,2;54sk,7,1;8r6i,31,1;11ok,40,1;8mdo,45,1	N:8r6i,89,58;4jz9,83,3;54sk,76,121;3g3o,73,112;8458,59,3;9qb1,58,7;9i1x,42,98;4ufr,42,1;9c9p,36,3;2yuy,35,2;4a9x,30,2;3g4d,20,1;am1r,19,21;740o,15,1;alxf,9,13~54sk,76,121;3g3o,73,112;9i1x,42,98;8r6i,89,58;am1r,19,21;alxf,9,13;9qb1,58,7;4jz9,83,3;8458,59,3;9c9p,36,3;30dq,0,3;2yuy,35,2;4a9x,30,2;3g4d,20,1;4ufr,42,1
+afat|v|One of the common people; a vulgar person. ; The vernacular, or common language.	o:54sk,17,2~54sk,17,2	D:54sk,7,1~54sk,7,1
+afat|a|Of or pertaining to the mass, or multitude, of people; common; general; ordinary; public; hence, in general use; vernacular. ; Belonging or relating to the common people, as distinguished from the cultivated or educated; pertaining to common life; plebeian; not select or distinguished; hence, sometimes, of little or no value. ; Hence, lacking cultivation or refinement; rustic; boorish; also, offensive to good taste or refined feelings; low; coarse; mean; base; as, vulgar men, minds, language, or manners.	j:54sk,103,785;ghh,97,3;9tne,97,3;7hlp,97,13;8r6i,97,97;9qb1,94,88;33rw,90,2;4jz9,87,4;1s8x,84,18;4ufr,79,13;5l7s,79,2;3g4d,77,55;1s8v,76,17;7g2b,72,2;3g3o,64,58~54sk,103,785;53p6,58,343;am1r,56,264;alxf,40,117;8r6i,97,97;9qb1,94,88;agw0,10,87;3418,41,78;9hy5,41,76;3g3o,64,58;3g4d,77,55;9i1x,33,53;5oe8,35,47;3ezc,14,42;7409,46,39	e:6t6u,89,6;5tc0,89,24;45g8,71,3;34q9,47,37;8utr,42,32;5qcv,38,12;6xa1,38,19;8rmr,37,30;6suo,37,3;5776,31,72;7q7m,24,54;9qej,21,55;54or,21,5;8us9,20,18;anj,19,17~5776,31,72;abjt,14,69;9qej,21,55;7q7m,24,54;5z2v,13,44;34q9,47,37;8utr,42,32;8rmr,37,30;5tc0,89,24;6xa1,38,19;8us9,20,18;anj,19,17;7nu9,6,12;5qcv,38,12;7aft,17,9
+afau|n|	n:5987,201,4;6q0t,201,3~5987,201,4;6q0t,201,3
+afaw|n|	a:72z2,178,1;vgg,175,2;8hug,154,1~vgg,175,2;8hug,154,1;72z2,178,1	n:9cff,199,4;72z2,178,1;1hcy,170,1;2ud,165,16;8hug,164,2;8c9z,158,1;jqm,155,1;2mr3,116,2;6kdj,115,2;4817,112,2;vyq,42,1~2ud,165,16;9cff,199,4;2mr3,116,2;8hug,164,2;6kdj,115,2;4817,112,2;1hcy,170,1;jqm,155,1;72z2,178,1;vyq,42,1;8c9z,158,1
+afaw|v|	s:18eq,168,1~18eq,168,1
+afaw|a|	e:9cff,179,1;4817,102,1~4817,102,1;9cff,179,1
+afay|n|	v:a6ev,29,4~a6ev,29,4	n:11a,27,6~11a,27,6
+afaz|n|The quality or state of being vulgar; mean condition of life; the state of the lower classes of society. ; Grossness or clownishness of manners of language; absence of refinement; coarseness.	a:3uag,111,3;32dj,73,3;70nt,57,1;34q3,52,2;614m,14,5~614m,14,5;3uag,111,3;32dj,73,3;34q3,52,2;70nt,57,1	v:70nt,67,2;p99,20,2;7wdi,3,1~p99,20,2;70nt,67,2;7wdi,3,1	V:770u,8,3~770u,8,3	n:11a,12,11~11a,12,11	N:7g2b,121,6~7g2b,121,6
+afb6|n|	a:wpj,147,1;6fmp,135,12;54sk,74,3~6fmp,135,12;54sk,74,3;wpj,147,1	n:87ue,183,13;wpj,147,1;6fmp,136,13;54sk,58,1~87ue,183,13;6fmp,136,13;wpj,147,1;54sk,58,1
+afb7|n|An ancient Latin version of the Scripture, and the only version which the Roman Church admits to be authentic; -- so called from its common use in the Latin Church. ; Of or pertaining to the Vulgate, or the old Latin version of the Scriptures.	V:8arb,1,3~8arb,1,3	n:4ssk,72,1~4ssk,72,1	N:4mvs,100,1;7wrs,39,2;9tbx,33,1;54sk,21,1~7wrs,39,2;54sk,21,1;4mvs,100,1;9tbx,33,1
+afb7|v|An ancient Latin version of the Scripture, and the only version which the Roman Church admits to be authentic; -- so called from its common use in the Latin Church. ; Of or pertaining to the Vulgate, or the old Latin version of the Scriptures.	o:9tbx,33,1~9tbx,33,1
+afb7|a|An ancient Latin version of the Scripture, and the only version which the Roman Church admits to be authentic; -- so called from its common use in the Latin Church. ; Of or pertaining to the Vulgate, or the old Latin version of the Scriptures.	j:88tm,94,3;5jrl,86,7;5fk1,85,3;5qhi,84,3;wpe,84,51;2rfs,74,7;9tc7,70,67;9tbx,70,13;54sk,68,27;1f03,66,6;2rfn,65,28;9sjd,62,6;7wrs,59,8;889v,55,1;3m5k,55,4~9tc7,70,67;wpe,84,51;a7cv,38,37;2rfn,65,28;54sk,68,27;ab93,20,23;9jd7,17,19;9tbx,70,13;23bg,45,11;7wrs,59,8;6lfq,16,8;2rfs,74,7;5jrl,86,7;1f03,66,6;9sjd,62,6	e:ansi,101,1~ansi,101,1
+afb8|n|	a:27n9,67,2~27n9,67,2
+afb8|a|	j:ae8u,174,1;5of1,25,1~5of1,25,1;ae8u,174,1
+afb9|a|	j:30cp,85,3~30cp,85,3
+afba|n|	n:2gag,168,7~2gag,168,7
+afbb|n|	a:afbb,85,2;5qkf,75,3~5qkf,75,3;afbb,85,2	v:99zd,16,2;99xz,1,3;55zg,0,1~99xz,1,3;99zd,16,2;55zg,0,1	V:35j3,4,2~35j3,4,2	n:3zup,79,1;5qkf,59,1;6ijy,29,2;99xz,24,15;99zd,22,3;378a,3,2~99xz,24,15;99zd,22,3;378a,3,2;6ijy,29,2;5qkf,59,1;3zup,79,1	N:4glj,27,14;2nmy,21,4;2nns,14,1~4glj,27,14;2nmy,21,4;2nns,14,1
+afbb|v|	o:2nmy,1,1~2nmy,1,1	s:99zd,16,2~99zd,16,2
+afbb|a|	j:49dg,153,207;5j6t,99,10;1rge,86,3;afbb,85,2;7wp5,85,3;8kl5,83,14;2nns,77,77;4kpj,77,8;8wqb,72,41;7wot,69,11;5bwc,67,17;3u3q,66,46;2nmy,64,75;2gum,62,3;8dp8,60,30~49dg,153,207;99xz,54,120;fx2,55,114;2nns,77,77;2nmy,64,75;4jb7,41,56;ab93,30,50;3u3q,66,46;8wqb,72,41;8dp8,60,30;5bwc,67,17;2dun,26,15;8kl5,83,14;58gb,42,14;vyq,40,12	e:3zup,79,1~3zup,79,1
+afbc|n|	a:98c0,63,9;86xk,35,3;86qo,12,1~98c0,63,9;86xk,35,3;86qo,12,1	v:86xk,19,1~86xk,19,1	n:98c0,41,2;1op6,37,3;86qo,12,1~1op6,37,3;98c0,41,2;86qo,12,1	N:1op6,21,1~1op6,21,1
+afbc|a|	j:5cz1,51,5;6rxs,43,6;1op6,37,3~6rxs,43,6;5cz1,51,5;1op6,37,3
+afbe|n|	a:8yym,97,1;8hto,53,4;8wur,5,2~8hto,53,4;8wur,5,2;8yym,97,1	V:8b6a,49,1~8b6a,49,1	n:57pl,134,4;aq5r,126,2;7qro,125,7;apwb,108,33;8yym,107,2;4hqz,87,34;9tr3,81,4;200p,69,2;3lb8,45,1;8eyt,41,8;32s2,38,3;4ylc,25,2;1jlg,24,21~4hqz,87,34;apwb,108,33;1jlg,24,21;8eyt,41,8;7qro,125,7;9tr3,81,4;57pl,134,4;32s2,38,3;8yym,107,2;200p,69,2;aq5r,126,2;4ylc,25,2;3lb8,45,1	N:8b66,76,1;8b6a,49,1;8b3w,41,2;8b63,40,1;1ttz,23,1;4mkv,9,1~8b3w,41,2;8b66,76,1;1ttz,23,1;4mkv,9,1;8b6a,49,1;8b63,40,1
+afbe|v|	o:aiy9,0,6~aiy9,0,6	s:afbh,87,6~afbh,87,6
+afbe|a|	j:8b66,120,21;5s34,100,2;8b63,79,15;8b6a,72,5;8b6p,58,1;8b3w,57,6;1ttz,53,8;26xg,34,5;7gb5,30,8;4mkv,9,1;49ts,6,3~8b66,120,21;8b63,79,15;1ttz,53,8;7gb5,30,8;8b3w,57,6;8b6a,72,5;26xg,34,5;49ts,6,3;5s34,100,2;8b6p,58,1;4mkv,9,1
+afbf|a|	e:5yo3,41,7~5yo3,41,7
+afbg|n|	a:50vg,61,6;5js4,29,3~50vg,61,6;5js4,29,3	v:50vg,45,2~50vg,45,2	n:4hqz,91,8;8eyt,83,25~8eyt,83,25;4hqz,91,8
+afbg|v|	s:8eyt,60,5~8eyt,60,5
+afbh|n|	a:a3cu,116,80;33tz,112,150;9y7v,100,3;5pig,83,12;57pl,82,3;a1ut,80,6;8wyu,79,16;a1i2,79,7;a1i5,76,6;7w3a,72,2;2hbf,71,15;a1w6,70,9;5req,68,5;6t0y,66,12;79i8,66,3~50vg,61,993;6r1c,17,524;7b0p,58,431;69ri,9,348;1p4n,37,283;7aev,20,258;988p,14,241;5js4,19,238;5yo3,1,214;61tf,24,178;8wur,21,164;33tz,112,150;6sn8,48,149;8hto,56,139;1z0c,51,124	v:9phe,107,2;a3cu,91,14;33u6,90,116;8spj,87,10;a1i5,83,10;7w3a,82,4;2hbf,80,29;3kh8,79,8;33tx,79,185;1kdo,77,4;2hbi,73,16;44db,69,3;33u3,66,18;8d34,66,131;43i9,65,9~3afm,12,245;33tx,79,185;50vg,36,180;8d34,66,131;33u6,90,116;3akc,35,113;4lgl,53,106;1t3o,23,63;2hhl,43,53;333o,19,52;1bsj,15,45;4a3u,30,45;7xkd,40,39;2de9,27,36;7xjd,19,33	V:afbe,87,6;a3cu,79,6;2hbf,70,14;33u3,68,21;7ohg,65,12;33tz,60,4;5fzb,59,6;5pig,57,2;2hhl,55,122;is6,51,36;33u0,51,3;6k8,50,30;4d7v,49,4;6xyx,48,9;7xkd,43,47~3fqq,21,256;332j,33,142;2hhl,55,122;ld3,37,103;7vjn,20,96;1ojz,15,67;7dcd,23,55;7xkd,43,47;a9m,11,46;1bsk,29,44;4lgm,40,44;5ak9,29,40;6jt,28,38;is6,51,36;6k4u,30,34	n:4ah5,119,5;apwb,108,892;57pl,107,17;9phe,107,2;902e,107,8;aq56,105,10;8yym,103,42;2zq7,102,130;8yys,100,4;9y7v,100,3;4hqz,98,2070;apwa,94,14;8lqs,89,7;7tuq,85,8;8wyu,85,24~8eyt,84,4228;4hqz,98,2070;apwb,108,892;11a,7,294;gt8,21,191;8trd,33,155;2zq7,102,130;32s2,41,107;200p,77,100;mkc,40,100;ahbo,12,70;71f,21,68;4ylc,26,60;149o,17,55;4eq1,52,48	N:1vpr,66,7;8b66,64,12;22zy,50,4;33u0,45,2;apwb,36,6;afbh,33,4;is6,10,2~8b66,64,12;1vpr,66,7;apwb,36,6;afbh,33,4;22zy,50,4;is6,10,2;33u0,45,2
+afbh|v|	o:8b66,51,5~8b66,51,5	s:apwa,56,1;apwb,51,17;2hbj,39,6;9tr3,34,4;22zy,30,1;200p,27,3;8eyt,17,43;4hqz,14,6;afbh,13,1;33tx,4,1~8eyt,17,43;apwb,51,17;2hbj,39,6;4hqz,14,6;9tr3,34,4;200p,27,3;apwa,56,1;22zy,30,1;33tx,4,1;afbh,13,1
+afbi|n|The quality or state of being vulnerable; vulnerableness.	a:3mte,132,13;4720,122,9;2gyj,120,7;zxy,120,6;8edy,116,62;85fd,110,10;30ep,106,5;a3cu,104,53;33tz,103,121;3u3,102,10;90fk,101,18;6azi,101,4;2o2r,95,1;40up,94,37;7mks,88,9~7b0p,49,360;6sn8,51,275;50vg,36,266;8wur,19,213;6x9o,18,135;1p4n,20,133;8hto,49,132;ahbo,15,131;33tz,103,121;oak,54,115;7rjb,11,100;3pe,14,86;6jz,44,81;5i9m,30,74;675y,50,69	v:5r7j,87,12;40up,86,22;a3cu,85,14;1kdo,79,7;8spj,78,8;8bil,74,6;33u3,71,39;4jzc,70,4;2hbj,65,56;8d34,63,163;43i9,61,11;2hbf,60,11;78g6,59,11;39wo,58,126;2nyk,56,5~8d34,63,163;39wo,58,126;6jz,44,83;2hbj,65,56;50vg,13,53;33u3,71,39;2gzp,24,35;2hhl,30,33;slw,21,30;4f20,29,24;40up,86,22;7xkd,25,20;70wg,3,19;4f1u,3,16;a3cu,85,14	V:9w28,99,22;8b6a,74,240;8ckn,68,73;2hbj,64,54;33u3,60,19;40up,58,3;8b3w,56,239;6xyx,52,19;6k8,46,36;2hbf,46,4;1fz2,44,3;33u8,43,7;6kl,42,46;5j2c,39,128;7xkd,39,54~8b6a,74,240;8b3w,56,239;3fqq,11,197;3353,23,150;5j2c,39,128;adw,24,103;1883,6,89;8ckn,68,73;7xjd,24,72;9ink,19,67;2hhl,38,57;2hbj,64,54;7xkd,39,54;50vg,12,51;58vh,36,49	n:4720,132,19;7j0m,122,100;8lqs,119,88;902e,119,29;57pl,116,50;51m2,116,31;9phc,111,14;apwb,110,1587;499k,109,15;3q8t,109,3;79i8,108,87;89h6,107,117;40up,106,85;8yys,104,8;83nb,103,4~8eyt,67,2004;apwb,110,1587;4hqz,82,1067;mkc,49,276;200p,82,205;32s2,42,174;9tr3,81,167;2zq7,99,156;ahbo,15,137;1z0c,44,124;6sn8,39,120;89h6,107,117;a5bj,33,105;7j0m,122,100;8lqs,119,88	N:4q7h,143,71;9w28,124,131;8b66,105,327;5w6h,101,27;8wyu,96,78;l4a,94,1;l4j,86,301;15oo,83,6;l4p,82,31;65o,82,5;8b63,79,626;8b6p,79,176;2hbm,78,6;33u0,70,18;8b6a,68,157~8b63,79,626;8b66,105,327;l4j,86,301;8b6p,79,176;8b6a,68,157;8wqb,54,154;250g,14,146;9w28,124,131;cir,31,98;8wyu,96,78;4q7h,143,71;4p8t,15,57;5ln7,9,52;3353,8,51;7xmp,33,48
+afbi|a|The quality or state of being vulnerable; vulnerableness.	j:4q7h,134,38;9w28,96,18;8b66,86,85;l4p,77,21;5w6h,74,4;5vk6,72,6;7w3d,66,4;2hbm,62,2;234u,58,1;8b6p,53,29;8b63,43,53;40up,42,1;e4u,41,3;8b6a,30,12;33u8,25,2~8b66,86,85;8b63,43,53;7ym1,14,38;4q7h,134,38;8b6p,53,29;l4p,77,21;9w28,96,18;8wqb,23,18;8b6a,30,12;7xmp,13,12;2534,4,6;5vk6,72,6;6xyq,5,6;7w3d,66,4;5w6h,74,4
+afbj|n|	a:9d1e,28,1~9d1e,28,1	v:66d4,71,3~66d4,71,3	n:a4t1,49,3~a4t1,49,3	N:8ipk,26,2;aiy9,24,2~aiy9,24,2;8ipk,26,2
+afbj|a|	j:8ipk,51,11;9d1e,48,4~8ipk,51,11;9d1e,48,4
+afbk|n|	N:8vu2,139,1~8vu2,139,1
+afbk|a|	j:8vu2,139,1;1o6m,56,2;a8r3,49,5~a8r3,49,5;1o6m,56,2;8vu2,139,1
+afbl|n|	n:8eyt,70,3~8eyt,70,3
+afbm|n|	n:apwb,109,3;8eyt,67,4~8eyt,67,4;apwb,109,3
+afbn|a|Capable of being wounded; susceptible of wounds or external injuries; as, a vulnerable body. ; Liable to injury; subject to be affected injuriously; assailable; as, a vulnerable reputation.	j:29l4,88,11;69aq,74,9;66v5,64,2;79r1,62,30;a5fu,58,9;3c28,52,3;8jwb,51,7;8yb9,49,41;5uat,48,3;afbi,48,36;ae4a,47,37;4mjj,47,11;5vk5,46,7;6oc7,46,76;5zp,45,17~ahbo,29,484;abav,43,409;ab93,10,222;70j5,10,196;8trd,25,187;7a8r,20,185;7gb5,13,146;6x3y,0,115;gt8,2,111;73vx,8,102;gwz,25,96;9cpf,22,84;8q3w,3,84;6xec,17,81;91jr,3,78	e:45o7,77,6;1kr6,73,7;2uo4,73,38;6x9q,70,3;43hg,70,3;6zqg,70,3;43jp,68,5;1bal,58,3;24ac,56,10;435j,55,2;7b0w,54,340;9dia,54,2;45o2,53,30;4h2d,52,69;7iuw,51,4~5yo3,31,3479;934o,28,1291;abjt,23,1050;5776,38,923;axy,8,750;34q9,50,345;7b0w,54,340;43el,48,296;6xa1,45,241;2zzm,26,168;1pwi,14,87;9mwr,5,75;2yly,39,71;4h2d,52,69;21jp,5,62
+afbp|n|	a:apwb,95,1~apwb,95,1	n:apwb,95,1;8eyt,71,5~8eyt,71,5;apwb,95,1
+afbv|n|	n:598y,41,10~598y,41,10
+afbv|a|	j:5gor,69,4~5gor,69,4
+afbw|a|	e:5dsp,53,3~5dsp,53,3
+afc0|n|	a:50vg,35,3;60fr,28,1;5js4,18,4;69ri,8,6;gaa,4,1~69ri,8,6;5js4,18,4;50vg,35,3;60fr,28,1;gaa,4,1	v:50vg,49,8~50vg,49,8	V:3fqq,9,2~3fqq,9,2	n:apwb,103,12;1vvv,88,5;4hqz,79,10;8eyt,64,19;149o,37,4;gaa,34,8;60fr,28,1~8eyt,64,19;apwb,103,12;4hqz,79,10;gaa,34,8;1vvv,88,5;149o,37,4;60fr,28,1
+afc0|v|	s:8eyt,21,1~8eyt,21,1
+afc0|a|	j:3fqq,9,2~3fqq,9,2
+afc1|n|A genus of Carnivora including the foxes.	n:afc1,216,36~afc1,216,36	N:ata6,233,3;afc1,216,36~afc1,216,36;ata6,233,3
+afc8|n|	a:1k75,189,1~1k75,189,1	n:1k75,212,5;apr,176,2~1k75,212,5;apr,176,2	N:6cbr,207,5~6cbr,207,5
+afc8|v|	s:apr,176,2~apr,176,2
+afc8|a|	j:6cbr,207,5;4t7f,179,2;ar63,51,6~ar63,51,6;6cbr,207,5;4t7f,179,2
+afc9|n|	a:9wsv,135,11;a64l,132,8;7ntn,125,22;afc9,120,3;20y2,120,3;7k3h,118,3;6bmm,118,4;4we8,116,4;6a7,115,3;6ic3,111,4;9gwm,110,2;7mkt,108,4;aekw,107,1;2etw,106,4;7ntw,103,1~30pz,99,46;7ntn,125,22;9wsv,135,11;8f2h,61,8;a64l,132,8;7mkt,108,4;4we8,116,4;6bmm,118,4;2etw,106,4;6ic3,111,4;7k3h,118,3;79xt,102,3;6a7,115,3;20y2,120,3;afc9,120,3	v:7dor,131,6~7dor,131,6	n:8bdz,176,138;5i77,175,6;5mi4,143,15;7gi3,141,12;9gwm,135,11;48wz,134,6;2tbr,132,6;6chw,130,8;37nv,129,8;adnl,129,21;2etw,126,16;82te,125,5;1u9c,125,3;abmy,125,9;3h92,123,3~8bdz,176,138;adnl,129,21;2etw,126,16;5mi4,143,15;aah1,114,15;5704,101,12;7gi3,141,12;8f2h,65,11;1kf,61,11;9gwm,135,11;abmy,125,9;6chw,130,8;37nv,129,8;49ts,18,8;30cp,64,8	N:48wz,144,12;5xg5,134,8;37nv,127,7;885v,121,3;565p,118,3;9gwm,116,3;582k,116,4;9wsv,110,2;2tl6,108,6;aah1,107,9;aai6,105,3;1p4i,105,3;afc9,104,1;2s3i,103,1;6bmm,98,1~48wz,144,12;aah1,107,9;5xg5,134,8;a7m8,89,8;37nv,127,7;2tl6,108,6;582k,116,4;1p4i,105,3;8q3i,52,3;565p,118,3;885v,121,3;9gwm,116,3;aai6,105,3;31wj,41,3;2wo0,93,2
+afc9|v|	s:48wz,108,1;1xrk,103,1~1xrk,103,1;48wz,108,1
+afc9|a|	j:aai6,178,455;2t6m,168,84;adt5,167,69;5hcg,153,160;2s3i,149,24;6kjw,149,34;885v,148,20;2233,147,23;3h92,146,15;ib8,146,21;9gwm,145,22;89nf,145,19;a64l,143,18;8u3n,142,11;52yg,141,12~aai6,178,455;5hcg,153,160;2t6m,168,84;adt5,167,69;49ts,41,40;8gar,132,40;aah1,126,34;6kjw,149,34;5s6u,102,34;2s3i,149,24;2s3k,133,23;8q3i,81,23;2233,147,23;7033,140,23;9gwm,145,22
+afca|n|	a:7nlx,209,7;6274,190,9;2dm7,132,2~6274,190,9;7nlx,209,7;2dm7,132,2	v:2dm7,138,3~2dm7,138,3	n:8nv0,180,10;2dm7,122,1;6dti,79,5~8nv0,180,10;6dti,79,5;2dm7,122,1
+afcc|n|	n:9py9,93,1;aewl,79,2;598y,5,5~598y,5,5;aewl,79,2;9py9,93,1	N:aewl,69,1;8hz6,12,2~8hz6,12,2;aewl,69,1
+afcc|v|	o:aewl,69,1~aewl,69,1
+afcc|a|	j:aewl,111,18;1l91,71,6;2k44,68,7;3wf0,48,2;8hz6,32,8;9ycs,28,2;4jb7,25,2~aewl,111,18;8hz6,32,8;2k44,68,7;1l91,71,6;3wf0,48,2;9ycs,28,2;4jb7,25,2
+afcd|n|Any one of numerous species of rapacious birds belonging to Vultur, Cathartes, Catharista, and various other genera of the family Vulturidae.	a:tsg,118,3;45co,118,2;2s8q,97,7;9636,89,2;3q5n,84,12;20sa,59,4;aj94,35,4;ys5,12,1;3b5p,8,9~3q5n,84,12;3b5p,8,9;2s8q,97,7;20sa,59,4;aj94,35,4;tsg,118,3;45co,118,2;9636,89,2;ys5,12,1	v:9pyq,43,5;29mp,15,3~9pyq,43,5;29mp,15,3	V:6q8i,140,2;aasi,101,1;1y1p,13,3;8f87,9,5~8f87,9,5;1y1p,13,3;6q8i,140,2;aasi,101,1	n:9eha,151,3;3v2u,143,12;9wp1,111,22;2q6i,84,3;20sa,59,4;5zbr,36,2;ys5,32,4;amfw,29,4~9wp1,111,22;3v2u,143,12;ys5,32,4;20sa,59,4;amfw,29,4;2q6i,84,3;9eha,151,3;5zbr,36,2	N:6q8i,150,4;2k13,111,1;aasi,111,2;ca6,103,3;19mw,103,3;2nqe,85,1;2npz,70,1;3iwi,69,5;3iv1,68,3;4l2i,58,2;6zkx,56,3;jt3,18,2~3iwi,69,5;6q8i,150,4;3iv1,68,3;ca6,103,3;19mw,103,3;6zkx,56,3;4l2i,58,2;jt3,18,2;aasi,111,2;2nqe,85,1;2npz,70,1;2k13,111,1
+afcd|v|Any one of numerous species of rapacious birds belonging to Vultur, Cathartes, Catharista, and various other genera of the family Vulturidae.	o:3iwi,46,1~3iwi,46,1
+afcd|a|Any one of numerous species of rapacious birds belonging to Vultur, Cathartes, Catharista, and various other genera of the family Vulturidae.	j:6q8i,130,1;2k13,121,2;2nqe,115,8;aasi,101,1;2npz,93,5;6zkx,78,14;3iwi,56,2;19mk,55,3;3iv1,52,1;4l2i,48,1;jt3,28,4~6zkx,78,14;2nqe,115,8;2npz,93,5;jt3,28,4;19mk,55,3;2k13,121,2;3iwi,56,2;aasi,101,1;6q8i,130,1;3iv1,52,1;4l2i,48,1
+afce|n|	a:tsg,118,2;9wp1,118,23;1itt,102,2;amfw,15,1~9wp1,118,23;1itt,102,2;tsg,118,2;amfw,15,1	v:1itt,120,7;1z77,117,4;tsg,108,1~1itt,120,7;1z77,117,4;tsg,108,1	V:1itt,117,6;3dbg,80,8;2qjy,75,6;2qjd,66,6;afrw,50,4;9vq8,10,4;8nd4,9,1~3dbg,80,8;2qjd,66,6;2qjy,75,6;1itt,117,6;afrw,50,4;9vq8,10,4;8nd4,9,1	n:1itt,92,1;9wp1,73,1;amfw,35,4;598y,29,53;11a,10,9~598y,29,53;11a,10,9;amfw,35,4;9wp1,73,1;1itt,92,1	N:8nd4,42,10~8nd4,42,10
+afce|v|	s:1itt,92,1;amfw,15,1~1itt,92,1;amfw,15,1
+afck|n|The external parts of the female genital organs; sometimes, the opening between the projecting parts of the external organs. ; The orifice of the oviduct of an insect or other invertebrate.	N:a85u,148,3~a85u,148,3
+afcp|a|	e:2tu1,49,3~2tu1,49,3
+afcs|n|	N:8jt3,19,2~8jt3,19,2
+afcs|a|	j:5j0q,80,55;77ii,73,66;77js,61,7;4j8m,45,2;4j79,44,5;8jwo,40,8;6tvj,26,4;8jt3,24,3;8ipk,12,12~77ii,73,66;5j0q,80,55;8ipk,12,12;8jwo,40,8;77js,61,7;4j79,44,5;6tvj,26,4;8jt3,24,3;4j8m,45,2
+afct|n|	n:8eyt,90,10~8eyt,90,10
+afcu|n|	n:apwb,131,10;8eyt,83,9~apwb,131,10;8eyt,83,9
+afcv|a|	j:9s0f,80,13~9s0f,80,13	e:abjt,42,16;5776,38,4;5yo3,32,17;5z2v,28,4;934o,26,5~5yo3,32,17;abjt,42,16;934o,26,5;5z2v,28,4;5776,38,4
+afcw|n|	v:4dkf,69,1~4dkf,69,1	n:4djh,50,1~4djh,50,1	N:ac2s,53,1~ac2s,53,1
+afcw|a|	j:5wp,109,4;8dp8,95,6;ac2s,85,9~ac2s,85,9;8dp8,95,6;5wp,109,4
+afcy|n|	a:1fqh,131,2~1fqh,131,2	n:1fqh,147,6;1ifh,85,1;8ds7,71,2;6dti,60,1~1fqh,147,6;8ds7,71,2;6dti,60,1;1ifh,85,1
+afcy|a|	j:1fqh,156,11~1fqh,156,11
+afcz|n|	n:1fqh,154,6~1fqh,154,6	N:2god,148,6~2god,148,6
+afcz|v|	o:2god,122,1~2god,122,1
+afcz|a|	j:2god,170,29~2god,170,29
+afd0|n|	a:8ntz,99,2~8ntz,99,2
+afd0|a|	j:p0c,165,2;a02k,138,5~a02k,138,5;p0c,165,2
+afd1|n|	n:5afp,122,1~5afp,122,1
+afd1|a|	e:6uih,166,2~6uih,166,2
+afd6|a|	j:1mu,176,1~1mu,176,1
+afd7|n|	a:a97p,32,4~a97p,32,4	v:94wq,38,8~94wq,38,8	n:a97p,46,10;a5wf,45,4;94wq,8,1~a97p,46,10;a5wf,45,4;94wq,8,1
+afd7|a|	j:80ll,22,3~80ll,22,3
+afd8|a|	e:abjt,52,6;5yo3,36,4~abjt,52,6;5yo3,36,4
+afd9|n|	a:2a4i,120,1~2a4i,120,1	v:86qo,23,2~86qo,23,2	n:2a4i,120,1;6xh9,113,4;7rm,89,5~7rm,89,5;6xh9,113,4;2a4i,120,1
+afd9|a|	j:27n9,51,1~27n9,51,1
+afda|n|	v:16n1,86,5~16n1,86,5
+afdb|n|	a:1ryk,24,2~1ryk,24,2	v:2he7,83,2;ack,55,4;1ryk,34,4~1ryk,34,4;ack,55,4;2he7,83,2	V:3sf5,33,4;7dcd,20,1~3sf5,33,4;7dcd,20,1	n:w46,39,24;a6aa,32,2~w46,39,24;a6aa,32,2	N:752l,72,17;a5m8,72,3;99xj,51,5;7b8f,28,4;1s0o,26,3;59kk,22,8~752l,72,17;59kk,22,8;99xj,51,5;7b8f,28,4;a5m8,72,3;1s0o,26,3
+afdb|a|	j:752l,61,8;99xj,38,2;7b8f,18,2;1s0o,10,1~752l,61,8;99xj,38,2;7b8f,18,2;1s0o,10,1
+afdc|n|	a:8pm3,35,5;4rss,26,2;4rx5,19,1;9ia7,17,2~8pm3,35,5;9ia7,17,2;4rss,26,2;4rx5,19,1	v:a97p,18,3;ahbo,14,1~a97p,18,3;ahbo,14,1	n:5c3t,130,2;28ie,80,25;3we0,67,6;70mg,47,7;9mct,46,6;4rx5,35,3;1jlg,31,11;a97p,22,4~28ie,80,25;1jlg,31,11;70mg,47,7;3we0,67,6;9mct,46,6;a97p,22,4;4rx5,35,3;5c3t,130,2	N:8d0v,39,8;9xr4,28,6;49ts,22,3;3vgl,12,1~8d0v,39,8;9xr4,28,6;49ts,22,3;3vgl,12,1
+afdc|v|	o:3vgl,12,1;8d0v,9,1~8d0v,9,1;3vgl,12,1
+afdc|a|	j:4h7m,58,4;8d0v,37,7;3itk,31,3;3vgl,28,3;6x3y,22,3;49ts,22,3;2vor,21,4~8d0v,37,7;4h7m,58,4;2vor,21,4;3itk,31,3;49ts,22,3;3vgl,28,3;6x3y,22,3	e:5c3t,130,2;4rss,16,1;ahbo,14,1~5c3t,130,2;4rss,16,1;ahbo,14,1
+afdd|n|	n:28ie,89,9;8ipk,31,3~28ie,89,9;8ipk,31,3
+afdd|a|	j:4jow,47,5~4jow,47,5
+afde|n|	v:94wq,36,3~94wq,36,3
+afdf|n|	a:9vfr,177,3;1qyd,81,2;86xk,50,8;5js4,36,5~86xk,50,8;5js4,36,5;9vfr,177,3;1qyd,81,2	v:86xk,40,4~86xk,40,4	V:3u1s,75,12;9y7f,41,3;86xk,30,2~3u1s,75,12;9y7f,41,3;86xk,30,2	n:9vfr,171,2;1qyd,71,1;4ucf,64,9;2g6a,58,3~4ucf,64,9;2g6a,58,3;9vfr,171,2;1qyd,71,1	N:9y7f,51,6~9y7f,51,6
+afdi|n|	v:dft,46,1~dft,46,1
+afdi|v|	D:934o,12,1~934o,12,1
+afdk|n|	N:7ohr,65,3~7ohr,65,3
+afdl|a|	j:1qrd,140,1~1qrd,140,1
+afdm|n|	a:afdm,144,3;6nwu,23,4;4j8a,15,1~6nwu,23,4;afdm,144,3;4j8a,15,1	v:2md9,47,2;4j8a,15,1;1883,15,2;6nwu,3,1;90yn,2,1;a6ev,1,2~1883,15,2;2md9,47,2;a6ev,1,2;90yn,2,1;6nwu,3,1;4j8a,15,1	n:7lcj,135,3;1cfv,36,1;45fv,30,3;1kfp,27,3;598y,10,10~598y,10,10;1kfp,27,3;45fv,30,3;7lcj,135,3;1cfv,36,1	N:2mce,22,1~2mce,22,1
+afdm|a|	j:afdm,144,3;9r3l,112,7;yld,106,2;77js,71,7;6oac,53,2;2mce,45,5;1kfp,34,5;77ii,33,2;66b5,20,6;amd6,18,4~9r3l,112,7;77js,71,7;66b5,20,6;1kfp,34,5;2mce,45,5;amd6,18,4;afdm,144,3;yld,106,2;6oac,53,2;77ii,33,2

@@ -1,0 +1,13 @@
+ask1|n|	a:ask1,105,46;aq4u,46,8;9xg5,20,2~ask1,105,46;aq4u,46,8;9xg5,20,2	V:auip,57,2;aq4u,26,2;789p,15,4~789p,15,4;auip,57,2;aq4u,26,2	n:ask1,126,205;asjs,101,8;aqcw,84,20;aujc,76,2;aq8e,59,31;aq4u,48,9;9xg5,26,3;a89p,15,5;3cq8,12,7;4av8,8,2~ask1,126,205;aq8e,59,31;aqcw,84,20;aq4u,48,9;asjs,101,8;3cq8,12,7;a89p,15,5;9xg5,26,3;4av8,8,2;aujc,76,2	N:ask1,126,205;45r2,101,6;aska,89,43;auip,86,14;aujc,82,3;aqcw,56,3;aq4u,50,10;aq8e,35,6;76at,19,7;3w0l,14,1;1usq,12,3~ask1,126,205;aska,89,43;auip,86,14;aq4u,50,10;76at,19,7;45r2,101,6;aq8e,35,6;1usq,12,3;aujc,82,3;aqcw,56,3;3w0l,14,1
+ask1|v|	o:aq8e,19,2~aq8e,19,2	s:aq8e,9,1~aq8e,9,1
+ask1|a|	j:ask1,105,46;aska,69,11;auip,47,1;aqcw,40,1;aq8e,9,1~ask1,105,46;aska,69,11;auip,47,1;aq8e,9,1;aqcw,40,1
+ask4|n|	N:aslh,181,2;ask7,164,3;aqbv,138,1~ask7,164,3;aslh,181,2;aqbv,138,1
+ask4|a|	j:aqbv,153,3~aqbv,153,3
+ask5|n|	n:aq5z,92,2;24yt,41,6~24yt,41,6;aq5z,92,2
+ask6|n|	n:aqc0,215,5~aqc0,215,5	N:ask8,212,4~ask8,212,4
+ask7|n|	v:7vfx,49,1~7vfx,49,1	V:2ep1,37,1;2zcw,6,3~2zcw,6,3;2ep1,37,1	n:ask4,164,3;1iir,143,15;aqbv,130,3;2zcw,18,7~1iir,143,15;2zcw,18,7;aqbv,130,3;ask4,164,3	N:aulx,155,3;ask9,140,2;2ep1,74,13;1nsw,36,4~2ep1,74,13;1nsw,36,4;aulx,155,3;ask9,140,2
+ask7|v|	o:1nsw,16,1~1nsw,16,1	s:2zcw,28,14~2zcw,28,14
+ask7|a|	j:ask9,130,1;2ep1,37,1;2zcw,10,4~2zcw,10,4;2ep1,37,1;ask9,130,1
+ask8|n|	n:ask6,212,4~ask6,212,4	N:asli,203,3~asli,203,3
+ask9|n|	a:ask7,130,1~ask7,130,1	n:aqd9,162,8;asmh,155,3;ask7,140,2;6phi,38,11~6phi,38,11;aqd9,162,8;asmh,155,3;ask7,140,2	N:asmh,170,8;auj9,146,3;aulr,118,2;1wzb,72,4;84wt,63,6;5m95,17,1;6phi,13,2~asmh,170,8;84wt,63,6;1wzb,72,4;auj9,146,3;aulr,118,2;6phi,13,2;5m95,17,1
+ask9|a|	j:asmh,150,2;84wt,53,3;5m95,17,1~84wt,53,3;asmh,150,2;5m95,17,1

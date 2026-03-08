@@ -1,15 +1,454 @@
-2hts|n|	N:1r1l,67,1;1kmx,65,2~1kmx,65,2;1r1l,67,1
-2hts|v|	o:1kmx,65,2~1kmx,65,2
-2hts|a|	j:1r1l,87,4;1kmx,70,3;254e,31,3~1r1l,87,4;254e,31,3;1kmx,70,3
-2htt|n|	a:2fgb,99,11~2fgb,99,11	v:2fgb,75,2~2fgb,75,2	V:100d,96,2~100d,96,2	n:8y1,130,10;2fgb,65,1~8y1,130,10;2fgb,65,1	N:100d,119,10~100d,119,10
-2hu1|n|A girdle; a cincture. ; One of the five great divisions of the earth, with respect to latitude and temperature. ; The portion of the surface of a sphere included between two parallel planes; the portion of a surface of revolution included between two planes perpendicular to the axis. ; A band or stripe extending around a body. ; A band or area of growth encircling anything; as, a zone of evergreens on a mountain; the zone of animal or vegetable life in the ocean around an island or a continent; the Alpine zone, that part of mountains which is above the limit of tree growth. ; A series of planes having mutually parallel intersections. ; Circuit; circumference.	a:yml,94,22;yqb,74,8;jhv,72,14;exb,63,7;1cwz,62,2;jac,60,4;29y5,51,9;ja9,47,1;11o1,46,5~yml,94,22;jhv,72,14;29y5,51,9;yqb,74,8;exb,63,7;11o1,46,5;jac,60,4;1cwz,62,2;ja9,47,1	v:1cx3,96,17;1cwz,82,8;1054,61,5;yqb,54,2~1cx3,96,17;1cwz,82,8;1054,61,5;yqb,54,2	n:f7r,124,123;2bn4,113,6;1cwz,111,60;yqb,93,29;1j0g,86,9;1cx3,71,3;ja9,67,4;29c4,58,314;yml,50,1;1054,47,2;11o1,33,2;29y5,29,2;1cyl,29,3;qas,18,5~29c4,58,314;f7r,124,123;1cwz,111,60;yqb,93,29;1j0g,86,9;2bn4,113,6;qas,18,5;ja9,67,4;1cx3,71,3;1cyl,29,3;29y5,29,2;11o1,33,2;1054,47,2;yml,50,1	N:19i8,36,3;ls6,35,8;cvi,33,5;1j0i,26,7;jdw,12,8;507,9,2~jdw,12,8;ls6,35,8;1j0i,26,7;cvi,33,5;19i8,36,3;507,9,2
-2hu1|a|A girdle; a cincture. ; One of the five great divisions of the earth, with respect to latitude and temperature. ; The portion of the surface of a sphere included between two parallel planes; the portion of a surface of revolution included between two planes perpendicular to the axis. ; A band or stripe extending around a body. ; A band or area of growth encircling anything; as, a zone of evergreens on a mountain; the zone of animal or vegetable life in the ocean around an island or a continent; the Alpine zone, that part of mountains which is above the limit of tree growth. ; A series of planes having mutually parallel intersections. ; Circuit; circumference.	j:19i8,30,2;ls6,15,2~ls6,15,2;19i8,30,2	e:1cwz,52,1~1cwz,52,1
-2hu4|n|	a:jhv,89,9;yqb,83,3~jhv,89,9;yqb,83,3	v:1054,60,1~1054,60,1	n:f7r,97,4;yqb,67,1;29c4,60,77~29c4,60,77;f7r,97,4;yqb,67,1
-2hu4|v|	s:f7r,87,2;29c4,8,2~f7r,87,2;29c4,8,2
-2hua|n|	a:1el9,35,1~1el9,35,1	n:1el9,75,15~1el9,75,15
-2hv9|n|	a:1izi,77,6;1o18,72,2;2g1u,61,6;luz,58,10;1foo,29,9;q4f,27,3;1ipe,18,4~luz,58,10;1foo,29,9;2g1u,61,6;1izi,77,6;1ipe,18,4;q4f,27,3;1o18,72,2	v:b90,23,2;2dx6,14,16;v9y,12,1;2dwh,7,15;2dwj,3,5~2dx6,14,16;2dwh,7,15;2dwj,3,5;b90,23,2;v9y,12,1	V:994,108,4;b5u,52,12;1cqz,20,2~b5u,52,12;994,108,4;1cqz,20,2	n:2fpz,97,3;1o18,92,8;b90,69,50;2esi,55,58;v9y,45,10;1jw0,41,50;luz,25,1;k0a,23,4;293l,13,7;20ox,9,3;19yi,3,16~2esi,55,58;b90,69,50;1jw0,41,50;19yi,3,16;v9y,45,10;1o18,92,8;293l,13,7;k0a,23,4;20ox,9,3;2fpz,97,3;luz,25,1	N:wjg,117,36;1cqz,71,70;19ov,68,22;1cr1,56,12;1657,53,20;1ljl,49,3;b4u,48,32;165e,48,5;201r,42,3;19om,41,27;egb,37,2;t8j,35,5;b5u,32,3;1j0i,30,14;1ql7,30,4~1cqz,71,70;wjg,117,36;b4u,48,32;19om,41,27;19ov,68,22;1657,53,20;1j0i,30,14;1cr1,56,12;4bp,6,7;165e,48,5;1a3r,19,5;t8j,35,5;1ql7,30,4;201r,42,3;b5u,32,3
-2hv9|v|	o:1cr1,20,1;2g08,14,2;b4u,8,2~2g08,14,2;b4u,8,2;1cr1,20,1
-2hv9|a|	j:1cr1,50,8;egb,27,1;165e,25,1;1ql7,10,1~1cr1,50,8;1ql7,10,1;egb,27,1;165e,25,1
-2hva|a|	j:1jly,11,1~1jly,11,1
-2hwm|n|	v:2dx6,33,25;1qbb,32,2;2as5,21,4;2dwj,9,3;2dwh,7,6~2dx6,33,25;2dwh,7,6;2as5,21,4;2dwj,9,3;1qbb,32,2	n:1cz8,55,1;19yi,29,40;2dwh,9,7~19yi,29,40;2dwh,9,7;1cz8,55,1	N:23z8,83,4;vn2,64,4;19t4,56,8;1cz8,55,1;2g08,40,5;yvy,35,7;mb,26,3;1uiq,20,2;257i,18,1~19t4,56,8;yvy,35,7;2g08,40,5;23z8,83,4;vn2,64,4;mb,26,3;1uiq,20,2;1cz8,55,1;257i,18,1
-2hwm|a|	j:19t4,26,1;257i,18,1;2g08,16,1;1uiq,10,1~19t4,26,1;2g08,16,1;257i,18,1;1uiq,10,1	e:2cpp,16,1~2cpp,16,1
+atwc|n|	a:445b,142,1;6dr1,141,6;6byi,113,5;atwc,110,6;at1a,90,2;6m1i,85,6;5xjj,65,6;14y1,56,1;5brq,45,2;5eo7,35,11;5en8,29,8;43bd,28,7;2v4y,28,1;2m07,13,4;2fmb,13,1~5eo7,35,11;5en8,29,8;43bd,28,7;5xjj,65,6;6dr1,141,6;6m1i,85,6;atwc,110,6;6byi,113,5;2m07,13,4;43ai,9,3;5brq,45,2;at1a,90,2;14y1,56,1;445b,142,1;2fmb,13,1	v:7toc,7,1;lgp,0,2~lgp,0,2;7toc,7,1	V:3sen,134,4;6oac,56,11;82r7,48,1~6oac,56,11;3sen,134,4;82r7,48,1	n:445b,172,8;6dr1,138,5;au0w,131,2;atwc,125,17;atsp,116,2;at1a,112,9;atpu,105,3;6com,98,7;4dbm,79,35;asml,75,1;2yux,68,6;6l62,59,5;1767,36,4;2v4y,28,1;2g6a,14,2~4dbm,79,35;atwc,125,17;at1a,112,9;445b,172,8;6com,98,7;2yux,68,6;6l62,59,5;6dr1,138,5;1767,36,4;atpu,105,3;2g6a,14,2;atsp,116,2;au0w,131,2;asml,75,1;2v4y,28,1	N:8sys,143,1;atwc,125,17;62zd,68,3;4mzn,63,6;9cw4,63,3;9g6e,62,3;82r7,48,1;6l62,36,1;7tp1,27,1;atao,6,2~atwc,125,17;4mzn,63,6;9cw4,63,3;9g6e,62,3;62zd,68,3;atao,6,2;6l62,36,1;8sys,143,1;82r7,48,1;7tp1,27,1
+atwc|v|	o:5toz,23,2~5toz,23,2	s:1uca,41,5;4dbm,28,1~1uca,41,5;4dbm,28,1
+atwc|a|	j:8sys,182,15;3sen,114,1;atwc,110,6;82r7,64,3;4dbm,58,8;6l69,52,2;6l62,46,2;7tp1,43,3;8fce,40,2;5toz,13,1~8sys,182,15;4dbm,58,8;atwc,110,6;7tp1,43,3;82r7,64,3;8fce,40,2;6l69,52,2;6l62,46,2;3sen,114,1;5toz,13,1	e:2v4y,28,1;9mwr,13,5~9mwr,13,5;2v4y,28,1
+atwd|n|of Zoon	v:7bz0,195,1~7bz0,195,1	n:7bz0,215,4;5674,183,2~7bz0,215,4;5674,183,2
+atwd|v|of Zoon	s:7bz0,195,1;5674,173,1~5674,173,1;7bz0,195,1
+atwe|n|	a:65lx,158,32;pen,134,5;65f5,132,6;csg,102,14;jwd,102,7;6r1c,20,5~65lx,158,32;csg,102,14;jwd,102,7;65f5,132,6;pen,134,5;6r1c,20,5	v:pen,110,1~pen,110,1	V:2dym,108,5;9xxx,42,2~2dym,108,5;9xxx,42,2	n:csg,74,2;ual,44,10~ual,44,10;csg,74,2	N:2dym,133,27;3htt,120,14;3hsp,106,15;2e8w,95,12;a75m,66,21;9xr4,61,37;9xxx,42,2~9xr4,61,37;2dym,133,27;a75m,66,21;3hsp,106,15;3htt,120,14;2e8w,95,12;9xxx,42,2
+atwe|v|	o:2e8w,60,1;9xr4,9,1~9xr4,9,1;2e8w,60,1
+atwe|a|	j:2dym,95,2;3htt,92,2;3hsp,67,1;a75m,38,3;9xxx,32,1;9xr4,19,2~a75m,38,3;2dym,95,2;3htt,92,2;9xr4,19,2;3hsp,67,1;9xxx,32,1
+atwm|n|	v:2x32,57,1;56a7,30,2~56a7,30,2;2x32,57,1
+atwo|n|	a:4wck,102,3~4wck,102,3	v:1883,40,6~1883,40,6	n:4wck,96,2~4wck,96,2	N:69fe,93,110;69i4,93,10;7qr1,80,4;30cp,65,2;3a03,39,2~69fe,93,110;69i4,93,10;7qr1,80,4;30cp,65,2;3a03,39,2
+atwo|a|	j:30cp,71,3;7qr1,70,2;69i4,69,2;69fe,58,10;3a03,29,1~69fe,58,10;30cp,71,3;69i4,69,2;7qr1,70,2;3a03,29,1
+atwq|n|	N:2xim,89,5~2xim,89,5
+atwt|n|	v:4dkf,66,5;4djh,34,2;1883,27,3;a7g2,7,5~4dkf,66,5;a7g2,7,5;1883,27,3;4djh,34,2	V:3zkb,124,70;4yu0,25,3~3zkb,124,70;4yu0,25,3	n:11a,20,8;598y,18,11~598y,18,11;11a,20,8	N:3zkb,96,10;3zjl,94,8;3zh0,74,18;4yu0,48,14;4z5z,41,2;9d1e,15,2~3zh0,74,18;4yu0,48,14;3zkb,96,10;3zjl,94,8;4z5z,41,2;9d1e,15,2
+atwt|v|	o:4z5z,47,3~4z5z,47,3
+atwt|a|	j:3zkb,106,19;3zjl,87,5;3zh0,80,27;4z5z,71,16;9d84,57,7;4yu0,25,3;9d1e,5,1~3zh0,80,27;3zkb,106,19;4z5z,71,16;9d84,57,7;3zjl,87,5;4yu0,25,3;9d1e,5,1
+atwu|n|	v:a7g2,5,1~a7g2,5,1	N:9hzm,85,8~9hzm,85,8
+atwu|a|	j:9hzm,75,4~9hzm,75,4
+atwx|v|	d:69pz,47,3~69pz,47,3
+atwy|v|	d:6n3l,17,1~6n3l,17,1
+atwy|a|	e:6n3l,27,2~6n3l,27,2
+atx0|n|	a:3luq,64,87;5i9m,37,3~3luq,64,87;5i9m,37,3	v:4epj,35,6~4epj,35,6	V:6pjo,56,6;uuv,48,1;9dwt,29,5;8f87,20,10;888b,13,3;ag6a,8,1~8f87,20,10;6pjo,56,6;9dwt,29,5;888b,13,3;uuv,48,1;ag6a,8,1	n:atx0,118,2;95pa,41,5;rnu,38,7;4zp0,35,2;5i9m,31,2;ual,17,8;aj3h,16,8;42ym,15,1~ual,17,8;aj3h,16,8;rnu,38,7;95pa,41,5;atx0,118,2;5i9m,31,2;4zp0,35,2;42ym,15,1	N:atx0,118,2;8bnj,36,2~atx0,118,2;8bnj,36,2
+atx0|v|	s:4zp0,35,2~4zp0,35,2	d:ual,25,14~ual,25,14
+atx0|a|	j:8bnj,42,3~8bnj,42,3	e:ual,17,8~ual,17,8
+atx1|n|	a:8h7u,30,5;ajfk,23,4;8pm3,22,6~8pm3,22,6;8h7u,30,5;ajfk,23,4	v:a7cv,18,3;a7g2,16,27;a6d9,7,18~a7g2,16,27;a6d9,7,18;a7cv,18,3	V:6tzu,83,5;3yjj,56,6;7i03,45,6;a7cv,36,11;250g,12,3;amd6,5,3;6jco,3,1~a7cv,36,11;3yjj,56,6;7i03,45,6;6tzu,83,5;amd6,5,3;250g,12,3;6jco,3,1	n:7vy1,146,1;77bp,109,8;4dov,32,12;57fs,25,5;a7cv,18,3;8pj0,9,6;agw0,1,6~4dov,32,12;77bp,109,8;agw0,1,6;8pj0,9,6;57fs,25,5;a7cv,18,3;7vy1,146,1	N:39o0,126,3;zhs,90,5;zgy,78,10;6tzu,70,2;71oo,67,3;93xm,55,5;93s9,52,9;177s,45,8;250g,45,30;71p9,43,1;1s0o,41,13;4dov,33,13;9su7,30,2;6j5v,29,18;6jco,19,3~250g,45,30;6j5v,29,18;1s0o,41,13;4dov,33,13;24yt,12,11;zgy,78,10;395p,9,9;93s9,52,9;177s,45,8;zhs,90,5;93xm,55,5;39o0,126,3;6jco,19,3;71oo,67,3;7gis,7,2
+atx1|v|	s:a7cv,2,1~a7cv,2,1
+atx1|a|	j:6tzu,60,1;250g,32,12;9su7,30,2;177s,25,2;4dov,19,5;6tvj,16,2;1s0o,14,2~250g,32,12;4dov,19,5;9su7,30,2;1s0o,14,2;177s,25,2;6tvj,16,2;6tzu,60,1
+atx2|n|An imaginary belt in the heavens, 16¡ or 18¡ broad, in the middle of which is the ecliptic, or sun's path. It comprises the twelve constellations, which one constituted, and from which were named, the twelve signs of the zodiac. ; A figure representing the signs, symbols, and constellations of the zodiac. ; A girdle; a belt.	a:lpa,118,5;8o21,116,13;acbv,96,5;1h3p,91,117;aiin,85,33;bob,50,8;dnl,45,4;8tvx,42,3~1h3p,91,117;aiin,85,33;8o21,116,13;bob,50,8;lpa,118,5;acbv,96,5;dnl,45,4;8tvx,42,3	v:88v3,2,16~88v3,2,16	V:1n54,49,3;5q2f,13,4~5q2f,13,4;1n54,49,3	n:9v9i,111,25;3s69,99,3;9x51,91,20;1914,65,3;4kmv,49,4;410r,43,2;86o4,43,1;39yu,40,3;5zrl,17,1;76oi,17,3~9v9i,111,25;9x51,91,20;4kmv,49,4;3s69,99,3;76oi,17,3;1914,65,3;39yu,40,3;410r,43,2;86o4,43,1;5zrl,17,1	N:iqw,113,5;4zpd,103,38;1sph,95,3;1spg,91,6;8ojk,71,21;8wpq,68,1;23cn,58,2;1n54,56,5;9lq,56,6;dot,53,5;atds,49,3;8oc3,42,13;7rlw,38,3;dnl,35,2;aiv4,31,2~4zpd,103,38;8ojk,71,21;8oc3,42,13;5x2f,19,6;9lq,56,6;1spg,91,6;iqw,113,5;1n54,56,5;dot,53,5;6f42,30,4;4ts2,19,4;6p19,4,4;atds,49,3;7rlw,38,3;1sph,95,3
+atx2|v|An imaginary belt in the heavens, 16¡ or 18¡ broad, in the middle of which is the ecliptic, or sun's path. It comprises the twelve constellations, which one constituted, and from which were named, the twelve signs of the zodiac. ; A figure representing the signs, symbols, and constellations of the zodiac. ; A girdle; a belt.	o:8oc3,28,5;8ojk,27,1~8oc3,28,5;8ojk,27,1	s:39yu,24,1~39yu,24,1
+atx2|a|An imaginary belt in the heavens, 16¡ or 18¡ broad, in the middle of which is the ecliptic, or sun's path. It comprises the twelve constellations, which one constituted, and from which were named, the twelve signs of the zodiac. ; A figure representing the signs, symbols, and constellations of the zodiac. ; A girdle; a belt.	j:1sph,137,54;8ojk,102,178;8wpq,98,8;8oc3,87,296;dot,66,12;ah8i,57,6;73z,56,23;9bu3,54,13;dnl,53,7;aiv4,50,7;23cn,48,1;90y5,47,4;23bg,45,9;9bs8,39,8;4ts2,36,13~8oc3,87,296;8ojk,102,178;1sph,137,54;73z,56,23;9bu3,54,13;4ts2,36,13;dot,66,12;23bg,45,9;8wpq,98,8;9bs8,39,8;aiv4,50,7;dnl,53,7;ah8i,57,6;90y5,47,4;1irx,27,4
+atx3|a|Of or pertaining to the zodiac; situated within the zodiac; as, the zodiacal planets.	j:1sph,154,23;2pd1,112,23;1spg,111,3;8ojk,103,25;590q,94,104;8oc3,73,14;1l91,67,4~590q,94,104;8ojk,103,25;2pd1,112,23;1sph,154,23;8oc3,73,14;1l91,67,4;1spg,111,3
+atx5|n|	a:8o21,137,2~8o21,137,2
+atx8|n|	a:7obe,63,1;4tzs,42,2;27tk,32,1;ad7l,16,3~ad7l,16,3;4tzs,42,2;7obe,63,1;27tk,32,1	v:9gw6,8,1;1883,4,5;8acl,0,2~1883,4,5;8acl,0,2;9gw6,8,1	V:51oe,127,1;qxo,79,1;5kyb,56,4;8wwc,54,6;33in,34,3;59zj,24,5;7pbz,24,3;73z,20,2;28co,20,2;5q2f,18,6;8arb,15,7;888b,7,5;9vgb,0,6~8arb,15,7;8wwc,54,6;5q2f,18,6;9vgb,0,6;888b,7,5;59zj,24,5;5kyb,56,4;7pbz,24,3;33in,34,3;73z,20,2;28co,20,2;qxo,79,1;51oe,127,1	n:3yo3,126,2;7wmr,118,6;2uxt,109,4;a818,79,6;5r1e,74,7;317m,63,3;88sr,57,4;46n3,48,1;26ed,46,2;4tzs,42,2;3h51,22,2;alxf,22,11;8mvf,20,1;42ym,11,2;1b6b,10,1~598y,2,30;alxf,22,11;5r1e,74,7;a818,79,6;7wmr,118,6;88sr,57,4;2uxt,109,4;317m,63,3;3yo3,126,2;4tzs,42,2;26ed,46,2;3h51,22,2;42ym,11,2;8mvf,20,1;1b6b,10,1	N:88fx,169,8;51oe,150,5;3yo3,132,3;rz9,92,3;uvs,58,3;9z1,56,1;66nh,51,4;8wwc,44,3;5lxy,25,2;58w3,12,2;2zcw,5,13~2zcw,5,13;88fx,169,8;51oe,150,5;66nh,51,4;3yo3,132,3;rz9,92,3;8wwc,44,3;uvs,58,3;5lxy,25,2;58w3,12,2;9z1,56,1
+atx8|v|	o:rz9,76,1;9z1,56,1;5lxy,54,15;90qn,37,3;5p0g,16,1;58w3,2,1~5lxy,54,15;90qn,37,3;5p0g,16,1;9z1,56,1;58w3,2,1;rz9,76,1	s:4gp4,134,20;7obe,63,1~4gp4,134,20;7obe,63,1	D:69pz,6,5~69pz,6,5
+atx8|a|	j:88fx,162,5;51oe,137,2;aqkw,95,2;rz9,92,3;qxo,89,2;9z1,66,2;66nh,61,8;uvs,42,1;90qn,37,3;5p0g,32,3;7rf1,22,2;6l4j,20,3;58w3,12,2;7pbz,8,1~66nh,61,8;88fx,162,5;90qn,37,3;rz9,92,3;6l4j,20,3;5p0g,32,3;aqkw,95,2;58w3,12,2;7rf1,22,2;51oe,137,2;9z1,66,2;qxo,89,2;7pbz,8,1;uvs,42,1	e:7obe,63,1~7obe,63,1
+atxc|n|	a:6ntn,42,1~6ntn,42,1	n:6ntn,62,4~6ntn,62,4	N:65y2,160,2;6ntn,77,11;27n9,58,1~6ntn,77,11;65y2,160,2;27n9,58,1
+atxc|a|	j:65y2,150,1;6ntn,52,2~6ntn,52,2;65y2,150,1
+atxd|n|	n:7zyw,89,1;4ucf,63,4~4ucf,63,4;7zyw,89,1
+atxd|a|	e:7zyw,105,3~7zyw,105,3
+atxe|n|	N:7jnh,123,3;7jn2,97,3~7jn2,97,3;7jnh,123,3
+atxe|a|	j:7jnh,107,1;7jn2,81,1~7jnh,107,1;7jn2,81,1
+atxh|n|An optical toy, in which figures made to revolve on the inside of a cylinder, and viewed through slits in its circumference, appear like a single figure passing through a series of natural motions as if animated or mechanically moved.	V:3anl,112,21;a6ev,27,2~3anl,112,21;a6ev,27,2	N:2b1x,116,3~2b1x,116,3
+atxi|n|	v:7ylc,93,4;66d4,79,20~66d4,79,20;7ylc,93,4	V:9tna,122,16~9tna,122,16	N:aj94,47,2~aj94,47,2
+atxi|a|	j:10vo,172,2~10vo,172,2
+atxk|n|	n:3cq8,69,3~3cq8,69,3	N:2gfl,157,3~2gfl,157,3
+atxk|v|	o:2gfl,141,1~2gfl,141,1
+atxl|n|	a:2m07,52,5;4jow,7,1~2m07,52,5;4jow,7,1	n:3cq8,82,23;4jow,17,2~3cq8,82,23;4jow,17,2
+atxm|n|	a:a0wp,107,4;97ho,104,3;76bh,85,3;49fu,85,1;2yux,83,1;3qmv,57,3~a0wp,107,4;3qmv,57,3;97ho,104,3;76bh,85,3;49fu,85,1;2yux,83,1	v:4zwm,80,3~4zwm,80,3	V:4bbz,142,2~4bbz,142,2	n:2yux,106,5;76bh,103,10;97ho,98,2;a0wp,97,2;49fu,85,1~76bh,103,10;2yux,106,5;a0wp,97,2;97ho,98,2;49fu,85,1	N:4bbz,162,8;2fe7,79,5;173f,33,5~4bbz,162,8;173f,33,5;2fe7,79,5
+atxm|a|	j:4bbz,152,4;2fe7,56,1~4bbz,152,4;2fe7,56,1	e:a0wp,87,1~a0wp,87,1
+atxn|n|	a:4e0c,80,3~4e0c,80,3	v:1yhz,48,9;a7g2,12,10~a7g2,12,10;1yhz,48,9	V:894z,76,5;zid,14,1~894z,76,5;zid,14,1	N:2hjo,125,12;23p7,101,6;4kru,77,4;9t27,60,6;8oc7,53,7;3jol,51,3;2ruo,48,6;3a03,43,5;5rkf,31,11;zid,30,3;6rxs,23,4~2hjo,125,12;5rkf,31,11;8oc7,53,7;2ruo,48,6;9t27,60,6;23p7,101,6;3a03,43,5;4kru,77,4;6rxs,23,4;zid,30,3;3jol,51,3
+atxn|a|	j:4kru,67,2;8oc7,35,2;5rkf,16,4~5rkf,16,4;4kru,67,2;8oc7,35,2	e:9mwr,12,1~9mwr,12,1
+atxo|v|	o:770u,16,1~770u,16,1	s:9k66,39,7~9k66,39,7
+atxo|a|	j:770u,16,1~770u,16,1
+atxq|n|A Jewish cabalistic book attributed by tradition to Rabbi Simon ben Yochi, who lived about the end of the 1st century, a. d. Modern critics believe it to be a compilation of the 13th century.	a:9ndo,166,22;9ndk,159,19;augj,95,1;p7m,89,1;44tz,59,16;7o0g,35,2;304l,33,3;9qy1,27,1~9ndo,166,22;9ndk,159,19;44tz,59,16;304l,33,3;7o0g,35,2;9qy1,27,1;augj,95,1;p7m,89,1	v:9ndk,117,1;1j4w,48,2;55zg,19,5;55z2,15,5;4eor,8,2;7ra7,4,4~55zg,19,5;55z2,15,5;7ra7,4,4;4eor,8,2;1j4w,48,2;9ndk,117,1	V:701z,149,5;3xt3,123,5;a9ss,119,1;r1k,114,4;6x2x,110,9;1gdo,109,3;9i8b,106,1;vhr,94,3;23sp,93,4;753m,86,1;8lss,81,1;a9t6,78,1;vh6,77,1;9g72,64,5;8fa0,60,2~8arb,47,98;33qv,51,20;an5a,46,11;6xk3,57,9;6x2x,110,9;1883,2,7;7nyl,44,7;888b,3,6;7nzu,31,6;78ds,5,6;44ny,26,6;701z,149,5;9g72,64,5;18dj,14,5;3xt3,123,5	n:9ndk,169,36;9ndo,167,24;p7m,115,6;augj,105,2;atxq,95,7;5sxj,83,6;9e2r,68,4;8fa0,66,3;116w,5,4~9ndk,169,36;9ndo,167,24;atxq,95,7;5sxj,83,6;p7m,115,6;9e2r,68,4;116w,5,4;8fa0,66,3;augj,105,2	N:3xgl,153,5;515q,151,3;1e9l,139,14;3xt3,130,8;6x2x,120,19;9ndn,119,2;a9ss,119,1;a9sw,115,1;5v0k,113,2;2ls,112,1;753m,102,3;6w9d,102,2;5jik,98,4;atxq,95,7;a9t6,88,2~6x2x,120,19;aeii,36,14;1e9l,139,14;3xt3,130,8;atxq,95,7;4lgy,42,7;25xb,5,6;3xgl,153,5;5sxj,80,5;5jik,98,4;30dq,13,4;91ol,12,4;753m,102,3;7sv4,11,3;30cp,31,3
+atxq|v|A Jewish cabalistic book attributed by tradition to Rabbi Simon ben Yochi, who lived about the end of the 1st century, a. d. Modern critics believe it to be a compilation of the 13th century.	o:515q,135,1;3xgl,130,1;671l,122,1;1e9l,117,3;2unl,110,1;753m,86,1;4bel,41,3~4bel,41,3;1e9l,117,3;2unl,110,1;3xgl,130,1;671l,122,1;515q,135,1;753m,86,1	s:9ndo,147,6;9ndk,143,6~9ndo,147,6;9ndk,143,6	D:671l,132,2;23sp,73,1~671l,132,2;23sp,73,1
+atxq|a|A Jewish cabalistic book attributed by tradition to Rabbi Simon ben Yochi, who lived about the end of the 1st century, a. d. Modern critics believe it to be a compilation of the 13th century.	j:3xgl,153,5;1e9l,151,33;515q,145,2;a9t9,134,4;2unl,130,4;2ls,128,3;3xt3,128,7;671l,122,1;areb,116,2;9y53,116,1;5v0k,113,2;bcy,107,6;9i8c,104,2;1gdo,93,1;8lst,88,2~1e9l,151,33;91ol,29,13;5q2n,50,12;4bel,53,7;3xt3,128,7;8wpo,59,6;4bdu,33,6;bcy,107,6;30cp,38,5;7nyb,25,5;3xgl,153,5;a9t9,134,4;7qcx,61,4;2unl,130,4;2ls,128,3
+atxt|n|	v:a7g2,13,27~a7g2,13,27	V:a9rl,80,3;lbe,58,2;1z2d,56,1;7xmp,38,2;7gnf,30,2;7i03,26,2~a9rl,80,3;7xmp,38,2;7gnf,30,2;lbe,58,2;7i03,26,2;1z2d,56,1	n:4juh,49,4;abv8,37,16;fx2,29,7;7hyy,25,1;aiyj,22,1;9mne,19,9;66js,17,1;598y,14,33;8i6l,8,2;1uf,7,3;3sts,1,1~598y,14,33;abv8,37,16;9mne,19,9;fx2,29,7;4juh,49,4;1uf,7,3;8i6l,8,2;3sts,1,1;7hyy,25,1;66js,17,1;aiyj,22,1	N:1z2d,109,39;1yj4,89,22;4m4i,80,9;88y2,79,2;a9rl,74,2;an4f,66,8;acfp,62,4;8sno,61,5;7xmp,61,10;6ksz,57,5;631l,57,2;4ciu,56,1;2cu6,55,1;6f5h,47,1;cj9,46,1~1z2d,109,39;1yj4,89,22;7xmp,61,10;4m4i,80,9;an4f,66,8;fx2,27,6;7w8y,39,6;253,26,5;6ksz,57,5;8sno,61,5;acfp,62,4;5hob,36,3;88y2,79,2;a9rl,74,2;2kfq,31,2
+atxt|v|	o:1z2d,92,12;1yj4,74,8;2cu6,71,3;7xmp,51,5;an4f,46,2;5hob,40,4;8sno,38,1;2tyu,14,2;fx2,11,2~1z2d,92,12;1yj4,74,8;7xmp,51,5;5hob,40,4;2cu6,71,3;fx2,11,2;2tyu,14,2;an4f,46,2;8sno,38,1	s:aiyj,48,6~aiyj,48,6
+atxt|a|	j:1z2d,118,75;88y2,110,18;1yj4,101,50;4m4i,94,25;5hob,83,75;lbe,82,10;a9rl,74,2;8lmj,72,6;4ciu,72,3;cj9,69,5;8sno,68,8;an4f,68,9;631l,67,4;ahrd,63,4;6f5h,63,3~5hob,83,75;1z2d,118,75;1yj4,101,50;2tyu,52,27;4m4i,94,25;88y2,110,18;fx2,37,12;lbe,82,10;an4f,68,9;8sno,68,8;2kfq,51,8;253,33,8;11bx,48,7;8lmj,72,6;cj9,69,5
+atxu|n|	a:1cnd,155,2~1cnd,155,2	n:1cnd,175,8~1cnd,175,8	N:2r6k,177,6~2r6k,177,6
+atxu|a|	j:2r6k,199,28~2r6k,199,28
+atxw|n|	a:3z7r,145,4~3z7r,145,4	n:3z7r,125,1~3z7r,125,1
+atxx|n|	v:2mqb,58,1~2mqb,58,1	V:8arb,23,2~8arb,23,2	n:2kgs,66,2~2kgs,66,2	N:2fe7,59,4~2fe7,59,4
+atxz|n|	N:69ri,19,1~69ri,19,1
+aty2|n|	n:598y,17,5~598y,17,5
+aty2|a|	j:8tqp,145,2;aeci,114,3;8px0,108,4~8px0,108,4;aeci,114,3;8tqp,145,2
+aty4|n|	N:81wv,123,8;3c6g,92,1~81wv,123,8;3c6g,92,1
+aty4|a|	j:81wv,139,23;136t,115,8~81wv,139,23;136t,115,8
+aty7|n|	v:a7g2,38,19;a6d9,15,5~a7g2,38,19;a6d9,15,5	V:1ot9,56,2;1mcq,9,2~1mcq,9,2;1ot9,56,2	n:92jb,58,6~92jb,58,6	N:2o8r,108,3~2o8r,108,3
+aty7|v|	s:92jb,42,2;9nkv,29,5~9nkv,29,5;92jb,42,2	D:8jwo,48,2~8jwo,48,2
+aty8|n|	a:acqx,123,2~acqx,123,2	v:86xk,13,1;a7g2,9,5~a7g2,9,5;86xk,13,1	n:acqx,113,1;9mwr,30,2~9mwr,30,2;acqx,113,1	N:ab93,9,1~ab93,9,1
+aty8|a|	j:ab93,19,2~ab93,19,2
+aty9|n|	a:j1u,174,4;2uis,154,6;2mqb,59,1~2uis,154,6;j1u,174,4;2mqb,59,1	v:j1u,164,2;2uis,128,1;iz2,128,2~j1u,164,2;iz2,128,2;2uis,128,1	V:a6ev,25,8;3fqq,22,4~a6ev,25,8;3fqq,22,4	n:j1u,209,48;2uis,162,11;iz2,141,5;2mqb,79,4~j1u,209,48;2uis,162,11;iz2,141,5;2mqb,79,4	N:152c,142,1~152c,142,1
+aty9|v|	s:2mqb,59,1~2mqb,59,1	d:5nhh,23,3~5nhh,23,3
+aty9|a|	e:5nhh,8,1~5nhh,8,1
+atyb|n|	a:ajx,171,1;at88,150,3;5hhb,132,1~at88,150,3;5hhb,132,1;ajx,171,1	v:at88,134,1~at88,134,1	n:ajx,181,2;5hhb,162,8;at88,134,1~5hhb,162,8;ajx,181,2;at88,134,1	N:35yb,59,1~35yb,59,1
+atyb|a|	j:35yb,95,12~35yb,95,12
+atyc|v|	s:9k66,10,4~9k66,10,4
+atyc|a|	e:8pj6,75,1~8pj6,75,1
+atyd|n|	a:6rbo,105,1;3mxz,49,1~6rbo,105,1;3mxz,49,1	V:5rru,73,2~5rru,73,2	n:6rbo,131,6;3mxz,65,3;11a,14,5~6rbo,131,6;11a,14,5;3mxz,65,3	N:xcm,131,2;5rru,112,30;9a8g,109,27;5jf7,92,15;8xe8,84,2;5jfd,84,4;9a7u,71,13;8xdw,48,1;1av0,14,3~5rru,112,30;9a8g,109,27;5jf7,92,15;9a7u,71,13;5jfd,84,4;1av0,14,3;xcm,131,2;8xe8,84,2;8xdw,48,1
+atyd|v|	o:9a8g,81,4;5rru,73,2~9a8g,81,4;5rru,73,2
+atyd|a|	j:9a8g,91,8;5rru,83,4;8xe8,74,1;5jfd,64,1;9a7u,62,7~9a8g,91,8;9a7u,62,7;5rru,83,4;8xe8,74,1;5jfd,64,1
+atye|n|	a:3gnn,165,1;5mcx,110,4~5mcx,110,4;3gnn,165,1	v:3gnn,175,2~3gnn,175,2	n:3gnn,175,2;5mcx,126,12~5mcx,126,12;3gnn,175,2	N:8fh4,205,9;7mog,75,2~8fh4,205,9;7mog,75,2
+atyf|v|	s:9k66,23,2~9k66,23,2
+atyh|n|	v:9dxk,58,2~9dxk,58,2
+atyh|a|	j:7nai,48,11~7nai,48,11
+atyi|n|	a:47nw,144,18~47nw,144,18	n:47nw,128,6~47nw,128,6
+atyj|n|	a:2hiq,89,5~2hiq,89,5	N:6hno,46,2;6hcg,29,2~6hno,46,2;6hcg,29,2
+atyj|a|	j:9bs8,91,10;6hno,56,4;6hcg,45,6~9bs8,91,10;6hcg,45,6;6hno,56,4
+atyk|n|	a:cxt,143,9;cya,72,1;42ym,36,4;8pm3,7,2~cxt,143,9;42ym,36,4;8pm3,7,2;cya,72,1	V:1ysd,63,2;8lz4,56,2;8u8l,35,4;5q2f,30,5;888b,9,2~5q2f,30,5;8u8l,35,4;1ysd,63,2;888b,9,2;8lz4,56,2	n:cxt,111,1;42ym,42,6;ar63,1,2~42ym,42,6;ar63,1,2;cxt,111,1	N:451l,135,1;1zkd,106,2;1ysd,53,1;8evg,53,1~1zkd,106,2;8evg,53,1;1ysd,53,1;451l,135,1
+atyk|v|	s:cxt,131,4;1gaw,43,1;9k66,32,27~9k66,32,27;cxt,131,4;1gaw,43,1
+atyk|a|	j:50zh,166,4;5287,163,4;451l,150,3;9rpv,133,2;r33,131,2;1zkd,128,9;8lz4,99,41;1ysd,88,11;33uu,85,5;8evg,81,7;8lzc,79,2;8m7m,58,4~8lz4,99,41;1ysd,88,11;1zkd,128,9;8evg,81,7;33uu,85,5;8m7m,58,4;50zh,166,4;5287,163,4;451l,150,3;9rpv,133,2;8lzc,79,2;r33,131,2
+atyl|n|	V:1owf,34,1~1owf,34,1
+atyl|a|	j:1owf,34,1~1owf,34,1
+atyn|n|	N:5287,215,12~5287,215,12
+atyn|v|	s:4zp0,73,2~4zp0,73,2
+atyn|a|	j:5287,207,7~5287,207,7
+atyo|n|	v:81wp,149,1~81wp,149,1	n:atyo,183,1~atyo,183,1	N:atyo,183,1~atyo,183,1
+atyp|n|	a:v1p,119,29~v1p,119,29	v:v1p,96,6~v1p,96,6	V:888b,46,6;8arb,44,4;aieh,40,1~888b,46,6;8arb,44,4;aieh,40,1	n:v1p,126,46~v1p,126,46
+atyq|n|	N:gaa,54,3~gaa,54,3
+atyq|a|	j:gaa,49,2~gaa,49,2
+atyr|n|	v:9k66,12,1~9k66,12,1	n:42ym,43,1~42ym,43,1	N:5q2n,83,4~5q2n,83,4
+atyr|v|	s:9k66,32,4~9k66,32,4
+atys|n|	N:7fcf,30,1~7fcf,30,1
+atys|a|	j:7fel,56,1;7fcf,40,2~7fcf,40,2;7fel,56,1
+atyt|a|	j:ys5,77,6~ys5,77,6
+atyu|n|	a:aec1,136,9;ag09,98,1;3xsl,95,4;ar7w,89,9;i3o,86,9;6c9h,82,8;98z2,82,88;739f,78,193;g3l,77,8;4gc9,75,11;15uw,74,3;4g7b,74,47;5tt1,72,10;15b3,68,2;29vp,64,7~2v55,49,251;739f,78,193;98z2,82,88;8pm3,5,52;4g7b,74,47;5wuf,25,38;1jof,32,24;3m1u,16,22;34jj,6,21;27ny,22,18;9y0b,20,17;ys5,6,17;a0x1,59,16;8rvd,10,15;7v2v,3,15	v:ag09,98,1;212a,77,13;2fuq,71,2;9e58,53,1;7rrb,52,4;2v93,42,25;3c15,37,1;98z2,33,3;8wlq,33,3;8wll,29,7;4w05,26,1;8zc5,25,1;562e,22,21;4zpw,22,8;561m,13,29~561m,13,29;2v93,42,25;562e,22,21;p99,2,21;212a,77,13;2v65,9,12;4zpw,22,8;8wll,29,7;7rrb,52,4;98z2,33,3;8wlq,33,3;2fuq,71,2;3c15,37,1;8zc5,25,1;ag09,98,1	V:74um,101,2;4cmy,97,4;3da7,90,3;4ge4,86,13;3kwq,81,4;74ur,80,2;74up,77,1;ydv,74,17;3v93,71,1;8o5k,70,1;a5jd,69,3;45iq,69,3;5qtz,67,3;7rrk,64,2;8v5d,64,2~7fel,57,268;34av,17,28;825t,49,19;2v65,15,18;ydv,74,17;4zqf,43,15;8wlv,55,13;4ge4,86,13;805h,51,11;9pso,5,11;2qk0,45,8;4zpw,22,8;2fgc,34,8;5zpe,5,6;9pw9,10,5	n:aec1,132,7;ag09,108,2;6zn0,100,1;ar7w,96,15;847w,95,7;9x27,94,4;actj,81,16;11z2,79,10;786x,74,5;2484,72,7;2fuq,71,2;6l3m,71,13;uoc,67,4;q38,62,74;6zjv,60,3~1jlg,6,169;q38,62,74;5lgj,15,22;9hy5,2,19;actj,81,16;aj94,7,15;ar7w,96,15;6l3m,71,13;7dt5,2,12;11z2,79,10;767e,57,8;5ds4,48,8;7oyt,11,8;2484,72,7;aec1,132,7	N:74up,120,19;g3j,119,366;74ul,117,6;g3t,115,2;8kuz,108,1;74ur,105,11;8o5k,105,11;3da7,104,8;g3k,103,2;actk,103,103;45iq,102,30;8wlu,101,13;74um,101,2;actj,100,60;8s9o,96,6~g3j,119,366;7fcf,30,267;7fel,52,187;6j5v,12,158;6jco,26,144;actk,103,103;86nn,23,71;91jr,11,64;actj,100,60;adby,62,55;5ebi,41,54;5zrl,37,46;2kt7,40,37;9mct,8,37;5zt7,47,34
+atyu|v|	o:74ur,114,21;74um,101,2;ade4,75,1;3da7,74,1;3v93,71,1;actk,62,6;9w1g,60,2;g3j,53,4;actj,51,2;ydv,43,2;1vnn,41,1;45im,40,1;2dew,31,17;7fel,28,36;39ze,28,3~7fel,28,36;74ur,114,21;2dew,31,17;9dog,1,11;5zt7,27,8;actk,62,6;g3j,53,4;1uo2,8,4;39ze,28,3;zre,7,3;j0w,13,2;74um,101,2;ydv,43,2;actj,51,2;9w1g,60,2	s:1ehg,82,6;74ur,80,2;1xot,72,1;2fuq,61,1;2484,59,3;actj,56,3;uoc,47,1;67ns,45,4;6qck,38,2;a0x1,29,2;4jl5,26,6;8qm8,21,2;atz2,20,1;atyu,12,1;8wll,10,2~4zp0,6,7;4jl5,26,6;1ehg,82,6;5629,0,4;67ns,45,4;2484,59,3;actj,56,3;a0x1,29,2;q38,10,2;74ur,80,2;8wll,10,2;8qm8,21,2;6qck,38,2;atz2,20,1;1xot,72,1	D:8s9o,70,1~8s9o,70,1
+atyu|a|	j:74ur,153,299;74up,141,83;g3k,119,6;8kuz,118,2;74um,117,6;g3t,115,2;3da7,113,15;74ul,107,3;ade4,107,9;actk,104,111;74u,102,3;g3j,100,100;actj,99,59;44dc,96,6;4r99,95,1~7fcf,42,619;6jco,45,561;7fel,65,476;74ur,153,299;2dew,61,134;actk,104,111;g3j,100,100;2kvu,69,94;91jr,15,86;6j5v,3,85;5zrl,46,84;74up,141,83;1gy2,36,74;aclw,31,63;9mct,16,62
+atyv|a|	j:7fel,72,2~7fel,72,2
+atyy|n|	v:a7g2,38,12~a7g2,38,12	n:72w5,120,3~72w5,120,3
+atyz|n|	n:5zrl,59,1;1jlg,44,11;598y,16,4~1jlg,44,11;598y,16,4;5zrl,59,1	N:86nn,55,3~86nn,55,3
+atyz|v|	o:86nn,39,1~86nn,39,1
+atz2|n|	a:aec1,122,2;10j9,120,4;3xsl,118,12;2xh3,104,3;15uw,102,12;626a,96,6;5tt1,93,25;7tks,91,2;739f,89,244;agvc,87,4;786x,81,5;4w05,77,21;4gdk,72,4;338v,70,2;67ns,69,13~af1h,58,367;739f,89,244;5yo3,6,178;5js4,19,154;2v55,49,145;6r1c,3,127;61tf,15,59;27ny,46,57;38a9,12,45;8k4w,13,31;7v2v,20,29;q38,55,26;u0n,20,26;8rvd,25,25;5tt1,93,25	v:2xh3,98,2;2e,94,1;850j,80,8;2mb0,75,3;aeld,73,3;2v93,72,118;8qs3,66,1;8wlv,66,17;7rrb,65,6;4zpw,63,86;2i8k,63,6;338v,60,1;3923,57,38;98z2,56,9;8wll,51,20~2v93,72,118;u0n,40,106;4zpw,63,86;4zp0,47,72;2v65,34,40;3923,57,38;1yhz,15,33;p99,15,31;2v55,25,28;1883,2,27;7dt5,19,23;8wll,51,20;562e,27,18;8wlv,66,17;561m,13,17	V:8kv1,106,4;3t8i,89,2;ajvy,79,14;4gc1,76,12;8wlq,66,18;8wll,66,56;83de,66,10;8wlv,65,16;4jkf,63,54;45iq,60,1;850j,60,2;2v65,55,172;m3e,53,10;825t,53,15;2qjd,51,51~2v65,55,172;9h6q,33,84;8wll,66,56;4jkf,63,54;2qjd,51,51;5zko,18,48;1ojz,16,46;1993,6,42;9wql,35,38;4y4v,6,30;4zpc,46,30;9qf8,19,29;1y1p,6,28;5wnj,14,27;93lv,16,27	n:6zn0,128,4;9x27,113,9;agvc,97,8;7tks,97,3;2fuq,89,4;actj,84,12;8qs3,82,3;847w,75,1;2484,74,5;786x,74,3;11z2,73,4;5l6u,72,23;338v,70,2;6ow8,65,37;q38,64,50~11a,10,216;af1h,31,54;q38,64,50;71f,23,48;6ow8,65,37;5l6u,72,23;4zp0,29,21;1zqd,48,13;5zrl,26,13;8wll,44,12;actj,84,12;27ny,20,9;9x27,113,9;36dg,7,9;agvc,97,8	N:3t8i,94,3;45iq,76,3;4jkf,74,116;8qmk,54,2;8xid,51,3;atz2,50,5;4jl5,45,13;m3e,30,2;3k1i,14,27;mkc,13,9;2nsb,4,8~4jkf,74,116;3k1i,14,27;4jl5,45,13;mkc,13,9;2nsb,4,8;atz2,50,5;3t8i,94,3;8xid,51,3;45iq,76,3;8qmk,54,2;m3e,30,2
+atz2|v|	o:8wll,34,6;4jkf,5,1~8wll,34,6;4jkf,5,1	s:9x27,81,1;847w,75,1;2fuq,69,1;2484,61,2;1zqd,37,6;4jl5,28,4;atz2,27,1;q38,23,3;49do,1,1~1zqd,37,6;4jl5,28,4;q38,23,3;2484,61,2;847w,75,1;49do,1,1;9x27,81,1;2fuq,69,1;atz2,27,1
+atz4|n|	n:1jlg,52,6~1jlg,52,6
+atz5|n|	a:7dt5,61,2~7dt5,61,2	v:7dt5,74,5~7dt5,74,5	n:7dt5,61,2~7dt5,61,2
+atz6|v|	o:74um,189,8;74ul,170,2;dot,63,1~74um,189,8;74ul,170,2;dot,63,1	d:6n3l,17,6;6fpr,10,2~6n3l,17,6;6fpr,10,2
+atz6|a|	j:74ul,194,11;74um,187,7;dot,89,6;91jr,29,2~74ul,194,11;74um,187,7;dot,89,6;91jr,29,2	e:6n3l,12,4~6n3l,12,4
+atz9|n|	a:7gis,76,11~7gis,76,11	n:7gis,85,20~7gis,85,20
+atzb|n|	a:2mqb,100,2~2mqb,100,2	n:2mqb,116,6~2mqb,116,6	N:57fs,56,2~57fs,56,2
+atzb|a|	j:t3u,105,3;57fs,46,1~t3u,105,3;57fs,46,1
+atzc|n|	a:69ri,38,4~69ri,38,4	n:1jlg,42,3~1jlg,42,3
+atzd|n|	a:9nkv,32,2~9nkv,32,2	n:9nkv,54,9~9nkv,54,9	N:5wcr,163,2~5wcr,163,2
+atzd|v|	s:9nkv,22,1~9nkv,22,1
+atzf|a|	j:3a03,95,14~3a03,95,14
+atzg|n|	a:2scg,201,8;2rbo,190,2~2scg,201,8;2rbo,190,2	n:2scg,211,15;2rbo,208,7~2scg,211,15;2rbo,208,7
+atzh|n|	a:2e8p,180,3~2e8p,180,3	n:2e8p,213,30~2e8p,213,30	N:3jh5,147,28~3jh5,147,28
+atzh|v|	o:3jh5,109,2~3jh5,109,2
+atzh|a|	j:3jh5,115,3~3jh5,115,3
+atzi|n|	n:atzi,150,3;ual,20,4~ual,20,4;atzi,150,3	N:atzi,150,3;9k5q,22,3~atzi,150,3;9k5q,22,3
+atzi|a|	j:9k5q,6,1~9k5q,6,1
+atzm|n|	n:6t9,195,1~6t9,195,1
+atzo|n|	a:58zp,158,3~58zp,158,3	n:58zp,162,4;9ra1,139,18;9nkv,31,7~9ra1,139,18;9nkv,31,7;58zp,162,4
+atzo|v|	s:9ra1,129,9~9ra1,129,9
+atzp|n|A zone or band; a layer.	a:a02k,113,7;305u,103,1;9w7m,91,4;8fkq,12,3~a02k,113,7;9w7m,91,4;8fkq,12,3;305u,103,1	v:1883,19,3~1883,19,3	n:305u,129,6;a02k,105,4;23nj,93,12;52of,89,18;2el8,66,2;alxf,20,2~52of,89,18;23nj,93,12;305u,129,6;a02k,105,4;alxf,20,2;2el8,66,2	N:3ge3,125,3;62u7,119,2;38q5,110,10;2el8,80,5;27n9,50,3~38q5,110,10;2el8,80,5;3ge3,125,3;27n9,50,3;62u7,119,2
+atzp|a|A zone or band; a layer.	j:3jsc,116,2;2el8,76,4~2el8,76,4;3jsc,116,2
+atzr|n|	n:alxf,61,9~alxf,61,9
+atzr|v|	s:alxf,29,1~alxf,29,1
+atzs|n|	a:mie,77,5;53yv,66,10~53yv,66,10;mie,77,5	v:mie,69,3~mie,69,3	n:53yv,43,2~53yv,43,2	N:3ew0,145,1;19rp,144,4;19rm,117,3;1f71,114,19;2dxi,78,8;1f68,61,2;2dun,44,2~1f71,114,19;2dxi,78,8;19rp,144,4;19rm,117,3;2dun,44,2;1f68,61,2;3ew0,145,1
+atzs|v|	o:1f71,81,2;2dxi,48,1~1f71,81,2;2dxi,48,1
+atzs|a|	j:3ew0,155,2;19rp,147,5;19rm,101,1;2dxi,87,15;1f71,87,3;1f68,74,5;2dun,54,4~2dxi,87,15;19rp,147,5;1f68,74,5;2dun,54,4;1f71,87,3;3ew0,155,2;19rm,101,1
+atzu|n|Of or pertaining to a zone; having the form of a zone or zones.	a:7f38,4,1~7f38,4,1	n:7lk0,6,1~7lk0,6,1	N:91vz,29,3~91vz,29,3
+atzu|a|Of or pertaining to a zone; having the form of a zone or zones.	j:91v5,142,5;4gp4,125,25;91ux,121,2571;43xu,106,209;91vz,106,611;3fq1,102,7;3z6m,98,68;1we0,96,8;dvw,92,4;43y0,87,10;91ss,84,9;9ry8,84,9;91j1,81,65;akip,80,15;6k9d,77,12~91ux,121,2571;91vz,106,611;43xu,106,209;7q3d,70,70;3z6m,98,68;91j1,81,65;795k,65,58;98t9,31,40;5od6,16,35;3mn4,48,34;ak9x,61,26;4gp4,125,25;5of1,11,22;9916,54,21;3z6d,56,16
+atzv|n|	v:a6d9,30,4~a6d9,30,4
+atzw|a|	j:9qf8,79,5;3iqq,40,4~9qf8,79,5;3iqq,40,4
+atzx|n|	v:a97p,34,2~a97p,34,2	V:77ii,77,6;3iqq,23,2~77ii,77,6;3iqq,23,2	n:a97p,44,4~a97p,44,4
+au00|n|	a:9ht,200,12;6raw,181,4;544m,103,1;2v4y,74,1~9ht,200,12;6raw,181,4;544m,103,1;2v4y,74,1	v:4dov,60,8~4dov,60,8	V:2a62,113,9;27n9,88,7~2a62,113,9;27n9,88,7	n:6raw,171,2;9ht,165,1;544m,113,2;2v4y,74,1~6raw,171,2;544m,113,2;9ht,165,1;2v4y,74,1	N:8759,226,3~8759,226,3
+au00|v|	s:6raw,187,6;9ht,175,2;544m,103,1~6raw,187,6;9ht,175,2;544m,103,1
+au00|a|	j:8759,236,6~8759,236,6
+au03|n|	a:8w2n,118,6~8w2n,118,6	N:8w5a,117,7~8w5a,117,7
+au04|n|	a:6u6z,218,7;18sa,174,9~18sa,174,9;6u6z,218,7	n:6u6z,216,6;18sa,142,1~6u6z,216,6;18sa,142,1	N:7o5u,59,7;34zs,54,6~7o5u,59,7;34zs,54,6
+au04|a|	j:9kr4,88,4;7o5u,41,2~9kr4,88,4;7o5u,41,2
+au06|n|	N:atgy,150,3~atgy,150,3
+au07|n|	V:7ja6,111,59~7ja6,111,59	N:74l5,102,1;7ja6,92,16;962m,58,5;1l9,50,1;8vqu,4,1~7ja6,92,16;962m,58,5;1l9,50,1;74l5,102,1;8vqu,4,1
+au07|a|	j:7ja6,75,5;1vn0,74,4;8vqu,14,2~7ja6,75,5;1vn0,74,4;8vqu,14,2
+au08|n|	V:888b,21,1~888b,21,1
+au09|n|A girdle; a cincture. ; One of the five great divisions of the earth, with respect to latitude and temperature. ; The portion of the surface of a sphere included between two parallel planes; the portion of a surface of revolution included between two planes perpendicular to the axis. ; A band or stripe extending around a body. ; A band or area of growth encircling anything; as, a zone of evergreens on a mountain; the zone of animal or vegetable life in the ocean around an island or a continent; the Alpine zone, that part of mountains which is above the limit of tree growth. ; A series of planes having mutually parallel intersections. ; Circuit; circumference.	a:96v3,123,6;2z8z,119,26;8ose,112,11;2ayh,111,59;3xb2,110,1019;4esu,108,7;73mv,101,8;5kwf,101,14;82ow,95,22;5b8l,95,8;4kzn,95,5;3z0a,91,46;9x77,91,451;ngs,90,10;4xg3,87,2~3xb2,110,1019;27ny,47,682;8800,34,503;9x77,91,451;69of,46,428;45u5,47,388;7t8z,23,382;5cam,10,342;8pm3,1,278;3udu,48,273;9l6f,45,261;7eau,16,216;6x9o,3,213;8h7u,7,210;4kkj,14,205	v:2ayh,110,55;13sr,83,87;3rfw,83,2;9x77,79,196;8m5f,65,2;5k4,62,3;10rx,62,2;j4g,60,6;9h3m,56,15;45u5,56,694;4nxh,49,2;53k9,49,236;2ms5,47,16;3z0a,46,2;3sjr,46,10~45u5,56,694;53k9,49,236;9x77,79,196;5e2u,30,184;9vm0,42,176;8ww6,9,121;155b,8,110;80y0,13,104;13sr,83,87;40xf,31,64;2ayh,110,55;8r9l,20,48;8qhe,46,46;90gq,26,33;1639,23,28	V:9ljt,60,6;a903,52,76;actr,51,15;72ma,46,2;8bcu,46,4;2aa4,42,31;8hrf,39,3;6kwu,35,429;6jur,35,13;11o9,31,4;5rin,29,6;2qgj,27,2;8l2j,27,6;2cq8,26,2;66y5,25,3~6kwu,35,429;8jsr,9,297;sbb,1,276;66d4,13,175;8ww6,14,172;a903,52,76;8ohy,22,43;3dm2,25,36;2aa4,42,31;a8zx,14,21;76j5,21,19;126d,9,16;actr,51,15;6jur,35,13;5pil,24,12	n:13sr,129,2087;8ose,122,22;3z0a,121,372;a7qm,110,3909;96qv,106,141;2k68,106,11;3sjq,106,6;85u1,103,63;1zl8,101,98;3rwc,100,5;4esu,100,4;1rma,99,23;9x77,98,749;1omc,97,2057;50b1,97,4~9nkv,61,58343;2k44,68,4166;a7qm,110,3909;13sr,129,2087;1omc,97,2057;oqr,76,1363;5e2u,58,1287;24a5,75,1051;6x3y,14,987;4ld1,84,937;294h,16,784;9x77,98,749;8eyt,29,708;1op6,13,640;155b,32,567	N:8iof,98,10;5s2q,96,27;27bp,93,10;9vlu,90,12;87cw,90,39;72ma,89,41;65wp,89,5;2cqa,87,162;97om,86,14;a4gf,84,22;9ss7,84,5;aoif,83,2;8pc5,82,3;fuo,78,4;7j8y,77,3~395p,21,4374;66b5,16,1810;6kwu,51,1255;39l9,16,1047;24yt,0,959;9t27,42,735;294h,15,729;49ts,7,618;9t3u,72,573;4gpb,10,546;66j5,21,446;9cla,1,405;2yba,52,395;8jt3,18,383;1es1,10,345
+au09|v|To girdle; to encircle.	o:97qv,48,1;87cw,37,1;246a,23,1;a903,20,8;63uf,17,2;9t3u,13,10;1uds,10,9~9t3u,13,10;1uds,10,9;a903,20,8;63uf,17,2;97qv,48,1;246a,23,1;87cw,37,1	s:3rfw,113,16;5fcx,106,14;5s1n,98,87;a7qm,91,1051;3sjr,83,128;m4h,76,2;a6co,67,36;r5b,63,8;6118,57,10;osm,46,1;3qsw,44,8;6gyg,40,2;183e,37,50;91ax,35,3;zgc,32,1~a7qm,91,1051;8q7t,18,171;3sjr,83,128;5s1n,98,87;183e,37,50;a6co,67,36;oqr,22,32;3rfw,113,16;5fcx,106,14;24a5,9,11;6118,57,10;r5b,63,8;3qsw,44,8;3z1,25,7;1omc,15,7	d:3z0a,62,6;26a8,26,1~3z0a,62,6;26a8,26,1
+au09|a|A girdle; a cincture. ; One of the five great divisions of the earth, with respect to latitude and temperature. ; The portion of the surface of a sphere included between two parallel planes; the portion of a surface of revolution included between two planes perpendicular to the axis. ; A band or stripe extending around a body. ; A band or area of growth encircling anything; as, a zone of evergreens on a mountain; the zone of animal or vegetable life in the ocean around an island or a continent; the Alpine zone, that part of mountains which is above the limit of tree growth. ; A series of planes having mutually parallel intersections. ; Circuit; circumference.	j:gf,61,127;7mdu,55,1;au0u,50,2;6kxv,49,96;5s2q,49,1;97qv,48,1;34na,42,3;9t3u,41,68;ge,40,51;2cqb,38,3;87cw,37,1;2cqa,36,5;246a,33,2;4bdv,32,1;2cq8,32,3~4gpb,2,311;99xz,8,304;8jt3,15,298;6kwu,24,193;gf,61,127;6kxv,49,96;9t3u,41,68;ge,40,51;1udi,5,47;1uds,28,31;7yrc,26,21;a903,30,17;5fy,13,12;2aal,20,11;2tfd,11,9	e:26a8,42,3;1s9i,20,2;1pbo,15,1~26a8,42,3;1s9i,20,2;1pbo,15,1
+au0b|n|	N:mi5,75,1~mi5,75,1
+au0b|a|	j:mi5,91,3;5zko,64,3;5afo,58,6~5afo,58,6;mi5,91,3;5zko,64,3
+au0c|n|	v:2h15,73,2;a7g2,14,5~a7g2,14,5;2h15,73,2	n:3b3g,68,2;2h15,63,1;598y,37,26~598y,37,26;3b3g,68,2;2h15,63,1	N:3b3g,91,10;agcl,67,1~3b3g,91,10;agcl,67,1
+au0c|v|	o:3b3g,58,1~3b3g,58,1
+au0c|a|	j:3b3g,88,8;3go7,27,1~3b3g,88,8;3go7,27,1
+au0d|n|	a:4jow,32,2~4jow,32,2	n:4jow,38,3~4jow,38,3
+au0d|v|	d:4jow,22,1~4jow,22,1
+au0e|n|Wearing a zone, or girdle. ; Having zones, or concentric bands; striped. ; Zonate.	N:28dl,35,2~28dl,35,2
+au0e|v|Wearing a zone, or girdle. ; Having zones, or concentric bands; striped. ; Zonate.	o:47ux,115,19;15ga,78,5;28eq,74,3;28dl,57,9;40xf,47,1;40wc,33,2;25xb,26,6;268c,23,1;15fv,15,1;a8we,7,3;38si,3,2~47ux,115,19;28dl,57,9;25xb,26,6;15ga,78,5;28eq,74,3;a8we,7,3;40wc,33,2;38si,3,2;268c,23,1;40xf,47,1;15fv,15,1	s:au0g,111,3;2qlk,110,3;268c,56,10;af1h,46,9;a97p,9,5~268c,56,10;af1h,46,9;a97p,9,5;au0g,111,3;2qlk,110,3	d:au0g,95,1;4wan,8,16~4wan,8,16;au0g,95,1	D:268c,55,9;6kqv,29,9~6kqv,29,9;268c,55,9
+au0e|a|Wearing a zone, or girdle. ; Having zones, or concentric bands; striped. ; Zonate.	j:47ux,93,4;15ga,85,8;28eq,78,4;ieh,50,4;idb,44,11;268c,39,3;7wk,35,3;9cla,35,22;25xb,23,5;40wc,23,1;15fv,15,1;9nyp,12,3;38si,3,2~9cla,35,22;idb,44,11;15ga,85,8;25xb,23,5;28eq,78,4;47ux,93,4;ieh,50,4;7wk,35,3;268c,39,3;9nyp,12,3;38si,3,2;40wc,23,1;15fv,15,1	e:1ozj,99,6;1pwi,41,10;9rhn,38,3;awe,14,5~1pwi,41,10;1ozj,99,6;awe,14,5;9rhn,38,3
+au0f|n|	n:a97p,55,5~a97p,55,5
+au0g|n|	a:au0g,118,13;3h0d,44,5;3a8z,42,32;91qa,27,22;5wuf,27,4;7ex5,18,12~3a8z,42,32;91qa,27,22;au0g,118,13;7ex5,18,12;3h0d,44,5;5wuf,27,4	v:7zvw,25,3~7zvw,25,3	V:au0e,111,3;7xd9,42,2;7zo6,39,1;7xsm,24,2;7xsf,23,1~au0e,111,3;7xd9,42,2;7xsm,24,2;7xsf,23,1;7zo6,39,1	n:au0g,113,9;au0l,106,6;5cci,93,3;9o5g,74,20;a7ml,38,2;4fmw,34,1;au09,29,2;6kwu,10,1;a6d9,9,57;a97p,7,11~a6d9,9,57;9o5g,74,20;a97p,7,11;au0g,113,9;au0l,106,6;5cci,93,3;a7ml,38,2;au09,29,2;4fmw,34,1;6kwu,10,1	N:at13,160,90;919g,137,5;26rp,127,2;au0g,113,9;5cci,77,1;268c,51,18;a7ml,48,4;6j5v,39,95;h03,8,3~6j5v,39,95;at13,160,90;268c,51,18;au0g,113,9;919g,137,5;a7ml,48,4;h03,8,3;26rp,127,2;5cci,77,1
+au0g|a|	j:at13,167,142;26vr,132,6;au0g,118,13;268c,41,9;6jco,38,31;1jlg,33,98;7xd9,32,1;90yn,21,20;6j5v,20,26;2vor,3,9;9nkv,2,13~at13,167,142;1jlg,33,98;6jco,38,31;6j5v,20,26;90yn,21,20;au0g,118,13;9nkv,2,13;2vor,3,9;268c,41,9;26vr,132,6;7xd9,32,1	e:au0g,81,1~au0g,81,1
+au0h|n|	v:a6ev,37,9;a7g2,23,9;a6d9,23,11~a6d9,23,11;a7g2,23,9;a6ev,37,9	n:598y,41,33;a6d9,9,4~598y,41,33;a6d9,9,4	N:2k44,72,5;fx2,44,3~2k44,72,5;fx2,44,3
+au0j|n|	a:3ifa,40,6;8pm3,24,3;88v3,15,7;5cam,14,1~88v3,15,7;3ifa,40,6;8pm3,24,3;5cam,14,1	n:2k44,73,13;xlc,55,4;127,14,2~2k44,73,13;xlc,55,4;127,14,2	N:1tax,27,3~1tax,27,3
+au0j|a|	j:5e2o,36,7;1tax,11,1~5e2o,36,7;1tax,11,1
+au0k|n|	n:2k44,73,3~2k44,73,3
+au0l|n|	a:au0l,147,102;gsf,60,13;6p1c,57,19;3a8z,32,16;91qa,12,8~au0l,147,102;6p1c,57,19;3a8z,32,16;gsf,60,13;91qa,12,8	V:5efe,119,1;7xsm,24,2~7xsm,24,2;5efe,119,1	n:au0l,122,18;au09,54,12;6kwu,20,2;a89p,17,2;8fkq,13,15;a97p,11,15;49ts,8,9~au0l,122,18;8fkq,13,15;a97p,11,15;au09,54,12;49ts,8,9;a89p,17,2;6kwu,20,2	N:5efe,142,5;6fwn,129,16;au0l,122,18;au0g,106,6;9y4d,80,5;au09,48,8;9o5g,40,2;a7ml,37,2;in6,33,16;asmk,22,12;91xd,16,4;6j5v,10,13~au0l,122,18;in6,33,16;6fwn,129,16;6j5v,10,13;asmk,22,12;au09,48,8;au0g,106,6;5efe,142,5;9y4d,80,5;91xd,16,4;a7ml,37,2;9o5g,40,2
+au0l|v|	o:au09,34,3~au09,34,3
+au0l|a|	j:au0l,147,102;50bc,146,3;asmk,73,410;9y4d,67,2;au09,38,4;a7ml,27,1;1jlg,2,12~asmk,73,410;au0l,147,102;1jlg,2,12;au09,38,4;50bc,146,3;9y4d,67,2;a7ml,27,1	e:4jow,12,18~4jow,12,18
+au0n|n|	a:4jow,11,1~4jow,11,1	v:a97p,23,2;4jow,11,1~a97p,23,2;4jow,11,1	n:a97p,28,3;4jow,27,3~4jow,27,3;a97p,28,3	N:7h3q,53,7~7h3q,53,7
+au0o|n|	a:6m0d,119,2;hay,51,9;90mt,37,8;a8du,36,5;1vot,29,8~hay,51,9;1vot,29,8;90mt,37,8;a8du,36,5;6m0d,119,2	n:6m0d,137,7;au0o,130,2;9o5n,114,2;4dov,60,57;a97p,2,2~4dov,60,57;6m0d,137,7;a97p,2,2;au0o,130,2;9o5n,114,2	N:au0o,130,2;a7ml,73,6;9o5g,50,1;5x2f,47,12;26xg,44,7;39l9,44,25;66j5,35,4;4ajr,34,1;395p,32,32;3dqg,31,4;2grw,19,2;49ts,16,4;66b5,13,5;9nkv,12,7;250g,11,2~395p,32,32;39l9,44,25;5x2f,47,12;9nkv,12,7;26xg,44,7;a7ml,73,6;24yt,9,6;66b5,13,5;66j5,35,4;3dqg,31,4;49ts,16,4;250g,11,2;au0o,130,2;2grw,19,2;9o5g,50,1
+au0o|v|	s:4dov,21,4~4dov,21,4
+au0o|a|	j:9o5g,60,2;4dov,58,52;2grw,53,21;250g,52,33;26xg,44,7;3dqg,39,7;39l9,34,13;9nkv,31,25;5x2f,27,3;66j5,15,1;66b5,10,4;395p,2,4~4dov,58,52;250g,52,33;9nkv,31,25;2grw,53,21;39l9,34,13;3dqg,39,7;26xg,44,7;66b5,10,4;395p,2,4;5x2f,27,3;9o5g,60,2;66j5,15,1
+au0q|n|	a:a97p,42,5~a97p,42,5
+au0q|v|	s:a97p,19,1~a97p,19,1
+au0r|n|	V:4ylc,66,4~4ylc,66,4
+au0s|a|	j:9ia7,52,3~9ia7,52,3
+au0t|n|	a:7zk1,46,2;4j6w,40,8;86xk,22,3;86qo,9,2;90yn,4,1~4j6w,40,8;86xk,22,3;86qo,9,2;7zk1,46,2;90yn,4,1	v:4j8a,37,4;4j6w,30,4;7ffv,30,1;86xk,22,3;a7g2,15,12;a6ev,9,3;86qo,9,2;3fqq,1,1~a7g2,15,12;4j6w,30,4;4j8a,37,4;86xk,22,3;a6ev,9,3;86qo,9,2;7ffv,30,1;3fqq,1,1	V:4j8a,27,2~4j8a,27,2	n:7zk1,46,2;8i6l,42,8;7ffv,30,1;90yn,24,4;11a,16,9~11a,16,9;8i6l,42,8;90yn,24,4;7zk1,46,2;7ffv,30,1	N:4j79,43,2;8i6l,42,8;ahbo,38,7;98c0,28,2;4j6w,20,2;8hz6,13,3;2zcw,9,3;250g,7,1~8i6l,42,8;ahbo,38,7;8hz6,13,3;2zcw,9,3;4j6w,20,2;98c0,28,2;4j79,43,2;250g,7,1
+au0t|v|	o:90yn,14,2;8hz6,8,2~90yn,14,2;8hz6,8,2	s:8i6l,28,3;90yn,4,1~8i6l,28,3;90yn,4,1	d:7zk1,36,1~7zk1,36,1
+au0t|a|	j:4j79,53,4;250g,23,3;ahbo,20,2;98c0,18,1;86xk,6,1;90yn,4,1;2zcw,3,2~4j79,53,4;250g,23,3;ahbo,20,2;2zcw,3,2;86xk,6,1;90yn,4,1;98c0,18,1
+au0u|n|	a:au09,50,2;7r3f,13,3;a97p,10,3~a97p,10,3;7r3f,13,3;au09,50,2	v:7r3f,13,3;94wq,9,4~94wq,9,4;7r3f,13,3	n:au0u,124,1;7vw5,65,4;au09,50,2;aiy9,30,28;94wq,30,17;1snf,26,2;49ts,18,4~aiy9,30,28;94wq,30,17;49ts,18,4;7vw5,65,4;1snf,26,2;au09,50,2;au0u,124,1	N:au0u,124,1;6dby,103,2~6dby,103,2;au0u,124,1
+au0v|n|	a:4jow,23,1~4jow,23,1	v:94wq,30,2~94wq,30,2
+au0w|n|	a:au0w,157,1;4jow,25,3~4jow,25,3;au0w,157,1	V:6kwu,59,2~6kwu,59,2	n:au0w,157,1;6kwu,69,4;a6d9,12,5;4jow,9,1~a6d9,12,5;6kwu,69,4;au0w,157,1;4jow,9,1	N:au0w,157,1;atwc,131,2;1jlg,20,3~1jlg,20,3;atwc,131,2;au0w,157,1
+au0w|v|	o:6kwu,87,14~6kwu,87,14
+au0w|a|	j:au0w,157,1;1jlg,25,4~1jlg,25,4;au0w,157,1
+au0x|n|	N:73mz,103,7~73mz,103,7
+au0x|a|	j:73mz,91,3~73mz,91,3
+au0y|n|	a:2z8z,135,16;5b8l,116,7;1zl8,114,47;96qv,108,33;82ow,107,10;3xb2,106,156;33ub,104,5;3z0a,102,20;2ayh,101,6;1kpk,100,27;9h3m,90,32;13sr,82,17;4862,77,5;7yu5,76,66;8fgg,75,17~2flr,23,666;6r1c,10,495;61tf,33,492;9nkv,11,376;27ny,54,225;155b,40,201;3xb2,106,156;5e2u,50,148;8k4w,21,130;5js4,4,124;8wur,7,90;8h7u,17,89;5cam,13,89;1dh7,15,85;ahog,70,84	v:2mje,106,2;2ayh,101,6;2z8z,95,1;4y6g,78,2;1zl8,78,4;12z4,72,23;13sr,67,6;5rin,66,16;6zx9,63,6;3z0a,59,1;96qv,58,1;45u5,57,160;9h3m,56,3;1pbr,55,17;2gb8,55,7~45u5,57,160;4juj,52,118;1etz,15,63;1es1,5,48;53k9,47,45;6srp,46,40;9vm0,42,38;40xf,46,38;5e2u,27,32;8r9l,37,31;8oeu,26,30;155b,12,29;39vt,24,25;5byn,9,23;12z4,72,23	V:9o5n,61,3;9232,55,48;adm1,46,4;2oit,40,1;26sj,29,4;6sri,26,15;5bvi,25,73;5ak9,22,35;55y9,12,2;sbb,11,113;ld3,10,23;29mw,9,70;332j,9,41;247,2,28;1y1p,1,48~sbb,11,113;5bvi,25,73;29mw,9,70;1y1p,1,48;9232,55,48;332j,9,41;5ak9,22,35;247,2,28;ld3,10,23;2bq7,1,21;6sri,26,15;adm1,46,4;26sj,29,4;9o5n,61,3;55y9,12,2	n:96qv,129,137;3z0a,126,108;4y6g,115,25;8v84,112,10;13sr,109,110;1zl8,109,34;a7qm,109,725;5f7c,103,6;5aby,102,6;9y58,98,6;85u1,98,9;j4g,97,16;oqr,96,1145;a6co,90,37;9h3m,90,32~9nkv,59,10459;oqr,96,1145;2k44,68,825;a7qm,109,725;8eyt,50,589;5e2u,65,443;6x3y,22,354;w46,15,283;2nsb,33,150;96qv,129,137;5prf,18,130;ag81,46,127;155b,33,123;13sr,109,110;1kpi,73,109	N:2aam,73,3;30dq,29,121;au0y,28,6;3vv,23,30;6sri,17,8;8l2s,12,36;558f,4,22~30dq,29,121;8l2s,12,36;3vv,23,30;558f,4,22;6sri,17,8;au0y,28,6;2aam,73,3
+au0y|v|	o:6sri,3,3~6sri,3,3	s:3z0a,85,6;4y6g,78,2;7qsc,76,1;9y58,73,1;a7qm,68,44;96qv,68,2;85u1,66,1;a6co,58,4;1zl8,58,1;13sr,57,3;7qyu,53,2;3g4k,52,4;oqr,52,54;1bbs,46,1;8284,46,2~9nkv,12,403;2k44,30,59;oqr,52,54;a7qm,68,44;155b,10,25;8eyt,1,20;4085,44,9;ahog,38,9;3z0a,85,6;9t9l,3,6;5e2u,3,6;a6co,58,4;3g4k,52,4;3usz,8,3;1omc,26,3	d:4085,23,2~4085,23,2	D:b4m,31,11;pfp,2,22~pfp,2,22;b4m,31,11
+au11|a|	j:4dkm,103,12;2x96,77,4;asmk,70,7~4dkm,103,12;asmk,70,7;2x96,77,4
+au12|n|	N:9dku,51,5~9dku,51,5
+au12|a|	j:9dku,28,1~9dku,28,1
+au13|n|	n:5x2f,66,4;4jow,40,3~5x2f,66,4;4jow,40,3
+au13|a|	e:4jow,47,5~4jow,47,5
+au14|v|	o:atgz,145,2~atgz,145,2
+au14|a|	j:atgz,182,26;wo0,176,2~atgz,182,26;wo0,176,2
+au16|n|	a:7yu5,75,4;627r,71,1;7zpv,66,4;4g0c,53,2;30r0,36,2;5cam,35,25;94to,28,2;oau,25,2;218w,9,8;2puq,3,1~5cam,35,25;218w,9,8;7zpv,66,4;7yu5,75,4;oau,25,2;30r0,36,2;94to,28,2;4g0c,53,2;627r,71,1;2puq,3,1	V:adw,13,3;9qh2,1,1~adw,13,3;9qh2,1,1	n:6ioy,76,2;8988,62,4;9s1d,60,6;1j60,36,5;53j9,15,1~9s1d,60,6;1j60,36,5;8988,62,4;6ioy,76,2;53j9,15,1	N:6ppt,115,10;6pps,90,2;7zpt,59,10;10eh,58,5;2cq5,57,1;7v41,54,2;8kzv,51,1;5575,46,6;7yev,40,8;86nn,32,12;6ktt,32,3;790q,28,1;a9dl,25,1;769o,23,3;1mm0,15,1~86nn,32,12;6ppt,115,10;7zpt,59,10;7yev,40,8;5575,46,6;10eh,58,5;1es1,9,4;6ktt,32,3;769o,23,3;6pps,90,2;7v41,54,2;1mm0,15,1;790q,28,1;a9dl,25,1;8kzv,51,1
+au16|v|	o:6ppt,131,32;6pps,111,9;7v1r,100,7;5575,97,209;2j7c,96,11;7v41,93,30;1p15,80,8;7zpt,78,38;2j72,77,9;71gj,68,4;2cq5,67,2;8kzv,67,3;1mm0,65,33;10d5,63,44;10eh,58,5~5575,97,209;10d5,63,44;7zpt,78,38;1mm0,65,33;6ppt,131,32;7v41,93,30;1mcq,5,26;555n,51,26;558f,41,19;5jtg,28,17;24yt,4,16;86nn,36,16;9cla,15,14;2j7c,96,11;4glj,26,10	s:anp4,116,4;6ioy,86,4;2vfc,77,6;8988,73,9;78ce,54,3;4g0c,53,2;1j60,51,14;1eul,49,12;ad22,47,2;9s1d,44,2;aeii,38,10;8xxv,31,7;4ucf,27,11;53j9,25,2;8eyt,17,4~1j60,51,14;1eul,49,12;4ucf,27,11;aeii,38,10;8988,73,9;8xxv,31,7;2vfc,77,6;69fe,16,5;6ioy,86,4;8eyt,17,4;anp4,116,4;78ce,54,3;ad22,47,2;53j9,25,2;4g0c,53,2	d:35yb,10,1;2sm0,4,5~2sm0,4,5;35yb,10,1
+au16|a|	j:6ppt,91,2;7v41,80,12;2cq5,57,1;8kzv,51,1;1jpb,40,2;790q,28,1;nsj,26,1;a9dl,25,1;5575,20,1;6v7j,18,2;555n,4,1~7v41,80,12;1jpb,40,2;6v7j,18,2;6ppt,91,2;nsj,26,1;a9dl,25,1;790q,28,1;555n,4,1;5575,20,1;2cq5,57,1;8kzv,51,1
+au17|n|	a:asmp,163,2~asmp,163,2	v:asmp,153,1~asmp,153,1	n:asmp,153,1;1jlg,25,2~1jlg,25,2;asmp,153,1
+au19|n|	a:a91g,145,87~a91g,145,87	n:a91g,104,5~a91g,104,5
+au19|v|	s:a91g,130,31~a91g,130,31
+au1a|n|	a:54w6,73,2;8p3m,37,5;69ri,13,4~8p3m,37,5;69ri,13,4;54w6,73,2	V:3lxf,59,7;ld3,59,4;a7g2,18,8~a7g2,18,8;3lxf,59,7;ld3,59,4
+au1b|n|	V:1sgn,42,2~1sgn,42,2
+au1g|n|	a:41ew,129,45;aro6,122,11;5rfb,103,3;ab30,102,10;1imq,98,6;4kcy,83,5;5ek4,78,1;aoed,78,1;4kr7,77,6;9dto,76,1;au1g,73,16;4w8p,69,2;72gv,67,1;a2r7,63,4;96h5,62,2~ajfk,30,89;41ew,129,45;7ex5,6,28;5cam,11,26;2x82,17,22;8pm3,0,19;6q1o,2,18;au1g,73,16;53yv,4,15;6lfq,2,14;2uyp,7,13;47cb,20,12;wyo,4,12;aro6,122,11;ajll,28,11	v:72gv,111,21;9ymm,95,1;41ew,94,4;bfr,24,3;5c3u,18,7~72gv,111,21;5c3u,18,7;41ew,94,4;bfr,24,3;9ymm,95,1	V:acpy,81,2;mj6,63,35;4y5r,59,1;fu5,55,1;adjc,31,3;4eor,9,7;7i03,9,7;28gl,7,1;34av,2,5~mj6,63,35;4eor,9,7;7i03,9,7;34av,2,5;adjc,31,3;acpy,81,2;fu5,55,1;28gl,7,1;4y5r,59,1	n:41ew,143,122;aro6,118,8;au1g,117,352;1452,111,11;9dto,101,6;2fex,97,42;9ymm,95,1;1imq,92,4;5ek4,88,2;aoed,88,2;1gl6,82,4;2hbt,71,4;2srv,70,11;agbn,70,14;1pzh,68,217~au1g,117,352;1jlg,25,318;1pzh,68,217;41ew,143,122;5wns,19,61;rnu,27,46;2fex,97,42;5r3f,34,40;6tvj,21,40;6wqe,65,28;3jrw,52,28;5dru,59,24;6x8q,34,21;atnz,35,18;173g,39,16	N:au1g,117,352;65wr,115,1;9xo4,100,6;acpy,91,4;au5i,88,2;adjc,85,131;4y5r,85,6;4y5n,83,16;fu5,78,5;5omy,69,7;dot,67,76;acpw,64,2;amqr,64,3;aq0t,56,2;2ted,46,1~6j5v,39,518;au1g,117,352;adjc,85,131;dot,67,76;5x2f,21,39;7gis,9,32;6jco,14,32;9ulh,43,23;6tvj,11,20;8hsf,13,19;4y5n,83,16;77cg,23,15;28gl,45,14;364b,38,11;2937,0,11
+au1g|v|	o:adjc,58,20;4y5n,53,2;adjk,13,1;91ol,8,10;364b,4,1~adjc,58,20;91ol,8,10;4y5n,53,2;364b,4,1;adjk,13,1	s:1452,86,2;41ew,84,2;2fex,54,2;2hbt,51,1;1pzh,49,61;3gf8,47,2;aq0t,46,1;6wqe,43,6;5dru,42,7;dot,25,4;6tx7,14,9;6x8q,13,5;5y7o,10,1;53py,9,6;3jrw,4,1~1pzh,49,61;6tx7,14,9;5dru,42,7;53py,9,6;6wqe,43,6;6x8q,13,5;dot,25,4;1452,86,2;3gf8,47,2;2fex,54,2;41ew,84,2;5y7o,10,1;2hbt,51,1;3jrw,4,1;aq0t,46,1
+au1g|a|	j:65wr,125,2;9xo4,117,19;adjc,108,630;4y5n,93,32;4y5r,79,4;au1g,73,16;acpy,71,1;a5al,70,3;adjk,60,26;9nzf,59,3;amqr,58,2;5omy,56,3;6tvj,56,456;2ted,56,2;acpw,54,1~adjc,108,630;6tvj,56,456;6jco,42,224;6j5v,19,133;1jlg,4,75;8hsf,26,46;9ulh,52,43;4y5n,93,32;adjk,60,26;dot,51,24;1q39,21,22;58gd,9,19;9xo4,117,19;au1g,73,16;4pny,3,15
+au1v|n|	n:1jlg,18,1~1jlg,18,1	N:pzp,55,11~pzp,55,11
+au29|n|An organic body or cell having locomotion, as a spermatic cell or spermatozooid. ; An animal in one of its inferior stages of development, as one of the intermediate forms in alternate generation. ; One of the individual animals in a composite group, as of Anthozoa, Hydroidea, and Bryozoa; -- sometimes restricted to those individuals in which the mouth and digestive organs are not developed.	n:80ll,30,3~80ll,30,3
+au2c|n|	a:au2c,73,4;4w05,72,6;a31p,71,20;3xi3,44,4;8u53,42,4;34dz,39,46;5j0y,25,10;fop,22,9;8h7u,21,19;7zk1,19,5;8pm3,16,27;2bta,12,2;6tfq,10,19;7w8y,7,4;93lv,7,6~34dz,39,46;8pm3,16,27;a31p,71,20;6tfq,10,19;8h7u,21,19;86xk,5,14;5j0y,25,10;fop,22,9;4w05,72,6;93lv,7,6;7zk1,19,5;7w8y,7,4;3xi3,44,4;8u53,42,4;au2c,73,4	v:au2c,79,6;2u8d,42,18;1k3l,32,3;9152,32,35;5504,31,2;1rh4,28,2;93pk,27,3;5j0y,27,11;5j3t,26,2;93lv,12,8;333o,10,7;7zk1,6,2;5j0q,4,2;fop,1,2~9152,32,35;2u8d,42,18;5j0y,27,11;93lv,12,8;333o,10,7;au2c,79,6;1k3l,32,3;93pk,27,3;7zk1,6,2;5j3t,26,2;5j0q,4,2;fop,1,2;5504,31,2;1rh4,28,2	V:2j5v,36,9;93pd,23,4;7i03,14,5;8u98,9,1;8i4f,4,2;50w2,3,2;68ew,2,7;35ku,1,2~2j5v,36,9;68ew,2,7;7i03,14,5;93pd,23,4;50w2,3,2;8i4f,4,2;35ku,1,2;8u98,9,1	n:au2c,76,5;4glj,70,572;409t,58,3;90ml,58,17;fop,57,97;5gpw,32,8;8u53,32,2;abv8,17,23;598y,2,79~4glj,70,572;fop,57,97;598y,2,79;abv8,17,23;90ml,58,17;5gpw,32,8;au2c,76,5;409t,58,3;8u53,32,2	N:7nxp,135,2;atvw,119,1;7nxr,105,41;2wyo,86,28;1lir,55,30;258u,51,1;4tom,48,1;8i4f,38,22;1kaw,37,4;93xm,32,7;4jd2,25,9;4jb7,24,37;8hz6,22,85;6dcx,21,8;2bo2,20,6~8hz6,22,85;7nxr,105,41;4jb7,24,37;1lir,55,30;2wyo,86,28;8i4f,38,22;6d8c,19,18;4jd2,25,9;6dcx,21,8;91jr,1,8;93xm,32,7;8loy,17,6;8ijz,9,6;2bo2,20,6;8idn,13,5
+au2c|v|	o:au2c,79,6;4tom,68,4;1kaw,17,1;1lir,6,1~au2c,79,6;4tom,68,4;1lir,6,1;1kaw,17,1
+au2c|a|	j:atvw,145,6;atvv,120,5;7nxr,110,58;7841,76,1;au2c,73,4;1lir,60,44;664x,59,4;1kaw,58,17;atss,57,1;2wyo,54,3;8i4f,51,53;55tr,50,6;2hhx,49,6;6dcx,49,54;4tom,48,1~8hz6,19,67;1kfp,34,66;4jb7,30,59;7nxr,110,58;6dcx,49,54;8i4f,51,53;1lir,60,44;24yt,1,35;6d8c,27,32;1rex,29,31;79xs,29,27;4jd2,41,26;8ijz,29,24;1s0o,21,23;8i6l,17,22
+au2d|n|	a:6r1c,23,5~6r1c,23,5	V:2vju,107,5~2vju,107,5
+au2e|a|	j:1kfp,57,4;8hz6,21,1~1kfp,57,4;8hz6,21,1
+au2g|n|	a:2c6u,126,4~2c6u,126,4	v:2c6u,106,1~2c6u,106,1	n:au2g,209,14;2c6u,106,1~au2g,209,14;2c6u,106,1	N:au2g,209,14~au2g,209,14
+au2g|v|	s:2c6u,106,1~2c6u,106,1
+au2j|a|Of or pertaining to zoology, or the science of animals.	j:6dqm,135,26;3kk8,134,9;6wra,117,4;8tgd,104,19;3kjt,102,9;6wqe,96,6;1jpb,87,7;9fh8,83,3;961s,74,3;8c5o,60,3;9hy5,54,9;1tkm,28,2;5oe8,24,1~6dqm,135,26;8tgd,104,19;9hy5,54,9;3kjt,102,9;3kk8,134,9;1jpb,87,7;6wqe,96,6;6wra,117,4;9fh8,83,3;961s,74,3;8c5o,60,3;1tkm,28,2;5oe8,24,1
+au2m|n|One who is well versed in zoology.	a:bob,78,5;3mxz,74,4;2wjn,33,1~bob,78,5;3mxz,74,4;2wjn,33,1
+au2o|n|That part of biology which relates to the animal kingdom, including the structure, embryology, evolution, classification, habits, and distribution of all animals, both living and extinct. ; A treatise on this science.	a:4ly9,153,5;abcl,117,1;33cg,81,3;5ove,75,2;33mk,68,4~4ly9,153,5;33mk,68,4;33cg,81,3;5ove,75,2;abcl,117,1	v:abcl,127,2;962m,52,5~962m,52,5;abcl,127,2	n:abcl,127,2;xxu,89,7;5ove,65,1;1pzh,60,7;11a,13,12;598y,0,8~11a,13,12;598y,0,8;1pzh,60,7;xxu,89,7;abcl,127,2;5ove,65,1	N:1gfp,79,6;9jeh,70,7;35d4,66,5;7g3g,66,6;9085,40,8;9dku,30,5;1wxi,24,4;1jlg,14,8;9jd7,9,3~9085,40,8;1jlg,14,8;9jeh,70,7;1gfp,79,6;7g3g,66,6;35d4,66,5;9dku,30,5;1wxi,24,4;9jd7,9,3
+au2o|v|That part of biology which relates to the animal kingdom, including the structure, embryology, evolution, classification, habits, and distribution of all animals, both living and extinct. ; A treatise on this science.	o:35d4,43,1~35d4,43,1
+au2o|a|That part of biology which relates to the animal kingdom, including the structure, embryology, evolution, classification, habits, and distribution of all animals, both living and extinct. ; A treatise on this science.	j:35d4,59,3~35d4,59,3
+au2q|n|	a:753j,84,713;6wng,82,7;9zvd,81,20;xsm,74,18;99rw,73,2;6oy5,68,749;8lc6,67,22;621c,66,37;7t25,66,27;5jzh,65,4;9gpy,63,13;5z8r,62,17;9gt9,58,28;5hf7,56,11;8gb5,52,288~2flr,13,1488;218w,19,1123;5n0z,37,885;1dh7,27,827;6oy5,68,749;753j,84,713;43bd,30,641;43ai,22,574;4hc3,26,454;2fw8,44,447;2906,41,388;5eo7,22,373;5u2r,28,367;8wur,3,308;8gb5,52,288	v:753j,61,142;5z8r,47,6;9gt9,44,10;7e58,42,21;906k,41,11;3svl,40,4;9gpy,36,2;7541,33,3;5hfe,32,6;2h15,29,86;a0kr,28,5;7t25,18,1;ajmb,17,2;43b1,15,5;2wmj,13,9~1etz,7,157;4djh,4,143;753j,61,142;2h15,29,86;2de9,8,69;5f8,8,44;7e58,42,21;56yb,1,18;dpc,9,13;6v2x,8,11;906k,41,11;9gt9,44,10;8sjh,12,10;2wmj,13,9;5z8r,47,6	V:ac3p,74,4;56yf,68,657;56yb,67,1759;1r90,49,5;afi2,47,5;1u4x,46,2;6c5j,37,3;3n4x,36,21;10zo,35,6;1u5w,31,289;34d2,28,7;6vcf,27,6;7ppc,21,49;5p0o,14,25;7yyu,13,3~56yb,67,1759;56yf,68,657;8jsr,11,311;1u5w,31,289;82lb,5,59;7ppc,21,49;5p0o,14,25;3n4x,36,21;8b18,8,14;34d2,28,7;10zo,35,6;6vcf,27,6;1r90,49,5;afi2,47,5;ac3p,74,4	n:5vs9,109,8;9gt9,102,581;9qr1,99,5;7g88,90,11;753j,89,970;8de7,85,7;18p2,84,19;9zvd,84,25;afx7,82,16;5vv0,82,4;au3o,79,1;at7h,78,14;8qf9,74,6;9gpy,74,28;99rw,73,2~294h,21,1062;753j,89,970;149o,29,822;5jtg,19,660;9gt9,102,581;4byy,8,577;6u7f,4,574;5mq8,30,517;fu0,67,474;18ml,30,389;2013,14,282;aiv4,38,240;3cq8,15,201;nxb,19,181;506c,46,165	N:apz9,84,10;6c5j,77,50;56yf,75,1081;ac3p,74,4;57hm,73,4859;au4m,73,2;56yd,70,21;34w7,67,30;57fs,64,13987;56yb,63,1381;18p2,62,4;9gt9,61,33;5vtb,60,4;34w8,56,4;ahko,55,9~57fs,64,13987;57hm,73,4859;56yb,63,1381;56yf,75,1081;35av,43,1066;7pns,31,991;8az1,41,879;378a,27,609;1u12,18,590;3ir5,36,578;2ruo,27,563;16k5,35,445;7h3q,10,407;1u5w,36,404;16fj,9,393
+au2q|v|	o:97cz,44,6;7stc,19,1;3n4d,16,14;1yn2,14,3;9zbv,13,8;1kpz,11,7;5k5j,10,6;57fs,10,328;5p0x,8,4;56yf,8,10;753j,6,3;5vve,4,1;7qa6,4,5;3n4x,3,2~57fs,10,328;3n4d,16,14;56yf,8,10;9zbv,13,8;1kpz,11,7;5k5j,10,6;97cz,44,6;7qa6,4,5;5p0x,8,4;1yn2,14,3;753j,6,3;3n4x,3,2;5vve,4,1;7stc,19,1	s:78i9,63,4;6o6b,42,49;43b1,15,5;5k37,7,70~5k37,7,70;6o6b,42,49;43b1,15,5;78i9,63,4	d:2l0u,59,10;2fx0,44,22;6oy8,35,5;8sjh,17,14;oaz,13,211;5jox,1,71~oaz,13,211;5jox,1,71;2fx0,44,22;8sjh,17,14;2l0u,59,10;6oy8,35,5	D:36ao,20,12~36ao,20,12
+au2q|a|	j:5p0x,51,77;9gt9,44,10;56yf,43,116;57fs,29,1188;1kq7,21,2;3n4x,21,7;7q8z,21,2;5hex,17,4;3n4d,13,12;3ir5,12,107;34d2,10,2;1yn2,9,2;5vve,4,1;35av,3,65;6vcf,1,1~57fs,29,1188;56yf,43,116;3ir5,12,107;5p0x,51,77;35av,3,65;3n4d,13,12;9gt9,44,10;3n4x,21,7;7qa6,1,4;5hex,17,4;1kq7,21,2;34d2,10,2;1yn2,9,2;7q8z,21,2;5vve,4,1	e:2l0u,79,42;37kd,33,1;2fx0,26,6~2l0u,79,42;2fx0,26,6;37kd,33,1
+au2r|a|	j:49ib,156,59;9tyi,146,7;9tyh,131,57;9z8w,105,4;9zbv,93,15;4cfw,82,26;acgy,81,7;8dc5,79,11;9nqu,74,9;6tvf,74,16;8a1k,74,7;seu,72,4;9z3i,65,4;19gg,63,14;9zig,62,8~4byy,54,104;49ib,156,59;9tyh,131,57;5jtg,52,49;acby,37,30;4cfw,82,26;69fe,47,24;4cbu,46,20;amfw,47,17;6tvf,74,16;1irx,55,16;9zbv,93,15;a6j7,16,14;19gg,63,14;9twb,48,13	e:4gg7,56,6;3ili,39,6;2qfd,28,5;934o,5,6;4y4v,3,2~4gg7,56,6;3ili,39,6;934o,5,6;2qfd,28,5;4y4v,3,2
+au2t|n|	a:a97p,47,7~a97p,47,7	n:3cq8,81,11;a97p,29,2~3cq8,81,11;a97p,29,2
+au2u|n|	a:8ipk,16,1~8ipk,16,1	v:8ipk,32,3~8ipk,32,3
+au2y|n|	a:a97p,17,1~a97p,17,1	V:1u12,42,2~1u12,42,2	N:1u12,62,8~1u12,62,8
+au2y|v|	o:1u12,42,2;3iqq,6,1~1u12,42,2;3iqq,6,1	s:a97p,17,1~a97p,17,1
+au2y|a|	j:1u12,32,1;3iqq,26,4~3iqq,26,4;1u12,32,1
+au30|n|	a:d4e,71,5;7ex5,54,3;a6d9,7,1~d4e,71,5;7ex5,54,3;a6d9,7,1	v:a6d9,7,1~a6d9,7,1	N:ajmn,86,2~ajmn,86,2
+au33|n|	a:22ah,14,2~22ah,14,2	N:4338,35,2;6p19,16,3;acby,15,4~acby,15,4;6p19,16,3;4338,35,2
+au33|v|	o:4338,35,2~4338,35,2
+au33|a|	j:acby,11,3~acby,11,3
+au35|n|	a:au35,160,1~au35,160,1	v:au35,192,9~au35,192,9	n:294h,50,7;acby,42,5~294h,50,7;acby,42,5
+au35|v|	o:au35,192,9~au35,192,9	s:5k5j,95,2;acby,29,2~acby,29,2;5k5j,95,2
+au35|a|	j:65xc,173,1;au35,160,1~65xc,173,1;au35,160,1
+au36|v|	o:4byy,29,270;7dui,25,9;73mz,21,12;1fdu,19,9;7a1v,17,7;4cfw,12,3;77cg,11,10;8cwz,9,5;acby,8,60;4cbu,6,19;akbw,6,20;73t4,6,3;2da8,5,7;7t0e,2,3;8az1,0,6~4byy,29,270;acby,8,60;akbw,6,20;4cbu,6,19;73mz,21,12;77cg,11,10;1fdu,19,9;7dui,25,9;7a1v,17,7;2da8,5,7;8az1,0,6;8cwz,9,5;7t0e,2,3;73t4,6,3;4cfw,12,3	s:5z7y,73,4;377s,66,6;8tn7,66,4;agsf,45,9;753j,44,5;56yb,39,30;aj46,34,12;ackc,29,6;18ml,26,34;73mz,23,14;5jtg,21,81;74li,21,28;8cwz,20,11;73ts,19,3;149o,19,46~aj3h,9,95;4byy,13,93;a6j7,2,82;5jtg,21,81;6u7f,3,61;149o,19,46;acby,2,38;18ml,26,34;1tax,6,33;8ctd,13,32;56yb,39,30;akbw,11,28;74li,21,28;4cbu,6,19;77cg,18,16	d:2fx0,68,13;3ili,57,310;ai70,55,5;6oy8,53,2;5lfv,45,5;1zn,40,21;98em,37,19;4f2m,34,9;40yy,31,10;8rmr,29,47;hb2,29,5;34q9,29,28;1pwi,28,83;1l4t,27,9;7dxq,22,16~3ili,57,310;9qej,16,105;1pwi,28,83;awe,10,75;364g,17,71;6mga,12,56;8rmr,29,47;oaz,16,30;34q9,29,28;1zn,40,21;98em,37,19;7dxq,22,16;3j42,3,14;7h2o,7,13;2fx0,68,13	D:3rk4,140,8;36ao,47,9;1l5t,24,14;2fn3,16,7;364g,14,58;9qej,10,70;q67,1,38;oaz,0,10~9qej,10,70;364g,14,58;q67,1,38;1l5t,24,14;oaz,0,10;36ao,47,9;3rk4,140,8;2fn3,16,7
+au36|a|	j:8mvz,40,8;3fwc,37,1;74li,28,47;7a1v,28,15;73mz,26,17;9ngv,26,7;7uoj,24,23;idb,23,55;4byy,22,176;1fdu,20,10;8cwz,15,8;acby,14,91;77cg,13,11;73t4,10,4;4cbu,10,24~4byy,22,176;acby,14,91;ab93,5,57;idb,23,55;74li,28,47;4cbu,10,24;7uoj,24,23;73mz,26,17;5wnj,5,17;7a1v,28,15;77cg,13,11;1fdu,20,10;8cwz,15,8;8mvz,40,8;9ngv,26,7	e:6oy8,53,2;2fx0,51,4;34q9,7,6;abjt,4,98~abjt,4,98;34q9,7,6;2fx0,51,4;6oy8,53,2
+au38|v|	o:7h3q,48,2~7h3q,48,2	d:8ipk,31,3~8ipk,31,3
+au38|a|	j:7h3q,61,5~7h3q,61,5
+au39|n|	n:319b,34,3~319b,34,3	N:319b,34,3;3iqq,5,2~319b,34,3;3iqq,5,2
+au39|v|	o:319b,53,11~319b,53,11	s:319b,39,4~319b,39,4
+au39|a|	j:319b,72,42;31h8,59,6;3iqq,15,4~319b,72,42;31h8,59,6;3iqq,15,4
+au3a|n|	a:3g3f,108,3;2m07,49,5;7b8f,47,6;11dj,34,1;fk7,17,1~7b8f,47,6;2m07,49,5;3g3f,108,3;11dj,34,1;fk7,17,1	v:fk7,27,2~fk7,27,2	n:4byy,59,27;4v5d,50,6;a97p,34,7;1jlg,32,9;294h,16,1;598y,10,5~4byy,59,27;1jlg,32,9;a97p,34,7;4v5d,50,6;598y,10,5;294h,16,1	N:77ii,57,5;3u1s,33,1;1u12,21,1~77ii,57,5;3u1s,33,1;1u12,21,1
+au3a|v|	s:294h,16,1~294h,16,1
+au3a|a|	j:77ii,43,2;1u12,37,3~1u12,37,3;77ii,43,2
+au3b|v|	s:a97p,33,1~a97p,33,1
+au3c|n|	a:2m07,56,27;a97p,23,10;4jow,8,4~2m07,56,27;a97p,23,10;4jow,8,4	n:1e3g,83,5;3cq8,63,25;a97p,19,8;2m07,19,2~3cq8,63,25;a97p,19,8;1e3g,83,5;2m07,19,2	N:7h3q,22,4;a8r3,4,4~7h3q,22,4;a8r3,4,4
+au3e|n|	v:a7g2,15,3~a7g2,15,3	N:9ngv,83,2;7gl5,63,1;558f,60,3~558f,60,3;9ngv,83,2;7gl5,63,1
+au3e|v|	o:9ngv,73,1;558f,60,3~558f,60,3;9ngv,73,1
+au3e|a|	j:9ngv,99,6;3c3i,79,5;7gl5,63,1;1q39,62,3;558f,60,3~9ngv,99,6;3c3i,79,5;1q39,62,3;558f,60,3;7gl5,63,1
+au3f|n|	a:a97p,42,2~a97p,42,2	n:a97p,32,1~a97p,32,1
+au3g|n|	a:753j,74,2;16fj,17,4;11d7,16,1;a97p,13,7;aebg,1,2~a97p,13,7;16fj,17,4;753j,74,2;aebg,1,2;11d7,16,1	v:1kba,10,2;18ag,8,1~1kba,10,2;18ag,8,1	n:4aql,89,2;4s7i,69,3;5k5j,68,2;dp6,61,4;4byy,24,10;6ux,12,9;a97p,8,5;49ts,5,3~4byy,24,10;6ux,12,9;a97p,8,5;dp6,61,4;4s7i,69,3;49ts,5,3;4aql,89,2;5k5j,68,2	N:au3w,129,3;au2q,42,2~au3w,129,3;au2q,42,2
+au3g|v|	s:4s7i,54,1;16k5,22,1~4s7i,54,1;16k5,22,1
+au3g|a|	j:au2q,48,3;dqg,39,3;16fj,23,6;3iqq,14,16~3iqq,14,16;16fj,23,6;au2q,48,3;dqg,39,3
+au3h|n|	a:621c,69,7;7gcn,52,10;753j,49,9;6oy5,42,19;8gb5,42,21;dpc,32,10;oau,27,24;4k1o,24,9;2906,23,18;2gzc,17,23;3mmc,16,8;2v55,15,23;2fw8,15,9;5jon,9,11;2gzp,5,6~3pe,2,24;oau,27,24;2v55,15,23;2gzc,17,23;8gb5,42,21;6oy5,42,19;2906,23,18;4gg0,4,12;5jon,9,11;dpc,32,10;7gcn,52,10;2fw8,15,9;4k1o,24,9;753j,49,9;3mmc,16,8	v:dpc,9,2;4dk7,4,10;99zd,3,7~4dk7,4,10;99zd,3,7;dpc,9,2	n:60hf,84,3;753j,47,8;5zig,38,1;9zbv,26,3;18ml,4,10;2fw8,3,4~18ml,4,10;753j,47,8;2fw8,3,4;60hf,84,3;9zbv,26,3;5zig,38,1	N:19it,35,12;57hm,21,20;3594,16,2;3ir5,5,10;19is,2,2~57hm,21,20;19it,35,12;3ir5,5,10;19is,2,2;3594,16,2
+au3h|v|	o:78b5,78,16;9zbv,61,34;5vve,55,5;3n4x,50,8;3ir5,47,182;19is,44,36;19it,44,22;3594,41,11;9z3i,38,13;2ruo,36,156;dqg,31,44;9as2,30,16;6kl,29,13;1u5w,26,31;30dq,24,55~3ir5,47,182;amd6,14,161;2ruo,36,156;4byy,8,88;57fs,13,60;30dq,24,55;4p7w,2,50;dqg,31,44;ume,19,40;378a,15,40;35av,23,39;19is,44,36;4cbu,11,34;9zbv,61,34;1u5w,26,31	s:83cv,95,9;8dcu,93,11;753j,89,150;5zig,76,14;5kmo,73,2;9z9l,73,3;3cy5,69,9;60hf,68,1;9zbv,66,47;2h0q,58,24;5vve,57,6;aiv4,42,46;9efr,41,33;ackc,35,13;18ml,28,53~9voq,6,166;753j,89,150;4byy,15,143;6u7f,2,73;18ml,28,53;149o,16,52;9zbv,66,47;aiv4,42,46;294h,2,42;8ctd,10,35;99xz,5,34;5jtg,4,34;9efr,41,33;99zd,22,26;8d7o,23,26	d:83cv,79,3;8rw4,29,14;7gcp,25,11;4gg7,19,9;2rv7,19,14;oaz,10,27;5jox,5,15;304t,5,11~oaz,10,27;5jox,5,15;2rv7,19,14;8rw4,29,14;7gcp,25,11;304t,5,11;4gg7,19,9;83cv,79,3	D:6oy8,49,2;j3w,18,126;1l5t,17,12;9qej,11,98;7h2o,11,22;q67,6,72;pfp,4,17;1pwi,3,20;6rgr,1,152~6rgr,1,152;j3w,18,126;9qej,11,98;q67,6,72;7h2o,11,22;1pwi,3,20;pfp,4,17;1l5t,17,12;6oy8,49,2
+au3h|a|	j:3n4x,36,3;19it,15,3;378a,11,30;3594,6,1;6kl,2,2~378a,11,30;3n4x,36,3;19it,15,3;6kl,2,2;3594,6,1
+au3i|n|	n:gp8,75,3~gp8,75,3	N:8906,48,1;320s,28,2~320s,28,2;8906,48,1
+au3i|v|	o:320s,18,1~320s,18,1	s:gp8,59,1~gp8,59,1
+au3i|a|	j:8906,72,5;320s,48,8~320s,48,8;8906,72,5
+au3j|v|	o:a7p0,74,1~a7p0,74,1	s:9cip,142,3~9cip,142,3
+au3j|a|	j:a7p0,97,5~a7p0,97,5
+au3k|n|	a:43bk,39,4;2m07,36,20;5mq8,31,7;a97p,27,42;4jow,22,33;5n0z,21,4;1dh7,20,7;218w,19,15;43ai,13,4;3pe,11,4;5u2r,5,1;1vot,1,4~a97p,27,42;4jow,22,33;2m07,36,20;218w,19,15;5mq8,31,7;1dh7,20,7;5n0z,21,4;43bk,39,4;43ai,13,4;3pe,11,4;1vot,1,4;5u2r,5,1	n:5vve,77,2;3cq8,50,29;a97p,32,56;1av0,19,32;5jtg,14,6;57fs,12,5~a97p,32,56;1av0,19,32;3cq8,50,29;5jtg,14,6;57fs,12,5;5vve,77,2	N:7h3q,6,4~7h3q,6,4
+au3k|v|	s:6grq,71,3;5k37,8,1~6grq,71,3;5k37,8,1
+au3k|a|	j:7h3q,27,17~7h3q,27,17	e:2m07,27,11~2m07,27,11
+au3l|n|	a:5en8,61,4;8k4w,60,6;2flr,44,9;43bd,42,1~2flr,44,9;8k4w,60,6;5en8,61,4;43bd,42,1	n:a97p,42,6~a97p,42,6
+au3m|n|	V:34av,90,8~34av,90,8	n:a97p,59,8;1jlg,53,8~a97p,59,8;1jlg,53,8
+au3o|n|	N:au2q,79,1~au2q,79,1
+au3p|n|	n:3cq8,85,6~3cq8,85,6
+au3t|n|	v:a6d9,25,4;a7g2,24,3~a6d9,25,4;a7g2,24,3	V:77js,89,3~77js,89,3	n:a6d9,31,6~a6d9,31,6	N:77js,73,1~77js,73,1
+au3t|a|	j:77js,83,2~77js,83,2
+au3w|n|	a:aebg,8,2~aebg,8,2	v:93lv,31,3~93lv,31,3	n:au3g,129,3;4s7i,60,1;a97p,12,4~a97p,12,4;au3g,129,3;4s7i,60,1	N:dqg,30,1;16k5,28,1;3ir5,25,1;a8we,12,3;3iqq,9,7~3iqq,9,7;a8we,12,3;16k5,28,1;3ir5,25,1;dqg,30,1
+au3w|v|	o:16k5,28,1~16k5,28,1
+au3w|a|	j:3ir5,53,7;dqg,46,3;16fj,32,7;16k5,28,1;3itk,21,3;5rkf,7,3~3ir5,53,7;16fj,32,7;5rkf,7,3;3itk,21,3;dqg,46,3;16k5,28,1	e:au3g,113,1~au3g,113,1
+au3x|n|	n:1jlg,80,46~1jlg,80,46	N:4dkm,125,43~4dkm,125,43
+au3x|v|	o:4dkm,70,1~4dkm,70,1
+au3x|a|	j:4dkm,70,1~4dkm,70,1
+au3y|n|	a:38fb,85,1~38fb,85,1	n:38fb,85,1~38fb,85,1	N:3a03,69,4~3a03,69,4
+au3y|v|	o:3a03,59,2~3a03,59,2	s:38fb,85,1~38fb,85,1	d:38fb,85,1~38fb,85,1
+au3y|a|	j:3a03,72,5~3a03,72,5
+au40|n|	a:a97p,40,3~a97p,40,3
+au41|n|	n:5vv7,177,22;1e6s,113,12~5vv7,177,22;1e6s,113,12
+au41|v|	s:5vv7,172,15;1e6s,128,33~1e6s,128,33;5vv7,172,15
+au42|n|	a:9zvd,99,3;9gt9,87,9;9gpy,71,1;753j,66,9;6oy5,55,13;9efr,47,15;290z,45,10;1fqp,43,14;97ll,43,13;506c,41,5;3g3p,40,4;2906,39,15;2fw8,38,13;2t3z,38,5;34q3,38,8~2flr,8,47;9995,37,21;43bd,22,17;1dh7,15,16;9efr,47,15;2906,39,15;wyo,14,14;1fqp,43,14;2fw8,38,13;6oy5,55,13;97ll,43,13;43ai,11,12;vu6,1,12;36dg,22,12;33l3,33,10	v:3bmq,93,2;9zvd,83,1;7e58,78,11;9gt9,71,3;9gpy,71,1;9efr,46,14;753j,45,2;56yb,30,6;5k5j,29,1;1kdi,23,7;8d9p,19,2;7ckc,18,8;1kc5,17,4;7f38,16,3;87zp,15,2~9efr,46,14;7e58,78,11;7ckc,18,8;1kdi,23,7;56yb,30,6;1kc5,17,4;7f38,16,3;9gt9,71,3;8d9p,19,2;753j,45,2;87zp,15,2;3bmq,93,2;5gtw,2,1;9zvd,83,1;199r,12,1	V:9hku,44,31;199r,32,4;56yf,29,2;56yb,14,2;3ape,10,15;30dq,3,4;1w4l,3,3;4epj,2,5;3qqr,1,16;4y4v,1,10~9hku,44,31;3qqr,1,16;3ape,10,15;4y4v,1,10;4epj,2,5;30dq,3,4;199r,32,4;1w4l,3,3;56yf,29,2;56yb,14,2	n:9gt9,115,64;9zvd,113,8;afx7,110,5;9gpy,101,8;3bmq,93,2;fu0,87,87;5j7d,79,6;753j,76,18;506c,72,42;aiv4,62,54;9efr,54,24;1sx7,53,18;9zbv,52,5;8dc5,49,8;5k5j,49,4~a6j7,40,450;5jtg,41,131;fu0,87,87;9gt9,115,64;4byy,19,56;aiv4,62,54;acby,17,42;506c,72,42;6u7f,10,39;149o,29,37;7pns,26,31;dft,35,27;8ctd,23,26;9efr,54,24;2vor,0,23	N:6c6k,41,2;56yf,19,1;31nq,5,11;56yb,4,1;9s0f,3,2~31nq,5,11;6c6k,41,2;9s0f,3,2;56yb,4,1;56yf,19,1
+au42|v|	o:9s0f,9,3~9s0f,9,3	s:afx7,97,2;3bmq,83,1;9gpy,81,2;9gt9,65,2;18ml,64,185;753j,55,4;9efr,46,14;fu0,43,4;56yb,41,13;a6j7,39,416;1fdu,36,12;5jtg,36,93;acfp,34,4;ahw7,32,4;8dc5,29,2~a6j7,39,416;18ml,64,185;5jtg,36,93;4byy,14,38;acby,10,26;8ukf,10,21;8ctd,16,15;9efr,46,14;a75m,6,13;56yb,41,13;1fdu,36,12;74li,21,11;149o,9,9;ac2s,7,6;4cbu,3,6	d:9efr,46,14;7pvs,42,4;oaz,36,48;8sjh,34,2;8rw4,29,4;5qcv,25,5;7nk2,23,8;4d0i,22,10;5b24,21,4;2rv7,18,4;8rmr,11,5;b90,10,29;5dtw,9,8;934o,7,41;snc,6,8~9ktb,5,123;6n3l,4,78;oaz,36,48;934o,7,41;b90,10,29;3qu,4,23;9efr,46,14;8peu,5,14;4d0i,22,10;5dtw,9,8;snc,6,8;7nk2,23,8;a7kn,0,7;8us9,3,6;8rmr,11,5	D:8sjh,50,6;3flv,18,7;q67,18,47;70ug,14,6;1vpw,8,7;9qej,7,22;6kqv,5,14;2grb,2,7;pfp,1,4~q67,18,47;9qej,7,22;6kqv,5,14;2grb,2,7;3flv,18,7;1vpw,8,7;8sjh,50,6;70ug,14,6;pfp,1,4
+au42|a|	j:56yf,19,1~56yf,19,1	e:oaz,4,5~oaz,4,5
+au43|n|	a:1thh,81,1;3cq8,38,7;7ypn,33,3;218w,31,18;2m07,22,4~218w,31,18;3cq8,38,7;2m07,22,4;7ypn,33,3;1thh,81,1	v:1883,1,2~1883,1,2	n:5vyg,149,1;1e3g,96,20;8dc5,66,4;3cq8,40,8;7h3q,4,2~1e3g,96,20;3cq8,40,8;8dc5,66,4;7h3q,4,2;5vyg,149,1	N:1e3g,53,1;8g4y,21,2;578x,4,4;7h2z,3,1~578x,4,4;8g4y,21,2;1e3g,53,1;7h2z,3,1
+au43|v|	s:1e3g,53,1~1e3g,53,1
+au43|a|	j:1e3g,81,7;dqg,52,9;7h3q,52,53;8jsr,19,4;a97p,17,11;7h2z,13,2;a8r3,10,10~7h3q,52,53;a97p,17,11;a8r3,10,10;dqg,52,9;1e3g,81,7;8jsr,19,4;7h2z,13,2
+au44|a|	j:1jlg,53,7~1jlg,53,7
+au45|n|	a:2m07,74,6~2m07,74,6
+au46|n|	N:6p19,53,2~6p19,53,2
+au46|a|	j:6p19,63,4~6p19,63,4
+au47|n|	n:3cq8,74,5~3cq8,74,5
+au47|v|	s:3cq8,90,15~3cq8,90,15
+au48|v|	o:319b,44,2~319b,44,2
+au48|a|	j:31cq,102,1;319b,68,10;31h8,49,1~319b,68,10;31cq,102,1;31h8,49,1
+au4a|n|	n:3iqq,14,2~3iqq,14,2	N:5rkf,30,3~5rkf,30,3
+au4a|a|	j:3iqq,33,7;5rkf,30,3~3iqq,33,7;5rkf,30,3
+au4b|n|	v:a6d9,1,1~a6d9,1,1	n:6o6b,98,1;a6d9,21,4~a6d9,21,4;6o6b,98,1
+au4b|v|	s:6o6b,108,2~6o6b,108,2
+au4b|a|	j:3iqq,35,5~3iqq,35,5
+au4c|n|	N:3iqq,29,2~3iqq,29,2
+au4d|n|	v:18ag,42,1;a7g2,23,5~a7g2,23,5;18ag,42,1	V:amd6,37,3~amd6,37,3	n:9zbv,107,3;184m,55,10~184m,55,10;9zbv,107,3	N:5rkf,18,1~5rkf,18,1
+au4d|v|	s:9zbv,111,4~9zbv,111,4
+au4d|a|	j:5rkf,55,13~5rkf,55,13
+au4e|n|	v:18ag,64,3~18ag,64,3	n:5rkf,40,3~5rkf,40,3	N:5rkf,24,1~5rkf,24,1
+au4e|a|	j:5rkf,40,3~5rkf,40,3
+au4f|n|	n:8ipk,6,4~8ipk,6,4
+au4f|a|	j:7h3q,34,6~7h3q,34,6
+au4g|n|	a:2m07,61,7;a97p,23,2~2m07,61,7;a97p,23,2	n:a97p,33,4~a97p,33,4
+au4g|a|	j:7h3q,41,3~7h3q,41,3
+au4h|n|	a:7j6e,32,6;acby,18,1~7j6e,32,6;acby,18,1	V:34av,90,29~34av,90,29	n:acby,69,35;1jlg,61,48~1jlg,61,48;acby,69,35	N:34av,74,9;au2q,68,2~34av,74,9;au2q,68,2
+au4k|n|	a:2m07,51,3;4jow,24,2;a97p,16,1~2m07,51,3;4jow,24,2;a97p,16,1	n:3cq8,64,4;a97p,59,20~a97p,59,20;3cq8,64,4
+au4l|n|	a:2m07,43,2;35ur,40,3;a97p,23,2~35ur,40,3;a97p,23,2;2m07,43,2	n:a97p,54,17;9vgb,31,3~a97p,54,17;9vgb,31,3
+au4l|v|	s:a97p,13,1~a97p,13,1
+au4l|a|	e:2m07,33,1~2m07,33,1
+au4m|n|An animal which is the sole product of a single egg; -- opposed to zooid. ; Any one of the perfectly developed individuals of a compound animal.	n:au2q,73,2~au2q,73,2	N:a91g,98,3~a91g,98,3
+au4n|n|	a:acx5,148,8~acx5,148,8	v:acx5,134,3~acx5,134,3	n:acx5,148,8~acx5,148,8	N:9k66,45,4~9k66,45,4
+au4t|a|	j:6l3q,151,3;2hna,142,24;adc1,130,13;2hn1,111,9;adby,98,4;9t27,72,5;7b0p,59,3~2hna,142,24;adc1,130,13;2hn1,111,9;9t27,72,5;adby,98,4;6l3q,151,3;7b0p,59,3	e:1dh7,40,2;5yo3,25,7~5yo3,25,7;1dh7,40,2
+au4v|n|	N:3iqq,25,3~3iqq,25,3
+au4w|n|	a:au4w,181,1~au4w,181,1	n:au4w,181,1~au4w,181,1	N:au4w,181,1~au4w,181,1
+au4w|a|	j:au4w,181,1~au4w,181,1
+au5d|a|	j:fx2,63,3~fx2,63,3
+au5h|a|	j:1jlg,45,4~1jlg,45,4
+au5i|n|	a:61tf,30,6;2flr,6,3;5js4,5,2~61tf,30,6;2flr,6,3;5js4,5,2	v:72gv,136,5;adil,54,1~72gv,136,5;adil,54,1	n:au1g,88,2;5y7o,55,1;1jlg,24,13;11a,14,10~1jlg,24,13;11a,14,10;au1g,88,2;5y7o,55,1
+au5i|a|	j:32t,33,3~32t,33,3
+au5n|n|	a:6xh9,109,4~6xh9,109,4	n:6xh9,109,4~6xh9,109,4	N:98lp,112,30;98mj,90,3~98lp,112,30;98mj,90,3
+au5n|v|	o:98lp,63,1~98lp,63,1
+au5n|a|	j:aka,182,2;98lp,93,8~98lp,93,8;aka,182,2
+au5s|n|	n:5zrl,76,6;39yu,67,2~5zrl,76,6;39yu,67,2
+au5s|v|	s:5zrl,50,1~5zrl,50,1
+au5s|a|	j:1f0s,37,2~1f0s,37,2
+au5u|n|	v:4juh,66,2;a7g2,18,6;a6d9,10,4~a7g2,18,6;a6d9,10,4;4juh,66,2	n:598y,15,5~598y,15,5	N:6yvg,70,1;4mic,61,4;8dp8,52,1~4mic,61,4;8dp8,52,1;6yvg,70,1
+au5u|a|	j:6ysn,95,13;8dp8,76,5;4mic,41,1~6ysn,95,13;8dp8,76,5;4mic,41,1
+au5w|n|	a:dft,59,1~dft,59,1	n:atpu,168,6~atpu,168,6
+au5x|n|	a:53bc,161,6~53bc,161,6	v:53bc,135,1~53bc,135,1	n:53bc,171,12~53bc,171,12	N:82nn,193,10~82nn,193,10
+au5x|a|	j:82nn,183,5~82nn,183,5
+au5y|n|A European fresh-water bream (Abramis ballerus).	a:a16r,34,4;5wuf,17,2;6q1o,16,9;61tf,15,9;6eqb,11,4;ajfk,9,4;4j9g,7,1;93lv,5,2;86xk,4,5~6q1o,16,9;61tf,15,9;86xk,4,5;6eqb,11,4;a16r,34,4;ajfk,9,4;5wuf,17,2;93lv,5,2;4j9g,7,1	v:9x9b,62,4;7zk5,55,5;4j9g,46,15;1rh4,41,2;2dr7,31,3;4j6w,22,14;7zk1,20,2;4j8a,19,7;93lv,15,4;4dov,13,9;86xk,12,9;a7g2,11,55;a7cv,7,4;15dl,3,3~a7g2,11,55;4j9g,46,15;4j6w,22,14;86xk,12,9;4dov,13,9;4j8a,19,7;7zk5,55,5;a7cv,7,4;9x9b,62,4;93lv,15,4;15dl,3,3;2dr7,31,3;1rh4,41,2;7zk1,20,2	V:6uh1,136,1;5j2c,66,50;9x9b,42,1;91cf,31,7;4kbc,18,1;969d,16,4;7fyd,15,2;adw,12,3;4jd2,7,1;a7cv,7,4;5e2o,2,4~5j2c,66,50;91cf,31,7;5e2o,2,4;969d,16,4;a7cv,7,4;adw,12,3;7fyd,15,2;4kbc,18,1;4jd2,7,1;6uh1,136,1;9x9b,42,1	n:au5y,106,6;4glj,45,39;4dov,37,46;a106,24,16;3gd1,17,3;598y,14,70;7l4i,14,6;84fl,9,4;6tvj,8,3;5x2f,8,3;4izy,6,5;9mne,5,8~598y,14,70;4dov,37,46;4glj,45,39;a106,24,16;9mne,5,8;7l4i,14,6;au5y,106,6;4izy,6,5;84fl,9,4;5x2f,8,3;3gd1,17,3;6tvj,8,3	N:6uh1,136,1;au5y,106,6;77bp,88,5;9qgi,68,7;7rhx,59,27;1vn0,59,7;4kbc,57,15;1q39,55,45;4jd2,50,19;1b7p,49,3;7ses,49,4;4jb7,47,73;4j79,46,15;4dov,41,61;ajvx,39,5~4jb7,47,73;4dov,41,61;6u7f,31,53;1q39,55,45;8hz6,23,34;7rhx,59,27;gt8,23,22;4jd2,50,19;250g,22,16;4j79,46,15;4kbc,57,15;84fl,27,14;6j5v,10,13;4kal,29,12;7fcf,18,11
+au5y|v|A European fresh-water bream (Abramis ballerus).	o:77bp,65,1;4kal,19,6~4kal,19,6;77bp,65,1	s:a7cv,3,3~a7cv,3,3	d:7zk1,10,1~7zk1,10,1
+au5y|a|A European fresh-water bream (Abramis ballerus).	j:4dov,36,43;4kal,30,13;1q58,27,5;1q39,23,5;1km3,22,2;4jd2,17,2;8i4f,17,2;6u7f,16,19;7frx,9,4;7fyd,5,1;116w,2,2;4jb7,1,3;abav,1,1~4dov,36,43;6u7f,16,19;4kal,30,13;1q58,27,5;1q39,23,5;7frx,9,4;4jb7,1,3;1km3,22,2;4jd2,17,2;8i4f,17,2;116w,2,2;7fyd,5,1;abav,1,1
+au5z|n|	v:86xk,21,1;86qo,13,1;a7g2,3,2~a7g2,3,2;86xk,21,1;86qo,13,1	n:a6d9,13,5~a6d9,13,5	N:8esg,44,2~8esg,44,2
+au5z|a|	j:6xv0,85,10;7ses,84,3;8esg,44,2~6xv0,85,10;7ses,84,3;8esg,44,2
+au60|n|	v:a7g2,33,9;4dov,29,1~a7g2,33,9;4dov,29,1	n:4dov,92,78~4dov,92,78	N:27ac,196,45~27ac,196,45
+au62|n|	v:a7cv,39,2;a6ev,19,2;a7g2,18,5;a6d9,8,3~a7g2,18,5;a6d9,8,3;a6ev,19,2;a7cv,39,2	N:9g7,39,1~9g7,39,1
+au62|v|	o:1qbr,65,1~1qbr,65,1	s:a7cv,39,2~a7cv,39,2
+au62|a|	j:1qbr,100,11;9g7,54,3~1qbr,100,11;9g7,54,3
+au63|n|	a:x9a,169,1~x9a,169,1	V:888b,46,3~888b,46,3	n:4ts2,44,1~4ts2,44,1
+au66|n|	V:5b9n,48,1;amd6,21,1~amd6,21,1;5b9n,48,1	n:598y,31,9~598y,31,9	N:amd6,21,1~amd6,21,1
+au66|v|	o:6lei,170,1~6lei,170,1
+au66|a|	j:6lei,180,2;1fjf,60,1~6lei,180,2;1fjf,60,1
+au67|n|	a:34ya,116,1~34ya,116,1	V:epe,95,1~epe,95,1	n:34ya,163,25;5yg7,155,1;2t7p,43,3~34ya,163,25;2t7p,43,3;5yg7,155,1	N:epe,133,14;epb,96,5~epe,133,14;epb,96,5
+au68|n|	a:p94,137,6;p93,121,1;7ew0,112,2~p94,137,6;7ew0,112,2;p93,121,1	v:p93,121,1;4zwm,62,2~4zwm,62,2;p93,121,1	V:683c,102,1;8wpq,97,1~683c,102,1;8wpq,97,1	n:p94,137,6;p93,131,2;7ew0,125,5;4zwm,52,1~p94,137,6;7ew0,125,5;p93,131,2;4zwm,52,1	N:683f,156,1;3co4,141,1;8wpq,113,3;7eh2,88,2~8wpq,113,3;7eh2,88,2;3co4,141,1;683f,156,1
+au68|v|	s:p93,137,3;p94,111,1~p93,137,3;p94,111,1
+au68|a|	j:683f,156,1;3co4,151,2;aq35,125,2;7eh2,94,3;j0a,90,1;su,52,3~7eh2,94,3;su,52,3;aq35,125,2;3co4,151,2;683f,156,1;j0a,90,1
+au69|n|	N:alp6,85,1;alpr,85,1~alpr,85,1;alp6,85,1
+au69|a|	j:alpr,111,6;alp6,105,4~alpr,111,6;alp6,105,4
+au6a|n|	a:p94,153,4;p93,144,1~p94,153,4;p93,144,1	v:p93,144,1~p93,144,1	n:p93,174,8;p94,159,6;w46,54,7~p93,174,8;w46,54,7;p94,159,6
+au6a|v|	s:p93,154,2;p94,143,2~p93,154,2;p94,143,2
+au6b|n|	V:8arb,14,1;888b,10,1~8arb,14,1;888b,10,1	n:60v,36,1;42ym,28,1~42ym,28,1;60v,36,1	N:770u,11,2~770u,11,2
+au6b|v|	o:8qwi,138,2~8qwi,138,2	s:7uio,73,8;9k66,6,2~7uio,73,8;9k66,6,2	D:3jq7,164,1~3jq7,164,1
+au6b|a|	j:45qt,192,5;3jq7,174,2~45qt,192,5;3jq7,174,2
+au6d|v|	o:8pls,140,3~8pls,140,3
+au6d|a|	j:8pls,158,11~8pls,158,11
+au6f|n|	a:1pql,48,3~1pql,48,3	v:a7g2,7,5;a6d9,0,4~a7g2,7,5;a6d9,0,4	V:7i03,50,3~7i03,50,3	n:598y,12,8~598y,12,8	N:47tb,123,4;appg,103,2;7vpv,52,4~47tb,123,4;7vpv,52,4;appg,103,2
+au6f|a|	j:appg,140,27;1nhu,70,3;4j79,53,3;4rss,45,7~appg,140,27;4rss,45,7;4j79,53,3;1nhu,70,3
+au6g|v|	s:9k66,39,2~9k66,39,2
+au6h|n|	a:43bk,56,9;43bd,47,19;5eo7,39,11;43ai,26,7;68i1,22,3;4jow,17,16;7h25,14,2~43bd,47,19;4jow,17,16;5eo7,39,11;43bk,56,9;43ai,26,7;68i1,22,3;7h25,14,2	v:8jsr,19,5;1etz,17,3~8jsr,19,5;1etz,17,3	n:79ri,46,4;43bd,20,3;294h,11,5;4ffp,3,2;a4t1,1,3;4jow,0,5~294h,11,5;4jow,0,5;79ri,46,4;a4t1,1,3;43bd,20,3;4ffp,3,2	N:52hz,128,10;4za5,43,4;7h3q,35,21;in6,31,9;6vza,25,6;a8we,19,12;9dku,16,4;a8r3,7,11;4ffp,3,2;8ipk,0,9~7h3q,35,21;a8we,19,12;a8r3,7,11;52hz,128,10;8ipk,0,9;in6,31,9;6vza,25,6;9dku,16,4;4za5,43,4;4ffp,3,2
+au6h|a|	j:7h3q,11,4;4ffp,3,2~7h3q,11,4;4ffp,3,2
+au6k|n|	a:42sd,28,2~42sd,28,2	V:789p,57,25;5q2f,38,24;98ii,38,11;888b,29,23;9pyq,27,4;91ko,24,3;7akr,23,6;ek3,22,3;98jd,22,2;7hyl,20,5;8arb,15,7~789p,57,25;5q2f,38,24;888b,29,23;98ii,38,11;8arb,15,7;7akr,23,6;7hyl,20,5;9pyq,27,4;91ko,24,3;ek3,22,3;98jd,22,2	n:42ym,29,7;42sd,18,1;598y,15,77;59y6,7,7~598y,15,77;42ym,29,7;59y6,7,7;42sd,18,1	N:5q2n,49,7;98jd,32,4;78ds,26,17~78ds,26,17;5q2n,49,7;98jd,32,4
+au6k|v|	o:5q2n,21,1~5q2n,21,1	s:9k66,16,24~9k66,16,24
+au6m|n|	a:9d1e,25,3~9d1e,25,3	v:12xe,42,1;a4vo,28,1~12xe,42,1;a4vo,28,1	n:19rt,101,5;1g41,77,4;12xe,75,10;7u0r,57,4;9d1e,35,6;598y,13,6~12xe,75,10;9d1e,35,6;598y,13,6;19rt,101,5;1g41,77,4;7u0r,57,4	N:13ca,126,1~13ca,126,1
+au6m|v|	s:7u0r,52,3;12xe,42,1~7u0r,52,3;12xe,42,1
+au6m|a|	j:aemc,153,6;13ca,142,3~aemc,153,6;13ca,142,3
+au6n|n|	a:au6n,183,1~au6n,183,1	n:au6n,183,1~au6n,183,1	N:au6n,183,1~au6n,183,1
+au6n|a|	j:au6n,183,1~au6n,183,1
+au6o|n|	a:adwh,85,1~adwh,85,1	V:8arb,22,3;3qrn,6,1~8arb,22,3;3qrn,6,1	n:adwh,115,8;fac,93,2;7ra7,25,3~adwh,115,8;7ra7,25,3;fac,93,2
+au6o|a|	j:cir,66,18;4bdu,59,6;1x4c,40,1;91ol,38,4;29nk,35,1;116w,11,1~cir,66,18;4bdu,59,6;91ol,38,4;116w,11,1;1x4c,40,1;29nk,35,1
+au6r|n|	a:27ys,64,5;4j8a,35,7;5mq8,17,1;5a7n,13,1;4j6w,9,2;86xk,6,2~4j8a,35,7;27ys,64,5;4j6w,9,2;86xk,6,2;5mq8,17,1;5a7n,13,1	v:bgy,99,2;86xk,33,13;4j8a,30,5;a7g2,10,17;9voq,8,6;7xax,8,1~a7g2,10,17;86xk,33,13;9voq,8,6;4j8a,30,5;bgy,99,2;7xax,8,1	V:6qkj,23,2~6qkj,23,2	n:bgy,89,1;5mq8,40,5;8pj0,12,7;6sdz,10,4;598y,8,16;7xax,8,1;11a,5,8~598y,8,16;11a,5,8;8pj0,12,7;5mq8,40,5;6sdz,10,4;bgy,89,1;7xax,8,1	N:6qkj,80,104;5b1c,78,2;1v9y,17,1;5a7n,13,1;9ycs,4,1~6qkj,80,104;5b1c,78,2;1v9y,17,1;5a7n,13,1;9ycs,4,1
+au6r|v|	o:6qkj,57,21;9ycs,4,1~6qkj,57,21;9ycs,4,1	D:1v9y,27,2~1v9y,27,2
+au6r|a|	j:6qkj,91,221;8xta,86,11;5b1c,84,3;6xbm,40,4;5a7n,23,2;9ycs,4,1~6qkj,91,221;8xta,86,11;6xbm,40,4;5b1c,84,3;5a7n,23,2;9ycs,4,1
+au6s|n|	v:a7g2,21,2~a7g2,21,2
+au6t|n|	a:6lfq,33,4~6lfq,33,4	v:76og,54,2;76vy,42,2;76my,40,4~76my,40,4;76og,54,2;76vy,42,2	n:76vy,60,7;w88,44,2;598y,38,66;3k1i,38,4;76my,30,2~598y,38,66;76vy,60,7;3k1i,38,4;76my,30,2;w88,44,2	N:3twp,79,3;4bdu,59,4;3k1i,38,4;atao,35,3;8hsf,19,1~3k1i,38,4;4bdu,59,4;atao,35,3;3twp,79,3;8hsf,19,1
+au6t|v|	s:76my,20,1~76my,20,1
+au6u|n|	a:94y,74,8;aeln,50,1;1joh,36,2;5mq8,36,5;a7kk,35,3;4kkj,31,4;56ru,30,1;90mt,18,4~94y,74,8;5mq8,36,5;90mt,18,4;4kkj,31,4;a7kk,35,3;1joh,36,2;56ru,30,1;aeln,50,1	V:3t7z,144,2;gyy,25,2;8arb,8,2~gyy,25,2;3t7z,144,2;8arb,8,2	n:81wp,109,1;24gm,86,2;2c4c,55,2;5mq8,38,6;abv8,12,3;1hgv,12,1;al68,6,5;h03,3,1~5mq8,38,6;al68,6,5;abv8,12,3;24gm,86,2;2c4c,55,2;h03,3,1;1hgv,12,1;81wp,109,1	N:56ru,46,3;in6,20,3~in6,20,3;56ru,46,3
+au6u|v|	o:56ru,63,10;gz4,32,2;4dmo,19,2~56ru,63,10;gz4,32,2;4dmo,19,2	s:ag2a,69,1;8a3x,52,5;6yhp,45,2;4dmo,41,9;4u4t,20,1~4dmo,41,9;8a3x,52,5;6yhp,45,2;4u4t,20,1;ag2a,69,1
+au6u|a|	j:56ru,112,302;2uru,73,4;3w73,68,5;gz4,57,11;in6,45,17;5m8c,43,4;4dmo,41,9;7gz1,29,6~56ru,112,302;in6,45,17;gz4,57,11;4dmo,41,9;7gz1,29,6;3w73,68,5;5m8c,43,4;2uru,73,4
+au6v|n|	a:a6d9,3,2~a6d9,3,2	v:h03,58,5;a7g2,49,39;a6d9,35,18;68d6,32,9~a7g2,49,39;a6d9,35,18;68d6,32,9;h03,58,5	V:56ru,122,66~56ru,122,66	n:a6d9,13,4~a6d9,13,4	N:56ru,98,13~56ru,98,13
+au6v|v|	o:56ru,93,9~56ru,93,9	s:h03,44,2;a6d9,17,5~a6d9,17,5;h03,44,2	D:56ru,71,2~56ru,71,2
+au6w|n|	a:84m7,172,4;5fnk,125,5;p93,119,2;p94,108,2;18wb,72,3~5fnk,125,5;84m7,172,4;18wb,72,3;p93,119,2;p94,108,2	v:84m7,167,3;2yba,46,1~84m7,167,3;2yba,46,1	V:28cw,50,1;888b,22,4;a6ev,20,11;5ihi,11,2;a7cv,6,1;sbb,0,1~a6ev,20,11;888b,22,4;5ihi,11,2;a7cv,6,1;sbb,0,1;28cw,50,1	n:84m7,172,4;p93,137,7;p94,98,1;18wb,57,1;2yba,56,2;mkc,36,2;w46,24,10;aiae,18,6;598y,4,10~598y,4,10;w46,24,10;p93,137,7;aiae,18,6;84m7,172,4;mkc,36,2;2yba,56,2;p94,98,1;18wb,57,1	N:89hv,144,4;22up,24,1~89hv,144,4;22up,24,1
+au6w|v|	o:5q2n,39,1~5q2n,39,1	s:p93,125,3~p93,125,3
+au6w|a|	j:89hv,124,1;5q2n,62,5;af1h,52,10~af1h,52,10;5q2n,62,5;89hv,124,1
+au6y|n|	V:5bac,94,4~5bac,94,4
+au6z|a|Of or pertaining to Zoroaster, or his religious system.	j:p2t,179,6;5h93,144,15;71nq,134,6;2olb,127,5;7e9l,121,16;9kx0,106,6;7vu7,104,17;7e96,103,8;2a4c,100,4;uun,97,6;9hao,97,1;9jp5,81,6;9sjd,80,3;35nv,75,4;4a02,54,5~7vu7,104,17;7e9l,121,16;5h93,144,15;7e96,103,8;uun,97,6;9jp5,81,6;71nq,134,6;p2t,179,6;9kx0,106,6;9jd7,26,5;2olb,127,5;4a02,54,5;35nv,75,4;2a4c,100,4;1qpd,49,3
+au70|n|The religious system of Zoroaster, the legislator and prophet of the ancient Persians, which was the national faith of Persia; mazdeism. The system presupposes a good spirit (Ormuzd) and an opposing evil spirit (Ahriman). Cf. Fire worship, under Fire, and Parsee.	a:71nr,113,9~71nr,113,9	n:43ox,101,4;4vvg,96,4;4od6,84,3;11a,31,29;aj0o,23,3;7ru3,22,3;598y,2,6~11a,31,29;598y,2,6;43ox,101,4;4vvg,96,4;aj0o,23,3;7ru3,22,3;4od6,84,3	N:3s6d,139,3;4vvg,96,4;4gkq,64,3~4vvg,96,4;4gkq,64,3;3s6d,139,3
+au71|n|	V:uut,51,6;1sh4,45,2~uut,51,6;1sh4,45,2
+au74|n|	a:52of,100,4~52of,100,4	n:52of,80,1~52of,80,1
+au75|n|	v:84m7,158,1;2srl,60,2~2srl,60,2;84m7,158,1	V:74i6,89,6;50w2,42,2~74i6,89,6;50w2,42,2	n:2srl,70,4;42ym,26,1~2srl,70,4;42ym,26,1	N:74i6,83,4;1662,53,2;4bdu,39,1;50w2,32,1~74i6,83,4;1662,53,2;4bdu,39,1;50w2,32,1
+au75|a|	j:4bdu,65,6~4bdu,65,6
+au76|n|	N:173f,24,1~173f,24,1
+au76|a|	j:173f,24,1~173f,24,1
+au77|n|	a:atpu,124,4;86xk,13,3;2937,6,1~atpu,124,4;86xk,13,3;2937,6,1	v:atpu,104,1;1l7m,45,3~1l7m,45,3;atpu,104,1	n:atpu,180,196;3x7k,161,25;497u,85,9;5hxw,77,1;a89p,44,4~atpu,180,196;3x7k,161,25;497u,85,9;a89p,44,4;5hxw,77,1	N:3xcc,139,1;1exm,125,4;1exl,115,1;5hxw,105,7;1xy0,13,6;a4t1,12,3~5hxw,105,7;1xy0,13,6;1exm,125,4;a4t1,12,3;3xcc,139,1;1exl,115,1
+au77|v|	o:3xcc,139,1~3xcc,139,1	s:a89p,24,1;2937,16,2~2937,16,2;a89p,24,1
+au77|a|	j:3xcc,139,1;1exl,125,2;1exm,105,1;5hxw,77,1;a4t1,22,6;1xy0,15,7~1xy0,15,7;a4t1,22,6;1exl,125,2;1exm,105,1;5hxw,77,1;3xcc,139,1
+au7a|n|	a:4sqd,163,116~4sqd,163,116	n:4sqd,94,1~4sqd,94,1
+au7c|n|Shingles.	V:adby,126,18~adby,126,18	n:a9ey,214,34;42cp,195,34~42cp,195,34;a9ey,214,34	N:4gc6,122,5~4gc6,122,5
+au7c|a|Shingles.	j:a81w,104,1~a81w,104,1
+au7f|n|	a:7o20,123,3~7o20,123,3	v:1b2h,52,3~1b2h,52,3	n:a106,43,8;1jlg,31,12~1jlg,31,12;a106,43,8	N:3ys4,142,2~3ys4,142,2
+au7g|n|	a:7p50,40,1~7p50,40,1	V:3kb0,94,6;3lk3,86,2~3kb0,94,6;3lk3,86,2	n:6ijy,79,9;7p50,60,4;598y,11,9~6ijy,79,9;598y,11,9;7p50,60,4	N:asyu,202,29;4kmv,125,135;3lk3,124,27;3w5a,114,11;86ai,113,3;5txw,97,12;3kb0,92,5;66pf,74,2;6ijy,48,1;12ea,44,5~4kmv,125,135;asyu,202,29;3lk3,124,27;5txw,97,12;3w5a,114,11;3kb0,92,5;12ea,44,5;86ai,113,3;66pf,74,2;6ijy,48,1
+au7g|v|	o:3w5a,95,3;3lk3,86,2~3w5a,95,3;3lk3,86,2
+au7g|a|	j:asyu,204,33;3lk3,130,43;3w5a,112,10;5h5t,107,4;86ai,97,1;6ijy,93,23;66pf,84,4;5txw,77,3;3w0l,65,2~3lk3,130,43;asyu,204,33;6ijy,93,23;3w5a,112,10;66pf,84,4;5h5t,107,4;5txw,77,3;3w0l,65,2;86ai,97,1
+au7h|n|	n:7eh2,124,3~7eh2,124,3
+au7i|n|	a:98c0,33,9;5cam,22,6;6nwu,4,3;86qo,2,4~98c0,33,9;5cam,22,6;86qo,2,4;6nwu,4,3	v:4j9g,42,6;4epj,39,12;4j8a,31,9;7zk1,29,2;7ckc,23,2;4j6w,18,6;a7g2,14,36;1883,13,5;9uhx,2,4;9voq,1,6~a7g2,14,36;4epj,39,12;4j8a,31,9;9voq,1,6;4j6w,18,6;4j9g,42,6;1883,13,5;9uhx,2,4;7ckc,23,2;7zk1,29,2	V:7cla,40,2;a7cv,26,8;adw,25,4;5e2o,19,7~a7cv,26,8;5e2o,19,7;adw,25,4;7cla,40,2	n:5pwt,113,3;5o87,111,3;5j2x,34,4;34bj,33,6;7zk1,29,2;598y,22,69;9mne,20,12;7gb5,18,5;4izy,15,5;al51,13,4~598y,22,69;9mne,20,12;34bj,33,6;7gb5,18,5;4izy,15,5;al51,13,4;5j2x,34,4;5o87,111,3;5pwt,113,3;7zk1,29,2	N:5pwt,97,1;90ml,82,19;3fl7,68,7;1s54,61,6;3fkw,51,5;7cla,50,4;77ii,42,11;2cuo,41,6;3b0v,40,5;281x,32,6;58gd,32,10;ap2m,28,6;3vgl,27,12;34bj,27,4;253,26,6~90ml,82,19;24yt,9,13;3vgl,27,12;77ii,42,11;58gd,32,10;8hz6,9,7;ahbo,21,7;3fl7,68,7;1s54,61,6;ap2m,28,6;281x,32,6;2cuo,41,6;1993,13,6;253,26,6;3b0v,40,5
+au7i|v|	o:49m7,29,2;ap2m,13,2~ap2m,13,2;49m7,29,2
+au7i|a|	j:1s54,46,2;58gd,22,5;2kj2,20,3;49m7,19,1;ahsw,16,2;250g,16,6;2grw,14,3;7tza,13,4;281x,7,1;969d,5,1~250g,16,6;58gd,22,5;7tza,13,4;2kj2,20,3;2grw,14,3;1s54,46,2;ahsw,16,2;49m7,19,1;969d,5,1;281x,7,1	e:7zk1,19,1;a1xi,7,1~a1xi,7,1;7zk1,19,1
+au7j|a|	j:1ltg,100,2~1ltg,100,2
+au7k|n|	a:4u2q,120,6;4tzs,65,2~4u2q,120,6;4tzs,65,2	v:4u2q,110,3~4u2q,110,3	V:1fxl,37,3~1fxl,37,3	n:71xe,184,16;4u2q,120,6;4bj4,109,8;4uqs,76,2;9k5q,32,8;8pj0,19,7~71xe,184,16;9k5q,32,8;4bj4,109,8;8pj0,19,7;4u2q,120,6;4uqs,76,2	N:3tl2,198,12;ak2j,141,1;5fex,105,8;24ys,95,6;30cp,60,3;hzk,56,2~3tl2,198,12;5fex,105,8;24ys,95,6;30cp,60,3;hzk,56,2;ak2j,141,1
+au7k|v|	o:ak2j,151,2~ak2j,151,2	s:4uqs,76,2;9k5q,18,3~9k5q,18,3;4uqs,76,2	D:7agm,9,2~7agm,9,2
+au7k|a|	j:30cp,54,2;hzk,46,1~30cp,54,2;hzk,46,1
+au7n|v|	o:5m7h,198,2~5m7h,198,2	D:5m7h,188,1~5m7h,188,1
+au7n|a|	j:5m7h,188,1~5m7h,188,1
+au7o|n|	a:42ym,35,1~42ym,35,1	V:888b,28,2~888b,28,2
+au7o|v|	s:9k66,27,5~9k66,27,5
+au7p|n|An exclamation formerly used as an oath, and an expression of anger or wonder.	n:598y,7,2~598y,7,2
+au7r|n|	a:4fyv,74,6;rgh,65,6;5eo7,32,4;5en8,26,3;43ai,15,2~rgh,65,6;4fyv,74,6;5eo7,32,4;5en8,26,3;43ai,15,2	V:82r7,83,5;u0q,34,4~82r7,83,5;u0q,34,4	n:atpu,124,5;4dbm,59,4;82rz,54,1;5e5f,32,9;17uw,11,1;5en8,10,1;1av0,6,6;43ai,5,1~5e5f,32,9;1av0,6,6;atpu,124,5;4dbm,59,4;43ai,5,1;82rz,54,1;5en8,10,1;17uw,11,1	N:82r7,70,2;62lo,1,2~62lo,1,2;82r7,70,2
+au7r|a|	j:82r7,60,1~82r7,60,1
+au7t|n|	V:888b,28,5;8arb,19,2;5q2f,14,1~888b,28,5;8arb,19,2;5q2f,14,1
+au7t|v|	s:9k66,11,4~9k66,11,4
+au7t|a|	j:9k66,7,3~9k66,7,3
+au7u|n|	V:5q2f,27,1;888b,18,1~888b,18,1;5q2f,27,1
+au7v|n|	V:3kb0,138,21~3kb0,138,21	n:716d,151,15~716d,151,15	N:3kb0,104,2~3kb0,104,2
+au7v|a|	j:5s8g,136,7;3kb0,114,4~5s8g,136,7;3kb0,114,4
+au7x|n|	V:8arb,45,1~8arb,45,1
+au7y|n|	n:2uru,107,4;598y,26,7~598y,26,7;2uru,107,4	N:556n,111,2;8f50,87,3;3u8g,82,1~8f50,87,3;556n,111,2;3u8g,82,1
+au7y|v|	o:3u8g,82,1~3u8g,82,1
+au7y|a|	j:3u8g,124,19;556n,121,4~3u8g,124,19;556n,121,4
+au80|v|	s:9k66,40,2~9k66,40,2
+au81|n|	n:4ufg,170,18~4ufg,170,18	N:84m6,185,6;9ddh,76,4~84m6,185,6;9ddh,76,4
+au81|v|	s:9k66,17,2~9k66,17,2
+au81|a|	j:84m6,185,6;9ddh,76,4~84m6,185,6;9ddh,76,4
+au82|n|	a:5af2,99,1~5af2,99,1	n:5af2,115,3~5af2,115,3	N:5af2,99,1~5af2,99,1
+au82|a|	j:5af2,115,3~5af2,115,3
