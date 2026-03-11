@@ -1691,8 +1691,8 @@ ab6m|a|	j:7ag0,148,4;9zpb,139,3;8pus,110,7;9985,85,1;tn6,84,5;2xys,68,2;1cy1,18,
 ab6n|n|	v:a7g2,12,8~a7g2,12,8	n:6nkk,65,8~6nkk,65,8	N:55ba,46,3~55ba,46,3
 ab6o|n|	a:17kc,141,2;35mc,56,2~17kc,141,2;35mc,56,2	v:3ge0,126,1~3ge0,126,1	V:10wy,126,1~10wy,126,1	N:4pma,81,1;24nv,59,2~24nv,59,2;4pma,81,1
 ab6o|a|	j:10wy,126,1;24nv,69,4;341,42,1~24nv,69,4;341,42,1;10wy,126,1	e:17kc,141,2~17kc,141,2
-ab6p|n|A native of Verona; collectively, the people of Verona.	V:2u90,71,10~2u90,71,10	n:23ni,12,6~23ni,12,6	N:2u90,38,1~2u90,38,1
-ab6p|a|Of or pertaining to Verona, in Italy. ; A native of Verona; collectively, the people of Verona.	j:97ha,126,11;2u90,118,271;2u92,108,25;97h9,105,15;a9fr,89,16;a9fs,86,49;9a7u,85,146;9a8g,75,11;5jtg,70,156;96fq,66,1;5k37,53,12;5k17,51,10;225r,41,2;29yq,30,3;4byy,16,7~2u90,118,271;5jtg,70,156;9a7u,85,146;a9fs,86,49;2u92,108,25;a9fr,89,16;97h9,105,15;5k37,53,12;9a8g,75,11;97ha,126,11;5k17,51,10;4byy,16,7;29yq,30,3;225r,41,2;96fq,66,1
+ab6p|n|	V:2u90,71,10~2u90,71,10	n:23ni,12,6~23ni,12,6	N:2u90,38,1~2u90,38,1
+ab6p|a|Of or pertaining to Verona, in Italy.	j:97ha,126,11;2u90,118,271;2u92,108,25;97h9,105,15;a9fr,89,16;a9fs,86,49;9a7u,85,146;9a8g,75,11;5jtg,70,156;96fq,66,1;5k37,53,12;5k17,51,10;225r,41,2;29yq,30,3;4byy,16,7~2u90,118,271;5jtg,70,156;9a7u,85,146;a9fs,86,49;2u92,108,25;a9fr,89,16;97h9,105,15;5k37,53,12;9a8g,75,11;97ha,126,11;5k17,51,10;4byy,16,7;29yq,30,3;225r,41,2;96fq,66,1
 ab6q|n|A portrait or representation of the face of our Savior on the alleged handkerchief of Saint Veronica, preserved at Rome; hence, a representation of this portrait, or any similar representation of the face of the Savior. Formerly called also Vernacle, and Vernicle. ; A genus scrophulariaceous plants; the speedwell. See Speedwell.	a:889v,71,1~889v,71,1	v:66d4,41,6~66d4,41,6	V:71nx,149,1;5393,79,4;2hhl,44,2;9dwt,22,3;888b,18,4;3t4j,10,3~888b,18,4;5393,79,4;3t4j,10,3;9dwt,22,3;2hhl,44,2;71nx,149,1	n:889v,91,4;1peo,58,1;7oj2,53,5;905g,43,4;nr9,20,1;66b5,19,11;3ezc,5,3;1mcq,5,10;11a,5,9~66b5,19,11;1mcq,5,10;11a,5,9;7oj2,53,5;889v,91,4;905g,43,4;3ezc,5,3;1peo,58,1;nr9,20,1	N:71nx,165,3;1as7,152,8;tze,143,2;47qf,135,6;uy5,134,2;5kz3,109,54;84yl,67,1;6wqe,65,2;9cla,6,3;anux,0,7~5kz3,109,54;1as7,152,8;anux,0,7;47qf,135,6;71nx,165,3;9cla,6,3;6wqe,65,2;uy5,134,2;tze,143,2;84yl,67,1
 ab6q|v|	o:2zt1,132,1~2zt1,132,1	s:3ge8,133,5;nr9,36,3~3ge8,133,5;nr9,36,3
 ab6q|a|	j:71nx,159,2;2zt1,132,1;5393,69,2;2eui,62,2;6wqe,55,1~2eui,62,2;5393,69,2;71nx,159,2;6wqe,55,1;2zt1,132,1
@@ -2542,7 +2542,7 @@ abpu|n|	v:6fa1,44,3~6fa1,44,3	n:7f7m,29,4~7f7m,29,4
 abpu|v|	s:7f7m,29,4~7f7m,29,4	d:934o,41,7;7rn5,31,3~934o,41,7;7rn5,31,3
 abpv|a|	j:6jco,58,2~6jco,58,2
 abpy|n|of Vexillum	N:7ur6,213,8~7ur6,213,8
-abq0|a|Of or pertaining to an ensign or standard. ; Of or pertaining to the vexillum, or upper petal of papilionaceous flowers.	j:71i4,133,15~71i4,133,15
+abq0|a|	j:71i4,133,15~71i4,133,15
 abq2|n|	a:3t4j,47,2~3t4j,47,2	v:3t4j,47,2~3t4j,47,2	N:3zuz,97,4~3zuz,97,4
 abq2|v|	s:3t4j,37,1~3t4j,37,1
 abq2|a|	j:3zuz,87,2~3zuz,87,2

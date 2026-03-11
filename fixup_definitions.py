@@ -82,22 +82,22 @@ def parse_dictionary(path: str) -> dict[str, dict[str, list[str]]]:
 def resolve_definition(word_defs: dict[str, list[str]], pos_char: str) -> str:
     """
     Get the definition string for a word+pos_char.
-    Priority:
-      1. Definitions explicitly tagged for this POS
-      2. Untagged definitions (empty wordtype in CSV)
-      3. Empty string (no definition available)
-    Does NOT fall back to other POS definitions.
+
+    Rules:
+      - If the word has tagged definitions for THIS POS, use only those.
+      - If the word has tagged definitions for OTHER POS but not this one,
+        return empty (don't bleed definitions across POS).
+      - If the word has NO tagged definitions at all (only untagged),
+        use the untagged definitions for every POS.
     """
     tagged = word_defs.get(pos_char, [])
     untagged = word_defs.get("", [])
+    has_any_tagged = any(k != "" for k in word_defs)
 
-    if tagged and untagged:
-        # Combine: tagged first, then untagged
-        combined = tagged + [d for d in untagged if d not in tagged]
-        return " ; ".join(combined)
-    elif tagged:
+    if tagged:
         return " ; ".join(tagged)
-    elif untagged:
+    elif not has_any_tagged and untagged:
+        # Word has ONLY untagged definitions — use them as fallback
         return " ; ".join(untagged)
     else:
         return ""
