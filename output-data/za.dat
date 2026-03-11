@@ -1,6 +1,6 @@
 asml|n|An old solfeggio name for B flat; the seventh harmonic, as heard in the or aeolian string; -- so called by Tartini. It was long considered a false, but is the true note of the chord of the flat seventh.	a:a3tx,125,2;4sve,83,3;6tq,52,2;as9,36,2;1lz1,34,2;2luw,8,1~4sve,83,3;a3tx,125,2;6tq,52,2;as9,36,2;1lz1,34,2;2luw,8,1	v:804b,38,4;32p3,10,4;2luw,8,1~32p3,10,4;804b,38,4;2luw,8,1	V:asmm,118,1;9pp1,69,4;4itp,16,9~4itp,16,9;9pp1,69,4;asmm,118,1	n:51bh,156,8;47v2,139,3;141o,121,3;2sml,118,15;asin,116,15;asml,112,26;4t5g,95,9;6is1,86,9;asbx,85,6;4sez,84,23;5ak8,74,1;2q31,71,15;pue,68,4;1jlh,67,5;aq4u,64,16~asml,112,26;5gh1,60,25;4sez,84,23;asmk,20,18;aq4u,64,16;2sml,118,15;asin,116,15;2q31,71,15;8w4r,12,13;52oe,12,10;4t5g,95,9;4wm6,3,9;6is1,86,9;7ejy,10,8;51bh,156,8	N:79cz,150,6;asxz,123,27;atu5,122,24;ae6o,119,8;asml,112,26;atfz,103,3;409n,100,16;at1a,93,5;4bi5,91,12;4zb4,90,13;4t5g,89,6;atib,83,4;2q31,80,28;atwc,75,1;1lz1,70,24~2q31,80,28;asxz,123,27;asml,112,26;1lz1,70,24;atu5,122,24;pzp,6,23;6p19,18,20;2q46,15,20;409n,100,16;4zb4,90,13;asmk,14,12;4bi5,91,12;1prq,26,11;8w05,54,11;3l4a,31,9
-asml|v|An old solfeggio name for B flat; the seventh harmonic, as heard in the or aeolian string; -- so called by Tartini. It was long considered a false, but is the true note of the chord of the flat seventh.	o:ae6o,89,1;asxz,75,1;aq4u,52,7~aq4u,52,7;asxz,75,1;ae6o,89,1	s:asxz,85,2;5ak8,84,2~5ak8,84,2;asxz,85,2	d:a3tx,115,1;as9,26,1~a3tx,115,1;as9,26,1
-asml|a|An old solfeggio name for B flat; the seventh harmonic, as heard in the or aeolian string; -- so called by Tartini. It was long considered a false, but is the true note of the chord of the flat seventh.	j:asmm,128,2;asxz,91,3;atib,73,2;9pp1,59,2;23nj,27,1~asxz,91,3;9pp1,59,2;asmm,128,2;atib,73,2;23nj,27,1	e:a3tx,115,1;as9,26,1~as9,26,1;a3tx,115,1
+asml|v|	o:ae6o,89,1;asxz,75,1;aq4u,52,7~aq4u,52,7;asxz,75,1;ae6o,89,1	s:asxz,85,2;5ak8,84,2~5ak8,84,2;asxz,85,2	d:a3tx,115,1;as9,26,1~a3tx,115,1;as9,26,1
+asml|a|	j:asmm,128,2;asxz,91,3;atib,73,2;9pp1,59,2;23nj,27,1~asxz,91,3;9pp1,59,2;asmm,128,2;atib,73,2;23nj,27,1	e:a3tx,115,1;as9,26,1~as9,26,1;a3tx,115,1
 asmm|n|	a:4te8,171,7;asml,128,2~4te8,171,7;asml,128,2	n:4te8,181,14~4te8,181,14	N:4hyq,61,3~4hyq,61,3
 asmm|v|	o:4hyq,61,3~4hyq,61,3	s:asml,118,1~asml,118,1
 asmo|n|	a:3uo2,120,5~3uo2,120,5	v:3uo2,112,3~3uo2,112,3	n:3uo2,141,22~3uo2,141,22
@@ -140,8 +140,8 @@ asqd|n|	n:4cig,158,20;88nc,151,2~4cig,158,20;88nc,151,2
 asqh|n|	a:3qsk,153,2~3qsk,153,2	v:3qsk,153,2~3qsk,153,2	V:7hxj,79,4;3l15,74,8~3l15,74,8;7hxj,79,4	n:3qsk,209,96~3qsk,209,96	N:9k66,19,2~9k66,19,2
 asqh|v|	o:9k66,29,4~9k66,29,4	s:3qsk,143,1~3qsk,143,1
 asqi|n|A horse of a dark color, neither gray nor white, and having no spots.	v:9bo4,120,2~9bo4,120,2	n:5hkf,145,2;4cig,110,4;42ym,39,2;9k66,35,14~9k66,35,14;4cig,110,4;5hkf,145,2;42ym,39,2	N:4ze8,110,5;9zn5,51,3~4ze8,110,5;9zn5,51,3
-asqi|v|A horse of a dark color, neither gray nor white, and having no spots.	o:6xzw,127,3;9voq,4,2~6xzw,127,3;9voq,4,2	d:5hkf,135,1~5hkf,135,1
-asqi|a|A horse of a dark color, neither gray nor white, and having no spots.	j:6xzw,137,6~6xzw,137,6	e:5hkf,135,1~5hkf,135,1
+asqi|v|	o:6xzw,127,3;9voq,4,2~6xzw,127,3;9voq,4,2	d:5hkf,135,1~5hkf,135,1
+asqi|a|	j:6xzw,137,6~6xzw,137,6	e:5hkf,135,1~5hkf,135,1
 asqj|n|	n:1x0r,117,3~1x0r,117,3	N:xty,176,14~xty,176,14
 asqj|v|	o:xty,148,2~xty,148,2
 asqj|a|	j:xty,187,30;26ed,101,4~xty,187,30;26ed,101,4
@@ -269,12 +269,12 @@ astg|v|	s:24tt,122,4~24tt,122,4
 astm|n|	a:6tfq,31,2~6tfq,31,2
 astm|a|	j:7ryp,124,4~7ryp,124,4
 asto|n|See Zantewood.	N:216j,206,3~216j,206,3
-asto|a|See Zantewood.	j:216j,210,4~216j,210,4
+asto|a|	j:216j,210,4~216j,210,4
 astq|v|	o:5uxz,153,1~5uxz,153,1
 astq|a|	j:5uxz,202,28~5uxz,202,28
 astt|n|A merry-andrew; a buffoon.	a:7dpu,15,1~7dpu,15,1	n:8ur1,22,7~8ur1,22,7	N:19w4,43,2;49yw,19,2~49yw,19,2;19w4,43,2
 astt|v|To mimic.	d:7dpu,15,1~7dpu,15,1
-astt|a|A merry-andrew; a buffoon.	j:1okk,109,4;9631,46,5;19w4,33,1;49yw,33,5;9lmk,31,5~9631,46,5;9lmk,31,5;49yw,33,5;1okk,109,4;19w4,33,1	e:7dpu,25,2;9qej,22,3;7rn5,19,4;5yo3,5,4~5yo3,5,4;7rn5,19,4;9qej,22,3;7dpu,25,2
+astt|a|	j:1okk,109,4;9631,46,5;19w4,33,1;49yw,33,5;9lmk,31,5~9631,46,5;9lmk,31,5;49yw,33,5;1okk,109,4;19w4,33,1	e:7dpu,25,2;9qej,22,3;7rn5,19,4;5yo3,5,4~5yo3,5,4;7rn5,19,4;9qej,22,3;7dpu,25,2
 astw|n|	v:7lk0,49,1~7lk0,49,1	n:astw,141,1;7lk0,75,6~7lk0,75,6;astw,141,1	N:9efd,145,3;astw,141,1;75ig,129,13;389x,122,5;1j60,58,3~75ig,129,13;389x,122,5;1j60,58,3;9efd,145,3;astw,141,1
 astw|v|	o:1j60,42,1~1j60,42,1	s:7lk0,49,1~7lk0,49,1
 astw|a|	j:75ig,92,1~75ig,92,1

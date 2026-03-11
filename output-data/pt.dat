@@ -43,10 +43,10 @@
 7iyo|n|	n:3vw,129,4~3vw,129,4
 7iyx|n|	n:340b,87,2;3cq8,52,2~3cq8,52,2;340b,87,2	N:a999,71,4~a999,71,4
 7iz1|n|An extinct flying reptile; one of the Pterosauria. See Illustration in Appendix.	n:5r8m,65,2~5r8m,65,2	N:6v7j,59,3;9lmk,32,3;8hz6,28,4~8hz6,28,4;9lmk,32,3;6v7j,59,3
-7iz1|v|An extinct flying reptile; one of the Pterosauria. See Illustration in Appendix.	o:6v7j,43,1~6v7j,43,1
-7iz1|a|An extinct flying reptile; one of the Pterosauria. See Illustration in Appendix.	j:6v7j,53,2~6v7j,53,2
+7iz1|v|	o:6v7j,43,1~6v7j,43,1
+7iz1|a|	j:6v7j,53,2~6v7j,53,2
 7izc|n|A pterodactyl.	v:9e10,50,1~9e10,50,1	n:3cl5,178,3~3cl5,178,3	N:3fon,161,8;akmi,95,1~3fon,161,8;akmi,95,1
-7izc|a|A pterodactyl.	j:34hr,182,5;akmi,115,4~34hr,182,5;akmi,115,4
+7izc|a|	j:34hr,182,5;akmi,115,4~34hr,182,5;akmi,115,4
 7izf|n|	a:5405,81,3~5405,81,3
 7izj|n|	n:8pzb,112,6~8pzb,112,6
 7izj|v|	s:8pzb,86,1~8pzb,86,1
@@ -117,8 +117,8 @@
 7j1s|v|	o:7j1s,100,1~7j1s,100,1
 7j1v|n|	a:88v3,23,2~88v3,23,2
 7j1w|n|	v:94wq,15,2~94wq,15,2
-7j1x|n|Of or pertaining to Ptolemy, the geographer and astronomer.	N:2y5g,136,3;2s8p,99,8;9wht,67,2;3uj1,55,2;7145,47,4;5ws7,42,3;5wns,39,12;9d84,28,2;8az1,24,1~5wns,39,12;2s8p,99,8;7145,47,4;5ws7,42,3;2y5g,136,3;9wht,67,2;9d84,28,2;3uj1,55,2;8az1,24,1
-7j1x|v|Of or pertaining to Ptolemy, the geographer and astronomer.	o:5ws7,26,1~5ws7,26,1
+7j1x|n|	N:2y5g,136,3;2s8p,99,8;9wht,67,2;3uj1,55,2;7145,47,4;5ws7,42,3;5wns,39,12;9d84,28,2;8az1,24,1~5wns,39,12;2s8p,99,8;7145,47,4;5ws7,42,3;2y5g,136,3;9wht,67,2;9d84,28,2;3uj1,55,2;8az1,24,1
+7j1x|v|	o:5ws7,26,1~5ws7,26,1
 7j1x|a|Of or pertaining to Ptolemy, the geographer and astronomer.	j:2y5g,143,5;8s0w,142,1;2pzq,132,24;lqb,122,28;6vmr,116,3;2s8p,102,10;1w36,100,4;4zy0,88,6;4zwv,80,5;2uru,77,3;2yuy,76,3;7145,65,14;3uj1,61,3;5wns,57,40;9wht,57,1~9cla,55,58;5wns,57,40;lqb,122,28;2pzq,132,24;7145,65,14;2s8p,102,10;8az1,52,7;9l01,43,7;4zy0,88,6;4zwv,80,5;2y5g,143,5;5ws7,46,4;acby,19,4;1w36,100,4;2yuy,76,3
 7j20|n|	a:1jve,126,8;am7,100,2;3lvx,57,6;8uww,22,1;5gh0,22,16~5gh0,22,16;1jve,126,8;3lvx,57,6;am7,100,2;8uww,22,1	v:1jve,96,1;4zwm,75,34;h18,36,5;3lvx,31,1;66d4,20,3;h03,10,3;1883,10,6;3dw0,9,1~4zwm,75,34;1883,10,6;h18,36,5;66d4,20,3;h03,10,3;3lvx,31,1;1jve,96,1;3dw0,9,1	V:5bac,72,11;uuv,63,6;7u2k,47,5;1qft,45,4;ty7,45,5;4yio,45,6;an5a,41,4;50p5,40,5;8n54,40,4;2cim,36,3;3l15,35,7;9qf2,26,4;a7cv,23,10;3qrn,23,10;a6ev,20,31~a6ev,20,31;5bac,72,11;a7cv,23,10;5gzi,19,10;3qrn,23,10;3l15,35,7;4yio,45,6;uuv,63,6;50p5,40,5;7u2k,47,5;ty7,45,5;8n54,40,4;1qft,45,4;9qf2,26,4;an5a,41,4	n:1jve,135,15;3mj2,125,2;72wh,95,6;lpy,93,2;1473,66,8;76ce,57,3;8uww,55,10;4bel,45,2;4zwm,44,4;71f,33,13;5gh0,23,17;ual,21,23;w46,21,23;b35,20,6;aj0o,15,7~w46,21,23;ual,21,23;598y,0,22;5gh0,23,17;1jve,135,15;8pj0,9,14;71f,33,13;aj3h,11,12;8uww,55,10;1473,66,8;aj0o,15,7;59kk,0,6;b35,20,6;72wh,95,6;a106,10,5	N:734b,150,3;acqo,124,31;aoq2,116,8;aosh,113,6;1uwl,99,2;aoq1,97,3;aq2b,96,5;acqm,91,6;abv7,88,30;4qok,84,10;4qfs,81,33;4bel,79,22;4bdu,77,62;2s8p,62,2;1ym5,59,3~4bdu,77,62;9kye,53,45;4qfs,81,33;acqo,124,31;abv7,88,30;a800,29,28;4bel,79,22;4g4b,51,13;4qok,84,10;aoq2,116,8;acqm,91,6;aosh,113,6;aq2b,96,5;9cla,3,5;1jey,42,4
 7j20|v|	o:4bel,51,3;4qfs,50,4;4bdu,33,3;50p5,27,2;1jey,22,1;4g4b,14,1~4qfs,50,4;4bdu,33,3;4bel,51,3;50p5,27,2;4g4b,14,1;1jey,22,1	s:5q2n,44,4~5q2n,44,4

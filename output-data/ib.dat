@@ -76,7 +76,7 @@
 4968|n|	a:7j6e,48,4~7j6e,48,4	v:4kal,53,1~4kal,53,1	n:4kal,63,2;1jlg,37,2~1jlg,37,2;4kal,63,2
 496c|n|	a:4od8,97,3~4od8,97,3	n:6evk,82,2;6ux,16,4;69ri,15,7~69ri,15,7;6ux,16,4;6evk,82,2	N:7zf,99,2;52of,79,6~52of,79,6;7zf,99,2
 496c|v|	o:7zf,89,1~7zf,89,1
-496d|n|Of or pertaining to Iberia.	N:4zwy,80,1;53py,31,2~53py,31,2;4zwy,80,1
+496d|n|	N:4zwy,80,1;53py,31,2~53py,31,2;4zwy,80,1
 496d|a|Of or pertaining to Iberia.	j:70ai,174,231;496k,143,4;8458,131,56;67k0,123,3;1ns2,114,4;afat,106,6;83lj,98,6;4zwy,96,3;2uru,88,9;53py,81,62;8wcs,81,11;20sl,80,3;actg,79,3;62kl,77,2;a2gl,63,19~70ai,174,231;53py,81,62;8458,131,56;a2gl,63,19;8wcs,81,11;53p6,38,10;2uru,88,9;afat,106,6;8d0v,19,6;83lj,98,6;1ns2,114,4;496k,143,4;7bci,54,4;20sl,80,3;79qw,54,3
 496f|n|	a:4rdy,180,2~4rdy,180,2	n:4rdy,180,2~4rdy,180,2	N:3y4a,121,2~3y4a,121,2
 496g|n|	n:5lt1,170,2~5lt1,170,2
@@ -85,7 +85,7 @@
 496i|n|	a:4kal,44,1;4jow,22,1~4kal,44,1;4jow,22,1	n:4kal,73,7~4kal,73,7
 496j|n|	v:4dkm,68,1~4dkm,68,1	V:w5g,126,1~w5g,126,1	n:4dkm,88,4;4kal,77,7~4kal,77,7;4dkm,88,4
 496k|n|One of several species of wild goats having very large, recurved horns, transversely ridged in front; -- called also steinbok.	a:7kxh,191,4;4lew,171,34;496d,143,4;ars5,82,8~4lew,171,34;ars5,82,8;496d,143,4;7kxh,191,4	v:a7g2,5,5~a7g2,5,5	V:6zkx,65,2~6zkx,65,2	n:1vn0,92,10;45fv,34,3;9ycs,26,2~1vn0,92,10;45fv,34,3;9ycs,26,2	N:45lj,108,6;6zkx,103,27;6zc7,82,28~6zc7,82,28;6zkx,103,27;45lj,108,6
-496k|a|One of several species of wild goats having very large, recurved horns, transversely ridged in front; -- called also steinbok.	j:45lj,82,1;6zkx,55,1;6zc7,34,1~45lj,82,1;6zkx,55,1;6zc7,34,1
+496k|a|	j:45lj,82,1;6zkx,55,1;6zc7,34,1~45lj,82,1;6zkx,55,1;6zc7,34,1
 496m|n|	v:a7g2,38,22;a6d9,25,11;9voq,17,2~a7g2,38,22;a6d9,25,11;9voq,17,2	n:598y,36,20~598y,36,20	N:2kj2,36,1~2kj2,36,1
 496m|a|	j:2kj2,36,1~2kj2,36,1
 496n|n|	n:495y,167,5~495y,167,5	N:49dg,147,5;77i0,86,5;9dku,45,2~49dg,147,5;77i0,86,5;9dku,45,2
@@ -101,8 +101,8 @@
 496v|n|	a:k08,95,20;areg,82,2;7p6b,79,11;7vza,79,1;3zn4,77,1;89gh,70,2;arpl,65,2;7q0q,57,2;7p51,50,1;3lop,46,1~k08,95,20;7p6b,79,11;7q0q,57,2;areg,82,2;89gh,70,2;arpl,65,2;7vza,79,1;3zn4,77,1;3lop,46,1;7p51,50,1	v:aae9,148,4;vop,105,7;3xd2,104,4;3zn4,87,2;5inw,84,1;9i8s,80,1;7p6b,71,6;7q0q,67,4;5z1a,66,4;66d4,6,2;8f4t,1,24~8f4t,1,24;vop,105,7;7p6b,71,6;7q0q,67,4;5z1a,66,4;aae9,148,4;3xd2,104,4;3zn4,87,2;66d4,6,2;5inw,84,1;9i8s,80,1	V:3edx,42,1;an5a,39,6;7bfo,36,1;1e8g,20,1;7u32,16,2;7nzu,7,1;888b,7,7;5q2f,3,3~888b,7,7;an5a,39,6;5q2f,3,3;7u32,16,2;3edx,42,1;1e8g,20,1;7nzu,7,1;7bfo,36,1	n:voo,119,13;3zn4,117,17;3xd2,116,9;8kje,113,6;areg,102,8;pbp,101,20;vop,97,4;9i8s,90,2;7q0g,87,1;7q0q,82,11;7p6b,81,12;7vza,79,1;3lop,78,9;aqdl,76,3;arpl,75,4~pbp,101,20;3zn4,117,17;voo,119,13;7p6b,81,12;7q0q,82,11;3xd2,116,9;3lop,78,9;areg,102,8;8kje,113,6;7p51,70,4;arpl,75,4;vop,97,4;5z1a,62,3;34zc,74,3;87m2,50,3	N:8rr3,120,7;7bfo,68,9;72o0,52,3;1e8g,46,6;7u32,32,6;1ezu,32,5;an5a,23,2;6trc,9,14~6trc,9,14;7bfo,68,9;8rr3,120,7;1e8g,46,6;7u32,32,6;1ezu,32,5;72o0,52,3;an5a,23,2
 496v|v|	o:32d0,32,1;an5a,13,1~an5a,13,1;32d0,32,1	s:3zn4,102,6;3yxd,86,2;7q0q,57,2;5z1a,46,1;7p6b,45,1;87m2,34,1~3zn4,102,6;7q0q,57,2;3yxd,86,2;87m2,34,1;5z1a,46,1;7p6b,45,1
 496v|a|	j:1ezu,8,1~1ezu,8,1
-496w|n|In the same place; -- abbreviated ibid. or ib.	N:577n,103,4;3uh4,67,3~577n,103,4;3uh4,67,3
-496w|v|In the same place; -- abbreviated ibid. or ib.	o:3uh4,51,1~3uh4,51,1
+496w|n|	N:577n,103,4;3uh4,67,3~577n,103,4;3uh4,67,3
+496w|v|	o:3uh4,51,1~3uh4,51,1
 496x|n|	N:34zc,139,4~34zc,139,4
 496z|n|	n:4dkm,78,3~4dkm,78,3	N:5pld,107,29;7ex5,32,1~5pld,107,29;7ex5,32,1
 496z|v|	o:5pld,69,2;7ex5,52,4~7ex5,52,4;5pld,69,2	s:4dkm,104,18~4dkm,104,18

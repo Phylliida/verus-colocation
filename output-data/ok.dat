@@ -56,7 +56,7 @@
 6lbl|v|	o:1lir,65,1~1lir,65,1
 6lbl|a|	j:525b,101,1~525b,101,1
 6lbm|n|A Turkish and Egyptian weight, equal to about 2/ pounds. ; An Hungarian and Wallachian measure, equal to about 2/ pints.	a:4t9h,125,6~4t9h,125,6	v:7o3,58,2;2rc6,17,11;amd6,15,12;8f87,2,5~amd6,15,12;2rc6,17,11;8f87,2,5;7o3,58,2	V:888b,12,5;578x,3,5;3fqq,0,4~888b,12,5;578x,3,5;3fqq,0,4	n:1hgi,141,2;4t9h,125,6;6lbm,111,4;4s,82,1;44aa,59,7;7o3,58,2;7lx,55,15;6l4j,9,1~7lx,55,15;44aa,59,7;4t9h,125,6;6lbm,111,4;1hgi,141,2;7o3,58,2;6l4j,9,1;4s,82,1	N:6lbm,111,4;9m3a,86,5;9mxp,61,6;9k5q,39,45;9k66,39,85;9k8x,39,4;aqwk,24,3~9k66,39,85;9k5q,39,45;9mxp,61,6;9m3a,86,5;9k8x,39,4;6lbm,111,4;aqwk,24,3
-6lbm|v|A Turkish and Egyptian weight, equal to about 2/ pounds. ; An Hungarian and Wallachian measure, equal to about 2/ pints.	s:9k8x,42,5;7lx,26,2;4p7w,1,3~9k8x,42,5;4p7w,1,3;7lx,26,2
+6lbm|v|	s:9k8x,42,5;7lx,26,2;4p7w,1,3~9k8x,42,5;4p7w,1,3;7lx,26,2
 6lbn|n|	a:9ol2,139,11~9ol2,139,11	V:82vs,84,1~82vs,84,1	n:9ol2,105,1~9ol2,105,1	N:82vs,94,2~82vs,94,2
 6lbr|n|	n:1hgi,187,2~1hgi,187,2
 6lbr|v|	s:1hgi,177,1~1hgi,177,1
@@ -127,8 +127,8 @@
 6lcz|a|	j:10lv,74,1~10lv,74,1
 6ld2|v|	o:5rkf,41,5~5rkf,41,5	s:11dj,63,3~11dj,63,3
 6ld4|n|An annual plant (Abelmoschus, / Hibiscus, esculentus), whose green pods, abounding in nutritious mucilage, are much used for soups, stews, or pickles; gumbo.	a:3hqt,88,6;3h0d,74,8~3h0d,74,8;3hqt,88,6	v:3zw9,71,4;2qjy,70,3;5a1x,62,3;5elm,47,3~3zw9,71,4;5elm,47,3;2qjy,70,3;5a1x,62,3	n:248t,133,3;2s4f,127,3;1vhb,89,2;598y,14,14~598y,14,14;2s4f,127,3;248t,133,3;1vhb,89,2	N:afu9,190,6;615a,167,3;19rm,101,4;3wm1,101,2;8f5u,87,4;7sfd,82,3;76fn,81,6;76ek,79,7;8f50,75,6;3gd1,48,5;gaa,38,11~gaa,38,11;76ek,79,7;afu9,190,6;76fn,81,6;8f50,75,6;3gd1,48,5;19rm,101,4;8f5u,87,4;7sfd,82,3;615a,167,3;3wm1,101,2
-6ld4|v|An annual plant (Abelmoschus, / Hibiscus, esculentus), whose green pods, abounding in nutritious mucilage, are much used for soups, stews, or pickles; gumbo.	o:76fn,66,2~76fn,66,2
-6ld4|a|An annual plant (Abelmoschus, / Hibiscus, esculentus), whose green pods, abounding in nutritious mucilage, are much used for soups, stews, or pickles; gumbo.	j:76fn,56,1~76fn,56,1
+6ld4|v|	o:76fn,66,2~76fn,66,2
+6ld4|a|	j:76fn,56,1~76fn,56,1
 6ld5|n|	a:5k89,133,21;5kks,54,2~5k89,133,21;5kks,54,2	V:28co,71,4~28co,71,4	n:5k89,135,23;5kks,82,14~5k89,135,23;5kks,82,14
 6ld5|v|	s:5k89,99,2;5kks,54,2~5k89,99,2;5kks,54,2	d:5k89,99,2~5k89,99,2
 6ld6|n|	a:7mr6,116,2;71ra,85,10~71ra,85,10;7mr6,116,2	v:a7g2,25,7~a7g2,25,7

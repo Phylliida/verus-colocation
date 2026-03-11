@@ -20,11 +20,11 @@
 9vt0|a|	j:3l74,105,4~3l74,105,4
 9vt1|n|	N:8i6l,74,6~8i6l,74,6
 9vt2|n|The title of the emperor of Russia. See Czar.	a:15m1,105,3;877v,100,67;42ym,12,1;547d,1,2~877v,100,67;15m1,105,3;547d,1,2;42ym,12,1	v:2szk,58,1;u0n,33,5~u0n,33,5;2szk,58,1	V:10ym,150,8;992,95,1~10ym,150,8;992,95,1	n:23mg,133,4;4wty,114,4;5tiq,45,3;9omv,33,8;alxf,24,6;42ym,22,2~9omv,33,8;alxf,24,6;4wty,114,4;23mg,133,4;5tiq,45,3;42ym,22,2	N:10ym,186,97;7k5u,162,2;6bov,124,29;6c60,119,3;10yl,103,24;4qge,103,8;954,97,14;992,95,1;97t,91,1;6btv,91,3;10zu,78,2;727t,66,9;5s8t,53,3;9k5q,10,4;9k66,0,4~10ym,186,97;6bov,124,29;10yl,103,24;954,97,14;727t,66,9;4qge,103,8;9k66,0,4;9k5q,10,4;5s8t,53,3;6c60,119,3;6btv,91,3;7k5u,162,2;10zu,78,2;992,95,1;97t,91,1
-9vt2|v|The title of the emperor of Russia. See Czar.	o:10ym,130,2;6bov,95,4;6btv,85,2;10yl,57,1;727t,45,2~6bov,95,4;10ym,130,2;6btv,85,2;727t,45,2;10yl,57,1
-9vt2|a|The title of the emperor of Russia. See Czar.	j:10ym,166,25;6bov,131,49;97t,111,4;992,105,2;6btv,103,7;954,101,18;4qge,96,5;11ra,87,2;10zu,78,2;10yl,77,4;5s8t,48,2;727t,45,2~6bov,131,49;10ym,166,25;954,101,18;6btv,103,7;4qge,96,5;97t,111,4;10yl,77,4;992,105,2;5s8t,48,2;10zu,78,2;11ra,87,2;727t,45,2
+9vt2|v|	o:10ym,130,2;6bov,95,4;6btv,85,2;10yl,57,1;727t,45,2~6bov,95,4;10ym,130,2;6btv,85,2;727t,45,2;10yl,57,1
+9vt2|a|	j:10ym,166,25;6bov,131,49;97t,111,4;992,105,2;6btv,103,7;954,101,18;4qge,96,5;11ra,87,2;10zu,78,2;10yl,77,4;5s8t,48,2;727t,45,2~6bov,131,49;10ym,166,25;954,101,18;6btv,103,7;4qge,96,5;97t,111,4;10yl,77,4;992,105,2;5s8t,48,2;10zu,78,2;11ra,87,2;727t,45,2
 9vt4|n|Alt. of Tsaritsa	V:2tlx,136,2~2tlx,136,2	N:96d,170,2;2tlx,126,1~96d,170,2;2tlx,126,1
-9vt4|v|Alt. of Tsaritsa	o:2tlx,126,1~2tlx,126,1
-9vt4|a|Alt. of Tsaritsa	j:96d,170,2~96d,170,2
+9vt4|v|	o:2tlx,126,1~2tlx,126,1
+9vt4|a|	j:96d,170,2~96d,170,2
 9vt5|n|	a:877v,88,6;6lip,80,14;3f7k,78,6;6lfq,37,3~6lip,80,14;3f7k,78,6;877v,88,6;6lfq,37,3	n:598y,14,7~598y,14,7	N:1sbc,169,14;o2m,151,2;877u,117,23;2uru,111,12;2yuy,98,5;7unx,96,2;j0w,94,5;9nyp,40,5~877u,117,23;1sbc,169,14;2uru,111,12;9nyp,40,5;2yuy,98,5;j0w,94,5;7unx,96,2;o2m,151,2
 9vt5|v|	o:877u,71,1;j0w,71,1~877u,71,1;j0w,71,1
 9vt5|a|	j:o2m,151,2;877u,117,24;j0w,94,5;2yuy,85,2;3tb7,70,3;7145,57,3;9nyp,42,6~877u,117,24;9nyp,42,6;j0w,94,5;7145,57,3;3tb7,70,3;2yuy,85,2;o2m,151,2
@@ -114,7 +114,7 @@
 9vvh|v|	o:9vxv,144,2;dqg,61,8;5ln7,23,2~dqg,61,8;9vxv,144,2;5ln7,23,2	s:9ia7,8,2~9ia7,8,2
 9vvh|a|	j:5ln7,23,2~5ln7,23,2
 9vvj|n|A venomous two-winged African fly (Glossina morsitans) whose bite is very poisonous, and even fatal, to horses and cattle, but harmless to men. It renders extensive districts in which it abounds uninhabitable during certain seasons of the year.	N:3cko,126,5;3dam,111,13~3dam,111,13;3cko,126,5
-9vvj|a|A venomous two-winged African fly (Glossina morsitans) whose bite is very poisonous, and even fatal, to horses and cattle, but harmless to men. It renders extensive districts in which it abounds uninhabitable during certain seasons of the year.	j:3dam,90,3~3dam,90,3
+9vvj|a|	j:3dam,90,3~3dam,90,3
 9vvk|n|	n:95pa,75,3~95pa,75,3
 9vvn|n|	v:a7g2,32,7;a6d9,1,1~a7g2,32,7;a6d9,1,1	n:a6d9,1,1~a6d9,1,1	N:9t55,104,24;9t59,97,10~9t55,104,24;9t59,97,10
 9vvn|v|	o:9t59,64,1;9t55,58,1~9t55,58,1;9t59,64,1

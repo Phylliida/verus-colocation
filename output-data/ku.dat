@@ -80,7 +80,7 @@
 5260|n|	a:5kdd,130,1~5kdd,130,1	n:5kdd,146,3~5kdd,146,3
 5261|n|	v:333o,74,6~333o,74,6	N:8kzr,122,13~8kzr,122,13
 5261|a|	j:afld,239,12~afld,239,12
-5262|a|The East Indian tapir. See Tapir.	j:16mu,170,2~16mu,170,2
+5262|a|	j:16mu,170,2~16mu,170,2
 5263|n|	v:9g6e,99,2~9g6e,99,2	n:5mdv,131,3~5mdv,131,3
 5263|a|	j:770u,29,2~770u,29,2
 5266|n|	n:542m,142,4~542m,142,4
@@ -90,10 +90,10 @@
 5268|n|	n:598y,8,3~598y,8,3
 5269|n|Glory; fame; renown; praise.	a:6150,83,3;47cb,36,30;5lfu,34,8;5i9m,32,25;34jj,30,49;5p1l,28,1;8hto,16,4;wyo,16,24;9995,13,6;115i,8,2;8wr7,8,10;pgs,2,1;amnw,2,1;7s6n,2,4;4gr,1,7~34jj,30,49;614m,0,33;47cb,36,30;5i9m,32,25;wyo,16,24;8wr7,8,10;5lfu,34,8;4gr,1,7;9995,13,6;7s6n,2,4;8hto,16,4;6150,83,3;115i,8,2;5p1l,28,1;pgs,2,1	v:2qaa,31,3;7s6n,12,8~7s6n,12,8;2qaa,31,3	V:pf5,21,1;3sf5,18,27;7s70,4,4~3sf5,18,27;7s70,4,4;pf5,21,1	n:2cnv,37,3;115i,33,11;5lfu,14,2;34jj,10,12;7s9r,4,4;amnw,2,1~34jj,10,12;115i,33,11;7s9r,4,4;2cnv,37,3;5lfu,14,2;amnw,2,1	N:5lso,26,2~5lso,26,2
 5269|v|To praise; to extol; to glorify.	s:fkx,7,1~fkx,7,1
-5269|a|Glory; fame; renown; praise.	j:8pzb,54,22;5lso,42,6;9nje,22,2;5j08,14,9;78ds,5,18;14xq,4,3;57aq,2,3~8pzb,54,22;78ds,5,18;5j08,14,9;5lso,42,6;57aq,2,3;14xq,4,3;9nje,22,2	e:3equ,42,2;3bbq,4,1;29ot,1,5;fkw,0,5~29ot,1,5;fkw,0,5;3equ,42,2;3bbq,4,1
+5269|a|	j:8pzb,54,22;5lso,42,6;9nje,22,2;5j08,14,9;78ds,5,18;14xq,4,3;57aq,2,3~8pzb,54,22;78ds,5,18;5j08,14,9;5lso,42,6;57aq,2,3;14xq,4,3;9nje,22,2	e:3equ,42,2;3bbq,4,1;29ot,1,5;fkw,0,5~29ot,1,5;fkw,0,5;3equ,42,2;3bbq,4,1
 526a|n|See Koodoo.	a:4zw7,96,26~4zw7,96,26	v:4j6w,29,5;a6d9,6,10~a6d9,6,10;4j6w,29,5	V:1sjw,24,1~1sjw,24,1	n:pyl,53,2;abv8,31,5;7gis,21,3;ahsw,20,1;9cla,19,4~abv8,31,5;9cla,19,4;7gis,21,3;pyl,53,2;ahsw,20,1	N:2bu0,76,9;2drz,40,3;8q3w,39,10;8i6l,37,7;fx2,32,4;7fcf,26,4;1sjw,24,1;281x,20,1~8q3w,39,10;2bu0,76,9;8i6l,37,7;fx2,32,4;7fcf,26,4;2drz,40,3;281x,20,1;1sjw,24,1
-526a|v|See Koodoo.	s:7gis,5,1~7gis,5,1
-526a|a|See Koodoo.	j:45lj,96,4;9c0f,94,49;8cbu,90,2;1sjw,73,29;7bct,66,5;ajvx,54,3;281x,50,8;9qh2,48,6;7g2z,44,1;fx2,22,2;15dl,19,2~9c0f,94,49;1sjw,73,29;281x,50,8;9qh2,48,6;7bct,66,5;45lj,96,4;ajvx,54,3;8cbu,90,2;15dl,19,2;fx2,22,2;7g2z,44,1
+526a|v|	s:7gis,5,1~7gis,5,1
+526a|a|	j:45lj,96,4;9c0f,94,49;8cbu,90,2;1sjw,73,29;7bct,66,5;ajvx,54,3;281x,50,8;9qh2,48,6;7g2z,44,1;fx2,22,2;15dl,19,2~9c0f,94,49;1sjw,73,29;281x,50,8;9qh2,48,6;7bct,66,5;45lj,96,4;ajvx,54,3;8cbu,90,2;15dl,19,2;fx2,22,2;7g2z,44,1
 526b|n|	n:598y,44,33~598y,44,33
 526b|v|	o:4zpd,100,2~4zpd,100,2
 526b|a|	j:aczc,139,4;acyx,133,5;4zpd,120,8~4zpd,120,8;acyx,133,5;aczc,139,4
@@ -150,7 +150,7 @@
 527g|n|	V:8arb,36,2~8arb,36,2	n:246s,86,2~246s,86,2	N:5lgj,53,2~5lgj,53,2
 527g|v|	s:6kus,49,1~6kus,49,1
 527g|a|	j:9djq,144,3;9jeh,98,11;5lgj,80,13;ahsw,57,4~5lgj,80,13;9jeh,98,11;ahsw,57,4;9djq,144,3
-527i|a|The name adopted in the southern part of the United States by a secret political organization, active for several years after the close of the Civil War, and having for its aim the repression of the political power of the freedmen; -- called also Kuklux Klan.	j:50c0,200,5~50c0,200,5
+527i|a|	j:50c0,200,5~50c0,200,5
 527j|n|	a:8296,38,4~8296,38,4
 527k|n|	n:9mxp,66,1;a89p,43,1~9mxp,66,1;a89p,43,1
 527k|a|	j:59eh,46,4~59eh,46,4
@@ -238,7 +238,7 @@
 529d|a|	j:30cp,100,10~30cp,100,10
 529f|a|	j:3zuz,91,4~3zuz,91,4
 529g|n|A small tree of the genus Citrus (C. Japonica) growing in China and Japan; also, its small acid, orange-colored fruit used for preserves.	V:9twb,38,1~9twb,38,1	n:1j5p,125,3;6zly,101,3~1j5p,125,3;6zly,101,3	N:8f5u,95,3;4tzs,84,3~4tzs,84,3;8f5u,95,3
-529g|a|A small tree of the genus Citrus (C. Japonica) growing in China and Japan; also, its small acid, orange-colored fruit used for preserves.	j:9twb,66,7;2tu1,47,12~2tu1,47,12;9twb,66,7
+529g|a|	j:9twb,66,7;2tu1,47,12~2tu1,47,12;9twb,66,7
 529i|n|	v:a7g2,21,2~a7g2,21,2
 529i|a|	j:fx2,67,4~fx2,67,4
 529j|n|	a:324p,161,9;5fmg,142,4;5jt2,103,2;2kxx,68,2~324p,161,9;5fmg,142,4;5jt2,103,2;2kxx,68,2	V:7ra7,16,3;888b,9,3~7ra7,16,3;888b,9,3	n:324p,174,23;4shy,132,3;9pdx,94,3;4sqd,73,2;8f2h,28,1;af1h,19,2;alxf,7,2~324p,174,23;9pdx,94,3;4shy,132,3;alxf,7,2;af1h,19,2;4sqd,73,2;8f2h,28,1	N:7rae,85,10;7ra7,32,9;30dq,19,2~7rae,85,10;7ra7,32,9;30dq,19,2
@@ -354,7 +354,7 @@
 52bp|v|	o:6ojf,19,1~6ojf,19,1
 52bp|a|	j:9qsz,105,1;1l83,104,269;3auc,95,9;5y00,94,6;96q9,93,4;96v4,93,14;96v5,92,5;5xzv,90,15;6unm,88,17;2u90,86,44;1l86,77,7;6unz,73,50;pns,72,16;6una,71,70;1ubz,66,26~1l83,104,269;29p4,64,150;6una,71,70;9kye,58,61;6unz,73,50;2u90,86,44;59eh,48,43;1ubz,66,26;5ogq,46,19;6unm,88,17;pns,72,16;5xzv,90,15;2vi3,54,15;96v4,93,14;4gg0,43,13	e:4xrg,124,1;52of,28,1;195,21,2;5nhh,4,4~5nhh,4,4;195,21,2;4xrg,124,1;52of,28,1
 52br|n|A native or inhabitant of a mountainous region of Western Asia belonging to the Turkish and Persian monarchies.	n:5k6e,167,1;a7h1,145,1;nr9,60,2~nr9,60,2;5k6e,167,1;a7h1,145,1
-52bs|v|Of or pertaining to the Kurds.	o:5tet,115,1~5tet,115,1
+52bs|v|	o:5tet,115,1~5tet,115,1
 52bs|a|Of or pertaining to the Kurds.	j:as5r,158,6;5tet,143,7;7ei8,137,5;8h8b,136,6;8h89,126,4;3kf,123,5;3920,121,32;6766,118,6;2ves,116,3;7ryw,115,12;6768,115,4;9i6y,109,4;oe7,108,5;30kb,103,4;7hy1,102,5~3920,121,32;53p6,49,23;70j5,35,20;3ek8,71,18;3vm1,54,15;1pyf,44,12;7ryw,115,12;79qw,73,12;ieh,64,11;9jd7,18,7;91jr,27,7;5tet,143,7;675x,85,7;as5r,158,6;1jof,60,6
 52bt|n|	a:4fdh,63,5~4fdh,63,5	n:4n0l,159,11~4n0l,159,11
 52bt|a|	j:am78,93,5;7uon,88,2;3gpw,84,4;7uoj,79,11~7uoj,79,11;am78,93,5;3gpw,84,4;7uon,88,2
